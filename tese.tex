@@ -52,6 +52,13 @@
 \cleardoublepage
 \normalsize
 
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newcommand{\N}{{\mathbb{N}}}
+\newcommand{\Nb}{{\bar{\N}}}
+\newcommand{\R}{{\mathbb{R}}}
+
 % ---------------------------------------------------------------------------- %
 % Corpo do texto
 \begin{document}
@@ -203,6 +210,7 @@ Abstract ...
 %\onehalfspacing            % espaçamento um e meio
 
 \input cap-introducao        % associado ao arquivo: 'cap-introducao.tex'
+\input cap-construcao        % associado ao arquivo: 'cap-introducao.tex'
 
 % cabeçalho para os apêndices
 \renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\appendixname\ \thechapter}} {\MakeUppercase{#1}} }

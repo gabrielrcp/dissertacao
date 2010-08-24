@@ -1,0 +1,78 @@
+%% ------------------------------------------------------------------------- %%
+\chapter{Construção do processo}
+\label{cap:construcao}
+
+%% ------------------------------------------------------------------------- %%
+\section{Definições}
+\label{sec:definicoes}
+
+Chamaremos de $\N$ o conjunto dos número naturais. Por convenção
+assumiremos que o zero não está nesse conjunto, isso é, $\N = \{ 1, 2,
+\ldots \}$. A esse conjunto adicionaremos um novo símbolo, que
+denotaremos por $\infty$. Chamaremos esse novo conjunto de $\Nb$.
+
+Muniremos $\Nb$ da seguinte métrica:
+\begin{equation}
+  \label{eq:metrica}
+  d(x, y) = \left\lvert \frac{1}{x} - \frac{1}{y} \right\rvert,
+\end{equation}
+sob a convenção de que $\frac{1}{\infty} = 0$. Com essa métrica,
+$\Nb$ é um espaço compacto. 
+
+O processo K será um processo estocástico em tempo contínuo, que terá
+como suporte o conjunto $\Nb$. Chamaremos os elementos de $\Nb$ de
+estados ou sítios do processo.
+
+Como parâmetros do processo, teremos duas funções,
+ $\gamma: \Nb \to [0, \infty)$ e $\lambda: \Nb \to [0, \infty)$,
+além de uma constante $c \in [0, \infty)$.
+Para um estado $x \in \Nb$, podemos interpretar $\gamma(x)$ como
+o tempo médio entre um processo entrar e sair de $x$ e $lambda(x)$
+vai controlar a taxa com que o processo tende a entrar em
+$x$. Enquanto que a constante $c$ controla o tempo em que o estado
+fica em $\infty$.
+
+Seguindo \cite{fontes:08k}, iremos definir o processo K através de uma
+construção. O espaço de probabilidade onde iremos definí-lo será um
+espaço que admita as sequintes famílias de variáveis aleatórias
+idependentes:
+
+\begin{itemize}
+  \item $\{ N_x: x \in \N \}$: processos pontuais de Poisson em de taxa
+    $1$.
+  \item $\{T_n^x: x \in \N , \, n = 0, 1, 2, 3, \ldots \}$:
+    variáveis aleatórias exponencias de média $1$.
+\end{itemize}
+
+Para $t \geq 0$, iremos denotar por $N_x(t)$ o número de marcas do
+processo de poisson  $N_x$ no intervalo $[0, t]$, marcas essas que
+iremos denotar por $0 < \sigma_1^x < \sigma_2^x < \ldots$ .
+
+Agora podemos definir uma função aleatória que será nossa principal
+ferramenta para trabalhar com esse processo:
+
+\begin{equation}
+  \Gamma_y (t) = \gamma(y) T_0^y
+                 + \sum_{x \in \N} \sum_{n = 1}^{N_x( \lambda (x) t)}
+                       \gamma(x) T_n^x
+                 + ct
+  \qquad y \in \Nb, \quad t \geq 0.
+\end{equation}
+
+Chamaremos o processo K iniciado em $y$ de $X^y$, ele é definido
+da seguinte forma:
+
+\begin{equation}
+  X^y (t) =
+  \begin{cases}
+    y & \textrm{ se }  t \leq \gamma(y) \\
+    x & \textrm{ se }  \Gamma(t-) \leq \sigma^x_i < \Gamma(t)
+       \textrm{ para algum } i \\
+    \infty & \textrm{ caso contrário.}
+  \end{cases}
+\end{equation}
+
+
+%%% Local Variables: 
+%%% TeX-master: "tese"
+%%% End: 
