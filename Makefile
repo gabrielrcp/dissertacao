@@ -5,6 +5,9 @@
 #
 
 BASE_NAME = tese
+CAPITULOS = cap-introducao.tex  cap-construcao.tex
+APENDICES = apendice.tex 
+BIB	  = bibliografia.bib
 
 LATEX     = latex
 PDFLATEX  = pdflatex
@@ -14,7 +17,7 @@ MAKEINDEX = makeindex
 pdf: $(BASE_NAME).pdf
 ps: $(BASE_NAME).ps
 
-$(BASE_NAME).pdf: $(BASE_NAME).tex 
+$(BASE_NAME).pdf: $(BASE_NAME).tex $(CAPITULOS) $(APENDICES) $(BIB) 
 	$(PDFLATEX) $<
 	$(BIBTEX) $(BASE_NAME) 
 	$(MAKEINDEX) $(BASE_NAME) 
@@ -22,7 +25,7 @@ $(BASE_NAME).pdf: $(BASE_NAME).tex
 	$(PDFLATEX) $<
 	$(PDFLATEX) $<
 
-$(BASE_NAME).ps: $(BASE_NAME).tex 
+$(BASE_NAME).ps: $(BASE_NAME).tex $(CAPITULOS) $(APENDICES) $(BIB)
 	$(LATEX) $<
 	$(BIBTEX) $(BASE_NAME) 
 	$(MAKEINDEX) $(BASE_NAME) 
@@ -34,5 +37,5 @@ clean:
 	rm -f $(BASE_NAME)*.ps $(BASE_NAME)*.dvi *.log \
 	      *.aux *.blg *.toc *.brf *.ilg *.ind \
 	      $(BASE_NAME)*.bbl $(BASE_NAME)*.pdf $(BASE_NAME)*.out \
-	      $(BASE_NAME)*.lof $(BASE_NAME)*.lot $(BASE_NAME)*.idx \
+	      $(BASE_NAME)*.lof $(BASE_NAME)*.lot $(BASE_NAME).idx \
 	      *~
