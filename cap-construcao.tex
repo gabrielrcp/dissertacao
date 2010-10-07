@@ -16,36 +16,35 @@ Muniremos $\Nb$ da seguinte métrica:
   \label{eq:metrica}
   d(x, y) = \left\lvert \frac{1}{x} - \frac{1}{y} \right\rvert,
 \end{equation}
-sob a convenção de que $\frac{1}{\infty} = 0$. Com essa métrica
-$\Nb$ é um espaço compacto. 
+sob a convenção de que $\frac{1}{\infty} = 0$. Com essa métrica $\Nb$
+é um espaço compacto.
 
 O processo K será um processo estocástico em tempo contínuo, cujo
 espaço de estados será $\Nb$. Chamaremos os elementos de $\Nb$ de
 estados ou sítios do processo.
 
 Como parâmetros do processo, teremos duas famílias de números reais
-estritamente positivos, $\gamma_x$ e $\lambda_x$, $x \in \N$. Além de uma constante
-$c \in [0, \infty)$.
-Para um estado $x \in \Nb$, podemos interpretar $\gamma_x$ como
-o tempo médio para o processo sair de $x$ e $\lambda_x$
-vai controlar a taxa com que o processo tende a entrar em
-$x$. Enquanto que $c$ controla o tempo em que o estado
-fica em $\infty$.
+estritamente positivos, $\gamma_x$ e $\lambda_x$, $x \in \N$. Além de
+uma constante $c \in [0, \infty)$.  Para um estado $x \in \Nb$,
+podemos interpretar $\gamma_x$ como o tempo médio para o processo sair
+de $x$ e $\lambda_x$ vai controlar a taxa com que o processo tende a
+entrar em $x$. Enquanto que $c$ controla o tempo em que o estado fica
+em $\infty$.
 
 Seguindo \cite{fontes:08}, iremos definir o processo K através de uma
-construção. O espaço de probabilidade onde iremos defini-lo será um
-espaço que admita as seguintes famílias de variáveis aleatórias
-independentes:
+construção. O espaço de probabilidade, $\Omega$, onde iremos defini-lo
+será um espaço que admita as seguintes famílias de variáveis
+aleatórias independentes:
 
 \begin{itemize}
-  \item $\{ N_x: x \in \N \}$: processos pontuais de Poisson
-    independentes, onde $N_x$ tem taxa $\lambda_x$ para cada $x \in \N$.
-  \item $\{T_n^x: x \in \Nb , \, n = 0, 1, 2, 3, \ldots \}$:
-    variáveis aleatórias exponencias de média $1$.
+\item $\{ N_x: x \in \N \}$: processos pontuais de Poisson
+  independentes, onde $N_x$ tem taxa $\lambda_x$ para cada $x \in \N$.
+\item $\{T_n^x: x \in \Nb , \, n = 0, 1, 2, 3, \ldots \}$: variáveis
+  aleatórias exponencias de média $1$.
 \end{itemize}
 
 Para $t \geq 0$, iremos denotar por $N_x(t)$ o número de marcas do
-processo de poisson  $N_x$ no intervalo $[0, t]$, marcas essas que
+processo de poisson $N_x$ no intervalo $[0, t]$, marcas essas que
 iremos denotar por $0 < \sigma_1^x < \sigma_2^x < \ldots$ .
 
 Agora podemos definir uma função aleatória que será nossa principal
@@ -73,8 +72,9 @@ definido, para $t \geq 0$, da seguinte forma:
   X^y (t) =
   \begin{cases}
     y & \textrm{ se }  t < \gamma_y T_0^y\\
-    x & \textrm{ se }  \Gamma_y(\sigma_i^x-) \leq t < \Gamma_y(\sigma^x_i)
-       \textrm{ para algum } i \\
+    x & \textrm{ se } \Gamma_y(\sigma_i^x-) \leq t <
+    \Gamma_y(\sigma^x_i)
+    \textrm{ para algum } i \\
     \infty & \textrm{ caso contrário.}
   \end{cases}
 \end{equation}
@@ -89,6 +89,26 @@ na próxima proposição.
   direita e tem limites à esquerda.
 \end{proposicao}
 \begin{proof}
+
+  Consideremos $A$ o conjunto de todas as trajetórias $\omega \in
+  \Omega$ tais que $\Gamma_y(T)$ seja finito, para todo $T$ positivo e
+  racional, além disso não haja marcas repetidas na justaposição dos
+  processos de Poisson $\{N_x: x \in \N\}$.
+
+
+ Fixe $T > 0$, e vamos definir o evento:
+  \begin{displaymath}
+    A_T = \left\{
+      \omega \in \Omega: \Gamma_y(T) < \infty
+    \right\}.
+  \end{displaymath}
+  E tomemos $A = \cup_{T=1}^{\infty} A_T$. Consideremos ainda $B$ o
+  evento que diz que não há marcas repetidas na justaposição dos
+  processos de Poisson $N_x$.
+
+  Como $P(A_T) = 1 = P(B)$, seque que $P(A \cap B) = 1$. Assim vamos
+  mostrar que toda trajetória $\omega \in A \cap B$ é càdlàg.
+
   Se tomarmos $t \geq s \geq 0$, temos que:
   \begin{equation*}
     \Gamma_y(t) - \Gamma_y(s) = 
@@ -96,8 +116,14 @@ na próxima proposição.
     \sum_{x \in \N} \sum_{n = N_x(s)+1}^{N_x(t)} \gamma_x T^x_n
     \geq 0 .
   \end{equation*}
-  Assim $\Gamma_y$ é não decrescente. Isso diretamente estabelece a
-  existência dos limites à direita e à esquerda.
+
+
+  Assim $\Gamma_y$ é não decrescente. Tomando um $T > t$, temos ainda
+  que $0 \leq \Gamma_y(s) \leq \Gamma_y(t) \leq \Gamma_y(T) <
+  \infty$. Dessa maneira estamos lidando com sequências monótonas
+  limitadas, o que estabelece a existência dos limites à direita e à
+  esquerda.
+
 
 
   Para mostrar à continuidade à direita, tome $t \geq 0$ e uma
@@ -110,8 +136,9 @@ na próxima proposição.
     \right) \xrightarrow{n \to \infty} 0 
   \end{equation*}
   Assim $\Gamma_y(t_n)$ converge na norma $L_1$ para $\Gamma_y(t)$ e
-  portanto também converge em probabilidade. Assim, como existe o limite à
-  direita \qc, então esse limite deve ser igual à $\Gamma_y(t)$.
+  portanto também converge em probabilidade. Assim, como existe o
+  limite à direita \qc, então esse limite deve ser igual à
+  $\Gamma_y(t)$.
 
 
 \end{proof}
