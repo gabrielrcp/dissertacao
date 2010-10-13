@@ -6,26 +6,17 @@
 \section{Definições}
 \label{sec:definicoes}
 
-Chamaremos de $\N$ o conjunto dos número naturais. Por convenção
-assumiremos que o zero não está nesse conjunto, isso é, $\N = \{ 1, 2,
-\ldots \}$. A esse conjunto adicionaremos um novo símbolo, que
-denotaremos por $\infty$. Chamaremos esse novo conjunto de $\Nb$.
-
-Muniremos $\Nb$ da seguinte métrica:
-\begin{equation}
-  \label{eq:metrica}
-  d(x, y) = \left\lvert \frac{1}{x} - \frac{1}{y} \right\rvert,
-\end{equation}
-sob a convenção de que $\frac{1}{\infty} = 0$. Com essa métrica $\Nb$
-é um espaço compacto.
+Tomemos $\Nz = \{ 1, 2, 3, \ldots\}$ A esse conjunto adicionaremos um
+novo símbolo, que denotaremos por $\infty$. Chamaremos esse novo
+conjunto de $\Nzb$.
 
 O processo K será um processo estocástico em tempo contínuo, cujo
-espaço de estados será $\Nb$. Chamaremos os elementos de $\Nb$ de
+espaço de estados será $\Nzb$. Chamaremos os elementos de $\Nzb$ de
 estados ou sítios do processo.
 
 Como parâmetros do processo, teremos duas famílias de números reais
-estritamente positivos, $\gamma_x$ e $\lambda_x$, $x \in \N$. Além de
-uma constante $c \in [0, \infty)$.  Para um estado $x \in \Nb$,
+estritamente positivos, $\gamma_x$ e $\lambda_x$, $x \in \Nz$. Além de
+uma constante $c \in [0, \infty)$.  Para um estado $x \in \Nz$,
 podemos interpretar $\gamma_x$ como o tempo médio para o processo sair
 de $x$ e $\lambda_x$ vai controlar a taxa com que o processo tende a
 entrar em $x$. Enquanto que $c$ controla o tempo em que o estado fica
@@ -37,9 +28,9 @@ será um espaço que admita as seguintes famílias de variáveis
 aleatórias independentes:
 
 \begin{itemize}
-\item $\{ N_x: x \in \N \}$: processos pontuais de Poisson
+\item $\{ N_x: x \in \Nz \}$: processos pontuais de Poisson
   independentes, onde $N_x$ tem taxa $\lambda_x$ para cada $x \in \N$.
-\item $\{T_n^x: x \in \Nb , \, n = 0, 1, 2, 3, \ldots \}$: variáveis
+\item $\{T_n^x: x \in \Nzb , \, n = 0, 1, 2, 3, \ldots \}$: variáveis
   aleatórias exponencias de média $1$.
 \end{itemize}
 
@@ -48,8 +39,8 @@ processo de poisson $N_x$ no intervalo $[0, t]$, marcas essas que
 iremos denotar por $0 < \sigma_1^x < \sigma_2^x < \ldots$ .
 
 Agora podemos definir uma função aleatória que será nossa principal
-ferramenta para trabalhar com esse processo. Para $t \geq 0$, sob a
-convenção que $\gamma_\infty = 0$:
+ferramenta para trabalhar com esse processo. Para $t \geq 0$ e $y \in
+\Nzb$, sob a convenção que $\gamma_\infty = 0$:
 
 \begin{equation}
   \label{def:Gamma}
@@ -61,7 +52,7 @@ convenção que $\gamma_\infty = 0$:
 
 Para que essa função seja \qc finita, vamos impor a restrição de que
 \begin{equation}
-  \sum_{x \in \N} \lambda_x\gamma_x < +\infty
+  \sum_{x \in \Nz} \lambda_x\gamma_x < +\infty
 \end{equation}
 
 Chamaremos o processo K iniciado em $y \in \Nb$ de $X^y$. Ele é
@@ -90,55 +81,55 @@ na próxima proposição.
 \end{proposicao}
 \begin{proof}
 
-  Consideremos $A$ o conjunto de todas as trajetórias $\omega \in
-  \Omega$ tais que $\Gamma_y(T)$ seja finito, para todo $T$ positivo e
-  racional, além disso não haja marcas repetidas na justaposição dos
-  processos de Poisson $\{N_x: x \in \N\}$.
+  % Consideremos $A$ o conjunto de todas as trajetórias $\omega \in
+  % \Omega$ tais que $\Gamma_y(T)$ seja finito, para todo $T$ positivo e
+  % racional, além disso não haja marcas repetidas na justaposição dos
+  % processos de Poisson $\{N_x: x \in \N\}$.
 
 
- Fixe $T > 0$, e vamos definir o evento:
-  \begin{displaymath}
-    A_T = \left\{
-      \omega \in \Omega: \Gamma_y(T) < \infty
-    \right\}.
-  \end{displaymath}
-  E tomemos $A = \cup_{T=1}^{\infty} A_T$. Consideremos ainda $B$ o
-  evento que diz que não há marcas repetidas na justaposição dos
-  processos de Poisson $N_x$.
+  % Fixe $T > 0$, e vamos definir o evento:
+  % \begin{displaymath}
+  %   A_T = \left\{
+  %     \omega \in \Omega: \Gamma_y(T) < \infty
+  %   \right\}.
+  % \end{displaymath}
+  % E tomemos $A = \cup_{T=1}^{\infty} A_T$. Consideremos ainda $B$ o
+  % evento que diz que não há marcas repetidas na justaposição dos
+  % processos de Poisson $N_x$.
 
-  Como $P(A_T) = 1 = P(B)$, seque que $P(A \cap B) = 1$. Assim vamos
-  mostrar que toda trajetória $\omega \in A \cap B$ é càdlàg.
+  % Como $P(A_T) = 1 = P(B)$, seque que $P(A \cap B) = 1$. Assim vamos
+  % mostrar que toda trajetória $\omega \in A \cap B$ é càdlàg.
 
-  Se tomarmos $t \geq s \geq 0$, temos que:
-  \begin{equation*}
-    \Gamma_y(t) - \Gamma_y(s) = 
-    c (t - s) + 
-    \sum_{x \in \N} \sum_{n = N_x(s)+1}^{N_x(t)} \gamma_x T^x_n
-    \geq 0 .
-  \end{equation*}
-
-
-  Assim $\Gamma_y$ é não decrescente. Tomando um $T > t$, temos ainda
-  que $0 \leq \Gamma_y(s) \leq \Gamma_y(t) \leq \Gamma_y(T) <
-  \infty$. Dessa maneira estamos lidando com sequências monótonas
-  limitadas, o que estabelece a existência dos limites à direita e à
-  esquerda.
+  % Se tomarmos $t \geq s \geq 0$, temos que:
+  % \begin{equation*}
+  %   \Gamma_y(t) - \Gamma_y(s) = 
+  %   c (t - s) + 
+  %   \sum_{x \in \N} \sum_{n = N_x(s)+1}^{N_x(t)} \gamma_x T^x_n
+  %   \geq 0 .
+  % \end{equation*}
 
 
+  % Assim $\Gamma_y$ é não decrescente. Tomando um $T > t$, temos ainda
+  % que $0 \leq \Gamma_y(s) \leq \Gamma_y(t) \leq \Gamma_y(T) <
+  % \infty$. Dessa maneira estamos lidando com sequências monótonas
+  % limitadas, o que estabelece a existência dos limites à direita e à
+  % esquerda.
 
-  Para mostrar à continuidade à direita, tome $t \geq 0$ e uma
-  sequência $(t_n)$ que convirja pela direita para $t$.
-  \begin{equation*}
-    \E(|\Gamma_y(t_n) - \Gamma_y(t)|) =
-    (t_n - t) \left(
-      c + 
-      \sum_{x \in \N}\lambda_x \gamma_x 
-    \right) \xrightarrow{n \to \infty} 0 
-  \end{equation*}
-  Assim $\Gamma_y(t_n)$ converge na norma $L_1$ para $\Gamma_y(t)$ e
-  portanto também converge em probabilidade. Assim, como existe o
-  limite à direita \qc, então esse limite deve ser igual à
-  $\Gamma_y(t)$.
+
+
+  % Para mostrar à continuidade à direita, tome $t \geq 0$ e uma
+  % sequência $(t_n)$ que convirja pela direita para $t$.
+  % \begin{equation*}
+  %   \E(|\Gamma_y(t_n) - \Gamma_y(t)|) =
+  %   (t_n - t) \left(
+  %     c + 
+  %     \sum_{x \in \N}\lambda_x \gamma_x 
+  %   \right) \xrightarrow{n \to \infty} 0 
+  % \end{equation*}
+  % Assim $\Gamma_y(t_n)$ converge na norma $L_1$ para $\Gamma_y(t)$ e
+  % portanto também converge em probabilidade. Assim, como existe o
+  % limite à direita \qc, então esse limite deve ser igual à
+  % $\Gamma_y(t)$.
 
 
 \end{proof}
@@ -146,11 +137,60 @@ na próxima proposição.
 
 \section{Visualização}
 
+Para essa seção, vamos supor que $\sum_{x \in \Nz} \lambda_x <
+\infty$. Nesse caso a sobreposição de todos os processos de Poisson
+$\{N_x : x \in \Nz\}$ será um processo de Poisson de taxa $\sum_{x \in
+  \Nz} \lambda_x$. Assim podemos $\qc$ enumerar as marcas desse
+processo, denotando-as por $ \sigma_1 < \sigma_2 < \ldots$.
+
+O gráfico da função $\Gamma_y$, fora das marcas $\sigma_1, \sigma_2,
+\ldots$ se comporta como é uma reta de inclinação $c$, e nas marcas
+essa função tem dá saltos, de tamanho $\gamma_x T^x_i$, para algum $x$
+e algum $i$.
+
+Pela nossa construção, esses saltos corresponderão ao tempo que o
+processso passa nos estados de $\Nz$, enquanto que no resto do tempo
+ele está no $\infty$.
+
+A figura \ref{fig:graf_gamma} é um exemplo de realização de
+$\Gamma_y$.
+
+Assim nosso processo K se reduzirá a um processo Markoviano de
+saltos. Iniciando em um estado $y$, o processo permanece nesse estado
+um tempo exponencial de média $\gamma_y$. Passado esse tempo ele pula
+para o $\infty$, onde permanece um tempo exponencial de média
+$\frac{c}{\sum_{x \in \Nz} \lambda_x}$, escolhendo um novo estado $y$
+com probabilidade $\frac{\lambda_y}{\sum_{x \in \Nz} \lambda_x}$.
 
 
-\section{Restrições}
+\begin{figure}
+  \centering
+  \includegraphics[width=.80\textwidth]{graf_gamma}
+  \caption{Um exemplo de realização de $\Gamma_y$ quando $\sum_{x \in
+      \Nz} \lambda_x < \infty$}
+  \label{fig:graf_gamma}
+\end{figure}
 
+\section{Topologia sobre o espaço de estados}
 
+Será útil para alguns resultados munirmos $\Nzb$ de uma
+topologia. Para isso considere a seguinte métrica:
+\begin{equation}
+  \label{eq:metrica}
+  d(x, y) = \left\lvert \frac{1}{x} - \frac{1}{y} \right\rvert,
+\end{equation}
+para $x, y \in \Nzb$, sob a convenção de que $\frac{1}{\infty} = 0$.
+
+Essa métrica induz uma topologia bastante natural, onde todos os
+pontos $x \in \Nz$ são pontos isolados, e uma sequência converge ao
+$\infty$ nessa topologia se ela divergir para infinito da maneira
+usual.
+
+Uma função $f: \Nzb \to \R$ será contínua se e somente se
+$f(\infty) = \lim_{x \to \infty} f(x)$.
+
+Vale ainda que essa topologia é compacta, nos dando boas propriedades
+para trabalhar.
 
 %%% Local Variables: 
 %%% TeX-master: "tese"
