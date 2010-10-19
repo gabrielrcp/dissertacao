@@ -44,7 +44,7 @@ ferramenta para trabalhar com esse processo. Para $t \geq 0$ e $y \in
 
 \begin{equation}
   \label{def:Gamma}
-  \Gamma_y (t) = \gamma_y T_0^y
+  \Gamma^y (t) = \gamma_y T_0^y
   + \sum_{x \in \N} \sum_{n = 1}^{N_x(t)}
   \gamma_x T_n^x
   + ct
@@ -62,21 +62,21 @@ definido, para $t \geq 0$, da seguinte forma:
   \label{def:procK}
   X^y (t) =
   \begin{cases}
-    y & \textrm{ se }  t < \gamma_y T_0^y\\
-    x & \textrm{ se } \Gamma_y(\sigma_i^x-) \leq t <
-    \Gamma_y(\sigma^x_i)
+    y, & \textrm{ se }  t < \gamma_y T_0^y\\
+    x, & \textrm{ se } \Gamma^y(\sigma_i^x-) \leq t <
+    \Gamma^y(\sigma^x_i)
     \textrm{ para algum } i \\
-    \infty & \textrm{ caso contrário.}
+    \infty, & \textrm{ caso contrário.}
   \end{cases}
 \end{equation}
 
 Note que para que essa definição faça sentido, temos que o limite a
-esquerda $\Gamma_y (\sigma_i^x-)$ deve existir. Isso será estabelecido
+esquerda $\Gamma^y (\sigma_i^x-)$ deve existir. Isso será estabelecido
 na próxima proposição.
 
 \begin{proposicao}
   \label{prop:gamma-cadlag}
-  A função $\Gamma_y$ é quase certamente càdlàg. Isso é, é contínua à
+  A função $\Gamma^y$ é quase certamente càdlàg. Isso é, é contínua à
   direita e tem limites à esquerda.
 \end{proposicao}
 \begin{proof}
@@ -135,7 +135,9 @@ na próxima proposição.
 \end{proof}
 
 
+
 \section{Visualização}
+\label{sec:visualizacao}
 
 Para essa seção, vamos supor que $\sum_{x \in \Nz} \lambda_x <
 \infty$. Nesse caso a sobreposição de todos os processos de Poisson
@@ -143,24 +145,32 @@ $\{N_x : x \in \Nz\}$ será um processo de Poisson de taxa $\sum_{x \in
   \Nz} \lambda_x$. Assim podemos $\qc$ enumerar as marcas desse
 processo, denotando-as por $ \sigma_1 < \sigma_2 < \ldots$.
 
-O gráfico da função $\Gamma_y$, fora das marcas $\sigma_1, \sigma_2,
+O gráfico da função $\Gamma^y$, fora das marcas $\sigma_1, \sigma_2,
 \ldots$ se comporta como é uma reta de inclinação $c$, e nas marcas
 essa função tem dá saltos, de tamanho $\gamma_x T^x_i$, para algum $x$
-e algum $i$.
+e algum $i$. A figura \ref{fig:graf_gamma} ilustra uma possível
+realização de $\Gamma^y$.
+
 
 Pela nossa construção, esses saltos corresponderão ao tempo que o
 processso passa nos estados de $\Nz$, enquanto que no resto do tempo
 ele está no $\infty$.
 
-A figura \ref{fig:graf_gamma} é um exemplo de realização de
-$\Gamma_y$.
-
 Assim nosso processo K se reduzirá a um processo Markoviano de
-saltos. Iniciando em um estado $y$, o processo permanece nesse estado
-um tempo exponencial de média $\gamma_y$. Passado esse tempo ele pula
-para o $\infty$, onde permanece um tempo exponencial de média
-$\frac{c}{\sum_{x \in \Nz} \lambda_x}$, escolhendo um novo estado $y$
+saltos.
+
+No caso $c > 0$, iniciando em um estado $y$, o processo permanece
+nesse estado um tempo exponencial de média $\gamma_y$. Passado esse
+tempo ele pula para o $\infty$, onde permanece um tempo exponencial de
+média $\frac{c}{\sum_{x \in \Nz} \lambda_x}$, escolhendo um novo
+estado $y$ com probabilidade $\frac{\lambda_y}{\sum_{x \in \Nz}
+  \lambda_x}$.
+
+No caso $c=0$, nós permanecemos em cada estado $x$ um tempo
+exponencial de média $\gamma_x$, e escolhemos pular para um novo estado $y$
 com probabilidade $\frac{\lambda_y}{\sum_{x \in \Nz} \lambda_x}$.
+Note que nesse caso nós nunca visitamos o $\infty$, vale até mesmo que
+$X^\infty(0) \neq \infty$ \qc.
 
 
 \begin{figure}
@@ -172,6 +182,7 @@ com probabilidade $\frac{\lambda_y}{\sum_{x \in \Nz} \lambda_x}$.
 \end{figure}
 
 \section{Topologia sobre o espaço de estados}
+\label{sec:topologia}
 
 Será útil para alguns resultados munirmos $\Nzb$ de uma
 topologia. Para isso considere a seguinte métrica:

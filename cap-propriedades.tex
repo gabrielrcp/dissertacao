@@ -2,10 +2,116 @@
 \chapter{Propriedades Básicas do Processo K}
 \label{cap:propriedades}
 
+Nesse capítulo vamos mostrar uma maneira de aproximar o processo K
+por processos Markovianos de salto. Isso, além de nos fornecer uma
+maneira intuitiva de encarar o processo, vai nos servir de ferramenta
+para mostrar que o processo é Càdlàg e Markoviano.
+
+No final do capítulo ainda enunciaremos um resultado que tratará do
+quanto tempo o processo passa no infinito.
+
 %% ------------------------------------------------------------------------- %%
 
 \section{Aproximações}
 \label{sec:aproximacoes}
+
+Fixado um natural $n \in \Nz$, vamos ``truncar'' nosso processo em
+$\{1, 2, \ldots, n, \infty\}$. Depois vamos mostrar mostrar que esses
+processos truncados convergem ao processo original.
+
+Primeiramente, para $n \in \Nz$ e $y \in \{1, \ldots, n, \infty\}$,
+vamos definir:
+\begin{equation}
+  \Gamma^y_n (t) = \gamma_y T_0^y
+  + \sum_{x =1}^{n} \sum_{i = 1}^{N_x(t)}
+  \gamma_x T_i^x
+  + ct.
+\end{equation}
+
+O processo truncado em $n \in \Nz$, com estado inicial $y \in \{1,
+\ldots, n, \infty\}$ será:
+\begin{equation}
+  X^y_n(t) = \begin{cases}
+    y, & \textrm{ se }  t < \gamma_y T_0^y\\
+    x, & \textrm{ se } \Gamma^y_n(\sigma_i^x-) \leq t <
+    \Gamma^y_n(\sigma^x_i)
+    \textrm{ para algum } i \\
+    \infty, & \textrm{ caso contrário.}
+  \end{cases}
+\end{equation}
+
+\begin{proposicao}
+  O processo $X_n^y$ é Càdlàd e Markoviano.
+\end{proposicao}
+\begin{proof}
+  Como visto na seção \ref{sec:visualizacao}, o processo $X_n^y$ é um
+  processo Markoviano de saltos. Além disso ele é Càdlàg por
+  construção.
+\end{proof}
+
+Note que nós construímos $(X_n^y)_{n \in \Nz} e x^y$ num mesmo espaço
+de probabilidade, de forma que $X_n^y$ sejam aproximações de $X^y$.
+Assim é natural perguntar se $X_n^y$ converge para $X^y$.
+
+\begin{teorema}
+  \label{teo:convergencia}
+  Se considerarmos a topologia introduzida na seção
+  \ref{sec:topologia}, então $X_n^y \xrightarrow{n \to \infty} X^y$
+  \qc na métrica de Skorohod.
+\end{teorema}
+
+A métrica de Skorohod é uma métrica sobre o espaço das tragetórias que
+permite pequenas distorções temporais. Ele é uma métrica muito usada
+quando estamos trabalhando com tragetórias Càdlàg.  Como referência
+recomendamos \cite{billingsley:99} e \cite{ethier:86}.
+
+\begin{proof}
+  Usando o teorema xyz de \cite{ethier:86}, vamos mostrar... 
+\end{proof}
+
+\begin{corolario}
+  \label{cor:proc_cadlag}
+  $X^y$ é \qc càdlàg.
+\end{corolario}
+
+\begin{proof}
+  A métrica de Skorohod é completa em $D$, ...
+\end{proof}
+
+
+%% ------------------------------------------------------------------------- %%
+
+\section{Propriedade de Markov}
+
+\begin{teorema}
+  \label{teo:proc_markov}
+  $X^y$ é um processo markoviano.
+\end{teorema}
+
+\begin{proof}
+  ....
+\end{proof}
+
+\begin{proposicao}
+  \label{prop:proc_feller}
+  $X^y$ é um processo de Feller.
+\end{proposicao}
+\begin{proof}
+  Um processo é de Feller se o seu semigrupo de transição for um
+  operador contínuo...
+\end{proof}
+
+
+
+\begin{corolario}
+  \label{cor:proc_fort_markov}
+  $X^y$ é fortemente markoviano.
+\end{corolario}
+\begin{proof}
+  Um processo de Feller markoviano é fortemente markoviano. Ver (???)
+\end{proof}
+
+
 
 
 %%% Local Variables: 

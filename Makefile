@@ -5,8 +5,11 @@
 #
 
 BASE_NAME = tese
-CAPITULOS = cap-introducao.tex  cap-construcao.tex
-APENDICES = apendice.tex 
+CAPITULOS = cap-introducao.tex \
+	cap-construcao.tex \
+	cap-propriedades.tex \
+	cap-taxas.tex
+APENDICES = 
 BIB	  = bibliografia.bib
 
 LATEX     = latex
