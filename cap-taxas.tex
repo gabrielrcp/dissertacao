@@ -2,13 +2,189 @@
 \chapter{Taxas de Transição}
 \label{cap:taxas}
 
-Nesse capítulo, vamos estudar 
+Vamos começar a escrever e depois penso no que escrever aqui.
 
 %% ------------------------------------------------------------------------- %%
 
 \section{Continuidade}
 \label{sec:continuidade}
 
+Para deixar a nossa notação menos carregada, vamos introduzir a
+seguinte definição, para $x, y \in \Nzb$, $t \geq 0$:
+\begin{equation}
+  p_{xy} (t) = P(X^x(t) = y).
+\end{equation}
+Denotaremos ainda por $P(t)$ a ``matriz'' cujas entradas sejam $p_{xy}(t)$.
+
+Nessa seção vamos estudar a continuidade ou não continuidade dessa
+função na origem.
+
+\begin{proposicao}
+  Para $x \in \Nz$,
+  \begin{equation}
+    \lim_{t \searrow 0}p_{xx}(t) = 1.   
+  \end{equation}
+\end{proposicao}
+\begin{proof}
+  Como $x \in \Nz$, temos que:
+  \begin{displaymath}
+    p_{xx}(t) \geq P( \gamma_x T^x_0 > t) = e^{-\frac{t}{\gamma_x}}
+    \to 1.
+  \end{displaymath}
+\end{proof}
+
+\begin{proposicao}
+  \label{prop:naocontinuidade}
+  Caso $c = 0$, para todo $x \in \Nzb$ e $t > 0$, temos que $p_{x
+    \infty} (t) = 0$.
+\end{proposicao}
+\begin{proof}
+\end{proof}
+
+
+\begin{proposicao}
+  \label{prop:continuidade}
+  Caso $c > 0$, vale que:
+  \begin{displaymath}
+    \lim_{t \searrow 0}p_{\infty \infty}(t) = 1.    
+  \end{displaymath}
+\end{proposicao}
+
+%% ------------------------------------------------------------------------- %%
+
+\section{Matriz Q}
+\label{sec:matrizq}
+
+Nessa seção vamos calcular a matriz de taxas de transição do nosso
+processo. Ela pode ser definida pelo limite:
+\begin{displaymath}
+  Q = \lim_{t \searrow 0} \frac{P(t) - I}{t} 
+\end{displaymath}.
+
+Vamos mostrar que, para o caso $c > 0$, essa matriz vale:
+\begin{displaymath}
+  Q = \left(
+    \begin{array}{ccccc}
+      \frac{1}{\gamma_1} & -\frac{1}{\gamma_1} & 0 & 0 & \cdots \\
+      \frac{1}{\gamma_2} & 0 & -\frac{1}{\gamma_2} & 0 & \cdots \\
+      \frac{1}{\gamma_3} & 0 & 0 & -\frac{1}{\gamma_3} & \cdots \\
+      \vdots & \vdots & \vdots & \vdots & \ddots \\
+      -\infty & \frac{\lambda_1}{c} & \frac{\lambda_2}{c} &
+      \frac{\lambda_3}{c} & \cdots \\
+    \end{array}
+  \right).
+\end{displaymath}
+
+Equanto que no caso $c=0$, teremos:
+\begin{displaymath}
+  Q = \left(
+    \begin{array}{ccccc}
+      0 & -\frac{1}{\gamma_1} & 0 & 0 & \cdots \\
+      0 & 0 & -\frac{1}{\gamma_2} & 0 & \cdots \\
+      0 & 0 & 0 & -\frac{1}{\gamma_3} & \cdots \\
+      \vdots & \vdots & \vdots & \vdots & \ddots \\
+      -\infty & \infty & \infty & \infty & \cdots \\
+    \end{array}
+  \right).
+\end{displaymath}
+
+\begin{proposicao}
+  Sejam $x, y \in \Nz$, $x \neq y$, vale que:
+  \begin{displaymath}
+    \lim_{t \searrow 0} \frac{p_{xy}(t)}{t} = 0.
+  \end{displaymath}
+\end{proposicao}
+\begin{proof}
+  
+\end{proof}
+
+\begin{proposicao}
+  Para $x \in \Nz$, vale que:
+  \begin{displaymath}
+    \lim_{t \searrow 0} \frac{p_{xx}(t) - 1}{t} = -\frac{1}{\gamma_x}
+  \end{displaymath}
+\end{proposicao}
+\begin{proof}
+  
+\end{proof}
+
+\begin{proposicao}
+  Para $x \in \Nz$, vale que:
+  \begin{displaymath}
+    \lim_{t \searrow 0} \frac{p_{\infty x}(t)}{t} = \begin{cases}
+      \frac{\lambda_x}{c} & \textrm{ se } c > 0 \\
+      \infty & \textrm{ se } c = 0 \\
+    \end{cases}
+  \end{displaymath}
+\end{proposicao}
+\begin{proof}
+  
+\end{proof}
+
+\begin{proposicao}
+  Vale que:
+  \begin{displaymath}
+    \lim_{t \searrow 0} \frac{p_{\infty \infty}(t) - 1}{t} = -\infty
+  \end{displaymath}
+\end{proposicao}
+\begin{proof}
+  
+\end{proof}
+
+\begin{proposicao}
+  Para $x \in \Nz$, vale que:
+  \begin{displaymath}
+    \lim_{t \searrow 0} \frac{p_{x \infty}(t)}{t} = \begin{cases}
+      \frac{1}{\gamma_x} & \textrm{ se } c > 0 \\
+      0 & \textrm{ se } c = 0 \\
+    \end{cases}
+  \end{displaymath}
+\end{proposicao}
+\begin{proof}
+  
+\end{proof}
+
+%% ------------------------------------------------------------------------- %%
+
+\section{Medida invariante}
+\label{sec:invariante}
+
+O objetivo dessa seção é mostrar que a seguinte distrubuição de
+probabilidade é uma medida invariante para o processo K.
+
+\begin{equation}
+  \label{eq:invariante}
+  \pi(x) = \begin{cases}
+    \frac{\lambda_x \gamma_x}{c + \sum_{y \in \Nz} \lambda_y \gamma_y}
+    & \textrm{ se } x \in \Nz \\
+    \frac{c}{c + \sum_{y \in \Nz} \lambda_y \gamma_y}
+    & \textrm{ se } x = \infty \\
+  \end{cases}
+\end{equation}
+
+\begin{proposicao}
+  O processo K tem uma única medida invariante.
+\end{proposicao}
+\begin{proof}
+  
+\end{proof}
+
+
+\begin{proposicao}
+  A probabilidade $\pi$ definida em \ref{eq:invariante} é a medida
+  invariante do processo K, caso $c > 0$.
+\end{proposicao}
+\begin{proof}
+  
+\end{proof}
+
+\begin{proposicao}
+  A probabilidade $\pi$ definida em \ref{eq:invariante} é a medida
+  invariante do processo K, caso $c = 0$.
+\end{proposicao}
+\begin{proof}
+  
+\end{proof}
 
 
 %%% Local Variables: 
