@@ -34,6 +34,65 @@ função na origem.
 \end{proof}
 
 \begin{proposicao}
+  \label{prop:continuidade}
+  Caso $c > 0$, vale que:
+  \begin{displaymath}
+    \lim_{t \searrow 0}p_{\infty \infty}(t) = 1.    
+  \end{displaymath}
+\end{proposicao}
+
+\begin{proof}
+  Considere a função:
+  \begin{displaymath}
+    \theta(t) = \int_0^t \ind \{ X^\infty (s) = \infty \} ds.
+  \end{displaymath}.
+  
+  Pela contrução do processo, temos que $\theta(\Gamma^\infty(t)) \geq c
+  t$. Assim temos que:
+  \begin{equation}
+    \label{eq:thetagamma}
+    \frac{\theta (\Gamma^\infty(t))}{\Gamma^\infty (t)} \geq
+    \frac{c t}{\Gamma^\infty(t)} =
+    \frac{1}{1 + \frac{1}{ct} \sum_{x \in \Nz} \sum_{i = 1}^{N^x(t)}
+      \gamma_x T^x_i}
+  \end{equation}
+  
+  Agora vamos mostrar que essa expressão converge em probabilidade
+  para $1$. Para isso vamos calcular a transformada de Laplace de
+  $\frac{1}{ct} \sum_{x \in \Nz} \sum_{i = 1}^{N^x(t)} \gamma_x
+  T^x_i$. Fixado um $u \geq 0$, podemos calcular:
+
+  \begin{equation}
+    \label{eq:lap_vaizero}
+    \E \left[
+      -u \frac{1}{ct} \sum_{x \in \Nz} \sum_{i=1}^{N^x(t)} \gamma_x T^x_i
+    \right] =
+    \exp \left\{
+      - \frac{u}{c} \sum_{x \in \Nz}  \frac{\lambda_x \gamma_x}{1 +
+        \frac{u}{ct}\gamma_x}
+    \right\} \xrightarrow{t \searrow 0} 1.
+  \end{equation}
+  
+  Essa convergência vem do fato de que \ref{eq:lap_vaizero} é monótona
+  em $t$ e cada termo da soma vai a zero quando $t \searrow 0$.  Assim
+  o resultado sai do teorema da convergência monótona, e do fato de
+  que a exponencial é uma função contínua.
+
+  Como a função constante igual a $1$ é a transformada de Laplace de
+  uma variável aleatória que vale $0$ sempre, temos que a expressão
+  \ref{eq:thetagamma} converge em probabilidade para 1 quanto $t
+  \searrow 0$.
+
+
+
+  % Assim podemos reconstruir essas variáveis em um novo espaço de
+  % probabilidade de forma que elas convirjam quase certamente. Como
+  % $\frac{\theta(\Gamma^\infty(t))}{\Gamma^\infty(t)} \leq 1$, usando o
+  % teorema da convergência dominada teremos que $$
+
+\end{proof}
+
+\begin{proposicao}
   \label{prop:naocontinuidade}
   Caso $c = 0$, para todo $x \in \Nzb$ e $t > 0$, temos que $p_{x
     \infty} (t) = 0$.
@@ -41,14 +100,6 @@ função na origem.
 \begin{proof}
 \end{proof}
 
-
-\begin{proposicao}
-  \label{prop:continuidade}
-  Caso $c > 0$, vale que:
-  \begin{displaymath}
-    \lim_{t \searrow 0}p_{\infty \infty}(t) = 1.    
-  \end{displaymath}
-\end{proposicao}
 
 %% ------------------------------------------------------------------------- %%
 
