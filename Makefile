@@ -42,3 +42,4 @@ clean:
 	      $(BASE_NAME)*.bbl $(BASE_NAME)*.pdf $(BASE_NAME)*.out \
 	      $(BASE_NAME)*.lof $(BASE_NAME)*.lot $(BASE_NAME).idx \
 	      _region_*   *~
+	rm -fR auto/

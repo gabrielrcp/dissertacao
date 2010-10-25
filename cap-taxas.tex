@@ -33,6 +33,58 @@ função na origem.
   \end{displaymath}
 \end{proof}
 
+\begin{lema}
+  \label{lema:deriv_gamma}
+  Vale que $ \frac{\Gamma^{\infty}(t)}{t} \xrightarrow{t \searrow 0}
+  c$ em probabilidade.
+\end{lema}
+\begin{proof}
+  Fixando um $t > 0$, teremos que:
+  \begin{equation}
+    \label{eq:gamma_tt}
+    \frac{\Gamma^{\infty}(t)}{t} = 
+    c + \frac{1}{t} \sum_{x \in \Nz} \sum_{i = 1}^{N^x(t)}
+    \gamma_x T^x_i
+  \end{equation}
+
+  Agora podemos calcular a transformada de Laplace da segunda parte
+  dessa expressão. Fixado um $u > 0$, teremos que:
+  \begin{equation}
+    \label{eq:lap_vaizero}
+    \E \left[ \exp\left\{
+      -u \frac{1}{t} \sum_{x \in \Nz} \sum_{i=1}^{N^x(t)} \gamma_x T^x_i
+    \right\} \right] =
+    \exp \left\{
+      - u \sum_{x \in \Nz}  \frac{\lambda_x \gamma_x}{1 +
+        \frac{u \gamma_x}{t}}
+    \right\} %\xrightarrow{t \searrow 0} 1.
+  \end{equation}
+
+  Essa função é monótona em $t$ e cada termo da soma
+  vai a zero quando $t \searrow 0$.  Assim o teorema da convergência
+  monótona nos diz que \ref{eq:lap_vaizero} converge à $1$ quanto $t
+  \searrow 0$, para qualquer $u \geq 0$ fixado.
+
+  Como a função constante igual a $1$ é a transformada de Laplace de
+  uma variável aleatória que vale $0$ sempre, temos que a expressão
+  \ref{eq:gamma_tt} converge em probabilidade para $c$ quando $t
+  \searrow 0$.
+\end{proof}
+
+\begin{lema}
+  \label{lema:deriv_inv_gamma}
+  Seja $\Gamma^{*}$  a função inversa de $\Gamma^\infty$.
+  Vale que $ \frac{\Gamma^{*}(t)}{t} \xrightarrow{t \searrow 0}
+  \frac{1}{c}$ em probabilidade.
+\end{lema}
+\begin{proof}
+
+  Fixe $t > 0$ e $\epsilon > 0$. Com probabilidade $1$, temos que $t$
+  é um ponto de continuidade de $\Gamma^\infty$. Assim existe $s > 0$
+  tal que $\Gamma$
+
+\end{proof}
+
 \begin{proposicao}
   \label{prop:continuidade}
   Caso $c > 0$, vale que:
@@ -47,41 +99,18 @@ função na origem.
     \theta(t) = \int_0^t \ind \{ X^\infty (s) = \infty \} ds.
   \end{displaymath}.
   
-  Pela contrução do processo, temos que $\theta(\Gamma^\infty(t)) \geq c
-  t$. Assim temos que:
-  \begin{equation}
-    \label{eq:thetagamma}
-    \frac{\theta (\Gamma^\infty(t))}{\Gamma^\infty (t)} \geq
-    \frac{c t}{\Gamma^\infty(t)} =
-    \frac{1}{1 + \frac{1}{ct} \sum_{x \in \Nz} \sum_{i = 1}^{N^x(t)}
-      \gamma_x T^x_i}
-  \end{equation}
-  
+  Pela construção do processo, temos que $\theta(t) \geq c
+  \Gamma^*(t)$, onde $\Gamma^*(t)$ é a inversa de $\Gamma^\infty(t)$.
+
+  O Lema \ref{lema:deriv_gamma} diz que $\frac{\Gamma^\infty(t)}{t}$
+  converge à $1$ em probabilidade. Assim podemos reconstruir
+  $\frac{\Gamma^\infty(t)}{t}$ em um novo espaço de probabilidades de
+  forma que elas convirjam quase certamente.
+
   Agora vamos mostrar que essa expressão converge em probabilidade
   para $1$. Para isso vamos calcular a transformada de Laplace de
   $\frac{1}{ct} \sum_{x \in \Nz} \sum_{i = 1}^{N^x(t)} \gamma_x
   T^x_i$. Fixado um $u \geq 0$, podemos calcular:
-
-  \begin{equation}
-    \label{eq:lap_vaizero}
-    \E \left[
-      -u \frac{1}{ct} \sum_{x \in \Nz} \sum_{i=1}^{N^x(t)} \gamma_x T^x_i
-    \right] =
-    \exp \left\{
-      - \frac{u}{c} \sum_{x \in \Nz}  \frac{\lambda_x \gamma_x}{1 +
-        \frac{u}{ct}\gamma_x}
-    \right\} \xrightarrow{t \searrow 0} 1.
-  \end{equation}
-  
-  Essa convergência vem do fato de que \ref{eq:lap_vaizero} é monótona
-  em $t$ e cada termo da soma vai a zero quando $t \searrow 0$.  Assim
-  o resultado sai do teorema da convergência monótona, e do fato de
-  que a exponencial é uma função contínua.
-
-  Como a função constante igual a $1$ é a transformada de Laplace de
-  uma variável aleatória que vale $0$ sempre, temos que a expressão
-  \ref{eq:thetagamma} converge em probabilidade para 1 quanto $t
-  \searrow 0$.
 
 
 
@@ -89,6 +118,25 @@ função na origem.
   % probabilidade de forma que elas convirjam quase certamente. Como
   % $\frac{\theta(\Gamma^\infty(t))}{\Gamma^\infty(t)} \leq 1$, usando o
   % teorema da convergência dominada teremos que $$
+
+  % Voltar para ca depois!!!!!!
+
+
+  Agora, usando o Teorema de Fubbini, teremos que:
+  \begin{align*}
+    1 &= \lim_{t \searrow 0} \E \left[ \frac{\theta(t)}{t} \right] \\ 
+    &= \lim_{t \searrow 0} \E\left[
+      \frac{1}{t} \int_0^t \ind\{ X^\infty(s) = \infty \} ds
+    \right] \\
+    &= \lim_{t \searrow 0} 
+      \frac{1}{t} \int_0^t \E\left[ \ind\{ X^\infty(s) = \infty \}\right] ds
+    \\
+    &= \lim_{t \searrow 0} \frac{1}{t} \int_0^t p_{\infty \infty} (s) ds
+  \end{align*}
+
+  Portanto, usando o teorema fundamental do calculo, teremos que
+  $p_{\infty \infty} (t) \xrightarrow{t \searrow 0} 0$
+
 
 \end{proof}
 
