@@ -164,12 +164,12 @@ Vamos mostrar que, para o caso $c > 0$, essa matriz vale:
 \begin{displaymath}
   Q = \left(
     \begin{array}{ccccc}
-      \frac{1}{\gamma_1} & -\frac{1}{\gamma_1} & 0 & 0 & \cdots \\
-      \frac{1}{\gamma_2} & 0 & -\frac{1}{\gamma_2} & 0 & \cdots \\
-      \frac{1}{\gamma_3} & 0 & 0 & -\frac{1}{\gamma_3} & \cdots \\
+      -\frac{1}{\gamma_1} & 0 & 0 & \cdots & \frac{1}{\gamma_1}\\
+      0 & -\frac{1}{\gamma_2} & 0 & \cdots & \frac{1}{\gamma_2}\\
+      0 & 0 & -\frac{1}{\gamma_3} & \cdots & \frac{1}{\gamma_3}\\
       \vdots & \vdots & \vdots & \vdots & \ddots \\
-      -\infty & \frac{\lambda_1}{c} & \frac{\lambda_2}{c} &
-      \frac{\lambda_3}{c} & \cdots \\
+      \frac{\lambda_1}{c} & \frac{\lambda_2}{c} &
+      \frac{\lambda_3}{c} & \cdots & -\infty\\
     \end{array}
   \right).
 \end{displaymath}
@@ -178,11 +178,11 @@ Equanto que no caso $c=0$, teremos:
 \begin{displaymath}
   Q = \left(
     \begin{array}{ccccc}
-      0 & -\frac{1}{\gamma_1} & 0 & 0 & \cdots \\
-      0 & 0 & -\frac{1}{\gamma_2} & 0 & \cdots \\
-      0 & 0 & 0 & -\frac{1}{\gamma_3} & \cdots \\
+      -\frac{1}{\gamma_1} & 0 & 0 & \cdots & 0\\
+      0 & -\frac{1}{\gamma_2} & 0 & \cdots & 0\\
+      0 & 0 & -\frac{1}{\gamma_3} & \cdots & 0\\
       \vdots & \vdots & \vdots & \vdots & \ddots \\
-      -\infty & \infty & \infty & \infty & \cdots \\
+      \infty & \infty & \infty & \cdots & -\infty\\
     \end{array}
   \right).
 \end{displaymath}
@@ -194,7 +194,19 @@ Equanto que no caso $c=0$, teremos:
   \end{displaymath}
 \end{proposicao}
 \begin{proof}
-  
+  \begin{align*}
+    \frac{p_{x y} (t)}{t}
+    &= \frac{1}{t}\int_{0}^{t} P( X^x(t) = y |
+    \gamma_x T_0^x = s) \frac{1}{\gamma_x} e^{-\frac{s}{\gamma_x}} ds\\
+    &= \frac{1}{t} \int_{0}^{t} P( X^\infty(t-s) = y ) \frac{1}{\gamma_x}
+    e^{-\frac{s}{\gamma_x}} ds \\
+    &\leq \frac{1}{t \gamma_x} \int_{0}^{t} p_{\infty y}(t-s) ds \\
+    &= \frac{1}{t \gamma_x} \int_{0}^{t} p_{\infty y}(t-s) ds \\
+    &= \frac{1}{t \gamma_x} \int_{0}^{t} p_{\infty y}(s) ds
+    \xrightarrow{t \searrow 0} \lim_{t \searrow 0} \frac{p_{\infty y}
+      (t)}{\gamma_x} = 0.
+  \end{align*}
+
 \end{proof}
 
 \begin{proposicao}
@@ -204,6 +216,27 @@ Equanto que no caso $c=0$, teremos:
   \end{displaymath}
 \end{proposicao}
 \begin{proof}
+  \begin{align*}
+    p_{xx} (t)
+    &= P( \gamma_x T_0^x > t) + 
+    \int_{0}^{t} P( X^x(t) = y |
+    \gamma_x T_0^x = s) \frac{1}{\gamma_x} e^{-\frac{s}{\gamma_x}} ds\\
+    &= e^{-\frac{t}{\gamma_x}} + 
+    \int_{0}^{t} P( X^\infty(t-s) = y) \frac{1}{\gamma_x} e^{-\frac{s}{\gamma_x}} ds\\
+  \end{align*}
+  Fazendo contas análogas às da proposição anterior, podemos
+  mostrar que o segundo termo dessa soma, dividido por $t$ vai para
+  zero quando $t \searrow 0$. Tratando o primeiro termo agora, temos
+  que:
+  \begin{displaymath}
+    \frac{e^{-\frac{t}{\gamma_x}} - 1}{t} \xrightarrow{t \searrow 0}
+    -\frac{1}{\gamma_x}.
+  \end{displaymath}
+
+  Dessa forma:
+  \begin{displaymath}
+     \lim_{t \searrow 0} \frac{p_{xx} (t) - 1}{t} = -\frac{1}{\gamma_x}
+  \end{displaymath}
   
 \end{proof}
 
@@ -217,7 +250,7 @@ Equanto que no caso $c=0$, teremos:
   \end{displaymath}
 \end{proposicao}
 \begin{proof}
-  
+
 \end{proof}
 
 \begin{proposicao}
