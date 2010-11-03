@@ -250,7 +250,144 @@ Equanto que no caso $c=0$, teremos:
   \end{displaymath}
 \end{proposicao}
 \begin{proof}
+  \begin{align}
+    \frac{p_{\infty x}}{t} &= \frac{1}{t} P \left( \bigcup_{i =
+        1}^{\infty} \left\{ \Gamma^\infty (\sigma^x_i -) \leq t <
+        \Gamma^\infty(\sigma^x_i) \right\} \right) \notag \\
+    &= \frac{P \left( \Gamma^\infty (\sigma^x_1 -) \leq t <
+      \Gamma^\infty(\sigma^x_1) \right)}{t} +
+    \frac{1}{t} P \left( \bigcup_{i =
+        2}^{\infty} \left\{ \Gamma^\infty (\sigma^x_i -) \leq t <
+        \Gamma^\infty(\sigma^x_i) \right\} \right) \notag \notag \\
+    \label{erros_taxa_inf}
+    &= \frac{P \left( \Gamma^\infty (\sigma^x_1 -) \leq t \right)}{t} -
+    \frac{P \left( \Gamma^\infty (\sigma^x_1) \leq t \right)}{t} +
+    \frac{1}{t} P \left( \bigcup_{i =
+        2}^{\infty} \left\{ \Gamma^\infty (\sigma^x_i -) \leq t <
+        \Gamma^\infty(\sigma^x_i) \right\} \right)
+  \end{align}
 
+  Agora vamos mostrar que o segundo termo dessa soma vai a zero quando
+  $t \searrow 0$.
+  \begin{align*}
+    \frac{P (\Gamma^\infty (\sigma^x_1) \leq t)}{t}
+    &= \frac{1}{t} P \left(
+      \gamma_x T^x_1 + 
+      \sum_{y \neq x} \sum_{i = 1}^{N_y (\sigma^x_1)} \gamma_y T^y_i +
+      c\sigma^x_1
+      \leq t
+    \right) \\
+    &\leq \frac{1}{t} P \left(
+      \gamma_x T^x_1 + 
+      \sum_{y \neq x} \sum_{i = 1}^{N_y (\sigma^x_1)} \gamma_y T^y_i
+      \leq t
+    \right)\\
+    &= \frac{1}{t} \int_0^t P \left(
+      \sum_{y \neq x} \sum_{i = 1}^{N_y (\sigma^x_1)} \gamma_y T^y_i
+      \leq t - s
+      \middle\vert \gamma_x T^x_1 = s
+    \right) \frac{1}{\gamma_x} e^{-\frac{s}{\gamma_x}} ds\\
+    &\leq \frac{1}{\gamma_x t} \int_0^t P \left(
+      \sum_{y \neq x} \sum_{i = 1}^{N_y (\sigma^x_1)} \gamma_y T^y_i
+      \leq t - s
+    \right) ds\\
+    &\leq \frac{1}{\gamma_x t} \int_0^t P \left(
+      \sum_{y \neq x} \sum_{i = 1}^{N_y (\sigma^x_1)} \gamma_y T^y_i
+      \leq s
+    \right) ds\\
+    &\xrightarrow{t\searrow0} \frac{1}{\gamma_x} P \left(
+      \sum_{y \neq x} \sum_{i = 1}^{N_y (\sigma^x_1)} \gamma_y T^y_i
+      = 0 \right) = 0
+  \end{align*}
+
+  Agora note que, como $\Gamma^\infty$ é não decrescente, o evento no
+  terceiro termo de \eqref{erros_taxa_inf} está contido no evento do
+  segundo termo. Assim como mostramos que o segundo termo vai a zero,
+  teremos que o terceiro também irá.
+
+  Agora resta calcular o limite do primeiro termo. Ao fazer isso
+  estaremos também calculando o limite desejado.
+
+
+  Faremos isso usando o Teorema Tauberiano, que relaciona o
+  comportamente a função de distribuição de uma variável aleatória
+  positiva perto do zero com o comportamento de sua transformada de
+  Laplace no infinito.  Seguiremos o enunciado do
+  Teorema\emph{XIII.5.1} de \cite{fellerv2}.
+
+  O primeiro passo é calcular a transformada da Laplace de
+  $\Gamma^\infty(\sigma^x_1-)$. Assim para um $u \geq 0$, podemos
+  calcular:
+  \begin{align*}
+    \phi (u) := \E \left[ e^{-u \Gamma^\infty (\sigma^x_1-)}  \right] =
+    \lambda_x \left( \lambda_x + uc + u \sum_{y \neq x}
+      \frac{\lambda_x \gamma_x}{1 + u\gamma_x}  \right)^{-1}
+  \end{align*}
+
+  Por enquanto vamos nos concentrar no caso $c > 0$. Nesse caso
+  teremos que para $u, v > 0$:
+  \begin{align*}
+    \frac{\phi(uv)}{\phi (u)} &= \frac{\lambda_x + uc + \sum_{y \neq
+        x} \frac{u \lambda_x\gamma_x}{1 + u \gamma_x}} {\lambda_x + u
+      v c + \sum_{y \neq x} \frac{u v
+        \lambda_x\gamma_x}{1 + u v \gamma_x}} \\
+    &= \frac{\frac{\lambda_x}{u} + c + \sum_{y \neq x}
+      \frac{\lambda_x\gamma_x}{1 + u \gamma_x}} {\frac{\lambda_x}{u} +
+      v c + \sum_{y \neq x} \frac{v
+        \lambda_x\gamma_x}{1 + u v \gamma_x}}. \\
+  \end{align*}
+
+  Agora note que quando $u$ vai ao infinito, os termos de cada uma das
+  somas vai a zero monotonamente com $u$, assim usando o teorema da
+  convergência monótona, teremos que:
+  \begin{align*}
+      \lim_{u \to \infty} \frac{\phi(uv)}{\phi (u)} &= \frac{1}{v}.
+  \end{align*}
+
+  Assim verificamos a condição do teorema, e temos que:
+  \begin{align*}
+    \lim_{t \searrow 0} \frac{P( \Gamma^\infty(\sigma^x_1-) \leq
+      t)}{\phi(\frac{1}{t})} = 1
+  \end{align*}
+
+  Assim se mostrarmos que $\frac{\phi(\frac{1}{t})}{t}$ converge para
+  $\frac{\lambda_x}{c}$, teremos mostrado o nosso resultado.
+
+  \begin{align*}
+    \frac{\phi(\frac{1}{t})}{t} &= \frac{1}{t} \lambda_x \left(
+      \lambda_x + \frac{c}{t} + \sum_{y \neq x} \frac{1}{t}
+      \frac{\lambda_x \gamma_x}{1 + \frac{\gamma_x}{t}} \right)^{-1} \\
+    &= \lambda_x \left( t\lambda_x + c + \sum_{y \neq x}
+      \frac{\lambda_x \gamma_x}{1 + \frac{\gamma_x}{t}} \right)^{-1}.
+  \end{align*}
+
+  Novamente cada termo da soma vai a zero monotonamente quanto $t
+  \searrow 0$, assim pelo teorema da convergêcia monótona, teremos que
+  $\lim_{t \searrow 0} \frac{\phi(\frac{1}{t})}{t} =
+  \frac{\lambda_x}{c}$.
+
+  Agora vamos tratar o caso $c = 0$. Para isso note que nossa
+  construção do processo K permite que acoplemos várias versões do
+  processo, com $c$ diferentes em um mesmo espaço de
+  probabilidade. Basta usar os mesmos processos e Poisson e variáveis
+  exponenciais para todos eles. Assim vamos colocar um índice $c$ em
+  $\Gamma^y_c$ para denotar qual valor de $c$ estamos trabalhando.
+
+  Dessa forma teremos que para todo $y \in \Nzb$, $\Gamma^y_c$ é
+  crescente com $c$, e portanto $P ( \Gamma^\infty_c(\sigma^x_1-) \leq
+  t)$ é monótona em $c$.
+
+  Dessa forma teremos que, para todo $c > 0$:
+  \begin{align*}
+    \liminf_{t \searrow 0} \frac{P ( \Gamma^\infty_0(\sigma^x_1-) \leq
+      t)}{t} &\geq \liminf_{t \searrow 0} \frac{P (
+      \Gamma^\infty_c(\sigma^x_1-) \leq t)}{t}
+    = \frac{\lambda_x}{c}
+  \end{align*}
+
+  Assim tomando $c > 0$ cada vez menores, concluíremos que $\frac{P (
+    \Gamma^\infty_0(\sigma^x_1-))}{t} \xrightarrow{t \searrow 0}
+  \infty$
 \end{proof}
 
 \begin{proposicao}
@@ -260,7 +397,19 @@ Equanto que no caso $c=0$, teremos:
   \end{displaymath}
 \end{proposicao}
 \begin{proof}
-  
+  O caso $c = 0$ é trivial pela Proposição
+  \ref{prop:naocontinuidade}. Assim vamos supor que $c > 0$.
+  \begin{align*}
+    \frac{p_{\infty \infty} (t) - 1}{t} &= - \sum_{x \in \Nz}
+      \frac{p_{\infty x} (t)}{t}.
+  \end{align*}
+
+  Cada termo dessa soma converge à $\frac{\lambda_x}{c}$, e estamos
+  supondo que a soma dessa série diverge para $\infty$, de onde
+  concluímos que:
+  \begin{align*}
+    \lim_{t \searrow 0}\frac{p_{\infty \infty} (t) - 1}{t} &= - \infty
+  \end{align*}
 \end{proof}
 
 \begin{proposicao}
@@ -273,7 +422,23 @@ Equanto que no caso $c=0$, teremos:
   \end{displaymath}
 \end{proposicao}
 \begin{proof}
-  
+  Novamente o caso $c = 0$ é trivial em vista da Proposição
+  \ref{prop:naocontinuidade}. Assim vamos supor que $c > 0$.
+  \begin{align*}
+    \frac{p_{x \infty}}{t} &= \frac{1}{t} \int_0^t P(X^x (t) = \infty | \gamma_x
+    T^x_0 = s) \frac{1}{\gamma_x}e^{-\frac{s}{\gamma_x}} ds\\
+    &= \frac{1}{t} \int_0^t p_{\infty \infty} (t-s)
+    \frac{1}{\gamma_x}e^{-\frac{s}{\gamma_x}} ds\\
+    &= \frac{e^{-t}}{\gamma_x} \frac{1}{t} \int_0^t p_{\infty \infty} (s)
+    e^{\frac{s}{\gamma_x}} ds\\
+  \end{align*}
+
+  Como $c>0$, pela Proposição \ref{prop:continuidade}, $p_{\infty
+    \infty} (t) \xrightarrow{t \searrow 0} 1$. De onde concluímos que:
+   \begin{align*}
+    \frac{p_{x \infty}(t)}{t} \xrightarrow{t \searrow 0} 
+    \frac{1}{\gamma_x}
+  \end{align*}
 \end{proof}
 
 %% ------------------------------------------------------------------------- %%
