@@ -459,28 +459,146 @@ probabilidade é uma medida invariante para o processo K.
   \end{cases}
 \end{equation}
 
+\begin{lema}
+  \label{lema:cont_direita_prob}
+  Para todo $x, y \in \Nzb$ e $t > 0$, temos que:
+  \begin{align}
+    \lim_{s \searrow t} p_{x y} (s) = p_{x y} (t)
+  \end{align}
+\end{lema}
+\begin{proof}
+  
+\end{proof}
+
 \begin{proposicao}
   O processo K tem uma única medida invariante.
 \end{proposicao}
 \begin{proof}
+  Fixe um número real $h > 0$ e considere uma cadeia de Markov em
+  tempo discreto $(Y^{y, h}_n)_{n \geq 0}$ dada por $Y^{y, h}_n =
+  X^y(n h)$.
+
+  Fixado um estado $y \in \Nz$, defina $M = \min_{i \geq 1} \{ T_i^y
+  > h \}$. $M$ é uma geométrica com probabilidade de sucesso dada por
+  $e^{-\frac{h}{\gamma_y}}$. Agora temos que $X_t^y = y$ para todo $t
+  \in [\Gamma^y(\sigma_M^x-), \Gamma^y(\sigma_M^x-) + T_M^y)$, e como
+  $T_M^y > h$, existe um múltimo de $h$ nesse intervalo. Assim isso
+  vai corresponder à um ponto onde $Y_n^{y, h} = y$, assim a esperança de
+  tempo de retorno à um estado em $(Y_n)$ é finita.
+
+
+  Ainda temos que $x, y \in \Nz$ $P (Y^{x, h}_1 = y) > 0$. No caso $c
+  > 0$, temos ainda que para todo $x \in \Nzb$ $P (Y^{x, h}_1 = \infty
+  ) > 0$, enquanto que  $P (Y^{x, h}_1 = \infty) = 0$ para $c =
+  0$. Assim a cadeia é irredutível no caso $c > 0$ e no caso $c = 0$
+  temos que $\Nz$ é uma classe de comunicação fechada, enquanto que
+  $\{\infty\}$ é uma classe de comuniçação aberta.
+
+
+  Em todo caso, para cada escolha de $h$, existe uma única medida de
+  probabilidade $\mu_h$ tal que para todo $n \geq 1$:
+  \begin{displaymath}
+    \mu_h (y) = \sum_{x \in \Nzb} \mu_h(x) P ( Y_n^ {x, h} = y) =
+    \sum_{x \in \Nzb} \mu_h(x) P ( X^x (nh) = y)
+  \end{displaymath}
+
+  Agora fixe um inteiro $m \geq 1$ e um número real $h > 0$, temos que:
+  \begin{align*}
+    \mu_h (y) &= \sum_{x \in \Nzb} \mu_h(x) P ( Y_{m}^ {x, h} = y)\\
+    &= \sum_{x \in \Nzb} \mu_h(x) P ( X^x (m h) = y) \\
+    &= \sum_{x \in \Nzb} \mu_h(x) P ( Y_{1}^ {x, m h} = y).
+  \end{align*}
+
+  Portanto $\mu_h$ é uma medidada invariante para $(Y^{y, mh}_n)_{n
+    \geq 0}$ e como ela é única, teremos que $\mu_h = \mu_{m h}$.
+
+  Assim concluímos que $\mu_{h} = \mu_1$ para todo $h > 0$ racional.
+  Agora fixado um $h > 0$ irracional, tome uma sequencia de números
+  racionais $(h_n)$ que convirjam para $h$ pela direita. Teremos que:
+  \begin{align*}
+    \mu_1(y) &= \sum_{x \in \Nzb} \mu_1(x) P ( Y_{1}^ {x, h_n} = y)\\
+    &= \sum_{x \in \Nzb} \mu_1(x) P ( X^x(h_n) = y).
+  \end{align*}
   
+  Cada termo dessa soma é dominado por $\mu_1(x)$, que tem soma $1$,
+  assim usando o Lema \ref{lema:cont_direita_prob} e o teorema da
+  convergência dominada, concluímos que:
+  \begin{align*}
+    \mu_1 (y) &= \sum_{x \in \Nzb} \mu_1(x) P ( X^x(h) = y),
+  \end{align*}
+  ou seja, $\mu_h$ é a mesma para todo $h > 0$, e é a medida
+  invariante para o processo K.
 \end{proof}
 
 
 \begin{proposicao}
-  A probabilidade $\pi$ definida em \ref{eq:invariante} é a medida
+  A probabilidade $\pi$ definida em \eqref{eq:invariante} é a medida
   invariante do processo K, caso $c > 0$.
 \end{proposicao}
 \begin{proof}
+  Seja $\mu$ a única probabilidade invariante do nosso processo que
+  encontramos na última proposição. Para todo $t > 0$, vale que:
+  \begin{gather*}
+    \frac{\mu(y)}{t} = \sum_{x \in \Nzb} \mu(x) \frac{p_{x y}
+      (t)}{t}\\
+    0 = \sum_{x \in \Nzb} \mu(x) \frac{p_{x y}(t) - \delta_{x y}}{t}\\
+  \end{gather*}
+
+
+  % ----- ACERTAR ESSA PARTE -----------%
+
+
+  \begin{gather*}
+    0 = \mu(\infty) \frac{\lambda_y}{c} - \mu(y) \frac{1}{\gamma_y}.
+  \end{gather*}
+  Juntando a esse sistema de equações a restrição de que
+  $\sum_{x\in\Nzb}\mu(x) = 1$, teremos um sistema com uma única
+  solução, que é a $\pi$ dada em \eqref{eq:invariante}.
+\end{proof}
+
+\begin{lema}
+  \label{lema:c_continuo}
+  Na nossa construção, teremos que para todo $y \in \Nzb$ $X_c^y
+  \xrightarrow{c\searrow0} X_0^y$ quase certamente na nossa compactificação.
+\end{lema}
+\begin{proof}
   
 \end{proof}
 
 \begin{proposicao}
-  A probabilidade $\pi$ definida em \ref{eq:invariante} é a medida
+  A probabilidade $\pi$ definida em \eqref{eq:invariante} é a medida
   invariante do processo K, caso $c = 0$.
 \end{proposicao}
 \begin{proof}
-  
+
+  Mostramos na proposição \ref{prop:naocontinuidade} que para todo $y
+  \in \Nzb$, $P(X^y(t) = \infty) = 0$. Assim é trivial verificar que
+  $0 = \pi_0(\infty) = 0 = \sum_{y\in\Nzb} \pi_0(y) P(X^y(t) =
+  \infty)$.
+
+  Vamos denotar a probabilidade definida em \eqref{eq:invariante} por
+  $\pi_c$. Note que para todo $x \in \Nzb$, $\pi_c(x)
+  \xrightarrow{c\searrow0} \pi_0(x)$.
+
+  Pelo Lema \ref{lema:c_continuo}, e usando o fato que, para $x \in
+  \Nz$ fixado, a função $f_x(y) = \ind\{y = x\}$ é contínua e
+  limitada, teremos que $P(X^y_c (t) = x) = \E [f_x(X^y_c)]
+  \xrightarrow{c\searrow0} \E [f_x(X^y_c)] = P(X^y_0(t) = x)$.
+
+  Como $\pi_c$ é invariante para $(X^y_c)$, teremos que para todo $x
+  \in \Nz$ e $t \geq 0$:
+
+  \begin{align*}
+    \pi_c(x) &= \sum_{y \in \Nzb} \pi_c (y) P(X^y_c (t) = x).\\
+  \end{align*}
+
+  Cada termo dessa soma pode ser dominado por $\pi_0(y)$ se $y <
+  \infty$ e por $1$ se $y = \infty$, assim tomando limite $c\searrow0$
+  e usando o teorema da convergência dominada, teremos que:
+
+  \begin{align*}
+    \pi_0(x) &= \sum_{y \in \Nzb} \pi_0 (y) P(X^y_0 (t) = x).\\
+  \end{align*}
 \end{proof}
 
 

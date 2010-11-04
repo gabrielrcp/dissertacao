@@ -44,39 +44,48 @@ ferramenta para trabalhar com esse processo. Para $t \geq 0$ e $y \in
 
 \begin{equation}
   \label{def:Gamma}
-  \Gamma^y (t) = \gamma_y T_0^y
+  \Gamma(t) = \Gamma^y_c (t) = \gamma_y T_0^y
   + \sum_{x \in \N} \sum_{n = 1}^{N_x(t)}
   \gamma_x T_n^x
   + ct
 \end{equation}
+
+Por convenção, considere que $\sum_{i=1}^{0} \bullet = 0$.
 
 Para que essa função seja \qc finita, vamos impor a restrição de que
 \begin{equation}
   \sum_{x \in \Nz} \lambda_x\gamma_x < +\infty
 \end{equation}
 
-Chamaremos o processo K iniciado em $y \in \Nb$ de $X^y$. Ele é
+Chamaremos o processo K iniciado em $y \in \Nb$ de $X^y_c$. Ele é
 definido, para $t \geq 0$, da seguinte forma:
 
 \begin{equation}
   \label{def:procK}
-  X^y (t) =
+  X(t) = X^y_c (t) =
   \begin{cases}
     y, & \textrm{ se }  t < \gamma_y T_0^y\\
-    x, & \textrm{ se } \Gamma^y(\sigma_i^x-) \leq t <
-    \Gamma^y(\sigma^x_i)
+    x, & \textrm{ se } \Gamma^y_c(\sigma_i^x-) \leq t <
+    \Gamma^y_c(\sigma^x_i)
     \textrm{ para algum } i \\
     \infty, & \textrm{ caso contrário.}
   \end{cases}
 \end{equation}
 
 Note que para que essa definição faça sentido, temos que o limite a
-esquerda $\Gamma^y (\sigma_i^x-)$ deve existir. Isso será estabelecido
+esquerda $\Gamma (\sigma_i^x-)$ deve existir. Isso será estabelecido
 na próxima proposição.
+
+Quando puder ficar subentendido, nós vamos omitir a condição inicial
+e/ou o parâmetro $c$ das notações.
+
+Note que essa construção nos dá um acoplamento de processos K com
+parâmetros $(\lambda_x, \gamma_x)_{x \in \Nz}$ e todo $c \geq 0$. Isso
+será muito útil para mostrar alguns resultados.
 
 \begin{proposicao}
   \label{prop:gamma-cadlag}
-  A função $\Gamma^y$ é quase certamente càdlàg. Isso é, é contínua à
+  A função $\Gamma$ é quase certamente càdlàg. Isso é, é contínua à
   direita e tem limites à esquerda.
 \end{proposicao}
 \begin{proof}
@@ -176,7 +185,7 @@ $X^\infty(0) \neq \infty$ \qc.
 \begin{figure}
   \centering
   \includegraphics[width=.80\textwidth]{graf_gamma}
-  \caption{Um exemplo de realização de $\Gamma_y$ quando $\sum_{x \in
+  \caption{Um exemplo de realização de $\Gamma$ quando $\sum_{x \in
       \Nz} \lambda_x < \infty$}
   \label{fig:graf_gamma}
 \end{figure}
