@@ -188,6 +188,7 @@ Equanto que no caso $c=0$, teremos:
 \end{displaymath}
 
 \begin{proposicao}
+  \label{prop:taxa-x-y}
   Sejam $x, y \in \Nz$, $x \neq y$, vale que:
   \begin{displaymath}
     \lim_{t \searrow 0} \frac{p_{xy}(t)}{t} = 0.
@@ -210,6 +211,7 @@ Equanto que no caso $c=0$, teremos:
 \end{proof}
 
 \begin{proposicao}
+  \label{prop:taxa-x-x}
   Para $x \in \Nz$, vale que:
   \begin{displaymath}
     \lim_{t \searrow 0} \frac{p_{xx}(t) - 1}{t} = -\frac{1}{\gamma_x}
@@ -242,6 +244,7 @@ Equanto que no caso $c=0$, teremos:
 
 \begin{proposicao}
   Para $x \in \Nz$, vale que:
+  \label{prop:taxa-inf-x}
   \begin{displaymath}
     \lim_{t \searrow 0} \frac{p_{\infty x}(t)}{t} = \begin{cases}
       \frac{\lambda_x}{c} & \textrm{ se } c > 0 \\
@@ -391,6 +394,7 @@ Equanto que no caso $c=0$, teremos:
 \end{proof}
 
 \begin{proposicao}
+  \label{prop:taxa-inf-inf}
   Vale que:
   \begin{displaymath}
     \lim_{t \searrow 0} \frac{p_{\infty \infty}(t) - 1}{t} = -\infty
@@ -413,6 +417,7 @@ Equanto que no caso $c=0$, teremos:
 \end{proof}
 
 \begin{proposicao}
+  \label{prop:taxa-x-inf}
   Para $x \in \Nz$, vale que:
   \begin{displaymath}
     \lim_{t \searrow 0} \frac{p_{x \infty}(t)}{t} = \begin{cases}
@@ -541,16 +546,42 @@ probabilidade é uma medida invariante para o processo K.
   \begin{gather*}
     \frac{\mu(y)}{t} = \sum_{x \in \Nzb} \mu(x) \frac{p_{x y}
       (t)}{t}\\
-    0 = \sum_{x \in \Nzb} \mu(x) \frac{p_{x y}(t) - \delta_{x y}}{t}\\
   \end{gather*}
 
+  Rearranjando os termos, teremos que para todo $y \in \Nz$:
+  \begin{displaymath}
+    0 = \mu(\infty) \frac{p_{\infty y}(t)}{t} + 
+    \mu(y) \frac{p_{y y}(t) - 1}{t} + 
+    \sum_{\substack{x \in \Nz \\ x \neq y}} \mu(x) \frac{p_{x
+        y}(t)}{t}.
+  \end{displaymath}
 
-  % ----- ACERTAR ESSA PARTE -----------%
+  As Proposições \ref{prop:taxa-inf-x} e \ref{prop:taxa-x-x} nos
+  fornecem os limites dos dois primeiros termos, enquanto que a
+  Proposição \ref{prop:taxa-x-y} nos garante que $\frac{p_{x
+      y}(t)}{t}$ converge à zero quando $t \searrow 0$ para cada $x
+  \in \Nz \setminus \{y\}$.
 
+  Agora note que $p_{x y} (t) \leq P(\Gamma^x (\sigma_1^y -) \leq t)
+  \leq P(\Gamma^\infty (\sigma_1^y -) \leq t)$. Agora na demonstração
+  da Proposição \ref{prop:taxa-inf-x} mostramos que o limite dessa
+  última quantidade, sobre $t$ converge à $\frac{\lambda_y}{c}$. Assim
+  concluímos existe uma constante $K$ tal que para $t$ pequeno o
+  suficiente e para todo $x \in \Nz\setminus \{ y\}$, vale que
+  $\mu(x)\frac{p_{x y}(t)}{t} \leq K \mu(x)$.
 
+  Como $\sum_{x} K \mu(x) \leq K$, o teorema da convergência dominada
+  nos garante que:
+  \begin{displaymath}
+    \sum_{\substack{x \in \Nz \\ x \neq y}} \mu(x)
+    \frac{p_{x y}(t)}{t} \xrightarrow{t \searrow 0} 0.
+  \end{displaymath}
+
+  Assim obtemos que:
   \begin{gather*}
     0 = \mu(\infty) \frac{\lambda_y}{c} - \mu(y) \frac{1}{\gamma_y}.
   \end{gather*}
+
   Juntando a esse sistema de equações a restrição de que
   $\sum_{x\in\Nzb}\mu(x) = 1$, teremos um sistema com uma única
   solução, que é a $\pi$ dada em \eqref{eq:invariante}.
