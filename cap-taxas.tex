@@ -472,7 +472,44 @@ probabilidade é uma medida invariante para o processo K.
   \end{align}
 \end{lema}
 \begin{proof}
-  
+  O Corolário \ref{cor:proc_cadlag} nos garante que o processo K é
+  Càdlàg na topologia definida na Seção \ref{sec:topologia}.
+
+  Note que para $y \in \Nz$, a função $f_y: \Nzb \to \R$ definida por
+  $f_y(x) = \ind\{ x = y\}$ é contínua nessa topologia. Assim temos
+  que $\lim_{s \searrow t} f_y(X^x(s)) = f_y (X^x(t))$ \qc.
+
+  Como $f_y$ é uma função limitada, o teorema da convergência dominada
+  nos garante que:
+  \begin{displaymath}
+    p_{x y} (s) = \E[f_y(X^x(s))] \xrightarrow{s \searrow t} \E[f_y
+    (X^x(t))] = p_{x y} (t).
+  \end{displaymath}
+
+  Para o caso $y = \infty$, vamos dividir em dois casos.  Caso $c =
+  0$, temos que $p_{x \infty} (s) = 0$ para todo $s > 0$, assim essa
+  função é obviamente contínua em todo ponto $t > 0$.
+
+  Para o caso $c > 0$, pelo fato do processo K ser Markoviano, para um
+  $s > t$ teremos que:
+
+  \begin{align*}
+    p_{x \infty} (s) &= \sum_{y \in \Nzb} p_{x y} (t) p_{y \infty}
+    (s - t) \\
+    &= p_{x \infty} (t) p_{\infty \infty} (s - t) + 
+    \sum_{y \in \Nz} p_{x y} (t) p_{y \infty} (s - t). \\
+  \end{align*}
+
+
+  Ao fazer $s \searrow t$, pela Proposição \ref{prop:continuidade},
+  temos que o primeiro termo converge para $p_{x \infty}(t)$, enquanto
+  que cada termo da série do segundo termo converge à zero. Como
+  podemos dominar cada termo dessa série por $p_{x y} (t)$ que é
+  somável em $y$, usando o teorema da convergência dominada concluímos
+  que:
+  \begin{displaymath}
+    \lim_{s \searrow t} p_{x \infty} (s) = p_{x \infty} (t)
+  \end{displaymath} 
 \end{proof}
 
 \begin{proposicao}
@@ -483,21 +520,22 @@ probabilidade é uma medida invariante para o processo K.
   tempo discreto $(Y^{y, h}_n)_{n \geq 0}$ dada por $Y^{y, h}_n =
   X^y(n h)$.
 
-  Fixado um estado $y \in \Nz$, defina $M = \min_{i \geq 1} \{ T_i^y
-  > h \}$. $M$ é uma geométrica com probabilidade de sucesso dada por
-  $e^{-\frac{h}{\gamma_y}}$. Agora temos que $X_t^y = y$ para todo $t
-  \in [\Gamma^y(\sigma_M^x-), \Gamma^y(\sigma_M^x-) + T_M^y)$, e como
-  $T_M^y > h$, existe um múltimo de $h$ nesse intervalo. Assim isso
-  vai corresponder à um ponto onde $Y_n^{y, h} = y$, assim a esperança de
-  tempo de retorno à um estado em $(Y_n)$ é finita.
+  Fixado um estado $y \in \Nz$, defina $M = \min_{i \geq 1} \{ T_i^y >
+  h \}$. $M$ é uma variável aleatória com distribuição geométrica com
+  probabilidade de sucesso dada por $e^{-\frac{h}{\gamma_y}}$. Agora
+  temos que $X_t^y = y$ para todo $t \in [\Gamma^y(\sigma_M^x-),
+  \Gamma^y(\sigma_M^x-) + T_M^y)$, e como $T_M^y > h$, existe um
+  múltimo de $h$ nesse intervalo. Assim isso vai corresponder à um
+  ponto onde $Y_n^{y, h} = y$, assim a esperança de tempo de retorno à
+  um estado em $(Y_n)$ é finita.
 
 
-  Ainda temos que $x, y \in \Nz$ $P (Y^{x, h}_1 = y) > 0$. No caso $c
-  > 0$, temos ainda que para todo $x \in \Nzb$ $P (Y^{x, h}_1 = \infty
-  ) > 0$, enquanto que  $P (Y^{x, h}_1 = \infty) = 0$ para $c =
-  0$. Assim a cadeia é irredutível no caso $c > 0$ e no caso $c = 0$
-  temos que $\Nz$ é uma classe de comunicação fechada, enquanto que
-  $\{\infty\}$ é uma classe de comuniçação aberta.
+  Para $x, y \in \Nz$, vale que $P (Y^{x, h}_1 = y) > 0$. Temos ainda
+  que para todo $x \in \Nzb$ $P (Y^{x, h}_1 = \infty ) > 0$ se $c >
+  0$. Enquanto que $P (Y^{x, h}_1 = \infty) = 0$ para $c = 0$. Assim
+  a cadeia é irredutível no caso $c > 0$ e no caso $c = 0$ temos que
+  $\Nz$ é uma classe de comunicação fechada, enquanto que $\{\infty\}$
+  é uma classe de comuniçação aberta.
 
 
   Em todo caso, para cada escolha de $h$, existe uma única medida de
@@ -514,7 +552,7 @@ probabilidade é uma medida invariante para o processo K.
     &= \sum_{x \in \Nzb} \mu_h(x) P ( Y_{1}^ {x, m h} = y).
   \end{align*}
 
-  Portanto $\mu_h$ é uma medidada invariante para $(Y^{y, mh}_n)_{n
+  Portanto $\mu_h$ é uma medidada invariante para $(Y^{\bullet, mh}_n)_{n
     \geq 0}$ e como ela é única, teremos que $\mu_h = \mu_{m h}$.
 
   Assim concluímos que $\mu_{h} = \mu_1$ para todo $h > 0$ racional.
@@ -522,17 +560,20 @@ probabilidade é uma medida invariante para o processo K.
   racionais $(h_n)$ que convirjam para $h$ pela direita. Teremos que:
   \begin{align*}
     \mu_1(y) &= \sum_{x \in \Nzb} \mu_1(x) P ( Y_{1}^ {x, h_n} = y)\\
-    &= \sum_{x \in \Nzb} \mu_1(x) P ( X^x(h_n) = y).
+    &= \sum_{x \in \Nzb} \mu_1(x) P ( X^x(h_n) = y)\\
+    &= \sum_{x \in \Nzb} \mu_1(x) p_{x y} (h_n).    
   \end{align*}
   
   Cada termo dessa soma é dominado por $\mu_1(x)$, que tem soma $1$,
   assim usando o Lema \ref{lema:cont_direita_prob} e o teorema da
   convergência dominada, concluímos que:
   \begin{align*}
-    \mu_1 (y) &= \sum_{x \in \Nzb} \mu_1(x) P ( X^x(h) = y),
+    \mu_1 (y) &= \sum_{x \in \Nzb} \mu_1(x) p_{x y} (h)\\
+    &= \sum_{x \in \Nzb} \mu_1(x) P(Y_1^{x, h} = y)\\
   \end{align*}
-  ou seja, $\mu_h$ é a mesma para todo $h > 0$, e é a medida
-  invariante para o processo K.
+  ou seja, $\mu_1$ é uma probabilidade invariante para $(Y_n^{\bullet,
+    h})_n $ e como a probabilidade invariante é única, concluímos que
+  $\mu_1 = \mu_h$ para todo $h > 0$.
 \end{proof}
 
 
@@ -556,7 +597,7 @@ probabilidade é uma medida invariante para o processo K.
         y}(t)}{t}.
   \end{displaymath}
 
-  As Proposições \ref{prop:taxa-inf-x} e \ref{prop:taxa-x-x} nos
+  As Proposições \ref{prop:taxa-x-x} e \ref{prop:taxa-inf-x} nos
   fornecem os limites dos dois primeiros termos, enquanto que a
   Proposição \ref{prop:taxa-x-y} nos garante que $\frac{p_{x
       y}(t)}{t}$ converge à zero quando $t \searrow 0$ para cada $x
@@ -577,7 +618,7 @@ probabilidade é uma medida invariante para o processo K.
     \frac{p_{x y}(t)}{t} \xrightarrow{t \searrow 0} 0.
   \end{displaymath}
 
-  Assim obtemos que:
+  Assim obtemos que, para cada $y \in \Nz$:
   \begin{gather*}
     0 = \mu(\infty) \frac{\lambda_y}{c} - \mu(y) \frac{1}{\gamma_y}.
   \end{gather*}
@@ -589,11 +630,36 @@ probabilidade é uma medida invariante para o processo K.
 
 \begin{lema}
   \label{lema:c_continuo}
-  Na nossa construção, teremos que para todo $y \in \Nzb$ $X_c^y
-  \xrightarrow{c\searrow0} X_0^y$ quase certamente na nossa compactificação.
+  Para todo $t > 0$ e $y \in \Nzb$, vale que:
+  \begin{displaymath}
+    \lim_{c\searrow 0} X_c^y(t) = X_0^y(t)
+  \end{displaymath}
+  quase certamente.
 \end{lema}
 \begin{proof}
-  
+  Observe que $\Gamma^y_c (t) - \Gamma^y_0(t) = ct \xrightarrow{c
+    \searrow 0} 0$.
+
+  Pela Proposição \ref{prop:naocontinuidade}, temos que $P(X^y_0(t) =
+  \infty) = 0$.
+
+  Ainda sabemos que $\Gamma^y_0(\sigma^x_i-)$ é uma variável aleatória
+  contínua. Assim $P( \Gamma^y_0(\sigma^x_i-) = t) = 0$.
+
+  Assim vamos fixar uma realização do processo onde
+  $X^y_0(t) = x < \infty$ e $\Gamma^y_0(\sigma^x_i-) \neq t$ para todo
+  $x \in \Nz$ e $i \geq 1$. Tais realizações tem probabilidade $1$.
+
+
+  Agora há duas possibilidades. A primeira é que $t < \gamma_y
+  T^y_0$. Nesse caso teremos que para qualquer $c \geq 0$, vale que
+  $X^y_c = y$. Assim a convergência é trivial.
+
+  A segunda possibilidade é que $t \geq \gamma_y T^y_0$. Nesse caso,
+  existe um $i \geq 1$ tal que $\Gamma^y_0(\sigma^x_i-) < t <
+  \Gamma^y_0(\sigma^x_i)$. Portanto para $c > 0$ pequeno o suficiente,
+  teremos que $\Gamma^y_c(\sigma^x_i-) < t < \Gamma^y_c(\sigma^x_i)$ e
+  assim $X_c^y(t) = x$.
 \end{proof}
 
 \begin{proposicao}
@@ -602,19 +668,21 @@ probabilidade é uma medida invariante para o processo K.
 \end{proposicao}
 \begin{proof}
 
+  Vamos denotar a probabilidade definida em \eqref{eq:invariante} por
+  $\pi_c$
+
   Mostramos na proposição \ref{prop:naocontinuidade} que para todo $y
   \in \Nzb$, $P(X^y(t) = \infty) = 0$. Assim é trivial verificar que
-  $0 = \pi_0(\infty) = 0 = \sum_{y\in\Nzb} \pi_0(y) P(X^y(t) =
+  $0 = \pi_0(\infty) = \sum_{y\in\Nzb} \pi_0(y) P(X^y(t) =
   \infty)$.
 
-  Vamos denotar a probabilidade definida em \eqref{eq:invariante} por
-  $\pi_c$. Note que para todo $x \in \Nzb$, $\pi_c(x)
-  \xrightarrow{c\searrow0} \pi_0(x)$.
+  Note que para todo $x \in \Nzb$, $\pi_c(x) \xrightarrow{c\searrow0}
+  \pi_0(x)$.
 
   Pelo Lema \ref{lema:c_continuo}, e usando o fato que, para $x \in
   \Nz$ fixado, a função $f_x(y) = \ind\{y = x\}$ é contínua e
-  limitada, teremos que $P(X^y_c (t) = x) = \E [f_x(X^y_c)]
-  \xrightarrow{c\searrow0} \E [f_x(X^y_c)] = P(X^y_0(t) = x)$.
+  limitada, teremos que $P(X^y_c (t) = x) = \E [f_x(X^y_c(t))]
+  \xrightarrow{c\searrow0} \E [f_x(X^y_c(t))] = P(X^y_0(t) = x)$.
 
   Como $\pi_c$ é invariante para $(X^y_c)$, teremos que para todo $x
   \in \Nz$ e $t \geq 0$:
@@ -630,6 +698,9 @@ probabilidade é uma medida invariante para o processo K.
   \begin{align*}
     \pi_0(x) &= \sum_{y \in \Nzb} \pi_0 (y) P(X^y_0 (t) = x).\\
   \end{align*}
+
+  De onde concluímos que $\pi_0$ é uma medida invariante para o o
+  processo K no caso $c = 0$.
 \end{proof}
 
 
