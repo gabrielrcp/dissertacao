@@ -146,6 +146,60 @@ função na origem.
     \infty} (t) = 0$.
 \end{proposicao}
 \begin{proof}
+  Essa demonstração é uma adaptação direta do Lema \emph{3.15} de
+  \cite{fontes:08}.
+
+  Tome $m \in \Nz$. Vamos definir:
+  \begin{align*}
+    \theta_m(t) := \int_0^t \ind \left\{ X^\infty_0(s) \geq m \right\}
+  \end{align*}
+
+  Estamos interessados em calcular $\theta(t) :=
+  \theta_\infty(t)$. Para isso note que $\theta_m(t)$ é decrescente em
+  $m$. Dessa forma, se $\Xi$ for a função inversa de $\Gamma$, teremos
+  que:
+  \begin{align*}
+    \theta_\infty(t) \leq \theta_m(t) = \sum_{x \geq m}
+    \sum_{i=1}^{\Xi(t)} \gamma_x T^x_i.
+  \end{align*}
+
+
+  Como $\theta_m(t) \leq t$, essa série (em $x$) converge. Assim temos
+  que $\lim_{m\to\infty} \theta_m(t) = 0$ \qc. E portanto $\theta(t) =
+  0$ \qc. Dessa forma também vale que $\E[\theta(t)] = 0$. Agora
+  usando o teorema de Fubbini, teremos:
+  \begin{align*}
+    0 &= \E\left[ \int_0^t \ind \left\{ X^\infty_0(s) = \infty
+      \right\} ds \right]\\
+    &= \int_0^t P \left\{ X^\infty_0(s) = \infty
+    \right\} ds\\
+    &= \int_0^t p_{\infty \infty} (s) ds
+  \end{align*}
+
+  Dessa forma concluímos que $p_{\infty \infty} (t) = 0$ para Lebesgue
+  quase todo $t$.
+
+  Agora tome um $x \in \Nz$ arbitrário. Condicionando no valor de
+  $T^x_0$, teremos que:
+  \begin{align*}
+    p_{x \infty} (t) = \int_0^t p_{\infty \infty} (t-s)
+    \frac{1}{\gamma_x}e^{-\frac{s}{\gamma_x}} ds.\\
+  \end{align*}
+
+  Portanto para todo $t > 0$ vale que $p_{x \infty} (t) = 0$.
+
+  Assim, usando a propriedade de Markov do processo, teremos que para
+  todos $t> 0$ e $0 < s < t$:
+  \begin{align*}
+    p_{\infty \infty} (t) &= \sum_{x \in \Nzb} p_{\infty x}(s) p_{x
+      \infty} (t-s)\\
+    &= p_{\infty \infty} (s) p_{\infty \infty} (t-s).
+  \end{align*}
+
+  Agora suponha por absurdo que exista um $t \geq 0$ tal que
+  $p_{\infty \infty} (t) > 0$. Então teríamos que $p_{\infty
+    \infty}(s) > 0$ para todo $s \in (0, t)$, conjunto esse que tem
+  medida de Lebesgue positiva.
 \end{proof}
 
 
