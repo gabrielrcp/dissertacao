@@ -22,7 +22,7 @@ processos truncados convergem ao processo original.
 Primeiramente, para $n \in \Nz$ e $y \in \{1, \ldots, n, \infty\}$,
 vamos definir:
 \begin{equation}
-  \Gamma^y_n (t) = \gamma_y T_0^y
+  \Gamma^{(n)} := \Gamma^{y,(n)}_c (t) = \gamma_y T_0^y
   + \sum_{x =1}^{n} \sum_{i = 1}^{N_x(t)}
   \gamma_x T_i^x
   + ct.
@@ -31,10 +31,10 @@ vamos definir:
 O processo truncado em $n \in \Nz$, com estado inicial $y \in \{1,
 \ldots, n, \infty\}$ será:
 \begin{equation}
-  X^y_n(t) = \begin{cases}
+  X^{(n)}(t) = X^{y,(n)}_c(t) = \begin{cases}
     y, & \textrm{ se }  t < \gamma_y T_0^y\\
-    x, & \textrm{ se } \Gamma^y_n(\sigma_i^x-) \leq t <
-    \Gamma^y_n(\sigma^x_i)
+    x, & \textrm{ se } \Gamma^{y,(n)}_c(\sigma_i^x-) \leq t <
+    \Gamma^{y,(n)}_c(\sigma^x_i)
     \textrm{ para algum } i \\
     \infty, & \textrm{ caso contrário.}
   \end{cases}
@@ -45,19 +45,64 @@ O processo truncado em $n \in \Nz$, com estado inicial $y \in \{1,
 \end{proposicao}
 \begin{proof}
   Como visto na seção \ref{sec:visualizacao}, o processo $X_n^y$ é um
-  processo Markoviano de saltos. Além disso ele é Càdlàg por
-  construção.
+  processo Markoviano de saltos, construído para ser contínuo a
+  direita.
 \end{proof}
 
-Note que nós construímos $(X_n^y)_{n \in \Nz} e x^y$ num mesmo espaço
-de probabilidade, de forma que $X_n^y$ sejam aproximações de $X^y$.
-Assim é natural perguntar se $X_n^y$ converge para $X^y$.
+Note que nós construímos $\{(X^{(n)}(t))_t\}_{n \in \Nz}$ e $(X(t))_t$
+num mesmo espaço de probabilidade. Assim é natural perguntar se
+$(X^{(n)}(t))_t$ converge para $(X(t))_t$ de alguma forma.
+Isso será respondido de forma afirmativa no Teorema
+\ref{teo:convergencia}. Porém antes disso vamos caracterizar o nosso
+processo K como sendo Càdlàg na topologia definida na seção
+\ref{sec:topologia}. Isso nos permitirá usar uma métricas para
+trajetórias apropriada para funções càdlàg.
+
+\begin{proposicao}
+  \label{prop:proc-cadlag}
+  O processo K é quase certamente càdlàg.
+\end{proposicao}
+\begin{proof}
+
+  Iremos mostrar que o processo iniciado no $\infty$ é Càdlàg. Isso
+  irá mostrar que o processo é Càdlàg para qualquer condição inicial,
+  visto que iniciando em $y$, iremos continuar em $y$ até $\gamma_y
+  T^y_0$, e depois continuaremos como uma cópia do processo iniciado no
+  $\infty$.
+
+  Fixe uma realização do processo e fixe $T > 0$ e $\epsilon > 0$
+  arbitrários. Seguindo \cite{billingsley:99}, vamos mostrar que
+  existem $0 = t_0 < t_1 < \ldots < t_N = T$ tais que $w[t_{i-1}, t_i)
+  < \epsilon$, para todo $i = 1, \ldots, N$. Onde $w(A) = \sum_{t, s
+    \in A} |X^\infty(t) - X^\infty(s)|$ para $A \subseteq \R$.
+
+  Tome um $m \in \Nz$ tal que o $\diam\{x \in \Nzb: x > m \} =
+  \frac{1}{m+1} < \epsilon$, onde $\diam(A)$ é o diâmetro do conjunto
+  $A$ na métrica \eqref{eq:metrica}.
+
+  Agora tome $S_1 < S_2 < \ldots < S_M$ uma ordenação dos conjunto $\{
+  \sigma^x_i: x \in \Nz \,\, i \geq 1 \,\, \Gamma(\sigma^x_i) \leq
+  T\}$. Finalmente fixe $N = 2M+1$ se $\Gamma(S_M) < T$ e $N = 2M$
+  caso contrário. Tome $t_0 = 0$, $t_N = T$ e para $i=1,\ldots, M$:
+  \begin{align*}
+    t_{2i-1} &= \Gamma(S_i-)\\
+    t_{2i} &= \Gamma(S_i).\\
+  \end{align*}
+
+  Se $t \in [\Gamma(S_i-), \Gamma(S_i))$, teremos que
+  $X(t)$ é constante, enquanto que se $t \in
+  [\Gamma(S_{i-1}), \Gamma(S_{i}-))$, termos que
+  $X(t) > m$, assim a variação nesse intervalo é menor ou igual
+  à $\frac{1}{m} < \epsilon$. O mesmo ocorre nos intervalos $[t_0,
+  t_1)$ e $[t_{N-1}, t_N)$.
+\end{proof}
+
 
 \begin{teorema}
   \label{teo:convergencia}
   Se considerarmos a topologia introduzida na seção
-  \ref{sec:topologia}, então $X_n^y \xrightarrow{n \to \infty} X^y$
-  \qc na métrica de Skorohod.
+  \ref{sec:topologia}, então $X^{(n)} (\bullet) \xrightarrow{n \to
+    \infty} X(\bullet)$ \qc na métrica de Skorohod.
 \end{teorema}
 
 A métrica de Skorohod é uma métrica sobre o espaço das tragetórias que
@@ -65,19 +110,98 @@ permite pequenas distorções temporais. Ele é uma métrica muito usada
 quando estamos trabalhando com tragetórias Càdlàg.  Como referência
 recomendamos \cite{billingsley:99} e \cite{ethier:86}.
 
-\begin{proof}
-  Usando o teorema xyz de \cite{ethier:86}, vamos mostrar... 
-\end{proof}
-
-\begin{corolario}
-  \label{cor:proc_cadlag}
-  $X^y$ é \qc càdlàg.
-\end{corolario}
 
 \begin{proof}
-  A métrica de Skorohod é completa em $D$, ...
-\end{proof}
+  Vamos considerar somente os processos iniciados no $\infty$, visto
+  que se começarmos em um $y \in \Nz$, teremos que o processo K e os
+  processos truncados serão iguais até $\gamma_y T^y_0$ e depois
+  continuarão como uma cópia dos processos respectivos, mas iniciados
+  no $\infty$.
 
+  Essa demonstração foi adaptada diretamente do \emph{Lema 3.11} de
+  \cite{fontes:08}.
+
+  Para provar a proposição, vamos mostrar que o item (c) da proposição
+  5.3, capítulo 5 de \cite{ethier:86} vale quase certamente.
+
+  Fixe um $T > 0$. Para cada natural $m$, considere $\delta_m :=
+  \diam\{ x \in \Nzb: x > m \} = \frac{1}{m+1}$. Tome ainda $0 = S_0^m
+  < S_1^m < S_2^m < \ldots $ uma ordenação de $\{0\}\cup\{ \sigma^x_i
+  : x \leq m, i \geq 1\}$. Considere ainda, para $n \in \Nz$:
+  \begin{displaymath}
+    L^m_n := \min \left\{ i \geq 1: \Gamma^{(n)}(S^m_i) \geq T \right\}.
+  \end{displaymath}
+
+  Como o conjunto $\{\sigma_i^x: x > m, i\geq 1\}$ é denso, temos
+  que para $n$ suficientemente grande $\Gamma^{(n)}(S^m_{i+1}-) >
+  \Gamma^{(n)}(S^m_i)$ para todo $i < L^m_n$.
+
+  Para esses valores de $n$, defina $\lambda_n^m: [0, L_n^m] \to \R^+$
+  da seguinte forma:
+  \begin{displaymath}
+    \lambda_n^m(t) = \begin{cases}
+      \Gamma(S_i^m) + \frac{\Gamma(S_{i+1}^m-) - \Gamma(S_i^m)}
+      {\Gamma^{(n)}(S_{i+1}^{(m)} -) - \Gamma^{(n)}(S_i^m)}
+      \left[t - \Gamma^{(n)}(S_i^m)\right]
+      & \textrm{ se }
+      \Gamma^{(n)}(S_i^m) \leq t \leq \Gamma^{(n)}(S_{i+1}^m-) \\
+      \Gamma(S_{i+1}^m-) - \Gamma^{(m)}(S_{i+1}^m-) + t
+      & \textrm{ se }
+      \Gamma^{(n)}(S_{i+1}^m-) \leq t \leq \Gamma^{(n)}(S_{i+1}^m).
+    \end{cases}
+  \end{displaymath}
+
+  Para entender o que motivou essa definição, observe que para $i = 0,
+  \ldots L_n^m$, teremos que:
+  \begin{align*}
+    \lambda_n^m(\Gamma^{(n)}(S_i^m-)) &= \Gamma(S_i^m-)\\
+    \lambda_n^m(\Gamma^{(n)}(S_i^m)) &= \Gamma(S_i^m).
+  \end{align*}
+  Enquanto que nos pontos interiores, ``completamos'' $\lambda_n^m$ de
+  maneira linear.
+
+  Como $\Gamma(t) \geq \Gamma^{(n)}(t)$ para todo $n \in \Nz$, teremos
+  que $\lambda(t) \geq t$. Usando a linearidade por partes, e o fato
+  que $\Gamma(\sigma^x_i) = \Gamma(\sigma_i^x-) + \gamma_x T^x_i$,
+  teremos que:
+  \begin{displaymath}
+    \sup_{0 \leq t \leq T} |\lambda_n^m(t) - t| =
+    \max_{0 \leq i \leq L_n^m} \{ \Gamma(S_i^m) -
+    \Gamma^{(n)}(S_i^m)\}.
+  \end{displaymath}
+  Essa quantidade converge quase certamente à zero se mantivermos o
+  $m$ fixo e jogarmos o $n$ para infinito. Assim para cada $m$ existe
+  um $n_m$ tal que para $n \geq n_m$ vale que:
+  \begin{displaymath}
+    \sup_{0 \leq t \leq T} |\lambda_n^m(t) - t| < \delta_m.
+  \end{displaymath}
+  Podemos tomar a sequência $(n_m)_{m \geq 1}$ de modo que ela seja
+  crescente. Agora vamos ``inverte-la'', isso é, para cada n em $\Z
+  \cap [n_{i-1}, n_i)$, defina $m_n = i$. Teremos que:
+  \begin{displaymath}
+    \sup_{0 \leq t \leq T} |\lambda_n^{m_n}(t) - t| < \delta_{m_n}.
+  \end{displaymath}
+  Ainda como, para cada $m$ fixado, $n_m$ é finito, vale que $m_n$ vai
+  ao infinito quando $n \to \infty$.
+  
+  Agora note que $t \in [\Gamma^{(n)}(S_{i}^m-),
+  \Gamma^{(n)}(S_{i}^m))$ se e somente se $\lambda_n^m(t) \in
+  [\Gamma(S_{i}^m-), \Gamma(S_{i}^m))$. Assim $X(\lambda_n^m(t)) \leq
+  m$ se e somente se $X^{(n)}(t) \leq m$. De onde concluímos que:
+  \begin{displaymath}
+    \sup_{0 \leq t \leq T} d\left(X(\lambda_n^m(t)), X^{(n)}\right)
+    \leq \delta_m
+  \end{displaymath}
+
+  Assim tomando $\tilde{\lambda}_n = \lambda_n^{m_n}$, concluímos que
+  quase certamente:
+  \begin{align*}
+    \sup_{0 \leq t \leq T} |\tilde{\lambda}_n(t) - t|
+    &\xrightarrow{n\to\infty} 0 \\
+    \sup_{0 \leq t \leq T} d(X(\tilde{\lambda}_n(t)), X^{(n)}(t)
+    &\xrightarrow{n\to\infty} 0 \\
+  \end{align*}
+\end{proof}
 
 %% ------------------------------------------------------------------------- %%
 

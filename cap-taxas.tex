@@ -29,7 +29,7 @@ função na origem.
   Como $x \in \Nz$, temos que:
   \begin{displaymath}
     p_{xx}(t) \geq P( \gamma_x T^x_0 > t) = e^{-\frac{t}{\gamma_x}}
-    \to 1.
+    \xrightarrow{t \searrow 0} 1.
   \end{displaymath}
 \end{proof}
 
@@ -62,19 +62,19 @@ função na origem.
 
   Essa função é monótona em $t$ e cada termo da soma
   vai a zero quando $t \searrow 0$.  Assim o teorema da convergência
-  monótona nos diz que \ref{eq:lap_vaizero} converge à $1$ quanto $t
+  monótona nos diz que \eqref{eq:lap_vaizero} converge à $1$ quanto $t
   \searrow 0$, para qualquer $u \geq 0$ fixado.
 
   Como a função constante igual a $1$ é a transformada de Laplace de
   uma variável aleatória que vale $0$ sempre, temos que a expressão
-  \ref{eq:gamma_tt} converge em probabilidade para $c$ quando $t
+  \eqref{eq:gamma_tt} converge em probabilidade para $c$ quando $t
   \searrow 0$.
 \end{proof}
 
 \begin{lema}
   \label{lema:deriv_inv_gamma}
-  Seja $\Gamma^{*}$  a função inversa de $\Gamma^\infty$.
-  Vale que $ \frac{\Gamma^{*}(t)}{t} \xrightarrow{t \searrow 0}
+  Seja $\Xi$  a função inversa de $\Gamma^\infty$.
+  Vale que $ \frac{\Xi(t)}{t} \xrightarrow{t \searrow 0}
   \frac{1}{c}$ em probabilidade.
 \end{lema}
 \begin{proof}
@@ -280,7 +280,7 @@ Equanto que no caso $c=0$, teremos:
     \int_{0}^{t} P( X^\infty(t-s) = y) \frac{1}{\gamma_x} e^{-\frac{s}{\gamma_x}} ds\\
   \end{align*}
   Fazendo contas análogas às da proposição anterior, podemos
-  mostrar que o segundo termo dessa soma, dividido por $t$ vai para
+  mostrar que o segundo termo dessa soma, dividido por $t$, vai para
   zero quando $t \searrow 0$. Tratando o primeiro termo agora, temos
   que:
   \begin{displaymath}
@@ -290,7 +290,7 @@ Equanto que no caso $c=0$, teremos:
 
   Dessa forma:
   \begin{displaymath}
-     \lim_{t \searrow 0} \frac{p_{xx} (t) - 1}{t} = -\frac{1}{\gamma_x}
+     \lim_{t \searrow 0} \frac{p_{xx} (t) - 1}{t} = -\frac{1}{\gamma_x}.
   \end{displaymath}
   
 \end{proof}
@@ -525,7 +525,7 @@ probabilidade é uma medida invariante para o processo K.
   \end{align}
 \end{lema}
 \begin{proof}
-  O Corolário \ref{cor:proc_cadlag} nos garante que o processo K é
+  O Corolário \ref{prop:proc-cadlag} nos garante que o processo K é
   Càdlàg na topologia definida na Seção \ref{sec:topologia}.
 
   Note que para $y \in \Nz$, a função $f_y: \Nzb \to \R$ definida por
@@ -543,8 +543,8 @@ probabilidade é uma medida invariante para o processo K.
   0$, temos que $p_{x \infty} (s) = 0$ para todo $s > 0$, assim essa
   função é obviamente contínua em todo ponto $t > 0$.
 
-  Para o caso $c > 0$, pelo fato do processo K ser Markoviano, para um
-  $s > t$ teremos que:
+  Para o caso $c > 0$, usando a propriedade de Markov do processo,
+  para um $s > t$ teremos que:
 
   \begin{align*}
     p_{x \infty} (s) &= \sum_{y \in \Nzb} p_{x y} (t) p_{y \infty}
@@ -659,7 +659,7 @@ probabilidade é uma medida invariante para o processo K.
   Agora note que $p_{x y} (t) \leq P(\Gamma^x (\sigma_1^y -) \leq t)
   \leq P(\Gamma^\infty (\sigma_1^y -) \leq t)$. Agora na demonstração
   da Proposição \ref{prop:taxa-inf-x} mostramos que o limite dessa
-  última quantidade, sobre $t$ converge à $\frac{\lambda_y}{c}$. Assim
+  última quantidade sobre $t$ converge à $\frac{\lambda_y}{c}$. Assim
   concluímos existe uma constante $K$ tal que para $t$ pequeno o
   suficiente e para todo $x \in \Nz\setminus \{ y\}$, vale que
   $\mu(x)\frac{p_{x y}(t)}{t} \leq K \mu(x)$.
@@ -677,7 +677,7 @@ probabilidade é uma medida invariante para o processo K.
   \end{gather*}
 
   Juntando a esse sistema de equações a restrição de que
-  $\sum_{x\in\Nzb}\mu(x) = 1$, teremos um sistema com uma única
+  $\sum_{x\in\Nzb}\mu(x) = 1$, teremos um sistema de equações cuja uma única
   solução, que é a $\pi$ dada em \eqref{eq:invariante}.
 \end{proof}
 
