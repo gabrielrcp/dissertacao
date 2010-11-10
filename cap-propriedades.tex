@@ -2,13 +2,179 @@
 \chapter{Propriedades Básicas do Processo K}
 \label{cap:propriedades}
 
-Nesse capítulo vamos mostrar uma maneira de aproximar o processo K
-por processos Markovianos de salto. Isso, além de nos fornecer uma
-maneira intuitiva de encarar o processo, vai nos servir de ferramenta
-para mostrar que o processo é Càdlàg e Markoviano.
+Nesse capítulo vamos estabelecer resultados que serão ferramentas
+básicas para trabalhar com o processo K durante o resto da
+dissertação. Como uma maneira de aproxima-lo por processos Markovianos
+de salto.
 
 No final do capítulo ainda enunciaremos um resultado que tratará do
 quanto tempo o processo passa no infinito.
+
+%% ------------------------------------------------------------------------- %%
+
+\section{Observações gerais}
+\label{sec:observacoes}
+
+Nessa seção vamos colocar várias proposições ou observações sobre o
+processo, que serão usadas à exaustão em partes seguintes da
+dissertação.
+
+\begin{proposicao}
+  \label{prop:gamma-crescente}
+  $\Gamma$ é \qc estritamente crescente.
+\end{proposicao}
+\begin{proof}
+  Como estamos supondo que $\sum_{x \in \Nz} \lambda_x = \infty$,
+  então o conjunto das marcas dos processos de Poisson é \qc densa em
+  $\R^+$. Em outras palavras, quase certamente, para todo $0 \leq s <
+  t$, teremos que existe um $x \in \Nz$ e $i \geq 1$ tal que $s <
+  \sigma^x_i < t$. Dessa forma usando a definição de $\Gamma$, teremos
+  que:
+  \begin{displaymath}
+    \Gamma(t) - \Gamma(s) \geq \gamma_x T^x_i > 0
+  \end{displaymath}
+\end{proof}
+
+\begin{proposicao}
+  \label{prop:gamma-finita}
+  Com probabilidade $1$, $\Gamma(t)$ é finito para todo $t \geq 0$.
+\end{proposicao}
+\begin{proof}
+  Usando o teorema da convergência monótona, podemos calcular:
+  \begin{displaymath}
+    \E \left[\Gamma^y(t) \right] = \gamma_y + t \sum_{x \in \Nz}
+    \lambda_x \gamma_x + ct < \infty
+  \end{displaymath}
+  Assim para cada $t \geq fixo$, teremos que $\Gamma(t)$ é quase
+  certamente finito. Tomando uma sequência $t_n \to \infty$ quando $n
+  \to \infty$, teremos que $P(\cap_{n = 1}^{\infty} \{ \Gamma^y (t_n)
+  < \infty \} \cap \{ \Gamma \textrm{ é crescente}\}) = 1$. Assim para
+  realizações dentro desse evento, teremos que para todo $t \geq 0$,
+  existe um $n$ tal que $t_n > t$. Portando $\Gamma(t) < \Gamma(t_n) <
+  \infty$.
+\end{proof}
+
+\begin{proposicao}
+  \label{prop:reinicia-infinito}
+  Para todo $y \in \Nz$ e $t \geq 0$, vale que
+  $X^y(t + \gamma_y T_0^y) = X^\infty(t)$.
+\end{proposicao}
+\begin{proof}
+  Fixe um $y \in \Nz$. Primeiramente observe que para todo $s \geq 0$,
+  temos que $\Gamma^y(s) = \Gamma^\infty(s) + \gamma_yT^y_0$.
+
+  Fixada uma realização do processo, suponha que $X^\infty(t) = x \in
+  \Nz$, assim existe um $i \geq 1$ tal que $\Gamma^\infty(\sigma_i^x-)
+  \leq t < \Gamma^\infty(\sigma_i^x)$. Dessa forma, somando $\gamma_y
+  T^y_0$ nos termos dessa desigualdade, teremos que
+  $\Gamma^y(\sigma_i^x-) \leq t+\gamma_yT_0^y <
+  \Gamma^y(\sigma_i^x)$. E portanto $X^y(t+\gamma_y T_0^y) = x$.
+
+  Com raciocínio análogo, chegamos que se $X^y(t+\gamma_y T_0^y) = x
+  \in \Nz$, então $X^\infty(t) = x$. De onde concluímos a igualdade desejada.
+\end{proof}
+
+
+\begin{proposicao}
+  \label{prop:gamma-cadlag}
+  A função $\Gamma$ é quase certamente càdlàg. Isso é, é contínua à
+  direita e tem limites à esquerda.
+\end{proposicao}
+\begin{proof}
+
+  % Consideremos $A$ o conjunto de todas as trajetórias $\omega \in
+  % \Omega$ tais que $\Gamma_y(T)$ seja finito, para todo $T$ positivo e
+  % racional, além disso não haja marcas repetidas na justaposição dos
+  % processos de Poisson $\{N_x: x \in \N\}$.
+
+
+  % Fixe $T > 0$, e vamos definir o evento:
+  % \begin{displaymath}
+  %   A_T = \left\{
+  %     \omega \in \Omega: \Gamma_y(T) < \infty
+  %   \right\}.
+  % \end{displaymath}
+  % E tomemos $A = \cup_{T=1}^{\infty} A_T$. Consideremos ainda $B$ o
+  % evento que diz que não há marcas repetidas na justaposição dos
+  % processos de Poisson $N_x$.
+
+  % Como $P(A_T) = 1 = P(B)$, seque que $P(A \cap B) = 1$. Assim vamos
+  % mostrar que toda trajetória $\omega \in A \cap B$ é càdlàg.
+
+  % Se tomarmos $t \geq s \geq 0$, temos que:
+  % \begin{equation*}
+  %   \Gamma_y(t) - \Gamma_y(s) = 
+  %   c (t - s) + 
+  %   \sum_{x \in \N} \sum_{n = N_x(s)+1}^{N_x(t)} \gamma_x T^x_n
+  %   \geq 0 .
+  % \end{equation*}
+
+
+  % Assim $\Gamma_y$ é não decrescente. Tomando um $T > t$, temos ainda
+  % que $0 \leq \Gamma_y(s) \leq \Gamma_y(t) \leq \Gamma_y(T) <
+  % \infty$. Dessa maneira estamos lidando com sequências monótonas
+  % limitadas, o que estabelece a existência dos limites à direita e à
+  % esquerda.
+
+
+
+  % Para mostrar à continuidade à direita, tome $t \geq 0$ e uma
+  % sequência $(t_n)$ que convirja pela direita para $t$.
+  % \begin{equation*}
+  %   \E(|\Gamma_y(t_n) - \Gamma_y(t)|) =
+  %   (t_n - t) \left(
+  %     c + 
+  %     \sum_{x \in \N}\lambda_x \gamma_x 
+  %   \right) \xrightarrow{n \to \infty} 0 
+  % \end{equation*}
+  % Assim $\Gamma_y(t_n)$ converge na norma $L_1$ para $\Gamma_y(t)$ e
+  % portanto também converge em probabilidade. Assim, como existe o
+  % limite à direita \qc, então esse limite deve ser igual à
+  % $\Gamma_y(t)$.
+
+
+\end{proof}
+
+\begin{proposicao}
+  \label{prop:proc-cadlag}
+  O processo K é quase certamente càdlàg.
+\end{proposicao}
+\begin{proof}
+
+  Iremos mostrar que o processo iniciado no $\infty$ é Càdlàg. Isso
+  irá mostrar que o processo é Càdlàg para qualquer condição inicial,
+  visto que iniciando em $y$, iremos continuar em $y$ até $\gamma_y
+  T^y_0$, e depois continuaremos como uma cópia do processo iniciado no
+  $\infty$.
+
+  Fixe uma realização do processo e fixe $T > 0$ e $\epsilon > 0$
+  arbitrários. Seguindo \cite{billingsley:99}, vamos mostrar que
+  existem $0 = t_0 < t_1 < \ldots < t_N = T$ tais que $w[t_{i-1}, t_i)
+  < \epsilon$, para todo $i = 1, \ldots, N$. Onde $w(A) = \sum_{t, s
+    \in A} |X^\infty(t) - X^\infty(s)|$ para $A \subseteq \R$.
+
+  Tome um $m \in \Nz$ tal que o $\diam\{x \in \Nzb: x > m \} =
+  \frac{1}{m+1} < \epsilon$, onde $\diam(A)$ é o diâmetro do conjunto
+  $A$ na métrica \eqref{eq:metrica}.
+
+  Agora tome $S_1 < S_2 < \ldots < S_M$ uma ordenação dos conjunto $\{
+  \sigma^x_i: x \in \Nz \,\, i \geq 1 \,\, \Gamma(\sigma^x_i) \leq
+  T\}$. Finalmente fixe $N = 2M+1$ se $\Gamma(S_M) < T$ e $N = 2M$
+  caso contrário. Tome $t_0 = 0$, $t_N = T$ e para $i=1,\ldots, M$:
+  \begin{align*}
+    t_{2i-1} &= \Gamma(S_i-)\\
+    t_{2i} &= \Gamma(S_i).\\
+  \end{align*}
+
+  Se $t \in [\Gamma(S_i-), \Gamma(S_i))$, teremos que
+  $X(t)$ é constante, enquanto que se $t \in
+  [\Gamma(S_{i-1}), \Gamma(S_{i}-))$, termos que
+  $X(t) > m$, assim a variação nesse intervalo é menor ou igual
+  à $\frac{1}{m} < \epsilon$. O mesmo ocorre nos intervalos $[t_0,
+  t_1)$ e $[t_{N-1}, t_N)$.
+\end{proof}
+
+
 
 %% ------------------------------------------------------------------------- %%
 
@@ -52,51 +218,6 @@ O processo truncado em $n \in \Nz$, com estado inicial $y \in \{1,
 Note que nós construímos $\{(X^{(n)}(t))_t\}_{n \in \Nz}$ e $(X(t))_t$
 num mesmo espaço de probabilidade. Assim é natural perguntar se
 $(X^{(n)}(t))_t$ converge para $(X(t))_t$ de alguma forma.
-Isso será respondido de forma afirmativa no Teorema
-\ref{teo:convergencia}. Porém antes disso vamos caracterizar o nosso
-processo K como sendo Càdlàg na topologia definida na seção
-\ref{sec:topologia}. Isso nos permitirá usar uma métricas para
-trajetórias apropriada para funções càdlàg.
-
-\begin{proposicao}
-  \label{prop:proc-cadlag}
-  O processo K é quase certamente càdlàg.
-\end{proposicao}
-\begin{proof}
-
-  Iremos mostrar que o processo iniciado no $\infty$ é Càdlàg. Isso
-  irá mostrar que o processo é Càdlàg para qualquer condição inicial,
-  visto que iniciando em $y$, iremos continuar em $y$ até $\gamma_y
-  T^y_0$, e depois continuaremos como uma cópia do processo iniciado no
-  $\infty$.
-
-  Fixe uma realização do processo e fixe $T > 0$ e $\epsilon > 0$
-  arbitrários. Seguindo \cite{billingsley:99}, vamos mostrar que
-  existem $0 = t_0 < t_1 < \ldots < t_N = T$ tais que $w[t_{i-1}, t_i)
-  < \epsilon$, para todo $i = 1, \ldots, N$. Onde $w(A) = \sum_{t, s
-    \in A} |X^\infty(t) - X^\infty(s)|$ para $A \subseteq \R$.
-
-  Tome um $m \in \Nz$ tal que o $\diam\{x \in \Nzb: x > m \} =
-  \frac{1}{m+1} < \epsilon$, onde $\diam(A)$ é o diâmetro do conjunto
-  $A$ na métrica \eqref{eq:metrica}.
-
-  Agora tome $S_1 < S_2 < \ldots < S_M$ uma ordenação dos conjunto $\{
-  \sigma^x_i: x \in \Nz \,\, i \geq 1 \,\, \Gamma(\sigma^x_i) \leq
-  T\}$. Finalmente fixe $N = 2M+1$ se $\Gamma(S_M) < T$ e $N = 2M$
-  caso contrário. Tome $t_0 = 0$, $t_N = T$ e para $i=1,\ldots, M$:
-  \begin{align*}
-    t_{2i-1} &= \Gamma(S_i-)\\
-    t_{2i} &= \Gamma(S_i).\\
-  \end{align*}
-
-  Se $t \in [\Gamma(S_i-), \Gamma(S_i))$, teremos que
-  $X(t)$ é constante, enquanto que se $t \in
-  [\Gamma(S_{i-1}), \Gamma(S_{i}-))$, termos que
-  $X(t) > m$, assim a variação nesse intervalo é menor ou igual
-  à $\frac{1}{m} < \epsilon$. O mesmo ocorre nos intervalos $[t_0,
-  t_1)$ e $[t_{N-1}, t_N)$.
-\end{proof}
-
 
 \begin{teorema}
   \label{teo:convergencia}
@@ -105,10 +226,9 @@ trajetórias apropriada para funções càdlàg.
     \infty} X(\bullet)$ \qc na métrica de Skorohod.
 \end{teorema}
 
-A métrica de Skorohod é uma métrica sobre o espaço das tragetórias que
-permite pequenas distorções temporais. Ele é uma métrica muito usada
-quando estamos trabalhando com tragetórias Càdlàg.  Como referência
-recomendamos \cite{billingsley:99} e \cite{ethier:86}.
+A métrica de Skorohod é uma métrica sobre o espaço das tragetórias
+Càdlàg que permite pequenas distorções temporais. Como
+referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
 
 
 \begin{proof}
@@ -206,7 +326,7 @@ recomendamos \cite{billingsley:99} e \cite{ethier:86}.
 %% ------------------------------------------------------------------------- %%
 
 \section{Propriedade de Markov}
-
+\label{sec:prop-markov}
 \begin{teorema}
   \label{teo:proc_markov}
   $X^y$ é um processo markoviano.
@@ -236,6 +356,15 @@ recomendamos \cite{billingsley:99} e \cite{ethier:86}.
 \end{proof}
 
 
+
+
+%% ------------------------------------------------------------------------- %%
+
+\section{Tempo no infinito}
+\label{sec:tempo-infinito}
+
+
+Nessa seção...
 
 
 %%% Local Variables: 

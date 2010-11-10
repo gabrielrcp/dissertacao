@@ -50,12 +50,19 @@ ferramenta para trabalhar com esse processo. Para $t \geq 0$ e $y \in
   + ct
 \end{equation}
 
-Por convenção, considere que $\sum_{i=1}^{0} \bullet = 0$.
+Por convenção, considere que $\sum_{i=1}^{0}( \bullet ) = 0$.
 
-Para que essa função seja \qc finita, vamos impor a restrição de que
-\begin{equation}
-  \sum_{x \in \Nz} \lambda_x\gamma_x < +\infty
-\end{equation}
+Agora vamos impor duas restrições nos nossos parâmetros. Que serão:
+\begin{align}
+  \sum_{x \in \Nz} \lambda_x\gamma_x < +\infty\\
+  \sum_{x \in \Nz} \lambda_x = \infty.
+\end{align}
+
+A primeira fará com que $\Gamma$ seja \qc finita para todo $t \in
+\R^+$, enquanto que o segundo fará com que o conjunto $\{\sigma^x_i: x
+\in \Nz, \, i \geq 1\}$ seja denso em $\R$. Veremos na Seção
+\ref{sec:visualizacao} que o processo K sem essa segunda condição é
+bastante simples.
 
 Chamaremos o processo K iniciado em $y \in \Nb$ de $X^y_c$. Ele é
 definido, para $t \geq 0$, da seguinte forma:
@@ -74,74 +81,15 @@ definido, para $t \geq 0$, da seguinte forma:
 
 Note que para que essa definição faça sentido, temos que o limite a
 esquerda $\Gamma (\sigma_i^x-)$ deve existir. Isso será estabelecido
-na próxima proposição.
+na Proposição \ref{prop:gamma-cadlag}.
 
 Quando puder ficar subentendido, nós vamos omitir a condição inicial
 e/ou o parâmetro $c$ das notações.
 
 Note que essa construção nos dá um acoplamento de processos K com
-parâmetros $(\lambda_x, \gamma_x)_{x \in \Nz}$ e todo $c \geq 0$. Isso
-será muito útil para mostrar alguns resultados.
-
-\begin{proposicao}
-  \label{prop:gamma-cadlag}
-  A função $\Gamma$ é quase certamente càdlàg. Isso é, é contínua à
-  direita e tem limites à esquerda.
-\end{proposicao}
-\begin{proof}
-
-  % Consideremos $A$ o conjunto de todas as trajetórias $\omega \in
-  % \Omega$ tais que $\Gamma_y(T)$ seja finito, para todo $T$ positivo e
-  % racional, além disso não haja marcas repetidas na justaposição dos
-  % processos de Poisson $\{N_x: x \in \N\}$.
-
-
-  % Fixe $T > 0$, e vamos definir o evento:
-  % \begin{displaymath}
-  %   A_T = \left\{
-  %     \omega \in \Omega: \Gamma_y(T) < \infty
-  %   \right\}.
-  % \end{displaymath}
-  % E tomemos $A = \cup_{T=1}^{\infty} A_T$. Consideremos ainda $B$ o
-  % evento que diz que não há marcas repetidas na justaposição dos
-  % processos de Poisson $N_x$.
-
-  % Como $P(A_T) = 1 = P(B)$, seque que $P(A \cap B) = 1$. Assim vamos
-  % mostrar que toda trajetória $\omega \in A \cap B$ é càdlàg.
-
-  % Se tomarmos $t \geq s \geq 0$, temos que:
-  % \begin{equation*}
-  %   \Gamma_y(t) - \Gamma_y(s) = 
-  %   c (t - s) + 
-  %   \sum_{x \in \N} \sum_{n = N_x(s)+1}^{N_x(t)} \gamma_x T^x_n
-  %   \geq 0 .
-  % \end{equation*}
-
-
-  % Assim $\Gamma_y$ é não decrescente. Tomando um $T > t$, temos ainda
-  % que $0 \leq \Gamma_y(s) \leq \Gamma_y(t) \leq \Gamma_y(T) <
-  % \infty$. Dessa maneira estamos lidando com sequências monótonas
-  % limitadas, o que estabelece a existência dos limites à direita e à
-  % esquerda.
-
-
-
-  % Para mostrar à continuidade à direita, tome $t \geq 0$ e uma
-  % sequência $(t_n)$ que convirja pela direita para $t$.
-  % \begin{equation*}
-  %   \E(|\Gamma_y(t_n) - \Gamma_y(t)|) =
-  %   (t_n - t) \left(
-  %     c + 
-  %     \sum_{x \in \N}\lambda_x \gamma_x 
-  %   \right) \xrightarrow{n \to \infty} 0 
-  % \end{equation*}
-  % Assim $\Gamma_y(t_n)$ converge na norma $L_1$ para $\Gamma_y(t)$ e
-  % portanto também converge em probabilidade. Assim, como existe o
-  % limite à direita \qc, então esse limite deve ser igual à
-  % $\Gamma_y(t)$.
-
-
-\end{proof}
+parâmetros $(\lambda_x, \gamma_x)_{x \in \Nz}$ para toda condição
+inicial $y$ e todo $c \geq 0$. Isso será muito útil para mostrar
+alguns resultados.
 
 
 
