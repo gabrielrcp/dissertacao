@@ -841,9 +841,200 @@ restante dessa seção, considere sempre que $c = 0$.
   supondo que $t \not\in \RR$, seque que $t = \Gamma(s-)$.
 \end{proof}
 
+\begin{proposicao}
+  $\RRb \setminus \RR$ é quase certamente enumerável.
+\end{proposicao}
+\begin{proof}
+  O conjunto dos pontos onde $\Gamma$ não é contínua é $\{ \sigma_i^x:
+  x \in \Nz, \, i \geq 1\}$. Assim temos que $\RRb \setminus \RR
+  \subseteq \{ \Gamma(\sigma_i^x-): x \in \Nz, \, i \geq 1\}$, que é
+  um conjunto enumerável.
+\end{proof}
+
+\begin{proposicao}
+  $\Gamma$, quando enxergada como um processo estocástico, é um
+  subordinador. Isso é, um processo crescente, contínuo à direita, que
+  tem incrementos estacionários e independentes.
+\end{proposicao}
+\begin{proof}
+
+  Já mostramos que $\Gamma$ é crescente e contínua à direita.  Tome
+  $\FF_t$ a $\sigma$-álgebra gerada por $\{ \Gamma(s): s \in [0,
+  t]\}$ e repare que para $t, s > 0$:
+  \begin{displaymath}
+    \Gamma(t+s) - \Gamma(t) = \sum_{x \in \Nz} \sum_{i =
+      N(t)+1}^{N(t+s)} \gamma_x T_i^x.
+  \end{displaymath}
+
+  Agora usando o fato das $\{ T_i^x: x \in \Nzb, \, i \geq 1\}$ serem
+  independentes e identicamente distribuidas e os processos de Poisson
+  terem incrementos estacionários e independentes, teremos que essa
+  quantidade é independente de $\FF_t$ e tem a mesma distribuição que
+  $\Gamma(s) - \Gamma(0)$.
+\end{proof}
+
+\begin{proposicao}
+  O expoente de Laplace de $\Gamma^\infty_0$ é dado por:
+  \begin{displaymath}
+    \Phi(u) = u \sum_{x \in \Nz} \frac{\lambda_x \gamma_x}{1 + u\gamma_x}.
+  \end{displaymath}
+  Isso é para $u \geq 0$, teremos que:
+  \begin{displaymath}
+    \E \left[
+      \exp \left\{
+        -u \Gamma^\infty_0 (t)
+      \right\}
+    \right] = 
+    \exp\left\{
+      -t \Phi(u)
+    \right\}.
+  \end{displaymath}
+\end{proposicao}
 
 
+Agora temos ferramentas para calcular a dimensão de Hausdorf de
+$\RR$. Mas antes introduzir brevemente o que é a dimensão de Hausdorf
+de um conjunto. Para uma cobertura mais abrangente do assunto,
+recomendamos (????).
 
+Para um $\rho > 0$, e um boreliano $A$, vamos definir a medida de
+Hausdorf de expoente $\rho$ por:
+\begin{displaymath}
+  m^\rho(A) = \inf_{\II} \sum_{I \in \II} (\mathrm{l}(I))^\rho, 
+\end{displaymath}
+onde esse ínfimo é tomado por todas as coberturas enumeráveis de $A$
+por intervalos, e $\mathrm{l}(I)$ é o comprimento do intervalo $I$.
+
+É possível mostrar que $m^\rho$ é uma medida sobre os borelianos de
+$\R$. Note que caso $\rho = 1$, a medida $m^\rho$ é a medida de
+Lebesgue.
+
+Também vale que se $m^\rho(A) = 0$, então $m^{\rho^\prime} = 0$ para
+todo $\rho^\prime > \rho$ e se $m^\rho(A) > 0$, então $m^{\rho^\prime}
+= \infty$ para todo $\rho^\prime < \rho$.
+
+
+\begin{definicao}
+  Definimos a dimensão de Hausdord de um boreliano $A$ como:
+  \begin{displaymath}
+    \dim_H(A) = \sup \left\{ \rho > 0 : m^\rho(A) < \infty \right\}
+    = \inf \left\{ \rho > 0: m^\rho(A) = 0 \right\}
+  \end{displaymath}
+\end{definicao}
+
+\begin{teorema}
+  Para todo $t > 0$, vale que quase certamente:
+  \begin{displaymath}
+    \dim_H(\RR^\infty \cap [0, t]) = 
+    \dim_H(\RRb^\infty \cap [0, t]) =
+    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}
+  \end{displaymath}
+\end{teorema}
+\begin{proof}
+  A primeira igualdade é vem do fato de um conjunto enumerável não
+  alterar a dimensão de Hausdorf de um conjunto, enquanto que a
+  segunda é o Corolário 5.3 de \cite{bertoin:97}, traduzido para a
+  nossa notação.
+\end{proof}
+
+\begin{proposicao}
+  Suponha que $\sup_{x\in\Nz}\lambda_x < \infty$ e que existam um
+  $\delta>0$ e um $n_0 \in \Nz$ tal que $\gamma_x \leq x^{-(1+\delta)}$
+  para todo $x > n_0$. Nessas condições:
+  \begin{equation}
+    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}  \leq \frac{1}{1+\delta}
+  \end{equation}
+\end{proposicao}
+
+\begin{proof}
+  Tome $K > 0$ tal que $\lambda_x \leq K$ para todo $x \in \Nz$. Assim
+  teremos que para alguma constante $C$:
+  \begin{align*}
+    \Phi(u) &= \sum_{x \in \Nz} \frac{\lambda_x}{\frac{1}{u\gamma_x} +
+      1}\\
+    &\leq C + \sum_{x > n_0} \frac{K}{\frac{x^{1+\delta}}{u} + 1}\\
+    &=u^{\frac{1}{1+\delta}} \left[
+      \frac{C}{u^{\frac{1}{1+\delta}}} +
+      \frac{1}{u^{\frac{1}{1+\delta}}} \sum_{x > n_0} \frac{K}{
+        \left( \frac{x}{u^{\frac{1}{1+\delta}}}  \right)^{1+\delta}
+        + 1
+      }
+    \right].
+  \end{align*}
+
+  Agora vamos nos concentrar na quantidade dentro dos
+  colchetes. Fazendo a mudança de variáveis $v =
+  u^{\frac{1}{1+\delta}}$, e supondo que $v$ seja um inteiro maior que
+  $n_0$, agrupando os termos da soma para $x$ entre múltiplos de $v$,
+  teremos que:
+  \begin{align*}
+    \frac{C}{v} + \frac{1}{v} \sum_{x > n_0} \frac{K}{ \left(
+        \frac{x}{v} \right)^{1+\delta} + 1 }
+    &\leq
+    \frac{C}{v} + \sum_{y=1}^{\infty} \frac{K}{y^{1+\delta} + 1}
+    \xrightarrow{v \to \infty} C^\prime,
+  \end{align*}
+  onde $C^\prime$ é uma constante positiva.
+
+  Como jogar $u$ para o infinito é equivalente à jogar $v$ para o
+  infinito, e que para obter um limite superior para o $\liminf$,
+  podemos  nos limitar à uma sequência específica, teremos que:
+
+  \begin{align*}
+    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} &\leq
+    \frac{1}{1+\delta} + \liminf_{u \to \infty} 
+    \frac{\log{C^\prime}}{\log u}\\
+    &= \frac{1}{1+\delta}.
+  \end{align*}
+\end{proof}
+
+\begin{proposicao}
+  Suponha que $\inf_{x\in\Nz}\lambda_x  > 0$ e que existam um
+  $\delta>0$ e um $n_0 \in \Nz$ tal que $\gamma_x \geq x^{-(1+\delta)}$
+  para todo $x > n_0$. Nessas condições:
+  \begin{equation}
+    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}  \geq \frac{1}{1+\delta}
+  \end{equation}
+\end{proposicao}
+
+\begin{proof}
+  Tome $K > 0$ tal que $\lambda_x \geq K$ para todo $x \in \Nz$. Dessa
+  forma:
+  \begin{align*}
+    \Phi(u) &= \sum_{x \in \Nz} \frac{\lambda_x}{\frac{1}{u\gamma_x} +
+      1}\\
+    &\geq \sum_{x > n_0}
+    \frac{K}{\left(\frac{x}{u^{\frac{1}{1+\delta}}}\right)^{1+\delta} +1}.
+  \end{align*}
+
+  Portanto, tomando $u > n_0$, e agrupando a série em somas sobre os inteiros
+  que estão entre os múltiplos de $u$, teremos que:
+  \begin{align*}
+    \Phi(u^{1+\delta}) 
+    &\geq \sum_{x > n_0}
+    \frac{K}{\left(\frac{x}{u}\right)^{1+\delta} +1}\\
+    &\geq \sum_{x \geq u}
+    \frac{K}{\left(\frac{x}{u}\right)^{1+\delta} +1}\\
+    &\geq \lfloor u \rfloor \sum_{y = 1}^{\infty}
+    \frac{K}{y^{1+\delta} + 1}.
+  \end{align*}
+
+  Dessa forma:
+  \begin{align*}
+    \frac{\log \Phi(u)}{\log u} \geq \frac{\log\lfloor
+      u^{\frac{1}{1+\delta}} \rfloor }{\log u} + 
+    \frac{1}{\log u} \sum_{y = 1}^{\infty}
+    \frac{K}{y^{1+\delta} + 1}.
+  \end{align*}
+
+  Como essa série é convergente, ao fazer $u \to \infty$ o segundo
+  termo desaparecerá, enquanto que o primeiro convirjirá para
+  $\frac{1}{1+\delta}$. De onde concluímos que:
+
+  \begin{displaymath}
+    \liminf_{u \to \infty} \frac{\log \Phi (u)}{\log u} \geq \frac{1}{1+\delta}
+  \end{displaymath}
+\end{proof}
 
 %%% Local Variables: 
 %%% TeX-master: "tese"
