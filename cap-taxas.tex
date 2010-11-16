@@ -756,6 +756,94 @@ probabilidade é uma medida invariante para o processo K.
   processo K no caso $c = 0$.
 \end{proof}
 
+%% ------------------------------------------------------------------------- %%
+
+\section{Tempo no infinito}
+\label{sec:tempo-infinito}
+
+Na demonstração da Proposição \ref{prop:continuidade} mostramos que,
+no caso $c > 0$, o tempo que o processo passa no infinito tem medida
+de Lebesgue positiva quase certamente. Ainda usando argumentos como os
+da Proposição \ref{prop:naocontinuidade}, a medida de Lebesgue do
+tempo em que o processo passa no infinito vale zero quase certamente
+no caso $c = 0$.
+
+Nessa seção tentaremos expandir um pouco no caso $c = 0$,
+especificamente iremos dar uma maneira de calcular a dimensão de
+Hausdorf do tempo em que o processo passa no infinito.  Para o
+restante dessa seção, considere sempre que $c = 0$.
+
+\begin{definicao}
+  Vamos denotar por $\RR^y$ a imagem de $\Gamma^y$. Isso é:
+  \begin{displaymath}
+    \RR^y = \left\{
+      t \geq 0 : \exists s \geq 0 \textrm{ tal que } \Gamma^y(s) = t
+    \right\}.
+  \end{displaymath}
+  Aqui também vamos omitir o índice $y$ quando não fizer diferença
+  qual é a condição inicial.
+\end{definicao}
+
+\begin{proposicao}
+  Quase certamente, temos que $X(t) = \infty$ se e somente se $t \in \RR$.
+\end{proposicao}
+\begin{proof}
+  Vamos fixar uma realização do nosso processo onde $\Gamma$ é
+  estritamente crescente, càdlàg, limitada em compactos e $\lim_{t \to
+    \infty} \Gamma(t) = \infty$.
+
+  Nessas realizações, tome um $t \in \RR$. Assim existe um (único por
+  $\Gamma$ ser crescente) $s \geq 0$ tal que $\Gamma(s) = t$. Por
+  absurdo, suponha que $X(t) = x < \infty$. Assim existe um $i \geq 1$
+  tal que $\Gamma(\sigma_i^x -) \leq t < \Gamma(\sigma_i^x)$. Portanto
+  $\Gamma(s) < \Gamma(\sigma_i^x)$. Como $\Gamma$ é crescente,
+  concluímos que $s < \sigma_i^x$, de onde concluímos que
+  $\Gamma(\sigma_i^x-) > \Gamma(s) = t$, o que contraria a hipótese.
+
+  Agora tome um $t \geq 0$ tal que $X(t) = \infty$. Defina $s = \inf
+  \{ r \geq 0 :  \Gamma(r) > t \}$. Usando a definição do ínfimo e o
+  fato de $\Gamma$ ser crescente e càdlàg, concluímos que $\Gamma(s-)
+  \leq t$ e $\Gamma(s) \geq t$. Agora, por absurdo, suponha que
+  $\Gamma(s) > t$. Assim teremos que $\Gamma(s-) \leq t <
+  \Gamma(s)$. Assim como os pontos de descontinuidade de $\Gamma$
+  correspondem às marcas dos processos de Poisson, teremos que existe
+  um $\sigma_i^x = s$, de onde concluímos a contradição de que $X(t) =
+  x \neq \infty$. Portanto, como não pode acontecer que $\Gamma(s) >
+  t$, teremos que $\Gamma(s) = t$ e assim $t \in \RR$.
+\end{proof}
+
+\begin{proposicao}
+  Agora vamos denotar por $\RRb$ o fecho de $\RR$. Temos que:
+  \begin{displaymath}
+    \RRb = \RR \cup \{ \Gamma(s-) : s > 0 \}.
+  \end{displaymath}
+\end{proposicao}
+\begin{proof}
+  Novamente considere as realizações onde $\Gamma$ é càdlàg, crescente
+  e limitada em compactos.
+
+  Fixado um $s > 0$ vamos mostrar que $\Gamma(s-) \in \RR$. Para isso
+  tome uma sequência $(s_n)_{n \geq 1}$ tal que $s_n \nearrow s$. Por
+  definição, temos que $\Gamma(s_n) \in \RR$ para todo $n$ e
+  $\Gamma(s_n) \to \Gamma(s-)$. De onde concluímos que $\Gamma(s-) \in
+  \RRb$.
+
+  Agora tome um $t \in \RRb \setminus \RR$. Por definição existe uma
+  sequência $(t_n)_n \in \RR$ tal que $t_n \to t$. Como $t_n \in \RR$,
+  existe $s_n$ tal que $\Gamma(s_n) = t_n$.
+
+  Note que $(s_n)$ é limitada, assim existe uma subseqência de $(s_n)$
+  que seja convergente. Assim sem perda de generalidade, vamos supor
+  que $(s_n)$ seja convergente e denotar seu limite por $s$.
+
+  Como $s_n \to s$, $\Gamma(s_n) \to t$ e $\Gamma$ é càdlàg, então
+  temos que $t \in \{ \Gamma(s), \Gamma(s-) \}$. Já que estamos
+  supondo que $t \not\in \RR$, seque que $t = \Gamma(s-)$.
+\end{proof}
+
+
+
+
 
 %%% Local Variables: 
 %%% TeX-master: "tese"
