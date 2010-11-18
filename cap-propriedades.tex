@@ -7,16 +7,13 @@ básicas para trabalhar com o processo K durante o resto da
 dissertação. Como uma maneira de aproxima-lo por processos Markovianos
 de salto.
 
-No final do capítulo ainda enunciaremos um resultado que tratará do
-quanto tempo o processo passa no infinito.
-
 %% ------------------------------------------------------------------------- %%
 
 \section{Observações gerais}
 \label{sec:observacoes}
 
 Nessa seção vamos colocar várias proposições ou observações sobre o
-processo, que serão usadas à exaustão em partes seguintes da
+processo, que serão usadas à exaustão em seções subsequentes da
 dissertação.
 
 \begin{proposicao}
@@ -45,7 +42,7 @@ dissertação.
     \E \left[\Gamma^y(t) \right] = \gamma_y + t \sum_{x \in \Nz}
     \lambda_x \gamma_x + ct < \infty
   \end{displaymath}
-  Assim para cada $t \geq fixo$, teremos que $\Gamma(t)$ é quase
+  Assim para cada $t \geq 0$ fixo, teremos que $\Gamma(t)$ é quase
   certamente finito. Tomando uma sequência $t_n \to \infty$ quando $n
   \to \infty$, teremos que $P(\cap_{n = 1}^{\infty} \{ \Gamma^y (t_n)
   < \infty \} \cap \{ \Gamma \textrm{ é crescente}\}) = 1$. Assim para
@@ -53,6 +50,42 @@ dissertação.
   existe um $n$ tal que $t_n > t$. Portando $\Gamma(t) < \Gamma(t_n) <
   \infty$.
 \end{proof}
+
+
+\begin{proposicao}
+  \label{prop:gamma-cadlag}
+  A função $\Gamma$ é quase certamente càdlàg. Isso é, é contínua à
+  direita e tem limites à esquerda.
+\end{proposicao}
+\begin{proof}
+
+  Fixemos uma realização de $\Gamma$ onde ela seja crescente e
+  limitada em compactos. Vamos pedir ainda que cada processo de
+  Poisson $N_x$, $x \in \Nz$ seja localmente finito. Tais realizações
+  tem probabilidade $1$.
+
+  O fato de $\Gamma$ ser crescente e limitada em compactos já
+  estabelece diretamente a existência dos limites à direita e à
+  esquerda. Agora resta mostrar a continuidade à direita.
+
+  Para isso fixe um $t \geq 0$ arbitrário. Para $s > 0$ teremos:
+
+  \begin{equation*}
+    \Gamma(t+s) - \Gamma(t) = 
+    c s + 
+    \sum_{x \in \N} \sum_{i = N_x(t)+1}^{N_x(t+s)} \gamma_x T^x_i.
+  \end{equation*}
+
+  Para cada $x$, como $N_x$ é localmente finito, temos que $N_x(t+s) =
+  N_x(t)$ para $s$ pequeno o suficiente. Assim quando $s \searrow 0$,
+  nós iremos calcular o limite da ``cauda'' de uma série convergente,
+  de onde concluímos que:
+
+  \begin{displaymath}
+    \lim_{s \searrow 0} \Gamma(t+s) - \Gamma(t) = 0
+  \end{displaymath}
+\end{proof}
+
 
 \begin{proposicao}
   \label{prop:reinicia-infinito}
@@ -74,66 +107,6 @@ dissertação.
   \in \Nz$, então $X^\infty(t) = x$. De onde concluímos a igualdade desejada.
 \end{proof}
 
-
-\begin{proposicao}
-  \label{prop:gamma-cadlag}
-  A função $\Gamma$ é quase certamente càdlàg. Isso é, é contínua à
-  direita e tem limites à esquerda.
-\end{proposicao}
-\begin{proof}
-
-  % Consideremos $A$ o conjunto de todas as trajetórias $\omega \in
-  % \Omega$ tais que $\Gamma_y(T)$ seja finito, para todo $T$ positivo e
-  % racional, além disso não haja marcas repetidas na justaposição dos
-  % processos de Poisson $\{N_x: x \in \N\}$.
-
-
-  % Fixe $T > 0$, e vamos definir o evento:
-  % \begin{displaymath}
-  %   A_T = \left\{
-  %     \omega \in \Omega: \Gamma_y(T) < \infty
-  %   \right\}.
-  % \end{displaymath}
-  % E tomemos $A = \cup_{T=1}^{\infty} A_T$. Consideremos ainda $B$ o
-  % evento que diz que não há marcas repetidas na justaposição dos
-  % processos de Poisson $N_x$.
-
-  % Como $P(A_T) = 1 = P(B)$, seque que $P(A \cap B) = 1$. Assim vamos
-  % mostrar que toda trajetória $\omega \in A \cap B$ é càdlàg.
-
-  % Se tomarmos $t \geq s \geq 0$, temos que:
-  % \begin{equation*}
-  %   \Gamma_y(t) - \Gamma_y(s) = 
-  %   c (t - s) + 
-  %   \sum_{x \in \N} \sum_{n = N_x(s)+1}^{N_x(t)} \gamma_x T^x_n
-  %   \geq 0 .
-  % \end{equation*}
-
-
-  % Assim $\Gamma_y$ é não decrescente. Tomando um $T > t$, temos ainda
-  % que $0 \leq \Gamma_y(s) \leq \Gamma_y(t) \leq \Gamma_y(T) <
-  % \infty$. Dessa maneira estamos lidando com sequências monótonas
-  % limitadas, o que estabelece a existência dos limites à direita e à
-  % esquerda.
-
-
-
-  % Para mostrar à continuidade à direita, tome $t \geq 0$ e uma
-  % sequência $(t_n)$ que convirja pela direita para $t$.
-  % \begin{equation*}
-  %   \E(|\Gamma_y(t_n) - \Gamma_y(t)|) =
-  %   (t_n - t) \left(
-  %     c + 
-  %     \sum_{x \in \N}\lambda_x \gamma_x 
-  %   \right) \xrightarrow{n \to \infty} 0 
-  % \end{equation*}
-  % Assim $\Gamma_y(t_n)$ converge na norma $L_1$ para $\Gamma_y(t)$ e
-  % portanto também converge em probabilidade. Assim, como existe o
-  % limite à direita \qc, então esse limite deve ser igual à
-  % $\Gamma_y(t)$.
-
-
-\end{proof}
 
 \begin{proposicao}
   \label{prop:proc-cadlag}
@@ -327,6 +300,22 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
 
 \section{Propriedade de Markov}
 \label{sec:prop-markov}
+
+
+\begin{proposicao}
+  \label{prop:proc_feller}
+  Para todo $t > 0$, teremos que $\lim_{y \to \infty} X^y(t) =
+  X^\infty(t)$  \qc.
+\end{proposicao}
+\begin{proof}
+
+  
+  Um processo é de Feller se o seu semigrupo de transição for um
+  operador contínuo...
+\end{proof}
+
+
+
 \begin{teorema}
   \label{teo:proc_markov}
   $X^y$ é um processo markoviano.
@@ -336,14 +325,6 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
   ....
 \end{proof}
 
-\begin{proposicao}
-  \label{prop:proc_feller}
-  $X^y$ é um processo de Feller.
-\end{proposicao}
-\begin{proof}
-  Um processo é de Feller se o seu semigrupo de transição for um
-  operador contínuo...
-\end{proof}
 
 
 
