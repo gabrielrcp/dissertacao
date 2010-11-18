@@ -147,7 +147,24 @@ dissertação.
   t_1)$ e $[t_{N-1}, t_N)$.
 \end{proof}
 
+\begin{proposicao}
+  \label{prop:proc-descontinuidades}
+  $(X(t))_{t\geq 0}$ é \qc contínuo fora de $\{ \Gamma(0),
+  \Gamma(\sigma_i^x-), \Gamma(\sigma_i^x): x \in \Nz\}$.
+\end{proposicao}
+\begin{proof}
+  Tome $t$ é um ponto de descontinuidade de $\Gamma$, então $\Gamma(t) -
+  \Gamma(t-) > \epsilon > 0$. Fixe um $T > t$ e tome $0 = t_0 < t_1 <
+  \ldots < t_N = T$ como na Proposição \ref{prop:proc-cadlag}. Se
+  $t \not\in \{t_0, \ldots, t_N\}$, então existe um $i$ tal que $t \in
+  (t_i, t_{i+1})$. Assim teremos que $w[t_i, t_{i+1}) \geq \Gamma(t) -
+  \Gamma(t-) > \epsilon$, que contraria a nossa escolha de $\{t_0,
+  \ldots, t_N\}$.
 
+  Assim temos que $t = t_i$ para algum $i$. Como na proposição
+  anterior, escolhemos os $t_i$'s sempre do conjunto proposto, temos
+  eles são os únicos candidados possíveis para pontos de contínuidade.
+\end{proof}
 
 %% ------------------------------------------------------------------------- %%
 
@@ -180,7 +197,7 @@ O processo truncado em $n \in \Nz$, com estado inicial $y \in \{1,
 \end{equation}
 
 \begin{proposicao}
-  O processo $X_n^y$ é Càdlàd e Markoviano.
+  O processo $X^{(n)}$ é Càdlàd e Markoviano.
 \end{proposicao}
 \begin{proof}
   Como visto na seção \ref{sec:visualizacao}, o processo $X_n^y$ é um
@@ -195,8 +212,8 @@ $(X^{(n)}(t))_t$ converge para $(X(t))_t$ de alguma forma.
 \begin{teorema}
   \label{teo:convergencia}
   Se considerarmos a topologia introduzida na seção
-  \ref{sec:topologia}, então $X^{(n)} (\bullet) \xrightarrow{n \to
-    \infty} X(\bullet)$ \qc na métrica de Skorohod.
+  \ref{sec:topologia}, então $X^{\infty, (n)} (\bullet) \xrightarrow{n \to
+    \infty} X^\infty(\bullet)$ \qc na métrica de Skorohod.
 \end{teorema}
 
 A métrica de Skorohod é uma métrica sobre o espaço das tragetórias
@@ -205,17 +222,14 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
 
 
 \begin{proof}
-  Vamos considerar somente os processos iniciados no $\infty$, visto
-  que se começarmos em um $y \in \Nz$, teremos que o processo K e os
-  processos truncados serão iguais até $\gamma_y T^y_0$ e depois
-  continuarão como uma cópia dos processos respectivos, mas iniciados
-  no $\infty$.
-
   Essa demonstração foi adaptada diretamente do \emph{Lema 3.11} de
   \cite{fontes:08}.
 
   Para provar a proposição, vamos mostrar que o item (c) da proposição
   5.3, capítulo 5 de \cite{ethier:86} vale quase certamente.
+
+  Para essa demonstração, vamos sempre considerar que o processo
+  iniciou no $\infty$, e vamos parar de carregar esse índice na notação.
 
   Fixe um $T > 0$. Para cada natural $m$, considere $\delta_m :=
   \diam\{ x \in \Nzb: x > m \} = \frac{1}{m+1}$. Tome ainda $0 = S_0^m
@@ -291,9 +305,42 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
   \begin{align*}
     \sup_{0 \leq t \leq T} |\tilde{\lambda}_n(t) - t|
     &\xrightarrow{n\to\infty} 0 \\
-    \sup_{0 \leq t \leq T} d(X(\tilde{\lambda}_n(t)), X^{(n)}(t)
+    \sup_{0 \leq t \leq T} d(X(\tilde{\lambda}_n(t)), X^{(n)}(t))
     &\xrightarrow{n\to\infty} 0 \\
   \end{align*}
+\end{proof}
+\begin{proposicao}
+  Para todo $y \in \Nzb$, teremos que  $X^{y, (n)}$ converge \qc para
+  para $X^y$ na métrica de Skorohod. Essa convergência é uniforme em
+  $y$.
+\end{proposicao}
+\begin{proof}
+  Fixado um $T > 0$, tome $\lambda_n: [0, \infty) \to [0, \infty)$
+  funções contínuas crescentes tais que quase certamente:
+  \begin{gather*}
+    \sup_{0 \leq t \leq T} |\lambda_n(t) - t|
+    \xrightarrow{n\to\infty} 0 \\
+    \sup_{0 \leq t \leq T} d(X^\infty(\lambda_n(t)), X^{\infty, (n)}(t))
+    \xrightarrow{n\to\infty} 0 \\
+  \end{gather*}
+
+  Para $y \in \Nz$, defina:
+  \begin{displaymath}
+    \lambda_n^y(t) = \begin{cases}
+      t & \textrm{ se } t < \gamma_y T_0\\
+      \gamma_yT_0 + \lambda_n(t - \gamma_y T_0) & \textrm{ c.c.}
+    \end{cases}
+  \end{displaymath}
+
+  Usando a Proposição \ref{prop:reinicia-infinito}, teremos que:
+ \begin{gather*}
+   \sup_{0 \leq t \leq T} |\lambda_n^y(t) - t| =
+    \sup_{0 \leq t \leq T} |\lambda_n(t) - t|
+    \xrightarrow{n\to\infty} 0 \\
+    \sup_{0 \leq t \leq T} d(X^y(\lambda_n^y(t)), X^{y, (n)}(t)) \leq
+    \sup_{0 \leq t \leq T} d(X^\infty(\lambda_n(t)), X^{\infty, (n)}(t))
+    \xrightarrow{n\to\infty} 0 \\
+  \end{gather*}
 \end{proof}
 
 %% ------------------------------------------------------------------------- %%
@@ -308,21 +355,95 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
   X^\infty(t)$  \qc.
 \end{proposicao}
 \begin{proof}
+  Fixe um $t > 0$ e uma realização do processo. Como estamos supondo
+  que $\gamma_y \xrightarrow{y\to\infty} 0$, então podemos supor que
+  $\gamma_y T_0 < t$. Assim, usando a Proposição
+  \ref{prop:reinicia-infinito}, teremos que:
+  \begin{displaymath}
+    |X^y(t) - X^\infty(t)| = |X^\infty(t-\gamma_yT_0) - X^\infty(t)|.
+  \end{displaymath}
 
-  
-  Um processo é de Feller se o seu semigrupo de transição for um
-  operador contínuo...
+  Agora, pela Proposição \ref{prop:proc-descontinuidades}, teremos que
+  todo $t > 0$ fixado é \qc um ponto de continuidade do processo,
+  portando como $\gamma_y T_0 \xrightarrow{y \to \infty} 0$ \qc, temos
+  que a quantidade acima converge à zero \qc. 
 \end{proof}
-
-
 
 \begin{teorema}
   \label{teo:proc_markov}
-  $X^y$ é um processo markoviano.
+  O processo K é um processo Markoviano.
 \end{teorema}
 
 \begin{proof}
-  ....
+
+  Essa demonstração é uma leve adaptação da demonstração da segunda
+  parte da Proposição (3.6) de \cite{fontes:08}.
+
+  Denote por $\Psi$ e $\Psi^n$ os semigrupos de transição  de $X$ e
+  $X^{(n)}$ rescpectivamente, isso é, para $t > 0$ e $f: \Nzb \to \R$:
+  \begin{gather*}
+    \Psi_t f (x) = \E \left[ X^x(t) \right]\\
+    \Psi^n_t f (x) = \E \left[ X^{x, (n)}(t) \right]
+  \end{gather*}
+
+  Agora fixado um $m \geq 1$, $t_1 < t_2 < \ldots < t_{m+1}$ e $f_1,
+  \ldots, f_{m+1} : \Nzb \to \R$ funções contínuas.
+
+  Como $X^{(n)}$ é Markoviano, teremos que:
+  \begin{gather}
+    \label{eq:markov-truncado}
+    \E \left[
+      f_{1}(X^{(n)}(t_{1})) 
+      \ldots
+      f_{m}(X^{(n)}(t_{m})) 
+      f_{m+1}(X^{(n)}(t_{m+1})) 
+    \right] \notag\\
+    = \E \left[
+      f_{1}(X^{(n)}(t_{1})) 
+      \ldots
+      f_{m}(X^{(n)}(t_{m})) 
+      \Psi^n_{t_{m+1} - t{m}} f_{m+1} (X^{(n)}(t_{m})) 
+    \right]
+  \end{gather}
+
+  A Proposição \ref{prop:proc-descontinuidades} nos garante que \qc
+  $t_1, \ldots, t_{m+1}$ são pontos de contínuidade do processo, e
+  como covergência na métrica de Skorohord garante convergência
+  pontual nos pontos de contínuidade, teremos que $f_i(X^{(n)}(t_i)) \to
+  f_i(X(t_i))$ \qc já que $f_i$ é contínua.
+
+  Temos ainda que $f_1, \ldots f_{m+1}$ são limitadas porque são
+  funções contínuas num espaço compacto. Assim usando o teorema da
+  convergência dominada, teremos que a parte da esquerda de
+  \eqref{eq:markov-truncado} converge para:
+  \begin{displaymath}
+    \E \left[
+      f_{1}(X(t_{1})) 
+      \ldots
+      f_{m}(X(t_{m})) 
+      f_{m+1}(X(t_{m+1})) 
+    \right]
+  \end{displaymath}
+
+  Agora vamos estimar a parte da direita por:
+  \begin{displaymath}
+    \E \left[
+      f_{1}(X (t_{1})) 
+      \ldots
+      f_{m}(X (t_{m})) 
+      \Psi_{t_{m+1} - t{m}} f_{m+1} (X (t_{m})) 
+    \right] + \epsilon_n
+  \end{displaymath}
+
+  Agora usando o fato de $f_1, \ldots, f_m$ serem limitadas, teremos
+  que para alguma constante $K$:
+  \begin{displaymath}
+    |\epsilon_n| \leq \sup_{y \in \Nzb} \left\lvert
+      \Psi^n_{t_{m+1}-t_m} f_{m+1} (y) - 
+      \Psi_{t_{m+1}-t_m} f_{m+1} (y) 
+    \right\rvert
+  \end{displaymath}
+
 \end{proof}
 
 
