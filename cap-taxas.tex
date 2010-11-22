@@ -892,30 +892,44 @@ restante dessa seção, considere sempre que $c = 0$.
 \end{proposicao}
 
 
-Agora temos ferramentas para calcular a dimensão de Hausdorf de
-$\RR$. Mas antes introduzir brevemente o que é a dimensão de Hausdorf
+Agora temos ferramentas para calcular a dimensão de Hausdorff de
+$\RR$. Mas antes introduzir brevemente o que é a dimensão de Hausdorff
 de um conjunto. Para uma cobertura mais abrangente do assunto,
-recomendamos (????).
+recomendamos (???).
 
-Para um $\rho > 0$, e um boreliano $A$, vamos definir a medida de
-Hausdorf de expoente $\rho$ por:
-\begin{displaymath}
-  m^\rho(A) = \inf_{\II} \sum_{I \in \II} (\mathrm{l}(I))^\rho, 
-\end{displaymath}
-onde esse ínfimo é tomado por todas as coberturas enumeráveis de $A$
-por intervalos, e $\mathrm{l}(I)$ é o comprimento do intervalo $I$.
+Para um $\epsilon > 0$, e um boreliano $A$, vamos chamar de
+$\II_\epsilon(A)$ a família de todas as coberturas de $A$ por um número
+enumerável de intervalos de comprimento menor que $\epsilon$.
 
-É possível mostrar que $m^\rho$ é uma medida sobre os borelianos de
-$\R$. Note que caso $\rho = 1$, a medida $m^\rho$ é a medida de
-Lebesgue.
+
+Para um $\rho > 0$, $\epsilon > 0$ e um boreliano $A$, definimos:
+\begin{equation}
+  \label{eq:dim-hausdorff-eps}
+  m^\rho_\epsilon(A) = \inf_{\II \in \II_\epsilon(A)} 
+  \sum_{I \in \II} (\mathrm{l}(I))^\rho, 
+\end{equation}
+onde  $\mathrm{l}(I)$ é o comprimento do intervalo $I$.
+
+Quando diminuímos $\epsilon$, diminuímos o número de coberturas
+possíveis, assim o ínfimo aumenta. Portando o limite $\epsilon
+\searrow 0$ de \eqref{eq:dim-hausdorff-eps} existe, e assim faz sentido
+definir:
+\begin{equation}
+  \label{eq:dim-hausdorf}
+  m^\rho(A) = \lim_{\epsilon \searrow 0} m^\rho_\epsilon (A)
+\end{equation}
+
+É possível mostrar que $m^\rho(\bullet)$ é uma medida sobre os
+borelianos de $\R$. Medida essa que chamados de medida de Hausdorff de
+dimensão $\rho$.  Note que caso $\rho = 1$, a medida $m^\rho$ é a
+medida de Lebesgue.
 
 Também vale que se $m^\rho(A) = 0$, então $m^{\rho^\prime} = 0$ para
 todo $\rho^\prime > \rho$ e se $m^\rho(A) > 0$, então $m^{\rho^\prime}
 = \infty$ para todo $\rho^\prime < \rho$.
 
-
 \begin{definicao}
-  Definimos a dimensão de Hausdord de um boreliano $A$ como:
+  Definimos a dimensão de Hausdorff de um boreliano $A$ como:
   \begin{displaymath}
     \dim_H(A) = \sup \left\{ \rho > 0 : m^\rho(A) < \infty \right\}
     = \inf \left\{ \rho > 0: m^\rho(A) = 0 \right\}
