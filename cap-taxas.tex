@@ -121,7 +121,7 @@ função na origem.
   % Voltar para ca depois!!!!!!
 
 
-  Agora, usando o Teorema de Fubbini, teremos que:
+  Agora, usando o Teorema de Fubini, teremos que:
   \begin{align*}
     1 &= \lim_{t \searrow 0} \E \left[ \frac{\theta(t)}{t} \right] \\ 
     &= \lim_{t \searrow 0} \E\left[
@@ -166,7 +166,7 @@ função na origem.
   Como $\theta_m(t) \leq t$, essa série (em $x$) converge. Assim temos
   que $\lim_{m\to\infty} \theta_m(t) = 0$ \qc. E portanto $\theta(t) =
   0$ \qc. Dessa forma também vale que $\E[\theta(t)] = 0$. Agora
-  usando o teorema de Fubbini, teremos:
+  usando o teorema de Fubini, teremos:
   \begin{align*}
     0 &= \E\left[ \int_0^t \ind \left\{ X^\infty_0(s) = \infty
       \right\} ds \right]\\
@@ -227,7 +227,7 @@ Vamos mostrar que, para o caso $c > 0$, essa matriz vale:
   \right).
 \end{displaymath}
 
-Equanto que no caso $c=0$, teremos:
+Enquanto que no caso $c=0$, teremos:
 \begin{displaymath}
   Q = \left(
     \begin{array}{ccccc}
@@ -366,7 +366,7 @@ Equanto que no caso $c=0$, teremos:
 
 
   Faremos isso usando o Teorema Tauberiano, que relaciona o
-  comportamente a função de distribuição de uma variável aleatória
+  comportamento a função de distribuição de uma variável aleatória
   positiva perto do zero com o comportamento de sua transformada de
   Laplace no infinito.  Seguiremos o enunciado do
   Teorema\emph{XIII.5.1} de \cite{fellerv2}.
@@ -418,7 +418,7 @@ Equanto que no caso $c=0$, teremos:
   \end{align*}
 
   Novamente cada termo da soma vai a zero monotonamente quanto $t
-  \searrow 0$, assim pelo teorema da convergêcia monótona, teremos que
+  \searrow 0$, assim pelo teorema da convergência monótona, teremos que
   $\lim_{t \searrow 0} \frac{\phi(\frac{1}{t})}{t} =
   \frac{\lambda_x}{c}$.
 
@@ -441,7 +441,7 @@ Equanto que no caso $c=0$, teremos:
     = \frac{\lambda_x}{c}
   \end{align*}
 
-  Assim tomando $c > 0$ cada vez menores, concluíremos que $\frac{P (
+  Assim tomando $c > 0$ cada vez menores, concluiremos que $\frac{P (
     \Gamma^\infty_0(\sigma^x_1-))}{t} \xrightarrow{t \searrow 0}
   \infty$
 \end{proof}
@@ -504,7 +504,7 @@ Equanto que no caso $c=0$, teremos:
 \section{Medida invariante}
 \label{sec:invariante}
 
-O objetivo dessa seção é mostrar que a seguinte distrubuição de
+O objetivo dessa seção é mostrar que a seguinte distribuição de
 probabilidade é uma medida invariante para o processo K.
 
 \begin{equation}
@@ -578,7 +578,7 @@ probabilidade é uma medida invariante para o processo K.
   probabilidade de sucesso dada por $e^{-\frac{h}{\gamma_y}}$. Agora
   temos que $X_t^y = y$ para todo $t \in [\Gamma^y(\sigma_M^x-),
   \Gamma^y(\sigma_M^x-) + T_M^y)$, e como $T_M^y > h$, existe um
-  múltimo de $h$ nesse intervalo. Assim isso vai corresponder à um
+  múltiplo de $h$ nesse intervalo. Assim isso vai corresponder à um
   ponto onde $Y_n^{y, h} = y$, assim a esperança de tempo de retorno à
   um estado em $(Y_n)$ é finita.
 
@@ -588,7 +588,7 @@ probabilidade é uma medida invariante para o processo K.
   0$. Enquanto que $P (Y^{x, h}_1 = \infty) = 0$ para $c = 0$. Assim
   a cadeia é irredutível no caso $c > 0$ e no caso $c = 0$ temos que
   $\Nz$ é uma classe de comunicação fechada, enquanto que $\{\infty\}$
-  é uma classe de comuniçação aberta.
+  é uma classe de comunicação aberta.
 
 
   Em todo caso, para cada escolha de $h$, existe uma única medida de
@@ -605,7 +605,7 @@ probabilidade é uma medida invariante para o processo K.
     &= \sum_{x \in \Nzb} \mu_h(x) P ( Y_{1}^ {x, m h} = y).
   \end{align*}
 
-  Portanto $\mu_h$ é uma medidada invariante para $(Y^{\bullet, mh}_n)_{n
+  Portanto $\mu_h$ é uma medida invariante para $(Y^{\bullet, mh}_n)_{n
     \geq 0}$ e como ela é única, teremos que $\mu_h = \mu_{m h}$.
 
   Assim concluímos que $\mu_{h} = \mu_1$ para todo $h > 0$ racional.
@@ -832,7 +832,7 @@ restante dessa seção, considere sempre que $c = 0$.
   sequência $(t_n)_n \in \RR$ tal que $t_n \to t$. Como $t_n \in \RR$,
   existe $s_n$ tal que $\Gamma(s_n) = t_n$.
 
-  Note que $(s_n)$ é limitada, assim existe uma subseqência de $(s_n)$
+  Note que $(s_n)$ é limitada, assim existe uma subsequencia de $(s_n)$
   que seja convergente. Assim sem perda de generalidade, vamos supor
   que $(s_n)$ seja convergente e denotar seu limite por $s$.
 
@@ -867,7 +867,7 @@ restante dessa seção, considere sempre que $c = 0$.
   \end{displaymath}
 
   Agora usando o fato das $\{ T_i^x: x \in \Nzb, \, i \geq 1\}$ serem
-  independentes e identicamente distribuidas e os processos de Poisson
+  independentes e identicamente distribuídas e os processos de Poisson
   terem incrementos estacionários e independentes, teremos que essa
   quantidade é independente de $\FF_t$ e tem a mesma distribuição que
   $\Gamma(s) - \Gamma(0)$.
@@ -1042,7 +1042,7 @@ todo $\rho^\prime > \rho$ e se $m^\rho(A) > 0$, então $m^{\rho^\prime}
   \end{align*}
 
   Como essa série é convergente, ao fazer $u \to \infty$ o segundo
-  termo desaparecerá, enquanto que o primeiro convirjirá para
+  termo desaparecerá, enquanto que o primeiro irá convergir para
   $\frac{1}{1+\delta}$. De onde concluímos que:
 
   \begin{displaymath}
