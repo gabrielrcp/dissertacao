@@ -509,8 +509,7 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
   $g$ é uma função contínua em um espaço compacto, assim ela é
   uniformemente contínua. Isso é, para todo $\epsilon > 0$, existe um
   $\delta_\epsilon > 0$ tal que se $d(x, y) < \delta_\epsilon$ então
-  $|g(x)-g(y)| < \epsilon$. Podemos tomar $\delta_\epsilon$ de forma
-  que $\delta_\epsilon \to 0$ quando $\epsilon \to 0$.
+  $|g(x)-g(y)| < \epsilon$.
 
   Dessa forma, fixado um $\epsilon > 0$ arbitrário, teremos que:
   \begin{gather*}
@@ -527,9 +526,10 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
     \leq \epsilon + 2 \Vert g \Vert P \left( d(X^{\infty, (n)}(s),
       X^\infty(\lambda_n^\infty(s)) \geq \delta_\epsilon \right).
   \end{gather*}
-  Essa última quantidade vai à zero quando $\epsilon \to 0$. Assim
-  concluímos que o primeiro termo de \eqref{eq:esperancas-markov}
-  converge à zero.
+  Essa última quantidade vai para $\epsilon$ quando $n\to
+  \infty$. Como $\epsilon$ foi escolhido arbitráriamente, concluímos
+  que o primeiro termo de \eqref{eq:esperancas-markov} converge à
+  zero.
 
   Para calcular o segundo termo, veja que aquela quantidade, para cada
   $y$ fixado, vai à zero, já que $s$ é \qc um ponto de continuidade do
