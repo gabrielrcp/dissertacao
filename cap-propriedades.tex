@@ -385,7 +385,7 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
 \end{definicao}
 
 \begin{proposicao}
-  \label{prop:proriedade-feller}
+  \label{prop:semigrupo-feller}
   Se $f: \Nzb \to \R$ é uma função contínua, então para todo $t > 0$,
   $\Psi_t f$ também é uma função contínua.
 \end{proposicao}
@@ -456,17 +456,30 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
   \end{displaymath}
 
   Agora vamos estimar a parte da direita por:
+  \begin{equation}
+    \label{eq:markov-est-eps}
+    \E \left[
+      f_{1}(X^{(n)}(t_{1})) 
+      \ldots
+      f_{m}(X^{(n)}(t_{m})) 
+      \Psi_{t_{m+1} - t{m}} f_{m+1} (X^{(n)}(t_{m})) 
+    \right] + \epsilon_n
+  \end{equation}
+
+  Usando a Proposição \ref{prop:semigrupo-feller}, temos que
+  $\Psi_{t_{m+1}-t_m} f_{m+1}$ é uma função contínua. Assim a parte da
+  esquerda de \eqref{eq:markov-est-eps} converge para:
   \begin{displaymath}
     \E \left[
-      f_{1}(X (t_{1})) 
+      f_{1}(X(t_{1})) 
       \ldots
-      f_{m}(X (t_{m})) 
-      \Psi_{t_{m+1} - t{m}} f_{m+1} (X (t_{m})) 
-    \right] + \epsilon_n
+      f_{m}(X(t_{m})) 
+      \Psi_{t_{m+1} - t{m}} f_{m+1} (X(t_{m})) 
+    \right].
   \end{displaymath}
 
-  Agora usando o fato de $f_1, \ldots, f_m$ serem limitadas, teremos
-  que para alguma constante $K$:
+  Resta mostrar que $\epsilon_n \to 0$. Usando o fato de $f_1, \ldots,
+  f_m$ serem limitadas, teremos que para alguma constante $K$:
   \begin{displaymath}
     |\epsilon_n| \leq  K \sup_{y \in \Nzb} \left\lvert
       \Psi^n_{t_{m+1}-t_m} f_{m+1} (y) - 
