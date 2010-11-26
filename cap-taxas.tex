@@ -10,16 +10,64 @@ Vamos começar a escrever e depois penso no que escrever aqui.
 \label{sec:continuidade}
 
 Para deixar a nossa notação menos carregada, vamos introduzir a
-seguinte definição, para $x, y \in \Nzb$, $t \geq 0$:
+seguinte definição, para $x, y \in \Nzb$, $t > 0$:
 \begin{equation}
   p_{xy} (t) = P(X^x(t) = y).
 \end{equation}
 Denotaremos ainda por $P(t)$ a ``matriz'' cujas entradas sejam $p_{xy}(t)$.
 
+
 Nessa seção vamos estudar a continuidade ou não continuidade dessa
 função na origem.
 
+
+Começaremos com uma caracterização básica dessas funções.
 \begin{proposicao}
+  \label{prop:transicao-mensuravel}
+  Para todo $x, y, z \in \Nzb$ e $t, s > 0$ vale que:
+  \begin{align*}
+    &p_{xy}(t) \geq 0\\
+    &\sum_{y \in \Nzb} p_{xy}(t) = 1\\
+    &p_{xy}(t+s) = \sum_{z\in\Nzb}p_{xz}(t)p_{zy}(s)\\
+    & p_{xy}(\bullet) \textrm{ é uma função Lebesgue mensurável.}
+  \end{align*}
+\end{proposicao}
+\begin{proof}
+  Os três primeiros itens saem diretamente da definição de $p_{x y}$ e
+  da propriedade de Markov do processo. Para o quarto, considere
+  $X^{x, (n)}$ como na Seção \ref{sec:aproximacoes} e defina $p^n_{x
+    y}(t) := P(X^{x, (n)}(t) = y)$. Note que $p^n_{xy}$ é Lebesgue
+  mensurável porque $X^{x, (n)}$ é um processo markoviano de saltos.
+
+  Como todo $t > 0$ fixo é \qc um ponto de continuidade do processo, e
+  a função $f_y(z) = \ind\{ z = y \}$ é uma função contínua para $y
+  \in \Nz$ e usando o Teorema \ref{teo:convergencia}, junto com o
+  teorema da convergência dominada, temos que $p_{x y}^n(t)
+  \xrightarrow{n\to\infty} p_{x y}(t)$ para todo $x \in \Nzb$ e $y \in
+  \Nz$. 
+
+  Assim, como limite de funções mensuráveis também é uma função
+  mensurável, teremos que para todo $x \in \Nzb$ e $y \in \Nz$, $p_{x
+    y}$ é uma função mensurável.
+
+  Por fim, temos que $p_{x \infty} (t) = 1 - \sum_{y \in \Nz} p_{x y}
+  (t)$. Assim $p_{x \infty}$ é limite de funções mensuráveis, e
+  portanto também mensurável.
+\end{proof}
+
+\begin{proposicao}
+  \label{prop:transicao-continua}
+  Para todo $x, y \in \Nzb$, $p_{x y}(\bullet)$ é uma função contínua
+  em $(0, \infty)$.
+\end{proposicao} 
+
+\begin{proof}
+  Esse é o Teorema 1 da primeira seção da Parte II (pg. 120) de
+  \cite{chung:67}.
+\end{proof}
+
+\begin{proposicao}
+  \label{prop:continuidade-facil}
   Para $x \in \Nz$,
   \begin{equation}
     \lim_{t \searrow 0}p_{xx}(t) = 1.   
@@ -33,57 +81,57 @@ função na origem.
   \end{displaymath}
 \end{proof}
 
-\begin{lema}
-  \label{lema:deriv_gamma}
-  Vale que $ \frac{\Gamma^{\infty}(t)}{t} \xrightarrow{t \searrow 0}
-  c$ em probabilidade.
-\end{lema}
-\begin{proof}
-  Fixando um $t > 0$, teremos que:
-  \begin{equation}
-    \label{eq:gamma_tt}
-    \frac{\Gamma^{\infty}(t)}{t} = 
-    c + \frac{1}{t} \sum_{x \in \Nz} \sum_{i = 1}^{N^x(t)}
-    \gamma_x T^x_i
-  \end{equation}
+% \begin{lema}
+%   \label{lema:deriv_gamma}
+%   Vale que $ \frac{\Gamma^{\infty}(t)}{t} \xrightarrow{t \searrow 0}
+%   c$ em probabilidade.
+% \end{lema}
+% \begin{proof}
+%   Fixando um $t > 0$, teremos que:
+%   \begin{equation}
+%     \label{eq:gamma_tt}
+%     \frac{\Gamma^{\infty}(t)}{t} = 
+%     c + \frac{1}{t} \sum_{x \in \Nz} \sum_{i = 1}^{N^x(t)}
+%     \gamma_x T^x_i
+%   \end{equation}
 
-  Agora podemos calcular a transformada de Laplace da segunda parte
-  dessa expressão. Fixado um $u > 0$, teremos que:
-  \begin{equation}
-    \label{eq:lap_vaizero}
-    \E \left[ \exp\left\{
-      -u \frac{1}{t} \sum_{x \in \Nz} \sum_{i=1}^{N^x(t)} \gamma_x T^x_i
-    \right\} \right] =
-    \exp \left\{
-      - u \sum_{x \in \Nz}  \frac{\lambda_x \gamma_x}{1 +
-        \frac{u \gamma_x}{t}}
-    \right\} %\xrightarrow{t \searrow 0} 1.
-  \end{equation}
+%   Agora podemos calcular a transformada de Laplace da segunda parte
+%   dessa expressão. Fixado um $u > 0$, teremos que:
+%   \begin{equation}
+%     \label{eq:lap_vaizero}
+%     \E \left[ \exp\left\{
+%       -u \frac{1}{t} \sum_{x \in \Nz} \sum_{i=1}^{N^x(t)} \gamma_x T^x_i
+%     \right\} \right] =
+%     \exp \left\{
+%       - u \sum_{x \in \Nz}  \frac{\lambda_x \gamma_x}{1 +
+%         \frac{u \gamma_x}{t}}
+%     \right\} %\xrightarrow{t \searrow 0} 1.
+%   \end{equation}
 
-  Essa função é monótona em $t$ e cada termo da soma
-  vai a zero quando $t \searrow 0$.  Assim o teorema da convergência
-  monótona nos diz que \eqref{eq:lap_vaizero} converge à $1$ quanto $t
-  \searrow 0$, para qualquer $u \geq 0$ fixado.
+%   Essa função é monótona em $t$ e cada termo da soma
+%   vai a zero quando $t \searrow 0$.  Assim o teorema da convergência
+%   monótona nos diz que \eqref{eq:lap_vaizero} converge à $1$ quanto $t
+%   \searrow 0$, para qualquer $u \geq 0$ fixado.
 
-  Como a função constante igual a $1$ é a transformada de Laplace de
-  uma variável aleatória que vale $0$ sempre, temos que a expressão
-  \eqref{eq:gamma_tt} converge em probabilidade para $c$ quando $t
-  \searrow 0$.
-\end{proof}
+%   Como a função constante igual a $1$ é a transformada de Laplace de
+%   uma variável aleatória que vale $0$ sempre, temos que a expressão
+%   \eqref{eq:gamma_tt} converge em probabilidade para $c$ quando $t
+%   \searrow 0$.
+% \end{proof}
 
-\begin{lema}
-  \label{lema:deriv_inv_gamma}
-  Seja $\Xi$  a função inversa de $\Gamma^\infty$.
-  Vale que $ \frac{\Xi(t)}{t} \xrightarrow{t \searrow 0}
-  \frac{1}{c}$ em probabilidade.
-\end{lema}
-\begin{proof}
+% \begin{lema}
+%   \label{lema:deriv_inv_gamma}
+%   Seja $\Xi$  a função inversa de $\Gamma^\infty$.
+%   Vale que $ \frac{\Xi(t)}{t} \xrightarrow{t \searrow 0}
+%   \frac{1}{c}$ em probabilidade.
+% \end{lema}
+% \begin{proof}
 
-  Fixe $t > 0$ e $\epsilon > 0$. Com probabilidade $1$, temos que $t$
-  é um ponto de continuidade de $\Gamma^\infty$. Assim existe $s > 0$
-  tal que $\Gamma$
+%   Fixe $t > 0$ e $\epsilon > 0$. Com probabilidade $1$, temos que $t$
+%   é um ponto de continuidade de $\Gamma^\infty$. Assim existe $s > 0$
+%   tal que $\Gamma$
 
-\end{proof}
+% \end{proof}
 
 \begin{proposicao}
   \label{prop:continuidade}
@@ -100,43 +148,43 @@ função na origem.
   \end{displaymath}.
   
   Pela construção do processo, temos que $\theta(t) \geq c
-  \Gamma^*(t)$, onde $\Gamma^*(t)$ é a inversa de $\Gamma^\infty(t)$.
+  \Xi(t)$, onde $\Xi(t)$ é a inversa de $\Gamma^\infty(t)$.
 
-  O Lema \ref{lema:deriv_gamma} diz que $\frac{\Gamma^\infty(t)}{t}$
-  converge à $1$ em probabilidade. Assim podemos reconstruir
-  $\frac{\Gamma^\infty(t)}{t}$ em um novo espaço de probabilidades de
-  forma que elas convirjam quase certamente.
+  Portanto $\E [\theta(t)] > 0$. Usando o teorema de Fubbini obtemos
+  que:
+  \begin{displaymath}
+    \E[\theta(t)] =  \int_0^t p_{\infty \infty} (s) ds
+  \end{displaymath}
 
-  Agora vamos mostrar que essa expressão converge em probabilidade
-  para $1$. Para isso vamos calcular a transformada de Laplace de
-  $\frac{1}{ct} \sum_{x \in \Nz} \sum_{i = 1}^{N^x(t)} \gamma_x
-  T^x_i$. Fixado um $u \geq 0$, podemos calcular:
+  Assim obtemos que o conjunto dos $t > 0$ onde $p_{\infty \infty}(t)
+  > 0$ tem medida de Lebesgue positiva. Em particular existe um $s >
+  0$ tal que $p_{\infty \infty}(s) > 0$. Fixe tal $s$.
 
+  Agora considere $u := \liminf_{t \searrow 0}p_{\infty \infty} (t)$,
+  e tome uma sequência $(t_n)$, onde $t_n \to 0$ e $p_{\infty \infty}
+  (t_n) \to u$ quanto $n \to \infty$. Agora usando a Proposição
+  \ref{prop:transicao-continua}, temos que:
+  \begin{displaymath}
+    p_{\infty\infty}(s) = \lim_{n \to \infty} p_{\infty \infty}(s+t_n) = \lim_{n \to
+      \infty} \sum_{x \in \Nzb} p_{\infty x}(s) p_{x \infty} (t_n)
+  \end{displaymath}
 
-  % Assim podemos reconstruir essas variáveis em um novo espaço de
-  % probabilidade de forma que elas convirjam quase certamente. Como
-  % $\frac{\theta(\Gamma^\infty(t))}{\Gamma^\infty(t)} \leq 1$, usando o
-  % teorema da convergência dominada teremos que $$
+  Pela Proposição \ref{prop:continuidade-facil}, se $x \in \Nz$ então
+  $p_{x \infty}(t_n) \to 0$ quando $n \to \infty$. Cada termo
+  dessa soma é menor ou igual à $p_{\infty x} (s)$, que é somável em
+  $x$. Assim usando o teorema da convergência dominada, concluímos
+  que:
+  \begin{displaymath}
+    p_{\infty\infty}(s) = p_{\infty \infty}(s)u.
+  \end{displaymath}
 
-  % Voltar para ca depois!!!!!!
-
-
-  Agora, usando o Teorema de Fubini, teremos que:
-  \begin{align*}
-    1 &= \lim_{t \searrow 0} \E \left[ \frac{\theta(t)}{t} \right] \\ 
-    &= \lim_{t \searrow 0} \E\left[
-      \frac{1}{t} \int_0^t \ind\{ X^\infty(s) = \infty \} ds
-    \right] \\
-    &= \lim_{t \searrow 0} 
-      \frac{1}{t} \int_0^t \E\left[ \ind\{ X^\infty(s) = \infty \}\right] ds
-    \\
-    &= \lim_{t \searrow 0} \frac{1}{t} \int_0^t p_{\infty \infty} (s) ds
-  \end{align*}
-
-  Portanto, usando o teorema fundamental do calculo, teremos que
-  $p_{\infty \infty} (t) \xrightarrow{t \searrow 0} 0$
-
-
+  Dessa forma, já que $p_{\infty \infty}(s) > 0$, concluímos que $u =
+  1$. De forma que:
+  \begin{displaymath}
+    \liminf_{t \searrow 0} p_{\infty\infty}(t) = 1 \geq \limsup_{t
+      \searrow 0} p_{\infty\infty}(t),
+  \end{displaymath}
+  de onde concluímos que $p_{\infty\infty}(t) \to 1$ quando $t \searrow 0$.
 \end{proof}
 
 \begin{proposicao}
@@ -148,7 +196,7 @@ função na origem.
   Essa demonstração é uma adaptação direta do Lema \emph{3.15} de
   \cite{fontes:08}.
 
-  Tome $m \in \Nz$. Vamos definir:
+  Para $m \in \Nzb$. Vamos definir:
   \begin{align*}
     \theta_m(t) := \int_0^t \ind \left\{ X^\infty_0(s) \geq m \right\} ds
   \end{align*}
