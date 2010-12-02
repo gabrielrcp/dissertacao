@@ -166,6 +166,22 @@ dissertação.
   eles são os únicos candidatos possíveis para pontos de continuidade.
 \end{proof}
 
+\begin{corolario}
+  \label{cor:continuidades-processo}
+  Qualquer $t > 0$ é quase certamente um ponto de contínuidade do
+  processo K.
+\end{corolario}
+\begin{proof}
+  Mostramos que o conjunto dos pontos de pontos de descontinuidade do
+  processo está contído em $\{ \Gamma(0), \Gamma(\sigma_i^x-),
+  \Gamma(\sigma_i^x): x \in \Nz\}$.
+
+  Como para todo $x \in \Nz$ e $i \geq 1$, temos que
+  $P(\Gamma(\sigma_i^x-) = t) = P(\Gamma(\sigma_i^x) = t) = 0$, segue
+  que um $t > 0$ determinístico é ponto de continuidade do processo.
+\end{proof}
+
+
 %% ------------------------------------------------------------------------- %%
 
 \section{Aproximações}
@@ -351,26 +367,95 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
 \label{sec:prop-markov}
 
 
+% \begin{proposicao}
+%   \label{prop:quase-prop-feller}
+%   Para todo $t > 0$, teremos que $\lim_{y \to \infty} X^y(t) =
+%   X^\infty(t)$  \qc.
+% \end{proposicao}
+% \begin{proof}
+%   Fixe um $t > 0$ e uma realização do processo. Como estamos supondo
+%   que $\gamma_y \xrightarrow{y\to\infty} 0$, então podemos supor que
+%   $\gamma_y T_0 < t$. Assim, usando a Proposição
+%   \ref{prop:reinicia-infinito}, teremos que:
+%   \begin{displaymath}
+%     |X^y(t) - X^\infty(t)| = |X^\infty(t-\gamma_yT_0) - X^\infty(t)|.
+%   \end{displaymath}
+
+%   Agora, pela Proposição \ref{prop:proc-descontinuidades}, teremos que
+%   todo $t > 0$ fixado é \qc um ponto de continuidade do processo,
+%   portando como $\gamma_y T_0 \xrightarrow{y \to \infty} 0$ \qc, temos
+%   que a quantidade acima converge à zero \qc. 
+% \end{proof}
+
+
 \begin{proposicao}
-  \label{prop:quase-prop-feller}
-  Para todo $t > 0$, teremos que $\lim_{y \to \infty} X^y(t) =
-  X^\infty(t)$  \qc.
+  \label{prop:gamma-somavel}
+  Seja $V_t := \cup_{s \in [0, t]} \{ X(t) \} \setminus \{\infty\}$ o
+  conjunto de estados visitados pelo processo até o instante
+  $t$. Então:
+  \begin{displaymath}
+    \sum_{x \in V_t} \gamma_x < \infty,
+  \end{displaymath}
+  quase certamente para todo $t > 0$.
 \end{proposicao}
 \begin{proof}
-  Fixe um $t > 0$ e uma realização do processo. Como estamos supondo
-  que $\gamma_y \xrightarrow{y\to\infty} 0$, então podemos supor que
-  $\gamma_y T_0 < t$. Assim, usando a Proposição
-  \ref{prop:reinicia-infinito}, teremos que:
+
+  Primeiramente fixe um $t >0 $ arbitrário.
+
+  Denote por $V^\prime_t = \{ x \in \Nz: N^x(t) \geq 1 \}$. Quase
+  certamente vale que:
   \begin{displaymath}
-    |X^y(t) - X^\infty(t)| = |X^\infty(t-\gamma_yT_0) - X^\infty(t)|.
+    \infty > \Gamma(t) \geq \sum_{x \in V^\prime_t} \gamma_x T^x_1.
   \end{displaymath}
 
-  Agora, pela Proposição \ref{prop:proc-descontinuidades}, teremos que
-  todo $t > 0$ fixado é \qc um ponto de continuidade do processo,
-  portando como $\gamma_y T_0 \xrightarrow{y \to \infty} 0$ \qc, temos
-  que a quantidade acima converge à zero \qc. 
-\end{proof}
+  Se denotarmos por $\nu$ a medida de $V^\prime_t$ sobre o conjunto
+  das partes de $\Nz$, como $V^\prime_t$ só depende dos processos de
+  Poisson $\{N^x: x \in \Nz\}$ e esses são independentes de $\{ T^x_1:
+  x \in \Nz \}$, teremos que:
+  \begin{align*}
+    1 &= P\left(\sum_{x \in V^\prime_t} \gamma_x T^x_1 < \infty
+    \right)\\
+    &=\int P\left(\sum_{x \in V} \gamma_x T^x_1 < \infty
+    \right) \nu(dV)
+  \end{align*}
 
+  Portanto, para $\nu$ quase todo $V \in \PP(\Nz)$, vale que
+  $P(\sum_{x \in V^\prime_t} \gamma_x T^x_1 < \infty) = 1$. Fixado um
+  $V$ desses, teremos que $\sum_{x \in V}\gamma_x < \infty$, já que
+  uma soma de variáveis aleatórias exponenciais independentes é finita
+  \qc se e somente se as a soma de suas médias converge.
+
+  Com isso concluímos que, para um $t>0$ fixado, $\sum_{x \in
+    V^\prime_t}\gamma_x < \infty$ \qc.
+
+  Agora fixe uma sequência $(t_n)$, com $t_n\nearrow \infty$, teremos
+  que com probabilidade $1$, $\sum_{x \in V^\prime_{t_n}}\gamma_x <
+  \infty$ para todo $n$.
+
+  Note que se $t < s$, então $V^\prime_t \subseteq V^\prime_s$. Assim
+  para quaquer $t > 0$, existe um $n$ tal que $t_n > t$, e portando:
+  \begin{displaymath}
+    \sum_{x \in V^\prime_t}\gamma_x T^x_1 \leq
+    \sum_{x \in V^\prime_{t_n}}\gamma_x T^x_1 < \infty
+  \end{displaymath}
+
+  Voltando a trabalhar com $V_t$, note que se $s < t$, então $V_s
+  \subseteq V_t$, note ainda que por contrução $V^\prime_t =
+  V_{\Gamma(t)}$.
+
+  Agora fixe tome uma realização do processo, onde $\Gamma(t) \to
+  \infty$ quando $t \to \infty$ e $\sum_{x \in V^\prime_t} \gamma_x <
+  \infty$ para todo $t$, pelo argumento anterior, tais realizações tem
+  probabilidade $1$. Nelas, para um $t > 0$ arbirtrário, vai existir
+  um $s > 0$ tal que $\Gamma(s) > t$. Dessa forma:
+  \begin{displaymath}
+    \sum_{x \in V_t} \gamma_x \leq \sum_{x \in V_{\Gamma(s)}}
+    \gamma_x =
+    \sum_{x \in V^\prime_s} \gamma_x < \infty.
+  \end{displaymath}
+
+  De onde concluímos o que desejávamos.
+\end{proof}
 
 
 \begin{definicao}
@@ -384,26 +469,37 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
   \end{gather*}
 \end{definicao}
 
+% \begin{proposicao}
+%   \label{prop:semigrupo-feller}
+%   Se $f: \Nzb \to \R$ é uma função contínua, então para todo $t > 0$,
+%   $\Psi_t f$ também é uma função contínua.
+% \end{proposicao}
+% \begin{proof}
+%   Fixe um $t > 0$ arbitrário. Pela Proposição
+%   \ref{prop:quase-prop-feller}, teremos que $X^y(t)
+%   \xrightarrow{y\to\infty} X^\infty(t)$ \qc. Como $f$ é contínua,
+%   teremos que $f(X^y(t)) \xrightarrow{y\to\infty} f(X^\infty(t))$ \qc.
+
+%   O espaço $\Nzb$ é compacto, e como $f$ é contínua, ela é também
+%   limitada. Assim usando o teorema da convergência dominada, teremos
+%   que:
+%   \begin{displaymath}
+%     \Psi_t f (y) = \E \left[ f(X^y(t)) \right]
+%     \xrightarrow{y\to\infty}
+%     \E \left[ f(X^\infty(t)) \right] = \Psi_t f (\infty),
+%   \end{displaymath}
+%   de onde concluímos que $\Psi_t f$ é uma função contínua.
+% \end{proof}
+
 \begin{proposicao}
-  \label{prop:semigrupo-feller}
-  Se $f: \Nzb \to \R$ é uma função contínua, então para todo $t > 0$,
-  $\Psi_t f$ também é uma função contínua.
+  Para $f: \Nzb \to \R$ contínua e $t, s > 0$ fixados arbitrariamente,
+  vale que \qc:
+  \begin{displaymath}
+    \lim_{n \to \infty} \Psi_s f (X^{(n)}(t)) = \Psi_s f(X(t))
+  \end{displaymath}
 \end{proposicao}
 \begin{proof}
-  Fixe um $t > 0$ arbitrário. Pela Proposição
-  \ref{prop:quase-prop-feller}, teremos que $X^y(t)
-  \xrightarrow{y\to\infty} X^\infty(t)$ \qc. Como $f$ é contínua,
-  teremos que $f(X^y(t)) \xrightarrow{y\to\infty} f(X^\infty(t))$ \qc.
-
-  O espaço $\Nzb$ é compacto, e como $f$ é contínua, ela é também
-  limitada. Assim usando o teorema da convergência dominada, teremos
-  que:
-  \begin{displaymath}
-    \Psi_t f (y) = \E \left[ f(X^y(t)) \right]
-    \xrightarrow{y\to\infty}
-    \E \left[ f(X^\infty(t)) \right] = \Psi_t f (\infty),
-  \end{displaymath}
-  de onde concluímos que $\Psi_t f$ é uma função contínua.
+  
 \end{proof}
 
 \begin{teorema}
