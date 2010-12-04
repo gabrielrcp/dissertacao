@@ -366,6 +366,16 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
 \section{Propriedade de Markov}
 \label{sec:prop-markov}
 
+O objetivo dessa seção é provar a propriedade de Markov do processo
+K. Nossa estratégia será mostrar que a propriedade de Markov se matém
+quando tomamos os limites dos processos truncados introduzidos na
+Seção \ref{sec:aproximacoes}.
+
+Note que nem sempre o limite de processos Markovianos é um processo
+Markoviano, ver (???). Para demonstrar que a propriedade é mantida,
+vamos abusar de diversas propriedades da nossa construção, em
+particular da convergência dos processos truncados uniformemente na
+condição inicial.
 
 % \begin{proposicao}
 %   \label{prop:quase-prop-feller}
@@ -390,7 +400,7 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
 
 \begin{proposicao}
   \label{prop:gamma-somavel}
-  Seja $V_t := \cup_{s \in [0, t]} \{ X(t) \} \setminus \{\infty\}$ o
+  Seja $V_t := \cup_{s \in [0, t]} \{ X(s) \} \setminus \{\infty\}$ o
   conjunto de estados visitados pelo processo até o instante
   $t$. Então:
   \begin{displaymath}
@@ -400,7 +410,7 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
 \end{proposicao}
 \begin{proof}
 
-  Primeiramente fixe um $t >0 $ arbitrário.
+  Primeiramente fixe um $t > 0$ arbitrário.
 
   Denote por $V^\prime_t = \{ x \in \Nz: N^x(t) \geq 1 \}$. Quase
   certamente vale que:
@@ -492,14 +502,228 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
 % \end{proof}
 
 \begin{proposicao}
+  \label{prop:semigrupo-quase-continuo}
   Para $f: \Nzb \to \R$ contínua e $t, s > 0$ fixados arbitrariamente,
   vale que \qc:
-  \begin{displaymath}
+  \begin{equation}
+    \label{eq:semigrupo-quase-continuo}
     \lim_{n \to \infty} \Psi_s f (X^{(n)}(t)) = \Psi_s f(X(t))
-  \end{displaymath}
+  \end{equation}
 \end{proposicao}
 \begin{proof}
+  Usando o Corolário \ref{cor:continuidades-processo}, temos que $t$ é
+  \qc um ponto de continuidade do processo original. Assim, como
+  $X^{(n)}$ converge \qc para $X$ na métrica de Skorohord, ele também
+  converge pontualmente nos pontos de contínuidade de $X$. Portanto
+  $X^{(n)}(t) \to X(t)$ \qc quando $n \to \infty$.
+
+  Vamos fixar agora uma dessas realizações e separar em 2 casos. O
+  primeiro é quando existe um $n_0$ tal que $n > n_0$ implica que
+  $X^{(n)}(t) = X(t)$. Nesse caso é evidente que para $n > n_0$,
+  $\Psi_s f (X^{(n)}(t)) = \Psi_s f(X(t))$.
+
+  O segundo é quando $X^{(n)}(t)$ se aproxima de $X(t)$ sem ser
+  permanecer exatamente igual. Olhando para a topologia em que estamos
+  trabalhando, isso só é possível quanto $X(t) = \infty$.  Como
+  $X^{(n)}(t) \to \infty$ quando $n \to \infty$, então existe uma
+  subsequência $(n_k)$ tal que $(X^{n_k}(t))_k$ seja estritamente
+  crescente e $X^{(n_k)} \to \infty$ quando $k \to \infty$. Se
+  mostrarmos \eqref{eq:semigrupo-quase-continuo} para todas as
+  subsequências desse tipo, estaremos mostrando para a sequência
+  original também.
+
+  Vamos denotar por $y_k = X^{(n_k)}(t)$. Por contrução, se o processo
+  truncado passou por um estado $x$, então o processo original deve
+  ter passado também. Portanto $y_k \in V_t$ para todo $k$.
+
+  Assim $\sum_{k = 1}^{\infty}\gamma_{y_k} \leq \sum_{x \in V_t}
+  \gamma_x < \infty$ \qc. Em particular $\gamma_{y_k} \to 0$ quando
+  $k\to\infty$. Assim $\gamma_{y_k} T_0 \to 0$ e se tomarmos um $k$
+  suficientemente grande teremos que $\gamma_{y_k} T_0 < s$. Dessa
+  forma usando a Proposição \ref{prop:reinicia-infinito} teremos que:
+  \begin{align*}
+    \Psi_s f (\infty) - \Psi_s f (y_k) &=
+    \E\left[ f(X^\infty(s)) - f(X^{y_k}(s)) \right] \\
+    &= \E\left[ f(X^\infty(s)) -f (X^\infty(s - \gamma_{y_k}T_0)) \right] \\
+  \end{align*}
+
+  Agora $s$ é \qc um ponto de continuidade de $X^\infty$ (pela
+  Corolário \ref{cor:continuidades-processo}), e como $\gamma_{y_k}
+  T_0$ converge à zero, temos que a quantidade dentro da esperança
+  acima converge quase certamente à zero. Como $f$ é contínua (e
+  portanto limitada), o teorema da convergência monótona nos garante
+  que a esperança também converge à zero.
+\end{proof}
+
+
+\begin{proposicao}
+  \label{prop:convergencia-semigrupo}
+  Seja $K \subseteq \Nz$ tal que
+  \begin{displaymath}
+    \lim_{n \to \infty} \sup\{ \gamma_x: x \in  K \textrm{ e } x > n\} = 0,
+  \end{displaymath}
+  sob a convenção de que $\sup \emptyset = 0$. Tome ainda $f: \Nzb
+  \to \R$ contínua e $t > 0$. Nessas condições:
+  \begin{displaymath}
+    \sup_{y \in K} | \Psi^n_t f (y) - \Psi_t f(y) |
+    \xrightarrow{n\to\infty} 0.
+  \end{displaymath}
+\end{proposicao}
+
+\begin{proof}
+
+  Vamos tratar primeiro o caso em que $K$ é finito. Nesse caso basta
+  mostrar que, para um dado $y$,  $\Psi^n_t f (y) \to \Psi_t f(y)$.
+  \begin{align*}
+    \Psi^n_t f (y) -\Psi_t f(y) &=
+    \E \left[
+      f(X^{y, (n)}(t)) - f(X^y(t))
+    \right]
+  \end{align*}
+
+  O Corolário \ref{cor:continuidades-processo} nos garante que $t$ é
+  \qc um ponto de continuidade de $X^y$, assim $X^{y, (n)}(t)) \to
+  X^y(t)$ \qc quando $n \to \infty$, e como $f$ é contínua, concluímos
+  que $f(X^{y, (n)}(t)) \to f(X^y(t))$ \qc.
+
+  Mas $f$ também é limitada, daí pelo Teorema da Convergência Monótona
+  concluímos que  $\E [ f(X^{y, (n)}(t)) - f(X^y(t)) ] \to 0$.
+
+
+  Agora vamos supor que $K$ é infinito. Tomando $\lambda_n^y$ como no
+  Corolário \ref{cor:convergencia}, para um $T > t$ qualquer, teremos que:
+  \begin{align}
+    \label{eq:esperancas-markov}
+    \sup_{y \in K} | \Psi^n_t f (y) - \Psi_t f(y) | 
+    &= \sup_{y \in K} \left\lvert \E \left[f(X^{y, (n)}(t)) -
+        f(X^y(t)) \right]\right\rvert \\
+    &\leq \sup_{y\in K}\left\lvert \E \left[f(X^{y, (n)}(t)) -
+        f(X^y(\lambda_n^y(t))) \right]
+    \right\rvert \notag \\
+    &+ \sup_{y\in K}\left\lvert \E \left[f(X^y(\lambda_n^y(t))) -
+        f(X^y(t)) \right] \right\rvert \notag
+  \end{align}
+
+  Vamos tratar os dois termos dessa soma separadamente.
+
+  Por construção das $\lambda_n^y$, temos que para todo $y$, quase certamente:
+  \begin{displaymath}
+    d(X^{y, (n)}(t), X^y(\lambda_n^y(t)) \leq
+    \sup_{s \in [0, T]} d(X^{\infty, (n)}(s), X^y(\lambda_n^\infty(s))
+    \xrightarrow{n\to\infty} 0.
+  \end{displaymath}
+
+  $f$ é uma função contínua em um espaço compacto, assim ela é
+  uniformemente contínua. Isso é, para todo $\epsilon > 0$, existe um
+  $\delta_\epsilon > 0$ tal que se $d(x, y) < \delta_\epsilon$ então
+  $|f(x)-f(y)| < \epsilon$.
+
+  Dessa forma, fixado um $\epsilon > 0$ arbitrário, teremos que:
+  \begin{gather*}
+    \sup_{y\in K} \left\lvert \E \left[ f(X^{y,(n)}(t)) -
+        f(X^{y}(\lambda_n^y(t))) \right]
+    \right\rvert\\
+    \leq \sup_{y\in K} \left\lvert \E \left[ \left(f(X^{y,(n)}(t)) -
+          f(X^{y}(\lambda_n^y(t))) \right) \ind\{ d(X^{y, (n)}(t),
+        X^y(\lambda_n^y(t)) < \delta_\epsilon \} \right]
+    \right\rvert \\
+    + 2\Vert f \Vert \sup_{y \in K} P\left( d(X^{y, (n)}(t),
+      X^y(\lambda_n^y(t)) \geq
+      \delta_\epsilon \right) \\
+    \leq \epsilon + 2 \Vert f \Vert P \left( \sup_{s \in [0, T]}d(X^{\infty, (n)}(s),
+      X^\infty(\lambda_n^\infty(s)) \geq \delta_\epsilon \right).
+  \end{gather*}
+  Essa última quantidade vai para $\epsilon$ quando $n\to
+  \infty$. Como $\epsilon$ foi escolhido arbitráriamente, concluímos
+  que o primeiro termo de \eqref{eq:esperancas-markov} converge à
+  zero.
+
+  Para calcular o segundo termo, veja que aquela quantidade, para cada
+  $y \in K$ fixado, vai à zero, já que $t$ é \qc um ponto de
+  continuidade do processo e $\lambda_n^y(t) \to t$ quando
+  $n\to\infty$. Dessa forma existe uma sequência $(k_n)$ tal que $k_n
+  \xrightarrow{n\to\infty} \infty$ onde:
+  \begin{displaymath}
+      \max_{\stackrel{y \leq k_n}{y\in K}} \left\lvert
+      \E \left[g(X^y(\lambda_n^y(s))) - g(X^y(s)) \right]
+    \right\rvert \xrightarrow{n\to \infty} 0.
+  \end{displaymath}
+
+  Agora vamos tomar $\delta_n = \sqrt{\sup\{ \gamma_x: x \in K
+    \textrm{ e } x > k_n\}}$. Por hipótese, temos que $\delta_n \to
+  0$. Ainda note que $\sup \{ P(\gamma_y T_0 > \delta_n) : y \in K, y
+  > k_n \} = e^{-\frac{1}{\delta_n}} \to 0$ quanto $n \to \infty$.
+
+  Como $\delta_n \to 0$, vamos apenas considerar $n$ suficientemente
+  grande, de forma que $\delta_n < t \leq \lambda_n^y(t)$. Usando a
+  Proposição \ref{prop:reinicia-infinito} e separando nos casos
+  $\gamma_yT_0 < \delta_n$ e $\gamma_yT_0 \geq \delta_n$, teremos que:
+  \begin{align}
+    \label{eq:markov-quase-la}
+    \sup_{\stackrel{y > k_n}{y \in K}}& \left\lvert \E \left[f(X^y(\lambda_n^y(t))) -
+        f(X^y(t)) \right]
+    \right\rvert \notag \\
+    &\leq \sup_{\stackrel{y > k_n}{y \in K}} \E \left\lvert
+      \left[f(X^\infty(\lambda_n^y(t)-\gamma_yT_0)) -
+        f(X^\infty(t-\gamma_yT_0)) \right] \ind\{ \gamma_yT_0 <
+      \delta_n \}
+    \right\rvert\\
+    &+ 2 \Vert g \Vert \sup_{\stackrel{y > k_n}{y \in K}} P(\gamma_y T_0 > \delta_n).
+    \notag
+  \end{align}
+
+  Nós escolhemos $\delta_n$ de forma que o segundo termo dessa soma vá
+  à zero quando $n \to \infty$. Agora repare que podemos dominar o
+  primeiro termo por:
+  \begin{displaymath}
+     \E \left[ \sup_{\stackrel{y > k_n}{y\in K}}
+      \sup_{0 \leq s \leq \delta_n} \left\lvert
+        f(X^\infty(\lambda_n^y(t)-s)) -
+        f(X^\infty(t-s))
+    \right\rvert \right].
+  \end{displaymath}
+
+  Note que a variável sobre a qual estamos tomando esperança é
+  dominada por $2\Vert g \Vert$. Portando se mostrarmos que ela
+  converge \qc para zero, valerá que sua esperança também vai a zero.
+
+  Fixado um $\epsilon > 0$, tome $\epsilon^\prime > 0$ tal que $d(x, y) <
+  \epsilon^\prime$ implique que $|f(x) - f(y)| < \epsilon$, isso
+  existe por causa da continuidade uniforme de $f$.
+ 
+  Como $t$ é \qc um ponto de continuidade de $X^\infty$, existe um
+  $\epsilon^{\prime\prime}$ tal que se $|s| <
+  \epsilon^{\prime\prime}$, então $d(X^\infty_t, X^\infty_{t+s}) <
+  \frac{\epsilon^{\prime}}{2}$.
+
+  Assim se tomarmos $n_0$ tal que para todo $n > n_0$, $\delta_{n} <
+  \frac{\epsilon^{\prime\prime}}{2}$ e $\sup_{0 \leq s \leq T}
+  |\lambda_n^\infty(s) - s| < \frac{\epsilon^{\prime\prime}}{2}$, teremos
+  que, para todo $y\in\Nzb$ e $s \leq \delta_n$:
+  \begin{gather*}
+    |\lambda_n^y(t) - s - t| < \epsilon^{\prime\prime}\\
+    |t - s - t | < \epsilon^{\prime\prime}
+  \end{gather*}
   
+  Portanto temos que:
+  \begin{displaymath}
+    d(X^\infty(\lambda_n^y(t)-s), X^\infty(t-s)) \leq
+     d(X^\infty(\lambda_n^y(t)-s), X^\infty(t))+
+     d(X^\infty(t), X^\infty(t-s))
+     < \epsilon^{\prime}
+  \end{displaymath}
+
+  De onde finalmente concluímos que para todo $n > n_0$:
+  \begin{displaymath} 
+    \sup_{\stackrel{y > k_n}{y \in K}}
+    \sup_{0 \leq s \leq \delta_n} \left\lvert
+      f(X^\infty(\lambda_n^y(t)-s)) -
+      f(X^\infty(t-s))
+    \right\rvert < \epsilon
+  \end{displaymath}
+
+  Como o $\epsilon$ foi tomado arbitrariamente, concluímos que essa
+  quantidade vai a zero quase certamente.
 \end{proof}
 
 \begin{teorema}
@@ -508,10 +732,6 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
 \end{teorema}
 
 \begin{proof}
-
-  Essa demonstração é uma leve adaptação da demonstração da segunda
-  parte da Proposição (3.6) de \cite{fontes:08}.
-
   Fixado um $m \geq 1$, $t_1 < t_2 < \ldots < t_{m+1}$ e $f_1, \ldots,
   f_{m+1} : \Nzb \to \R$ funções contínuas.
 
@@ -532,11 +752,11 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
     \right]
   \end{gather}
 
-  A Proposição \ref{prop:proc-descontinuidades} nos garante que \qc
+  O Corolário \ref{cor:continuidades-processo} nos garante que \qc
   $t_1, \ldots, t_{m+1}$ são pontos de continuidade do processo, e
   como convergência na métrica de Skorohod garante convergência
   pontual nos pontos de continuidade, teremos que $f_i(X^{(n)}(t_i)) \to
-  f_i(X(t_i))$ \qc já que $f_i$ é contínua.
+  f_i(X(t_i))$ \qc já que $f_i$ é contínua, $i = 1, \ldots, m+1$.
 
   Temos ainda que $f_1, \ldots f_{m+1}$ são limitadas porque são
   funções contínuas num espaço compacto. Assim usando o teorema da
@@ -562,9 +782,8 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
     \right] + \epsilon_n
   \end{equation}
 
-  Usando a Proposição \ref{prop:semigrupo-feller}, temos que
-  $\Psi_{t_{m+1}-t_m} f_{m+1}$ é uma função contínua. Assim a parte da
-  esquerda de \eqref{eq:markov-est-eps} converge para:
+  Usando a Proposição \ref{prop:semigrupo-quase-continuo}, temos que a
+  parte da esquerda de \eqref{eq:markov-est-eps} converge para:
   \begin{displaymath}
     \E \left[
       f_{1}(X(t_{1})) 
@@ -574,161 +793,36 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
     \right].
   \end{displaymath}
 
-  Resta mostrar que $\epsilon_n \to 0$. Usando o fato de $f_1, \ldots,
-  f_m$ serem limitadas, teremos que para alguma constante $K$:
+  Resta mostrar que $\epsilon_n \to 0$. Para simplificar a notação,
+  vamos denotar por $s = t_{m+1} - t_m$, $t = t_m$ e $g = f_{m+1}$.
+  Usando o fato de $f_1, \ldots, f_m$ serem limitadas, teremos que:
   \begin{displaymath}
-    |\epsilon_n| \leq  K \sup_{y \in \Nzb} \left\lvert
-      \Psi^n_{t_{m+1}-t_m} f_{m+1} (y) - 
-      \Psi_{t_{m+1}-t_m} f_{m+1} (y) 
-    \right\rvert
-  \end{displaymath}
-
-  Apenas para simplificar a notação, vamos denotar por $s = t_{m+1} -
-  t_m$ e $g = f_{m+1}$. Assim teremos que:
-  \begin{align*}
-    \Psi^n_{s} g (y) - \Psi_{s} g (y)
-    &= \E \left[g(X^{y, (n)}(s)) - g(X^y(s)) \right] \notag \\
-    &= \E \left[g(X^{y, (n)}(s)) - g(X^y(\lambda_n^y(s))) \right]
-    + \E \left[g(X^y(\lambda_n^y(s))) - g(X^y(s)) \right],
-  \end{align*}
-  onde $\lambda_n^y$ são tomadas como no Corolário
-  \ref{cor:convergencia}, para um $T > s$ qualquer.
-
-  Dessa maneira, temos que:
-  \begin{align}
-    \label{eq:esperancas-markov}
-    |\epsilon_n| &\leq 
-    K \sup_{y\in\Nzb}\left\lvert
-      \E \left[g(X^{y, (n)}(s)) - g(X^y(\lambda_n^y(s))) \right]
-    \right\rvert
-    + K \sup_{y\in\Nzb}\left\lvert
-      \E \left[g(X^y(\lambda_n^y(s))) - g(X^y(s)) \right]
-    \right\rvert. 
-  \end{align}
-
-  Vamos tratar os dois termos dessa soma separadamente.
-
-  Por construção das $\lambda_n^y$, temos que para todo $y$, quase certamente:
-  \begin{displaymath}
-    d(X^{y, (n)}(s), X^y(\lambda_n^y(s)) \leq
-    d(X^{\infty, (n)}(s), X^y(\lambda_n^\infty(s))
-    \xrightarrow{n\to\infty} 0.
-  \end{displaymath}
-
-  $g$ é uma função contínua em um espaço compacto, assim ela é
-  uniformemente contínua. Isso é, para todo $\epsilon > 0$, existe um
-  $\delta_\epsilon > 0$ tal que se $d(x, y) < \delta_\epsilon$ então
-  $|g(x)-g(y)| < \epsilon$.
-
-  Dessa forma, fixado um $\epsilon > 0$ arbitrário, teremos que:
-  \begin{gather*}
-    \sup_{y\in\Nzb} \left\lvert \E \left[ g(X^{y,(n)}(s)) -
-        g(X^{y}(\lambda_n^y)) \right]
-    \right\rvert\\
-    \leq \sup_{y\in\Nzb} \left\lvert \E \left[ \left(g(X^{y,(n)}(s)) -
-          g(X^{y}(\lambda_n^y)) \right) \ind\{ d(X^{y, (n)}(s),
-        X^y(\lambda_n^y(s)) < \delta_\epsilon \} \right]
-    \right\rvert \\
-    + 2\Vert g \Vert \sup_{y \in \Nzb} P\left( d(X^{y, (n)}(s),
-      X^y(\lambda_n^y(s)) \geq
-      \delta_\epsilon \right) \\
-    \leq \epsilon + 2 \Vert g \Vert P \left( d(X^{\infty, (n)}(s),
-      X^\infty(\lambda_n^\infty(s)) \geq \delta_\epsilon \right).
-  \end{gather*}
-  Essa última quantidade vai para $\epsilon$ quando $n\to
-  \infty$. Como $\epsilon$ foi escolhido arbitráriamente, concluímos
-  que o primeiro termo de \eqref{eq:esperancas-markov} converge à
-  zero.
-
-  Para calcular o segundo termo, veja que aquela quantidade, para cada
-  $y$ fixado, vai à zero, já que $s$ é \qc um ponto de continuidade do
-  processo. Dessa forma existe uma sequência $(k_n)$ tal que $k_n
-  \xrightarrow{n\to\infty} \infty$ onde:
-  \begin{displaymath}
-      \max_{y \leq k_n} \left\lvert
-      \E \left[g(X^y(\lambda_n^y(s))) - g(X^y(s)) \right]
-    \right\rvert \xrightarrow{n\to \infty} 0.
-  \end{displaymath}
-
-  Agora vamos tomar $\delta_n = \sqrt{\sup_{y > k_n}\gamma_y}$. Já
-  que $\gamma_y \xrightarrow{y\to\infty} 0$, então temos que $\delta_n
-  \xrightarrow{n\to\infty} 0$ e  $\sup_{y > k_n} P(\gamma_y T_0 > \delta_n) = 
-  e^{-\frac{1}{\delta_n}} \xrightarrow{n\to\infty} 0$.
-
-  Como $\delta_n \to 0$, vamos apenas considerar $n$ suficientemente
-  grande, de forma que $\delta_n < s \leq \lambda_n^y(s)$. Usando a Proposição
-  \ref{prop:reinicia-infinito} e condicionando em $\gamma_yT_0 <
-  \delta_n$, teremos que:
-  \begin{align}
-    \label{eq:markov-quase-la}
-    \sup_{y > k_n}& \left\lvert \E \left[g(X^y(\lambda_n^y(s))) -
-        g(X^y(s)) \right]
-    \right\rvert \notag \\
-    &\leq \sup_{y > k_n} \E \left\lvert
-      \left[g(X^\infty(\lambda_n^y(s)-\gamma_yT_0)) -
-        g(X^\infty(s-\gamma_yT_0)) \right] \ind\{ \gamma_yT_0 <
-      \delta_n \}
-    \right\rvert\\
-    &+ 2 \Vert g \Vert \sup_{y > k_n} P(\gamma_y T_0 > \delta_n).
-    \notag
-  \end{align}
-
-  Nós escolhemos $\delta_n$ de forma que o segundo termo dessa soma vá
-  à zero quando $n \to \infty$. Agora repare que podemos dominar o
-  primeiro termo por:
-  \begin{displaymath}
-     \E \left\lvert \sup_{y > k_n}
-      \sup_{0 \leq t \leq \delta_n} \left[
-        g(X^\infty(\lambda_n^y(s)-t)) -
-        g(X^\infty(s-t))
-      \right] 
+    |\epsilon_n| \leq  \textrm{cte}
+    \left\lvert \E \left[
+        \Psi_{s}^n g (X^{(n)}(t)) -
+        \Psi_{s} g (X^{(n)}(t))
+      \right]
     \right\rvert.
   \end{displaymath}
 
-  Note que a variável sobre a qual estamos tomando esperança é
-  dominada por $2\Vert g \Vert$. Portando se mostrarmos que ela
-  converge \qc para zero, valerá que sua esperança também vai a zero.
+  Como a parte interna dessa esperança pode ser dominada por $2\lVert
+  g \rVert$, se mostrarmos que ela converge quase certamente para
+  zero, seguirá do teorema da convergência dominada que a esperança também
+  converge à zero. Como $X^{(n)}(t) \in V_t$ para todo $n$, teremos
+  que:
+  \begin{align*}
+    \left\lvert \Psi_{s}^n g (X^{(n)}(t)) - \Psi_{s} g (X^{(n)}(t))
+    \right\rvert
+    &\leq \sup_{y \in V_t}  \left\lvert \Psi_{s}^n g (y) - \Psi_{s} g (y)
+    \right\rvert
+  \end{align*}
 
-  Fixado um $\epsilon > 0$, tome $\epsilon^\prime > 0$ tal que $d(x, y) <
-  \epsilon^\prime$ implique que $|g(x) - g(y)| < \epsilon$, isso
-  existe por causa da continuidade uniforme de $g$.
- 
-  Como $s$ é \qc um ponto de continuidade de $X^\infty$, existe um
-  $\epsilon^{\prime\prime}$ tal que se $|t| <
-  \epsilon^{\prime\prime}$, então $d(X_{s}, X_{s+t}) < \frac{\epsilon^{\prime}}{2}$.
+  A Proposição \ref{prop:gamma-somavel} nos garante que para quase
+  todo $V_t$, a condição da Proposição
+  \ref{prop:convergencia-semigrupo} é satisfeita. Portanto a
+  quantidade acima vai à zero \qc.
 
-  Assim se tomarmos $n_0$ tal que para todo $n > n_0$, $\delta_{n} <
-  \frac{\epsilon^{\prime\prime}}{2}$ e $\sup_{0 \leq t \leq T}
-  |\lambda_n(t) - t| < \frac{\epsilon^{\prime\prime}}{2}$, teremos
-  que, para todo $y\in\Nzb$ e $t \leq \delta_n$:
-  \begin{gather*}
-    |\lambda_n^y(s) - t - s| < \epsilon^{\prime\prime}\\
-    |s - t - s | < \epsilon^{\prime\prime}
-  \end{gather*}
-  
-  Portanto temos que:
-  \begin{displaymath}
-    d(X^\infty(\lambda_n^y(s)-t), X^\infty(s-t)) \leq
-     d(X^\infty(\lambda_n^y(s)-t), X^\infty(s))+
-     d(X^\infty(s), X^\infty(s-t))
-     < \epsilon^{\prime}
-  \end{displaymath}
-
-  De onde finalmente concluímos que para todo $n > n_0$:
-  \begin{displaymath} 
-    \sup_{y > k_n}
-    \sup_{0 \leq t \leq \delta_n} \left[
-      g(X^\infty(\lambda_n^y(s)-t)) -
-      g(X^\infty(s-t))
-    \right] < \epsilon
-  \end{displaymath}
-
-  Como o $\epsilon$ foi tomado arbitrariamente, concluímos que essa
-  quantidade vai a zero quase certamente.
-
-
-  Juntando tudo, provamos que $\epsilon_n \to 0$ quando $n \to
-  \infty$, de onde concluímos que:
+  Juntando tudo concluímos que:
   \begin{displaymath}
     \E \left[
       f_{1}(X(t_{1})) 
@@ -743,17 +837,6 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
       \Psi_{t_{m+1} - t{m}} f_{m+1} (X(t_{m})) 
     \right].
   \end{displaymath}
-\end{proof}
-
-
-
-
-\begin{corolario}
-  \label{cor:proc_fort_markov}
-  $X^y$ é fortemente Markoviano.
-\end{corolario}
-\begin{proof}
-  Um processo de Fel ler Markoviano é fortemente Markoviano. Ver (???)
 \end{proof}
 
 
