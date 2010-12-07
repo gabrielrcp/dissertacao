@@ -1,34 +1,21 @@
 %PDF-1.4
-%Å‚Å„ÅœÅ”\r
-1 0 obj
-<<
-/CreationDate (D:20101013171648)
-/ModDate (D:20101013171648)
-/Title (R Graphics Output)
-/Producer (R 2.11.1)
-/Creator (R)
->>
-endobj
-2 0 obj
-<<
-/Type /Catalog
-/Pages 3 0 R
->>
+%‚„œ”
+3 0 obj
+<</AIS false/Type/ExtGState>>
 endobj
 5 0 obj
-<<
-/Type /Page
-/Parent 3 0 R
-/Contents 6 0 R
-/Resources 4 0 R
->>
+<</Type/Encoding/Differences[45/minus 96/quoteleft 144/dotlessi/grave/acute/circumflex/tilde/macron/breve/dotaccent/dieresis/.notdef/ring/cedilla/.notdef/hungarumlaut/ogonek/caron/space]/BaseEncoding/WinAnsiEncoding>>
+endobj
+4 0 obj
+<</BaseFont/Helvetica/Subtype/Type1/Name/F2/Type/Font/Encoding 5 0 R>>
+endobj
+2 0 obj
+<</ExtGState<</GSais 3 0 R>>/Font<</F2 4 0 R>>/ProcSet[/PDF/Text]>>
 endobj
 6 0 obj
-<<
-/Length 7 0 R
->>
-stream
+<</Length 1702>>stream
 1 J 1 j q
+Q q 59.04 73.44 414.72 371.52 re W n
 Q q 59.04 73.44 414.72 371.52 re W n
 0.000 0.000 0.000 RG
 0.75 w
@@ -36,26 +23,18 @@ Q q 59.04 73.44 414.72 371.52 re W n
 1 J
 1 j
 10.00 M
-74.40 87.20 m 74.40 87.20 l S
-74.40 110.64 m 78.60 110.91 l S
-78.60 122.93 m 83.38 123.23 l S
-83.38 181.48 m 127.76 184.31 l S
-127.76 185.61 m 145.33 186.74 l S
-145.33 190.44 m 146.56 190.51 l S
-146.56 251.02 m 172.77 252.69 l S
-172.77 264.96 m 202.04 266.83 l S
-202.04 268.56 m 206.05 268.82 l S
-206.05 275.70 m 236.11 277.62 l S
-236.11 280.88 m 241.31 281.21 l S
-241.31 287.13 m 305.80 291.25 l S
-305.80 296.12 m 337.07 298.12 l S
-337.07 299.77 m 356.17 300.99 l S
-356.17 311.30 m 356.72 311.33 l S
-356.72 312.94 m 374.53 314.07 l S
-374.53 336.25 m 384.32 336.88 l S
-384.32 381.40 m 400.23 382.41 l S
-400.23 402.07 m 412.19 402.83 l S
-412.19 417.41 m 453.44 420.04 l S
+74.40 87.20 m 121.27 106.08 l S
+121.27 138.44 m 132.24 142.86 l S
+132.24 164.31 m 139.54 167.25 l S
+139.54 175.90 m 150.58 180.34 l S
+150.58 185.58 m 174.13 195.06 l S
+174.13 235.96 m 247.49 265.51 l S
+247.49 279.32 m 343.26 317.89 l S
+343.26 359.69 m 362.28 367.36 l S
+362.28 368.97 m 366.88 370.83 l S
+366.88 372.83 m 408.66 389.66 l S
+408.66 401.05 m 426.08 408.07 l S
+426.08 412.02 m 433.15 414.87 l S
 Q q
 0.000 0.000 0.000 RG
 0.75 w
@@ -65,108 +44,81 @@ Q q
 10.00 M
 74.40 73.44 m 458.40 73.44 l S
 74.40 73.44 m 74.40 66.24 l S
-170.40 73.44 m 170.40 66.24 l S
-266.40 73.44 m 266.40 66.24 l S
-362.40 73.44 m 362.40 66.24 l S
+151.20 73.44 m 151.20 66.24 l S
+228.00 73.44 m 228.00 66.24 l S
+304.80 73.44 m 304.80 66.24 l S
+381.60 73.44 m 381.60 66.24 l S
 458.40 73.44 m 458.40 66.24 l S
 BT
 0.000 0.000 0.000 rg
-/F2 1 Tf 12.00 0.00 -0.00 12.00 66.06 47.52 Tm (0.0) Tj
+/F2 1 Tf 12.00 0.00 -0.00 12.00 71.06 47.52 Tm (0) Tj
 ET
 BT
-/F2 1 Tf 12.00 0.00 -0.00 12.00 162.06 47.52 Tm (0.5) Tj
+/F2 1 Tf 12.00 0.00 -0.00 12.00 147.86 47.52 Tm (2) Tj
 ET
 BT
-/F2 1 Tf 12.00 0.00 -0.00 12.00 258.06 47.52 Tm (1.0) Tj
+/F2 1 Tf 12.00 0.00 -0.00 12.00 224.66 47.52 Tm (4) Tj
 ET
 BT
-/F2 1 Tf 12.00 0.00 -0.00 12.00 354.06 47.52 Tm (1.5) Tj
+/F2 1 Tf 12.00 0.00 -0.00 12.00 301.46 47.52 Tm (6) Tj
 ET
 BT
-/F2 1 Tf 12.00 0.00 -0.00 12.00 450.06 47.52 Tm (2.0) Tj
+/F2 1 Tf 12.00 0.00 -0.00 12.00 378.26 47.52 Tm (8) Tj
 ET
-59.04 87.20 m 59.04 393.76 l S
+BT
+/F2 1 Tf 12.00 0.00 -0.00 12.00 451.73 47.52 Tm (10) Tj
+ET
+59.04 87.20 m 59.04 396.54 l S
 59.04 87.20 m 51.84 87.20 l S
-59.04 148.51 m 51.84 148.51 l S
-59.04 209.82 m 51.84 209.82 l S
-59.04 271.14 m 51.84 271.14 l S
-59.04 332.45 m 51.84 332.45 l S
-59.04 393.76 m 51.84 393.76 l S
+59.04 164.53 m 51.84 164.53 l S
+59.04 241.87 m 51.84 241.87 l S
+59.04 319.20 m 51.84 319.20 l S
+59.04 396.54 m 51.84 396.54 l S
 BT
 /F2 1 Tf 0.00 12.00 -12.00 0.00 41.76 83.86 Tm (0) Tj
 ET
 BT
-/F2 1 Tf 0.00 12.00 -12.00 0.00 41.76 145.18 Tm (5) Tj
+/F2 1 Tf 0.00 12.00 -12.00 0.00 41.76 161.20 Tm (5) Tj
 ET
 BT
-/F2 1 Tf 0.00 12.00 -12.00 0.00 41.76 203.15 Tm (10) Tj
+/F2 1 Tf 0.00 12.00 -12.00 0.00 41.76 235.20 Tm (10) Tj
 ET
 BT
-/F2 1 Tf 0.00 12.00 -12.00 0.00 41.76 264.46 Tm (15) Tj
+/F2 1 Tf 0.00 12.00 -12.00 0.00 41.76 312.53 Tm (15) Tj
 ET
 BT
-/F2 1 Tf 0.00 12.00 -12.00 0.00 41.76 325.78 Tm (20) Tj
-ET
-BT
-/F2 1 Tf 0.00 12.00 -12.00 0.00 41.76 387.09 Tm (25) Tj
+/F2 1 Tf 0.00 12.00 -12.00 0.00 41.76 389.87 Tm (20) Tj
 ET
 Q
+
 endstream
 endobj
+1 0 obj
+<</Parent 7 0 R/Resources 2 0 R/MediaBox[0 0 504 504]/Type/Page/Contents 6 0 R>>
+endobj
 7 0 obj
-1940
-endobj
-3 0 obj
-<<
-/Type /Pages
-/Kids [
-5 0 R
-]
-/Count 1
-/MediaBox [0 0 504 504]
->>
-endobj
-4 0 obj
-<<
-/ProcSet [/PDF /Text]
-/Font <</F2 9 0 R >>
-/ExtGState << >>
->>
+<</ITXT(2.1.7)/Kids[1 0 R]/Count 1/Type/Pages>>
 endobj
 8 0 obj
-<<
-/Type /Encoding
-/BaseEncoding /WinAnsiEncoding
-/Differences [ 45/minus 96/quoteleft
-144/dotlessi /grave /acute /circumflex /tilde /macron /breve /dotaccent
-/dieresis /.notdef /ring /cedilla /.notdef /hungarumlaut /ogonek /caron /space]
->>
+<</Pages 7 0 R/Type/Catalog>>
 endobj
-9 0 obj <<
-/Type /Font
-/Subtype /Type1
-/Name /F2
-/BaseFont /Helvetica
-/Encoding 8 0 R
->> endobj
+9 0 obj
+<</Creator(pdftk 1.41 - www.pdftk.com)/Producer(iText 2.1.7 by 1T3XT)/ModDate(D:20101207064631-02'00')/CreationDate(D:20101207064631-02'00')>>
+endobj
 xref
 0 10
 0000000000 65535 f 
-0000000021 00000 n 
-0000000164 00000 n 
-0000002306 00000 n 
-0000002389 00000 n 
-0000000213 00000 n 
+0000002213 00000 n 
+0000000379 00000 n 
+0000000015 00000 n 
 0000000293 00000 n 
-0000002286 00000 n 
-0000002470 00000 n 
-0000002727 00000 n 
+0000000060 00000 n 
+0000000462 00000 n 
+0000002309 00000 n 
+0000002372 00000 n 
+0000002417 00000 n 
 trailer
-<<
-/Size 10
-/Info 1 0 R
-/Root 2 0 R
->>
+<</Info 9 0 R/Root 8 0 R/Size 10/ID [<19c7b499233f7e660e007294c47eebd0><2c630ddced31d130c7a5fc72e1dd2a8a>]>>
 startxref
-2823
+2575
 %%EOF

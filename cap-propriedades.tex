@@ -4,17 +4,19 @@
 
 Nesse capítulo vamos estabelecer resultados que serão ferramentas
 básicas para trabalhar com o processo K durante o resto da
-dissertação. Como uma maneira de aproximá-lo por processos Markovianos
-de salto.
+dissertação.
+
+Apresentaremos uma maneira de aproximar o processo K por processos
+Markovianos de salto, bem como provaremos que o processo K é
+Markoviano.
 
 %% ------------------------------------------------------------------------- %%
 
 \section{Observações gerais}
 \label{sec:observacoes}
 
-Nessa seção vamos colocar várias proposições ou observações sobre o
-processo, que serão usadas à exaustão em seções subsequentes da
-dissertação.
+Nessa seção vamos colocar várias observações sobre o processo K, que
+serão usadas à exaustão em seções subsequentes da dissertação.
 
 \begin{proposicao}
   \label{prop:gamma-crescente}
@@ -123,7 +125,7 @@ dissertação.
   Fixe uma realização do processo e fixe $T > 0$ e $\epsilon > 0$
   arbitrários. Seguindo \cite{billingsley:99}, vamos mostrar que
   existem $0 = t_0 < t_1 < \ldots < t_N = T$ tais que $w[t_{i-1}, t_i)
-  < \epsilon$, para todo $i = 1, \ldots, N$. Onde $w(A) = \sum_{t, s
+  < \epsilon$, para todo $i = 1, \ldots, N$. Onde $w(A) = \sup_{t, s
     \in A} |X^\infty(t) - X^\infty(s)|$ para $A \subseteq \R$.
 
   Tome um $m \in \Nz$ tal que o $\diam\{x \in \Nzb: x > m \} =
@@ -163,7 +165,8 @@ dissertação.
 
   Assim temos que $t = t_i$ para algum $i$. Como na proposição
   anterior, escolhemos os $t_i$'s sempre do conjunto proposto, temos
-  eles são os únicos candidatos possíveis para pontos de continuidade.
+  eles são os únicos candidatos possíveis para pontos de
+  descontinuidade.
 \end{proof}
 
 \begin{corolario}
@@ -194,7 +197,7 @@ processos truncados convergem ao processo original.
 Primeiramente, para $n \in \Nz$ e $y \in \{1, \ldots, n, \infty\}$,
 vamos definir:
 \begin{equation}
-  \Gamma^{(n)} := \Gamma^{y,(n)}_c (t) = \gamma_y T_0^y
+  \Gamma^{(n)} := \Gamma^{y,(n)}_c (t) = \gamma_y T_0
   + \sum_{x =1}^{n} \sum_{i = 1}^{N_x(t)}
   \gamma_x T_i^x
   + ct.
@@ -216,9 +219,10 @@ O processo truncado em $n \in \Nz$, com estado inicial $y \in \{1,
   O processo $X^{(n)}$ é Càdlàd e Markoviano.
 \end{proposicao}
 \begin{proof}
-  Como visto na seção \ref{sec:visualizacao}, o processo $X_n^y$ é um
-  processo Markoviano de saltos, construído para ser contínuo a
-  direita.
+  Quando truncamos o processo K, ele se comporta de maneira análoga ao
+  caso analisado na Seção \ref{sec:visualizacao}, assim processo
+  $X^{y,(n)}$ é um processo Markoviano de saltos, construído para ser
+  contínuo a direita.
 \end{proof}
 
 Note que nós construímos $\{(X^{(n)}(t))_t\}_{n \in \Nz}$ e $(X(t))_t$
@@ -236,7 +240,6 @@ A métrica de Skorohod é uma métrica sobre o espaço das trajetórias
 Càdlàg que permite pequenas distorções temporais. Como
 referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
 
-
 \begin{proof}
   Essa demonstração foi adaptada diretamente do \emph{Lema 3.11} de
   \cite{fontes:08}.
@@ -245,7 +248,8 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
   5.3, capítulo 5 de \cite{ethier:86} vale quase certamente.
 
   Para essa demonstração, vamos sempre considerar que o processo
-  iniciou no $\infty$, e vamos parar de carregar esse índice na notação.
+  iniciou no $\infty$ e dessa forma parar de carregar esse índice na
+  notação.
 
   Fixe um $T > 0$. Para cada natural $m$, considere $\delta_m :=
   \diam\{ x \in \Nzb: x > m \} = \frac{1}{m+1}$. Tome ainda $0 = S_0^m

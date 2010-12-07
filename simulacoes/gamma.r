@@ -1,29 +1,17 @@
-escolhe <- function(p){
-  p <- p / sum(p);
-  u <- runif(1);
-  i <- 1;
-  while(u > p[i]){
-    u <- u - p[i];
-    i <- i+1;
-  }
-  i;
+gm <- function(x){
+  x;
 }
 
 vai <- function(lim = 10, c = 1){
-  N <- 10;
-  lmb <- rep(1, N);
-  gm <- rep(1, N);
-  y <- 3;
-
-  pos <- c(0);
-  salto <- rexp(1, 1/gm[y]);
+  pos <- NULL;
+  salto <- NULL;
   S <- 0;
   while(S < lim){
-    S <- S + rexp(1, sum(lmb));
+    S <- S + rexp(1, 1)
     if(S < lim){
       pos <- c(pos, S);
-      y <- escolhe(lmb);
-      salto <- c(salto, rexp(1,1/gm[y]));
+      y <- rgeom(1, 0.5) + 1;
+      salto <- c(salto, rexp(1,1/gm(y)));
     }
   }
   pos

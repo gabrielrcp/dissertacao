@@ -14,8 +14,8 @@ O processo K será um processo estocástico em tempo contínuo, cujo
 espaço de estados será $\Nzb$. Chamaremos os elementos de $\Nzb$ de
 estados ou sítios do processo.
 
-Como parâmetros do processo, teremos duas famílias de números reais
-estritamente positivos, $\gamma_x$ e $\lambda_x$, $x \in \Nz$. Além de
+Como parâmetros do processo, teremos uma família de números reais
+estritamente positivos, $\{\gamma_x, \lambda_x : x \in \Nz\}$. Além de
 uma constante $c \in [0, \infty)$.  Para um estado $x \in \Nz$,
 podemos interpretar $\gamma_x$ como o tempo médio para o processo sair
 de $x$ e $\lambda_x$ vai controlar a taxa com que o processo tende a
@@ -23,34 +23,33 @@ entrar em $x$. Enquanto que $c$ controla o tempo em que o estado fica
 em $\infty$.
 
 Seguindo \cite{fontes:08}, iremos definir o processo K através de uma
-construção. O espaço de probabilidade onde iremos defini-lo
+construção. O espaço de probabilidade onde iremos definí-lo
 será um espaço que admita as seguintes famílias de variáveis
 aleatórias independentes:
 
 \begin{itemize}
 \item $\{ N_x: x \in \Nz \}$: processos pontuais de Poisson
   independentes, onde $N_x$ tem taxa $\lambda_x$ para cada $x \in \N$.
-\item $\{T_n^x: x \in \Nzb , \, n = 0, 1, 2, 3, \ldots \}$: variáveis
-  aleatórias exponencias de média $1$.
+\item $\{T_0\} \cup \{T_n^x: x \in \Nzb , \, n = 1, 2, 3, \ldots \}$:
+  variáveis aleatórias exponencias de média $1$.
 \end{itemize}
 
 Para $t \geq 0$, iremos denotar por $N_x(t)$ o número de marcas do
-processo de poisson $N_x$ no intervalo $[0, t]$, marcas essas que
+processo de Poisson $N_x$ no intervalo $[0, t]$, marcas essas que
 iremos denotar por $0 < \sigma_1^x < \sigma_2^x < \ldots$ .
 
 Agora podemos definir uma função aleatória que será nossa principal
 ferramenta para trabalhar com esse processo. Para $t \geq 0$ e $y \in
-\Nzb$, sob a convenção que $\gamma_\infty = 0$:
+\Nzb$, sob a convenção que $\gamma_\infty = 0$ e $\sum_{i=1}^{0}(
+\bullet ) = 0$.:
 
 \begin{equation}
   \label{def:Gamma}
-  \Gamma(t) = \Gamma^y_c (t) = \gamma_y T_0^y
+  \Gamma(t) = \Gamma^y_c (t) = \gamma_y T_0
   + \sum_{x \in \N} \sum_{n = 1}^{N_x(t)}
   \gamma_x T_n^x
   + ct
 \end{equation}
-
-Por convenção, considere que $\sum_{i=1}^{0}( \bullet ) = 0$.
 
 Agora vamos impor algumas restrições nos nossos parâmetros. Que serão:
 \begin{align}
@@ -64,14 +63,14 @@ A primeira fará com que $\Gamma$ seja \qc finita para todo $t \in
 \ref{sec:visualizacao} que o processo K sem essa segunda condição é
 bastante simples.
 
-Chamaremos o processo K iniciado em $y \in \Nb$ de $X^y_c$. Ele é
-definido, para $t \geq 0$, da seguinte forma:
+Definimos o processo K com condição inicial $y \in \Nzb$ de $X^y_c$ em
+um instante $t \geq 0$ por:
 
 \begin{equation}
   \label{def:procK}
   X(t) = X^y_c (t) =
   \begin{cases}
-    y, & \textrm{ se }  t < \gamma_y T_0^y\\
+    y, & \textrm{ se }  t < \gamma_y T_0\\
     x, & \textrm{ se } \Gamma^y_c(\sigma_i^x-) \leq t <
     \Gamma^y_c(\sigma^x_i)
     \textrm{ para algum } i \\
@@ -93,42 +92,50 @@ alguns resultados.
 
 
 
-\section{Visualização}
+\section{Visualização do Processo}
 \label{sec:visualizacao}
 
 Para essa seção, vamos supor que $\sum_{x \in \Nz} \lambda_x <
-\infty$. Nesse caso a sobreposição de todos os processos de Poisson
-$\{N_x : x \in \Nz\}$ será um processo de Poisson de taxa $\sum_{x \in
-  \Nz} \lambda_x$. Assim podemos $\qc$ enumerar as marcas desse
-processo, denotando-as por $ \sigma_1 < \sigma_2 < \ldots$.
+\infty$. Veremos nessa seção que o processo K com essa suposição é
+bastante simples. Usaremos essa simplicidade para explicar como nossa
+construção funciona. Essa será a única seção em que iremos assumir
+essa condição. De fato, no resto do texto, é assumido exatamente o
+oposto.
 
-O gráfico da função $\Gamma^y$, fora das marcas $\sigma_1, \sigma_2,
-\ldots$ se comporta como é uma reta de inclinação $c$, e nas marcas
-essa função tem dá saltos, de tamanho $\gamma_x T^x_i$, para algum $x$
-e algum $i$. A figura \ref{fig:graf_gamma} ilustra uma possível
-realização de $\Gamma^y$.
+A sobreposição de todos os processos de Poisson $\{N_x : x \in \Nz\}$
+será um processo de Poisson de taxa $\sum_{x \in \Nz}
+\lambda_x$. Assim podemos $\qc$ enumerar as marcas desse processo,
+denotando-as por $ \sigma_1 < \sigma_2 < \ldots$.
 
+O gráfico da função $\Gamma$, fora das marcas $\sigma_1, \sigma_2,
+\ldots$ é uma reta de inclinação $c$, e nas marcas essa função dá
+saltos, de tamanho $\gamma_x T^x_i$, para algum $x$ e algum $i$. A
+Figura \ref{fig:graf_gamma} ilustra uma possível realização de
+$\Gamma$.
 
-Pela nossa construção, esses saltos corresponderão ao tempo que o
-processo passa nos estados de $\Nz$, enquanto que no resto do tempo
-ele está no $\infty$.
+Uma maneira de enxergar o processo K é olhar para o eixo das ordenadas
+do gráfico de $\Gamma$. Se projetarmos um ponto $t$ desse eixo no
+gráfico e ele ``cair'' em um salto da $\Gamma$, isso significa que no
+instante $t$ o processo está no estado $x$ cujo processo de poisson
+gerou esse salto.
 
-Assim nosso processo K se reduzirá a um processo Markoviano de
-saltos.
+Com essa visualização, é fácil perceber que o processo K é um processo
+Markoviano de saltos.
 
 No caso $c > 0$, iniciando em um estado $y$, o processo permanece
 nesse estado um tempo exponencial de média $\gamma_y$. Passado esse
 tempo ele pula para o $\infty$, onde permanece um tempo exponencial de
-média $\frac{c}{\sum_{x \in \Nz} \lambda_x}$, escolhendo um novo
-estado $y$ com probabilidade $\frac{\lambda_y}{\sum_{x \in \Nz}
-  \lambda_x}$.
+média $\frac{c}{\sum_{x \in \Nz} \lambda_x}$, que é o tempo que demora
+para encontrarmos outra marca de um processo de Poisson. Depois disso
+escolhemos escolhendo um novo estado $y$ com probabilidade
+$\frac{\lambda_y}{\sum_{x \in \Nz} \lambda_x}$, e reiniciamos o procedimento.
 
-No caso $c=0$, nós permanecemos em cada estado $x$ um tempo
-exponencial de média $\gamma_x$, e escolhemos pular para um novo estado $y$
-com probabilidade $\frac{\lambda_y}{\sum_{x \in \Nz} \lambda_x}$.
-Note que nesse caso nós nunca visitamos o $\infty$, vale até mesmo que
-$X^\infty(0) \neq \infty$ \qc.
-
+No caso $c=0$, o processo permanecerá em cada estado $x$ um tempo
+exponencial de média $\gamma_x$, e escolhe pular para um novo estado
+$y$ com probabilidade $\frac{\lambda_y}{\sum_{x \in \Nz} \lambda_x}$.
+Note que nesse caso nós nunca visitamos o $\infty$. Vale até mesmo que
+$X^\infty(0) \neq \infty$ \qc, de fato para cada $y \in \Nz$ vale que 
+$P(X^\infty(0) = y) = \frac{\lambda_y}{\sum_{x \in \Nz} \lambda_x}$.
 
 \begin{figure}
   \centering
@@ -149,13 +156,12 @@ topologia. Para isso considere a seguinte métrica:
 \end{equation}
 para $x, y \in \Nzb$, sob a convenção de que $\frac{1}{\infty} = 0$.
 
-Essa métrica induz uma topologia bastante natural, onde todos os
-pontos $x \in \Nz$ são pontos isolados, e uma sequência converge ao
-$\infty$ nessa topologia se ela divergir para infinito da maneira
-usual.
+Essa métrica induz uma topologia bastante natural, onde todo $x \in
+\Nz$ é um ponto isolado, e uma sequência converge ao $\infty$ nessa
+topologia se ela divergir para infinito da maneira usual.
 
-Uma função $f: \Nzb \to \R$ será contínua se e somente se
-$f(\infty) = \lim_{x \to \infty} f(x)$.
+Uma função $f: \Nzb \to \R$ é contínua se e somente se $f(\infty) =
+\lim_{x \to \infty} f(x)$.
 
 Vale ainda que essa topologia é compacta, nos dando boas propriedades
 para trabalhar.
