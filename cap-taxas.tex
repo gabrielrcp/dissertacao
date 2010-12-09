@@ -17,21 +17,22 @@ seguinte definição, para $x, y \in \Nzb$, $t > 0$:
 Denotaremos ainda por $P(t)$ a ``matriz'' cujas entradas sejam $p_{xy}(t)$.
 
 
-Nessa seção vamos estudar a continuidade ou não continuidade dessa
-função na origem.
+Nessa seção vamos estudar a continuidade ou não continuidade dessas
+funções na origem.
 
 
 Começaremos com uma caracterização básica dessas funções.
 \begin{proposicao}
   \label{prop:transicao-mensuravel}
   Para todo $x, y, z \in \Nzb$ e $t, s > 0$ vale que:
-  \begin{align*}
-    &p_{xy}(t) \geq 0\\
-    &\sum_{y \in \Nzb} p_{xy}(t) = 1\\
-    &p_{xy}(t+s) = \sum_{z\in\Nzb}p_{xz}(t)p_{zy}(s)\\
-    & p_{xy}(\bullet) \textrm{ é uma função Lebesgue mensurável.}
-  \end{align*}
+  \begin{enumerate}
+  \item $p_{xy}(t) \geq 0$
+  \item $\sum_{y \in \Nzb} p_{xy}(t) = 1$
+  \item $p_{xy}(t+s) = \sum_{z\in\Nzb}p_{xz}(t)p_{zy}(s)$
+  \item $p_{xy}(\bullet)$ é uma função Lebesgue mensurável.
+  \end{enumerate}
 \end{proposicao}
+
 \begin{proof}
   Os três primeiros itens saem diretamente da definição de $p_{x y}$ e
   da propriedade de Markov do processo. Para o quarto, considere
@@ -62,8 +63,8 @@ Começaremos com uma caracterização básica dessas funções.
 \end{proposicao} 
 
 \begin{proof}
-  Esse é o Teorema 1 da primeira seção da Parte II (pg. 120) de
-  \cite{chung:67}.
+  Esse é um dos itens do Teorema 1 da primeira seção da parte II
+  (pg. 120) de \cite{chung:67}.
 \end{proof}
 
 \begin{proposicao}
@@ -136,9 +137,10 @@ Começaremos com uma caracterização básica dessas funções.
 \begin{proposicao}
   \label{prop:continuidade}
   Caso $c > 0$, vale que:
-  \begin{displaymath}
+  \begin{equation}
+    \label{eq:continuidade-infinito}
     \lim_{t \searrow 0}p_{\infty \infty}(t) = 1.    
-  \end{displaymath}
+  \end{equation}
 \end{proposicao}
 
 \begin{proof}
@@ -160,10 +162,13 @@ Começaremos com uma caracterização básica dessas funções.
   > 0$ tem medida de Lebesgue positiva. Em particular existe um $s >
   0$ tal que $p_{\infty \infty}(s) > 0$. Fixe tal $s$.
 
-  Agora considere $u := \liminf_{t \searrow 0}p_{\infty \infty} (t)$,
-  e tome uma sequência $(t_n)$, onde $t_n \to 0$ e $p_{\infty \infty}
-  (t_n) \to u$ quanto $n \to \infty$. Agora usando a Proposição
-  \ref{prop:transicao-continua}, temos que:
+  Tome uma sequência abitrária $(t_n)$, onde $t_n \searrow 0$ e
+  $p_{\infty \infty} (t_n)$ convirja para um número $u$ quanto $n \to
+  \infty$.  Se mostrarmos que $u = 1$, seguirá que o limite dado em
+  \eqref{eq:continuidade-infinito} existe e vale $1$.
+
+
+  Usando a Proposição \ref{prop:transicao-continua}, temos que:
   \begin{displaymath}
     p_{\infty\infty}(s) = \lim_{n \to \infty} p_{\infty \infty}(s+t_n) = \lim_{n \to
       \infty} \sum_{x \in \Nzb} p_{\infty x}(s) p_{x \infty} (t_n)
@@ -178,13 +183,7 @@ Começaremos com uma caracterização básica dessas funções.
     p_{\infty\infty}(s) = p_{\infty \infty}(s)u.
   \end{displaymath}
 
-  Dessa forma, já que $p_{\infty \infty}(s) > 0$, concluímos que $u =
-  1$. De forma que:
-  \begin{displaymath}
-    \liminf_{t \searrow 0} p_{\infty\infty}(t) = 1 \geq \limsup_{t
-      \searrow 0} p_{\infty\infty}(t),
-  \end{displaymath}
-  de onde concluímos que $p_{\infty\infty}(t) \to 1$ quando $t \searrow 0$.
+  Já que $p_{\infty \infty}(s) > 0$, concluímos que $u = 1$.
 \end{proof}
 
 \begin{proposicao}
@@ -201,9 +200,9 @@ Começaremos com uma caracterização básica dessas funções.
     \theta_m(t) := \int_0^t \ind \left\{ X^\infty_0(s) \geq m \right\} ds
   \end{align*}
 
-  Estamos interessados em calcular $\theta(t) :=
+  Estamos interessados em estimar $\theta(t) :=
   \theta_\infty(t)$. Para isso note que $\theta_m(t)$ é decrescente em
-  $m$. Dessa forma, se $\Xi$ for a função inversa de $\Gamma$, teremos
+  $m$. Dessa forma, se $\Xi$ for a função inversa de $\Gamma^\infty$, teremos
   que:
   \begin{align*}
     \theta_\infty(t) \leq \theta_m(t) = \sum_{x \geq m}
@@ -227,7 +226,7 @@ Começaremos com uma caracterização básica dessas funções.
   quase todo $t$.
 
   Agora tome um $x \in \Nz$ arbitrário. Condicionando no valor de
-  $T^x_0$, teremos que:
+  $T^x_0$ e usando a Proposição \ref{prop:reinicia-infinito} teremos que:
   \begin{align*}
     p_{x \infty} (t) = \int_0^t p_{\infty \infty} (t-s)
     \frac{1}{\gamma_x}e^{-\frac{s}{\gamma_x}} ds.\\
@@ -236,7 +235,7 @@ Começaremos com uma caracterização básica dessas funções.
   Portanto para todo $t > 0$ vale que $p_{x \infty} (t) = 0$.
 
   Assim, usando a propriedade de Markov do processo, teremos que para
-  todos $t> 0$ e $0 < s < t$:
+  todo $t> 0$ e $s \in (0, t)$:
   \begin{align*}
     p_{\infty \infty} (t) &= \sum_{x \in \Nzb} p_{\infty x}(s) p_{x
       \infty} (t-s)\\
