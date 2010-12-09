@@ -223,10 +223,12 @@ Começaremos com uma caracterização básica dessas funções.
   \end{align*}
 
   Dessa forma concluímos que $p_{\infty \infty} (t) = 0$ para Lebesgue
-  quase todo $t$.
+  quase todo $t$. A continuidade de $p_{\infty \infty}$ nos diz que
+  $p_{\infty \infty}(t) = 0$ para todo $t > 0$.
 
   Agora tome um $x \in \Nz$ arbitrário. Condicionando no valor de
-  $T^x_0$ e usando a Proposição \ref{prop:reinicia-infinito} teremos que:
+  $\gamma_x T_0$ e usando a Proposição \ref{prop:reinicia-infinito}
+  teremos que:
   \begin{align*}
     p_{x \infty} (t) = \int_0^t p_{\infty \infty} (t-s)
     \frac{1}{\gamma_x}e^{-\frac{s}{\gamma_x}} ds.\\
@@ -234,18 +236,18 @@ Começaremos com uma caracterização básica dessas funções.
 
   Portanto para todo $t > 0$ vale que $p_{x \infty} (t) = 0$.
 
-  Assim, usando a propriedade de Markov do processo, teremos que para
-  todo $t> 0$ e $s \in (0, t)$:
-  \begin{align*}
-    p_{\infty \infty} (t) &= \sum_{x \in \Nzb} p_{\infty x}(s) p_{x
-      \infty} (t-s)\\
-    &= p_{\infty \infty} (s) p_{\infty \infty} (t-s).
-  \end{align*}
+  % Assim, usando a propriedade de Markov do processo, teremos que para
+  % todo $t> 0$ e $s \in (0, t)$:
+  % \begin{align*}
+  %   p_{\infty \infty} (t) &= \sum_{x \in \Nzb} p_{\infty x}(s) p_{x
+  %     \infty} (t-s)\\
+  %   &= p_{\infty \infty} (s) p_{\infty \infty} (t-s).
+  % \end{align*}
 
-  Agora suponha por absurdo que exista um $t > 0$ tal que
-  $p_{\infty \infty} (t) > 0$. Então teríamos que $p_{\infty
-    \infty}(s) > 0$ para todo $s \in (0, t)$, conjunto esse que tem
-  medida de Lebesgue positiva.
+  % Agora suponha por absurdo que exista um $t > 0$ tal que
+  % $p_{\infty \infty} (t) > 0$. Então teríamos que $p_{\infty
+  %   \infty}(s) > 0$ para todo $s \in (0, t)$, conjunto esse que tem
+  % medida de Lebesgue positiva.
 \end{proof}
 
 
@@ -254,8 +256,8 @@ Começaremos com uma caracterização básica dessas funções.
 \section{Matriz Q}
 \label{sec:matrizq}
 
-Nessa seção vamos calcular a matriz de taxas de transição do nosso
-processo. Ela pode ser definida pelo limite:
+Nessa seção vamos calcular a matriz de taxas de transição do 
+processo K. Vamos defini-la pelo limite:
 \begin{displaymath}
   Q = \lim_{t \searrow 0} \frac{P(t) - I}{t} 
 \end{displaymath}.
@@ -267,7 +269,7 @@ Vamos mostrar que, para o caso $c > 0$, essa matriz vale:
       -\frac{1}{\gamma_1} & 0 & 0 & \cdots & \frac{1}{\gamma_1}\\
       0 & -\frac{1}{\gamma_2} & 0 & \cdots & \frac{1}{\gamma_2}\\
       0 & 0 & -\frac{1}{\gamma_3} & \cdots & \frac{1}{\gamma_3}\\
-      \vdots & \vdots & \vdots & \vdots & \ddots \\
+      \vdots & \vdots & \vdots & \ddots & \vdots \\
       \frac{\lambda_1}{c} & \frac{\lambda_2}{c} &
       \frac{\lambda_3}{c} & \cdots & -\infty\\
     \end{array}
@@ -281,7 +283,7 @@ Enquanto que no caso $c=0$, teremos:
       -\frac{1}{\gamma_1} & 0 & 0 & \cdots & 0\\
       0 & -\frac{1}{\gamma_2} & 0 & \cdots & 0\\
       0 & 0 & -\frac{1}{\gamma_3} & \cdots & 0\\
-      \vdots & \vdots & \vdots & \vdots & \ddots \\
+      \vdots & \vdots & \vdots & \ddots & \vdots \\
       \infty & \infty & \infty & \cdots & -\infty\\
     \end{array}
   \right).
@@ -298,16 +300,16 @@ Enquanto que no caso $c=0$, teremos:
   \begin{align*}
     \frac{p_{x y} (t)}{t}
     &= \frac{1}{t}\int_{0}^{t} P( X^x(t) = y |
-    \gamma_x T_0^x = s) \frac{1}{\gamma_x} e^{-\frac{s}{\gamma_x}} ds\\
+    \gamma_x T_0 = s) \frac{1}{\gamma_x} e^{-\frac{s}{\gamma_x}} ds\\
     &= \frac{1}{t} \int_{0}^{t} P( X^\infty(t-s) = y ) \frac{1}{\gamma_x}
     e^{-\frac{s}{\gamma_x}} ds \\
     &\leq \frac{1}{t \gamma_x} \int_{0}^{t} p_{\infty y}(t-s) ds \\
     &= \frac{1}{t \gamma_x} \int_{0}^{t} p_{\infty y}(t-s) ds \\
-    &= \frac{1}{t \gamma_x} \int_{0}^{t} p_{\infty y}(s) ds
-    \xrightarrow{t \searrow 0} \lim_{t \searrow 0} \frac{p_{\infty y}
-      (t)}{\gamma_x} = 0.
+    &= \frac{1}{t \gamma_x} \int_{0}^{t} p_{\infty y}(s) ds.
   \end{align*}
 
+  Como $p_{\infty y} (t) \to 0$ quando $t \searrow 0$, então a
+  quantidade acima também converge à zero.
 \end{proof}
 
 \begin{proposicao}
@@ -322,14 +324,14 @@ Enquanto que no caso $c=0$, teremos:
     p_{xx} (t)
     &= P( \gamma_x T_0^x > t) + 
     \int_{0}^{t} P( X^x(t) = y |
-    \gamma_x T_0^x = s) \frac{1}{\gamma_x} e^{-\frac{s}{\gamma_x}} ds\\
+    \gamma_x T_0 = s) \frac{1}{\gamma_x} e^{-\frac{s}{\gamma_x}} ds\\
     &= e^{-\frac{t}{\gamma_x}} + 
-    \int_{0}^{t} P( X^\infty(t-s) = y) \frac{1}{\gamma_x} e^{-\frac{s}{\gamma_x}} ds\\
+    \int_{0}^{t} p_{\infty y}(t-s) \frac{1}{\gamma_x} e^{-\frac{s}{\gamma_x}} ds\\
   \end{align*}
-  Fazendo contas análogas às da proposição anterior, podemos
-  mostrar que o segundo termo dessa soma, dividido por $t$, vai para
-  zero quando $t \searrow 0$. Tratando o primeiro termo agora, temos
-  que:
+  Fazendo contas análogas às da Proposição \ref{prop:taxa-x-y},
+  podemos mostrar que o segundo termo dessa soma, dividido por $t$,
+  vai para zero quando $t \searrow 0$. Tratando o primeiro termo
+  agora, temos que:
   \begin{displaymath}
     \frac{e^{-\frac{t}{\gamma_x}} - 1}{t} \xrightarrow{t \searrow 0}
     -\frac{1}{\gamma_x}.
@@ -394,23 +396,31 @@ Enquanto que no caso $c=0$, teremos:
       \sum_{y \neq x} \sum_{i = 1}^{N_y (\sigma^x_1)} \gamma_y T^y_i
       \leq t - s
     \right) ds\\
-    &\leq \frac{1}{\gamma_x t} \int_0^t P \left(
+    &= \frac{1}{\gamma_x t} \int_0^t P \left(
       \sum_{y \neq x} \sum_{i = 1}^{N_y (\sigma^x_1)} \gamma_y T^y_i
       \leq s
     \right) ds\\
-    &\xrightarrow{t\searrow0} \frac{1}{\gamma_x} P \left(
-      \sum_{y \neq x} \sum_{i = 1}^{N_y (\sigma^x_1)} \gamma_y T^y_i
-      = 0 \right) = 0
+    % &\xrightarrow{t\searrow0} \frac{1}{\gamma_x} P \left(
+    %   \sum_{y \neq x} \sum_{i = 1}^{N_y (\sigma^x_1)} \gamma_y T^y_i
+    %   = 0 \right) = 0
   \end{align*}
 
-  Agora note que, como $\Gamma^\infty$ é não decrescente, o evento no
-  terceiro termo de \eqref{erros_taxa_inf} está contido no evento do
-  segundo termo. Assim como mostramos que o segundo termo vai a zero,
-  teremos que o terceiro também irá.
+  Quando $s \to 0$, a probabilidade dentro da integral converge para
+  $P \left( \sum_{y \neq x} \sum_{i = 1}^{N_y (\sigma^x_1)} \gamma_y
+    T^y_i = 0 \right)$, que vale zero já que o conjunto das marcas dos
+  processos de Poisson é densa em $[0, \infty)$, portanto o segundo
+  termo de \eqref{erros_taxa_inf} também converge à zero.
 
-  Agora resta calcular o limite do primeiro termo. Ao fazer isso
+
+  Agora note que, como $\Gamma^\infty$ é não decrescente e $\sigma^x_1
+  < \sigma^x_i$ para $i \geq 2$, então $\Gamma^\infty(\sigma^x_1) \leq
+  \Gamma^\infty(\sigma^x_i -)$ e assim o evento no terceiro termo de
+  \eqref{erros_taxa_inf} está contido no evento do segundo
+  termo. Assim como mostramos que o segundo termo vai a zero, teremos
+  que o terceiro também irá.
+
+  Resta calcular o limite do primeiro termo. Ao fazer isso
   estaremos também calculando o limite desejado.
-
 
   Faremos isso usando o Teorema Tauberiano, que relaciona o
   comportamento a função de distribuição de uma variável aleatória
@@ -419,16 +429,15 @@ Enquanto que no caso $c=0$, teremos:
   Teorema\emph{XIII.5.1} de \cite{fellerv2}.
 
   O primeiro passo é calcular a transformada da Laplace de
-  $\Gamma^\infty(\sigma^x_1-)$. Assim para um $u \geq 0$, podemos
-  calcular:
+  $\Gamma^\infty(\sigma^x_1-)$. Para um $u \geq 0$ ela vale:
   \begin{align*}
     \phi (u) := \E \left[ e^{-u \Gamma^\infty (\sigma^x_1-)}  \right] =
     \lambda_x \left( \lambda_x + uc + u \sum_{y \neq x}
       \frac{\lambda_x \gamma_x}{1 + u\gamma_x}  \right)^{-1}
   \end{align*}
 
-  Por enquanto vamos nos concentrar no caso $c > 0$. Nesse caso
-  teremos que para $u, v > 0$:
+  Por enquanto vamos nos concentrar no caso $c > 0$. Para $u, v > 0$
+  teremos que:
   \begin{align*}
     \frac{\phi(uv)}{\phi (u)} &= \frac{\lambda_x + uc + \sum_{y \neq
         x} \frac{u \lambda_x\gamma_x}{1 + u \gamma_x}} {\lambda_x + u
@@ -447,14 +456,16 @@ Enquanto que no caso $c=0$, teremos:
       \lim_{u \to \infty} \frac{\phi(uv)}{\phi (u)} &= \frac{1}{v}.
   \end{align*}
 
-  Assim verificamos a condição do teorema, e temos que:
+  Com isso verificamos a condição do Teorema Tauberiano, de onde
+  obtemod que:
   \begin{align*}
     \lim_{t \searrow 0} \frac{P( \Gamma^\infty(\sigma^x_1-) \leq
       t)}{\phi(\frac{1}{t})} = 1
   \end{align*}
 
-  Assim se mostrarmos que $\frac{\phi(\frac{1}{t})}{t}$ converge para
-  $\frac{\lambda_x}{c}$, teremos mostrado o nosso resultado.
+  Se mostrarmos que $\frac{\phi(\frac{1}{t})}{t}$ converge para
+  $\frac{\lambda_x}{c}$ quanto $t \searrow 0$, teremos mostrado o
+  nosso resultado.
 
   \begin{align*}
     \frac{\phi(\frac{1}{t})}{t} &= \frac{1}{t} \lambda_x \left(
@@ -501,16 +512,21 @@ Enquanto que no caso $c=0$, teremos:
   \end{displaymath}
 \end{proposicao}
 \begin{proof}
-  O caso $c = 0$ é trivial pela Proposição
+  O caso $c = 0$ é trivial em vista da Proposição
   \ref{prop:naocontinuidade}. Assim vamos supor que $c > 0$.
-  \begin{align*}
-    \frac{p_{\infty \infty} (t) - 1}{t} &= - \sum_{x \in \Nz}
-      \frac{p_{\infty x} (t)}{t}.
-  \end{align*}
+  Para todo $n \in \Nz$, teremos que:
 
-  Cada termo dessa soma converge à $\frac{\lambda_x}{c}$, e estamos
-  supondo que a soma dessa série diverge para $\infty$, de onde
-  concluímos que:
+  \begin{equation}
+    \label{eq:taxa-inf-inf}
+    \frac{p_{\infty \infty} (t) - 1}{t} = - \sum_{x \in \Nz}
+    \frac{p_{\infty x} (t)}{t} \leq - \sum_{x = 1}^n \frac{p_{\infty
+        x} (t)}{t}
+  \end{equation}
+  
+  Usando a Proposição \ref{prop:taxa-inf-x}, obtemos que a parte da
+  direita converge para $-\sum_{x = 1}^n \frac{\lambda_x}{c}$,
+  quantidade essa que vai para $-\infty$ quando $n \to \infty$. Como a
+  desigualdade \eqref{eq:taxa-inf-inf} vale para todo $n$, concluímos que:
   \begin{align*}
     \lim_{t \searrow 0}\frac{p_{\infty \infty} (t) - 1}{t} &= - \infty
   \end{align*}
@@ -530,16 +546,17 @@ Enquanto que no caso $c=0$, teremos:
   Novamente o caso $c = 0$ é trivial em vista da Proposição
   \ref{prop:naocontinuidade}. Assim vamos supor que $c > 0$.
   \begin{align*}
-    \frac{p_{x \infty}}{t} &= \frac{1}{t} \int_0^t P(X^x (t) = \infty | \gamma_x
-    T^x_0 = s) \frac{1}{\gamma_x}e^{-\frac{s}{\gamma_x}} ds\\
+    \frac{p_{x \infty}}{t}
+    &= \frac{1}{t} \int_0^t P(X^x (t) = \infty | \gamma_x
+    T_0 = s) \frac{1}{\gamma_x}e^{-\frac{s}{\gamma_x}} ds\\
     &= \frac{1}{t} \int_0^t p_{\infty \infty} (t-s)
     \frac{1}{\gamma_x}e^{-\frac{s}{\gamma_x}} ds\\
     &= \frac{e^{-t}}{\gamma_x} \frac{1}{t} \int_0^t p_{\infty \infty} (s)
     e^{\frac{s}{\gamma_x}} ds\\
   \end{align*}
 
-  Como $c>0$, pela Proposição \ref{prop:continuidade}, $p_{\infty
-    \infty} (t) \xrightarrow{t \searrow 0} 1$. De onde concluímos que:
+  A Proposição \ref{prop:continuidade} nos diz que $p_{\infty \infty}
+  (t) \xrightarrow{t \searrow 0} 1$, de onde concluímos que:
    \begin{align*}
     \frac{p_{x \infty}(t)}{t} \xrightarrow{t \searrow 0} 
     \frac{1}{\gamma_x}
@@ -564,55 +581,8 @@ probabilidade é uma medida invariante para o processo K.
   \end{cases}
 \end{equation}
 
-\begin{lema}
-  \label{lema:cont_direita_prob}
-  Para todo $x, y \in \Nzb$ e $t > 0$, temos que:
-  \begin{align}
-    \lim_{s \searrow t} p_{x y} (s) = p_{x y} (t)
-  \end{align}
-\end{lema}
-\begin{proof}
-  O Corolário \ref{prop:proc-cadlag} nos garante que o processo K é
-  Càdlàg na topologia definida na Seção \ref{sec:topologia}.
-
-  Note que para $y \in \Nz$, a função $f_y: \Nzb \to \R$ definida por
-  $f_y(x) = \ind\{ x = y\}$ é contínua nessa topologia. Assim temos
-  que $\lim_{s \searrow t} f_y(X^x(s)) = f_y (X^x(t))$ \qc.
-
-  Como $f_y$ é uma função limitada, o teorema da convergência dominada
-  nos garante que:
-  \begin{displaymath}
-    p_{x y} (s) = \E[f_y(X^x(s))] \xrightarrow{s \searrow t} \E[f_y
-    (X^x(t))] = p_{x y} (t).
-  \end{displaymath}
-
-  Para o caso $y = \infty$, vamos dividir em dois casos.  Caso $c =
-  0$, temos que $p_{x \infty} (s) = 0$ para todo $s > 0$, assim essa
-  função é obviamente contínua em todo ponto $t > 0$.
-
-  Para o caso $c > 0$, usando a propriedade de Markov do processo,
-  para um $s > t$ teremos que:
-
-  \begin{align*}
-    p_{x \infty} (s) &= \sum_{y \in \Nzb} p_{x y} (t) p_{y \infty}
-    (s - t) \\
-    &= p_{x \infty} (t) p_{\infty \infty} (s - t) + 
-    \sum_{y \in \Nz} p_{x y} (t) p_{y \infty} (s - t). \\
-  \end{align*}
-
-
-  Ao fazer $s \searrow t$, pela Proposição \ref{prop:continuidade},
-  temos que o primeiro termo converge para $p_{x \infty}(t)$, enquanto
-  que cada termo da série do segundo termo converge à zero. Como
-  podemos dominar cada termo dessa série por $p_{x y} (t)$ que é
-  somável em $y$, usando o teorema da convergência dominada concluímos
-  que:
-  \begin{displaymath}
-    \lim_{s \searrow t} p_{x \infty} (s) = p_{x \infty} (t)
-  \end{displaymath} 
-\end{proof}
-
 \begin{proposicao}
+  \label{prop:existe-unica-invariante}
   O processo K tem uma única medida invariante.
 \end{proposicao}
 \begin{proof}
@@ -622,20 +592,20 @@ probabilidade é uma medida invariante para o processo K.
 
   Fixado um estado $y \in \Nz$, defina $M = \min_{i \geq 1} \{ T_i^y >
   h \}$. $M$ é uma variável aleatória com distribuição geométrica com
-  probabilidade de sucesso dada por $e^{-\frac{h}{\gamma_y}}$. Agora
-  temos que $X_t^y = y$ para todo $t \in [\Gamma^y(\sigma_M^x-),
-  \Gamma^y(\sigma_M^x-) + T_M^y)$, e como $T_M^y > h$, existe um
-  múltiplo de $h$ nesse intervalo. Assim isso vai corresponder à um
-  ponto onde $Y_n^{y, h} = y$, assim a esperança de tempo de retorno à
-  um estado em $(Y_n)$ é finita.
+  probabilidade de sucesso dada por $e^{-\frac{h}{\gamma_y}}$. Observe
+  que $X_t^y = y$ para todo $t \in [\Gamma^y(\sigma_M^x-),
+  \Gamma^y(\sigma_M^x-) + T_M^y)$ e, como $T_M^y > h$, existe um
+  múltiplo de $h$ nesse intervalo. Assim se $n h$ for esse múltiplo,
+  vai valer que $Y_n^{y, h} = y$. Dessa maneira a esperança de tempo
+  de retorno à um estado em $(Y_n)$ é finita.
 
 
-  Para $x, y \in \Nz$, vale que $P (Y^{x, h}_1 = y) > 0$. Temos ainda
-  que para todo $x \in \Nzb$ $P (Y^{x, h}_1 = \infty ) > 0$ se $c >
-  0$. Enquanto que $P (Y^{x, h}_1 = \infty) = 0$ para $c = 0$. Assim
-  a cadeia é irredutível no caso $c > 0$ e no caso $c = 0$ temos que
-  $\Nz$ é uma classe de comunicação fechada, enquanto que $\{\infty\}$
-  é uma classe de comunicação aberta.
+  Para todo $x, y \in \Nz$ vale que $P (Y^{x, h}_1 = y) > 0$. Temos
+  ainda que para todo $x \in \Nzb$ $P (Y^{x, h}_1 = \infty ) > 0$ se
+  $c > 0$. Enquanto que $P (Y^{x, h}_1 = \infty) = 0$ para $c =
+  0$. Assim a cadeia é irredutível no caso $c > 0$ e no caso $c = 0$
+  temos que $\Nz$ é uma classe de comunicação fechada, enquanto que
+  $\infty$ é um estado transiente.
 
 
   Em todo caso, para cada escolha de $h$, existe uma única medida de
@@ -657,7 +627,7 @@ probabilidade é uma medida invariante para o processo K.
 
   Assim concluímos que $\mu_{h} = \mu_1$ para todo $h > 0$ racional.
   Agora fixado um $h > 0$ irracional, tome uma sequencia de números
-  racionais $(h_n)$ que convirjam para $h$ pela direita. Teremos que:
+  racionais $(h_n)$ que convirjam para $h$. Teremos que:
   \begin{align*}
     \mu_1(y) &= \sum_{x \in \Nzb} \mu_1(x) P ( Y_{1}^ {x, h_n} = y)\\
     &= \sum_{x \in \Nzb} \mu_1(x) P ( X^x(h_n) = y)\\
@@ -665,7 +635,7 @@ probabilidade é uma medida invariante para o processo K.
   \end{align*}
   
   Cada termo dessa soma é dominado por $\mu_1(x)$, que tem soma $1$,
-  assim usando o Lema \ref{lema:cont_direita_prob} e o teorema da
+  assim usando a Proposição \ref{prop:transicao-continua} e o teorema da
   convergência dominada, concluímos que:
   \begin{align*}
     \mu_1 (y) &= \sum_{x \in \Nzb} \mu_1(x) p_{x y} (h)\\
@@ -683,7 +653,8 @@ probabilidade é uma medida invariante para o processo K.
 \end{proposicao}
 \begin{proof}
   Seja $\mu$ a única probabilidade invariante do nosso processo que
-  encontramos na última proposição. Para todo $t > 0$, vale que:
+  encontramos na Proposição \ref{prop:existe-unica-invariante}. Para
+  todo $t > 0$, vale que:
   \begin{gather*}
     \frac{\mu(y)}{t} = \sum_{x \in \Nzb} \mu(x) \frac{p_{x y}
       (t)}{t}\\
@@ -693,7 +664,7 @@ probabilidade é uma medida invariante para o processo K.
   \begin{displaymath}
     0 = \mu(\infty) \frac{p_{\infty y}(t)}{t} + 
     \mu(y) \frac{p_{y y}(t) - 1}{t} + 
-    \sum_{\substack{x \in \Nz \\ x \neq y}} \mu(x) \frac{p_{x
+    \sum_{x \in \Nz \setminus \{y\}} \mu(x) \frac{p_{x
         y}(t)}{t}.
   \end{displaymath}
 
@@ -704,17 +675,18 @@ probabilidade é uma medida invariante para o processo K.
   \in \Nz \setminus \{y\}$.
 
   Agora note que $p_{x y} (t) \leq P(\Gamma^x (\sigma_1^y -) \leq t)
-  \leq P(\Gamma^\infty (\sigma_1^y -) \leq t)$. Agora na demonstração
-  da Proposição \ref{prop:taxa-inf-x} mostramos que o limite dessa
-  última quantidade sobre $t$ converge à $\frac{\lambda_y}{c}$. Assim
-  concluímos existe uma constante $K$ tal que para $t$ pequeno o
-  suficiente e para todo $x \in \Nz\setminus \{ y\}$, vale que
-  $\mu(x)\frac{p_{x y}(t)}{t} \leq K \mu(x)$.
+  \leq P(\Gamma^\infty (\sigma_1^y -) \leq t)$, quantidade essa que
+  não depende de $x$. Na demonstração da Proposição
+  \ref{prop:taxa-inf-x} mostramos que $\frac{1}{t}P(\Gamma^\infty
+  (\sigma_1^y -) \leq t)$ converge para $\frac{\lambda_y}{c}$ quanto
+  $t \searrow 0$. Portanto para $t$ suficientemente pequeno, teremos
+  que existe uma constante $K$, que não depende de $x$, tal que
+  $\frac{p_{x y}(t)}{t} \leq K$ para todo $x \in \Nz\setminus \{y\}$.
 
-  Como $\sum_{x} K \mu(x) \leq K$, o teorema da convergência dominada
+  Como $\mu(x)$ é somável em $x$, o teorema da convergência dominada
   nos garante que:
   \begin{displaymath}
-    \sum_{\substack{x \in \Nz \\ x \neq y}} \mu(x)
+    \sum_{x \in \Nz \setminus \{y\}} \mu(x)
     \frac{p_{x y}(t)}{t} \xrightarrow{t \searrow 0} 0.
   \end{displaymath}
 
@@ -732,9 +704,8 @@ probabilidade é uma medida invariante para o processo K.
   \label{lema:c_continuo}
   Para todo $t > 0$ e $y \in \Nzb$, vale que:
   \begin{displaymath}
-    \lim_{c\searrow 0} X_c^y(t) = X_0^y(t)
+    X_c^y(t) \xrightarrow[\qc]{c\searrow 0} X_0^y(t)
   \end{displaymath}
-  quase certamente.
 \end{lema}
 \begin{proof}
   Observe que $\Gamma^y_c (t) - \Gamma^y_0(t) = ct \xrightarrow{c
@@ -752,10 +723,10 @@ probabilidade é uma medida invariante para o processo K.
 
 
   Agora há duas possibilidades. A primeira é que $t < \gamma_y
-  T^y_0$. Nesse caso teremos que para qualquer $c \geq 0$, vale que
+  T_0$. Nesse caso teremos que para qualquer $c \geq 0$, vale que
   $X^y_c = y$. Assim a convergência é trivial.
 
-  A segunda possibilidade é que $t \geq \gamma_y T^y_0$. Nesse caso,
+  A segunda possibilidade é que $t \geq \gamma_y T_0$. Nesse caso,
   existe um $i \geq 1$ tal que $\Gamma^y_0(\sigma^x_i-) < t <
   \Gamma^y_0(\sigma^x_i)$. Portanto para $c > 0$ pequeno o suficiente,
   teremos que $\Gamma^y_c(\sigma^x_i-) < t < \Gamma^y_c(\sigma^x_i)$ e
