@@ -762,7 +762,7 @@ probabilidade é uma medida invariante para o processo K.
     \pi_c(x) &= \sum_{y \in \Nzb} \pi_c (y) P(X^y_c (t) = x).\\
   \end{align*}
 
-  Cada termo dessa soma pode ser dominado por $\pi_0(y)$ se $y <
+  Cada termo dessa soma pode ser dominado por $\pi_0(y)$ se $y \neq
   \infty$ e por $1$ se $y = \infty$, assim tomando limite $c\searrow0$
   e usando o teorema da convergência dominada, teremos que:
 
@@ -781,25 +781,30 @@ probabilidade é uma medida invariante para o processo K.
 
 Na demonstração da Proposição \ref{prop:continuidade} mostramos que,
 no caso $c > 0$, o tempo que o processo passa no infinito tem medida
-de Lebesgue positiva quase certamente. Ainda usando argumentos como os
-da Proposição \ref{prop:naocontinuidade}, a medida de Lebesgue do
-tempo em que o processo passa no infinito vale zero quase certamente
-no caso $c = 0$.
+de Lebesgue positiva quase certamente.
 
-Nessa seção tentaremos expandir um pouco no caso $c = 0$,
+Usando a Proposição \ref{prop:naocontinuidade}, é fácil mostrar que a
+medida de Lebesgue do tempo em que o processo passa no infinito vale
+zero quase certamente no caso $c = 0$.
+
+Nessa seção tentaremos expandir um pouco o caso $c = 0$,
 especificamente iremos dar uma maneira de calcular a dimensão de
 Hausdorf do tempo em que o processo passa no infinito.  Para o
 restante dessa seção, considere sempre que $c = 0$.
 
+Em vista da Proposição \ref{prop:reinicia-infinito}, vamos considerar
+somemente o processo K iniciado no $\infty$, visto que o conjunto dos
+instantes onde o processo está no infinito ao iniciar em um estado $y$
+é igual ao mesmo conjunto do processo iniciado em $\infty$ mas
+transladado.
+
 \begin{definicao}
-  Vamos denotar por $\RR^y$ a imagem de $\Gamma^y$. Isso é:
+  Vamos denotar por $\RR$ a imagem de $\Gamma^\infty$. Isso é:
   \begin{displaymath}
-    \RR^y = \left\{
-      t \geq 0 : \exists s \geq 0 \textrm{ tal que } \Gamma^y(s) = t
+    \RR = \left\{
+      t \geq 0 : \exists s \geq 0 \textrm{ tal que } \Gamma^\infty(s) = t
     \right\}.
   \end{displaymath}
-  Aqui também vamos omitir o índice $y$ quando não fizer diferença
-  qual é a condição inicial.
 \end{definicao}
 
 \begin{proposicao}
@@ -840,7 +845,7 @@ restante dessa seção, considere sempre que $c = 0$.
   Novamente considere as realizações onde $\Gamma$ é càdlàg, crescente
   e limitada em compactos.
 
-  Fixado um $s > 0$ vamos mostrar que $\Gamma(s-) \in \RR$. Para isso
+  Fixado um $s > 0$ vamos mostrar que $\Gamma(s-) \in \RRb$. Para isso
   tome uma sequência $(s_n)_{n \geq 1}$ tal que $s_n \nearrow s$. Por
   definição, temos que $\Gamma(s_n) \in \RR$ para todo $n$ e
   $\Gamma(s_n) \to \Gamma(s-)$. De onde concluímos que $\Gamma(s-) \in
@@ -870,14 +875,17 @@ restante dessa seção, considere sempre que $c = 0$.
 \end{proof}
 
 \begin{proposicao}
-  $\Gamma$, quando enxergada como um processo estocástico, é um
-  subordinador. Isso é, um processo crescente, contínuo à direita, que
-  tem incrementos estacionários e independentes.
+  $\Gamma^\infty_0$, quando enxergada como um processo estocástico, é
+  um subordinador. Isso é, um processo que toma valores em $[0,
+  \infty)$, iniciado em zero, crescente, contínuo à direita, que tem
+  incrementos estacionários e independentes.
 \end{proposicao}
 \begin{proof}
 
-  Já mostramos que $\Gamma$ é crescente e contínua à direita.  Tome
-  $\FF_t$ a $\sigma$-álgebra gerada por $\{ \Gamma(s): s \in [0,
+  Já mostramos que $\Gamma$ é crescente e contínua à direita, e basta
+  olhar para a definição para ver que $\Gamma^\infty(0) = 0$.
+
+  Tome $\FF_t$ a $\sigma$-álgebra gerada por $\{ \Gamma(s): s \in [0,
   t]\}$ e repare que para $t, s > 0$:
   \begin{displaymath}
     \Gamma(t+s) - \Gamma(t) = \sum_{x \in \Nz} \sum_{i =
@@ -929,9 +937,10 @@ Para um $\rho > 0$, $\epsilon > 0$ e um boreliano $A$, definimos:
 onde  $\mathrm{l}(I)$ é o comprimento do intervalo $I$.
 
 Quando diminuímos $\epsilon$, diminuímos o número de coberturas
-possíveis, assim o ínfimo aumenta. Portando o limite $\epsilon
-\searrow 0$ de \eqref{eq:dim-hausdorff-eps} existe, e assim faz sentido
-definir:
+possíveis, assim o ínfimo aumenta. Portando o limite de
+\eqref{eq:dim-hausdorff-eps} quando $\epsilon \searrow 0$ existe, e
+assim faz sentido definir:
+
 \begin{equation}
   \label{eq:dim-hausdorf}
   m^\rho(A) = \lim_{\epsilon \searrow 0} m^\rho_\epsilon (A)
@@ -939,12 +948,12 @@ definir:
 
 É possível mostrar que $m^\rho(\bullet)$ é uma medida sobre os
 borelianos de $\R$. Medida essa que chamados de medida de Hausdorff de
-dimensão $\rho$.  Note que caso $\rho = 1$, a medida $m^\rho$ é a
-medida de Lebesgue.
+dimensão $\rho$.  A medida de Hausdorf de dimensão $1$ é a medida de
+Lebesgue.
 
 Também vale que se $m^\rho(A) = 0$, então $m^{\rho^\prime} = 0$ para
-todo $\rho^\prime > \rho$ e se $m^\rho(A) > 0$, então $m^{\rho^\prime}
-= \infty$ para todo $\rho^\prime < \rho$.
+todo $\rho^\prime > \rho$ e se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
+= \infty$ para todo $\rho^\prime(A) < \rho$.
 
 \begin{definicao}
   Definimos a dimensão de Hausdorff de um boreliano $A$ como:
@@ -994,11 +1003,10 @@ todo $\rho^\prime > \rho$ e se $m^\rho(A) > 0$, então $m^{\rho^\prime}
     \right].
   \end{align*}
 
-  Agora vamos nos concentrar na quantidade dentro dos
-  colchetes. Fazendo a mudança de variáveis $v =
-  u^{\frac{1}{1+\delta}}$, e supondo que $v$ seja um inteiro maior que
-  $n_0$, agrupando os termos da soma para $x$ entre múltiplos de $v$,
-  teremos que:
+  Agora vamos nos concentrar na quantidade dentro dos colchetes. Para
+  isso vamos fazer a mudança de variáveis $v =
+  u^{\frac{1}{1+\delta}}$. Se tomarmos $v$ inteiro maior que $n_0$ e
+  agrupando os termos da série entre múltiplos de $v$, obteremos:
   \begin{align*}
     \frac{C}{v} + \frac{1}{v} \sum_{x > n_0} \frac{K}{ \left(
         \frac{x}{v} \right)^{1+\delta} + 1 }
@@ -1009,8 +1017,8 @@ todo $\rho^\prime > \rho$ e se $m^\rho(A) > 0$, então $m^{\rho^\prime}
   onde $C^\prime$ é uma constante positiva.
 
   Como jogar $u$ para o infinito é equivalente à jogar $v$ para o
-  infinito, e que para obter um limite superior para o $\liminf$,
-  podemos  nos limitar à uma sequência específica, teremos que:
+  infinito, e que que o limite seguindo $v$ inteiro é um limitante
+  superior para $\liminf$, teremos que:
 
   \begin{align*}
     \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} &\leq
