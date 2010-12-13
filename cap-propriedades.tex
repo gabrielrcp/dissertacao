@@ -370,6 +370,79 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
 
 %% ------------------------------------------------------------------------- %%
 
+\section{Propriedade de Feller}
+\label{sec:prop-feller}
+
+
+Uma observação interessante sobre esse processo que fizemos durante a
+introdução é que ele pode não ser de Feller. Nosso objetivo nessa
+seção é especificar quando que isso ocorre.
+
+\begin{definicao}
+  \label{def:semigrupo}
+  Denotaremos por $\Psi$ o semigrupo de transição do Processo K, isso
+  é, para $t > 0$ e $f: \Nzb \to \R$:
+  \begin{gather*}
+    \Psi_t f (x) = \E \left[ X^x(t) \right]\\
+  \end{gather*}
+\end{definicao}
+
+Dizemos que um processo é de Feller se para todo $t > 0$, e toda $f:
+\Nzb \to \R$ contínua, então $\Psi_t f$ também é uma função contínua.
+
+
+\begin{proposicao}
+  São equivalentes:
+  \begin{enumerate}
+  \item $\lim_{x \to \infty} \gamma_x = 0$
+  \item O processo K é um processo de Feller.
+  \end{enumerate}
+\end{proposicao}
+
+\begin{proof}
+
+  Primeiramente vamos mostrar que se $\gamma_x$ não converge para zero
+  quando $x \to \infty$, então o processo K não é de Feller. 
+
+  Como $\gamma_x$ não vai à zero, existe um $\delta > 0$ e uma
+  sequência $(x_n)$ com $x_n \to \infty$ e $\gamma_{x_n} >
+  \delta$. Dessa forma temos que para todo $t > 0$:
+  \begin{align*}
+    P(\gamma_{x_n} T_0 > t) &=
+    \exp\left\{ -\frac{t}{\gamma_{x_n}}\right\}
+    \geq  \exp\left\{ -\frac{t}{\delta}\right\}.
+  \end{align*}
+
+  Agora tomemos um $\epsilon > 0 $ tal que $\epsilon < e^{-t/\delta}$,
+  vamos dividir em dois casos:
+
+
+  
+% \begin{proposicao}
+%   \label{prop:quase-prop-feller}
+%   Para todo $t > 0$, teremos que $\lim_{y \to \infty} X^y(t) =
+%   X^\infty(t)$  \qc.
+% \end{proposicao}
+% \begin{proof}
+%   Fixe um $t > 0$ e uma realização do processo. Como estamos supondo
+%   que $\gamma_y \xrightarrow{y\to\infty} 0$, então podemos supor que
+%   $\gamma_y T_0 < t$. Assim, usando a Proposição
+%   \ref{prop:reinicia-infinito}, teremos que:
+%   \begin{displaymath}
+%     |X^y(t) - X^\infty(t)| = |X^\infty(t-\gamma_yT_0) - X^\infty(t)|.
+%   \end{displaymath}
+
+%   Agora, pela Proposição \ref{prop:proc-descontinuidades}, teremos que
+%   todo $t > 0$ fixado é \qc um ponto de continuidade do processo,
+%   portando como $\gamma_y T_0 \xrightarrow{y \to \infty} 0$ \qc, temos
+%   que a quantidade acima converge à zero \qc. 
+% \end{proof}
+
+
+\end{proof}
+
+%% ------------------------------------------------------------------------- %%
+
 \section{Propriedade de Markov}
 \label{sec:prop-markov}
 
@@ -487,17 +560,6 @@ problema. Intuitivamente ela nos diz que um estado $x$ onde $\gamma_x$
 \end{proof}
 
 
-\begin{definicao}
-  \label{def:semigrupo}
-  Denotaremos por $\Psi$ e $\Psi^n$ os semigrupos de transição de $X$
-  e $X^{(n)}$ respectivamente, isso é, para $t > 0$ e $f: \Nzb \to
-  \R$:
-  \begin{gather*}
-    \Psi_t f (x) = \E \left[ X^x(t) \right]\\
-    \Psi^n_t f (x) = \E \left[ X^{x, (n)}(t) \right]
-  \end{gather*}
-\end{definicao}
-
 % \begin{proposicao}
 %   \label{prop:semigrupo-feller}
 %   Se $f: \Nzb \to \R$ é uma função contínua, então para todo $t > 0$,
@@ -584,7 +646,8 @@ problema. Intuitivamente ela nos diz que um estado $x$ onde $\gamma_x$
   Fixado um $m \geq 1$, $t_1 < t_2 < \ldots < t_{m+1}$ e $f_1, \ldots,
   f_{m+1} : \Nzb \to \R$ funções contínuas.
 
-  Como $X^{(n)}$ é Markoviano, teremos que:
+  Como $X^{(n)}$ é Markoviano, se denotarmos por $\Psi^n$ o semigrupo
+  de transição do processo truncado, teremos que:
   \begin{gather}
     \label{eq:markov-truncado}
     \E \left[
@@ -700,8 +763,9 @@ problema. Intuitivamente ela nos diz que um estado $x$ onde $\gamma_x$
   \begin{equation}
     \label{eq:convergencia-semigrupo}
     \sup_{y \in K} | \Psi^n_t f (y) - \Psi_t f(y) |
-    \xrightarrow{n\to\infty} 0.
+    \xrightarrow{n\to\infty} 0,
   \end{equation}
+  onde $\Psi^n$ denota o semigrupo de transição de $X^{(n)}$.
 \end{proposicao}
 
 \begin{proof}
