@@ -390,7 +390,6 @@ seção é especificar quando que isso ocorre.
 Dizemos que um processo é de Feller se para todo $t > 0$, e toda $f:
 \Nzb \to \R$ contínua, então $\Psi_t f$ também é uma função contínua.
 
-
 \begin{proposicao}
   São equivalentes:
   \begin{enumerate}
@@ -401,8 +400,42 @@ Dizemos que um processo é de Feller se para todo $t > 0$, e toda $f:
 
 \begin{proof}
 
-  Primeiramente vamos mostrar que se $\gamma_x$ não converge para zero
-  quando $x \to \infty$, então o processo K não é de Feller. 
+  Primeiramente vamos mostrar que se $\gamma_x \to 0$ quando $x \to
+  \infty$, então o processo é de Feller.
+
+  Fixe um $t > 0$ e uma $f: \Nzb \to \R$ contínua. Queremos mostrar
+  que $\Psi_t f$ é uma função contínua, isso é, que $\Psi_t f(y) \to
+  \Psi f (\infty)$ quando $y \to \infty$.
+
+  Note que:
+  \begin{displaymath}
+    \Psi_t f(\infty) - \Psi f (y) =
+    \E \left[
+      f(X^\infty(t)) - f(X^y(t))
+    \right].
+  \end{displaymath}
+
+  Como a quantidade dentro da esperança é limitada por $2 \Vert f
+  \Vert$, então se mostrarmos que ela vai quase certamente à zero,
+  seguirá pelo teorema da convergência dominada que a esperança também
+  vai à zero.
+
+  Como $gamma_y \to 0$, então $\gamma_y T_0 \to 0$ \qc. Assim tomando
+  $y$ suficientemente grande teremos que $\gamma_y T_0 < t$. Portanto
+  usando a Proposição \ref{prop:reinicia-infinito}, teremos que:
+
+  \begin{displaymath}
+    f(X^\infty(t)) - f(X^y(t)) = 
+    f(X^\infty(t)) - f(X^\infty(t-\gamma_y T_0)).
+  \end{displaymath}
+
+  O Corolário \ref{cor:continuidades-processo} nos garante que $t$ é
+  quase certamente um ponto de contínuidade do processo, assim
+  $X^\infty(t-\gamma_y T_0) \to X^\infty(t)$ \qc, e como $f$ é
+  contínua, concluímos que a quantidade acima converge à zero \qc.
+
+  Agora vamos mostrar que se $\gamma_x$ não converge para zero quando
+  $x \to \infty$, então o processo K não é de Feller.
 
   Como $\gamma_x$ não vai à zero, existe um $\delta > 0$ e uma
   sequência $(x_n)$ com $x_n \to \infty$ e $\gamma_{x_n} >
@@ -415,28 +448,6 @@ Dizemos que um processo é de Feller se para todo $t > 0$, e toda $f:
 
   Agora tomemos um $\epsilon > 0 $ tal que $\epsilon < e^{-t/\delta}$,
   vamos dividir em dois casos:
-
-
-  
-% \begin{proposicao}
-%   \label{prop:quase-prop-feller}
-%   Para todo $t > 0$, teremos que $\lim_{y \to \infty} X^y(t) =
-%   X^\infty(t)$  \qc.
-% \end{proposicao}
-% \begin{proof}
-%   Fixe um $t > 0$ e uma realização do processo. Como estamos supondo
-%   que $\gamma_y \xrightarrow{y\to\infty} 0$, então podemos supor que
-%   $\gamma_y T_0 < t$. Assim, usando a Proposição
-%   \ref{prop:reinicia-infinito}, teremos que:
-%   \begin{displaymath}
-%     |X^y(t) - X^\infty(t)| = |X^\infty(t-\gamma_yT_0) - X^\infty(t)|.
-%   \end{displaymath}
-
-%   Agora, pela Proposição \ref{prop:proc-descontinuidades}, teremos que
-%   todo $t > 0$ fixado é \qc um ponto de continuidade do processo,
-%   portando como $\gamma_y T_0 \xrightarrow{y \to \infty} 0$ \qc, temos
-%   que a quantidade acima converge à zero \qc. 
-% \end{proof}
 
 
 \end{proof}
@@ -456,26 +467,6 @@ Markoviano. Para demonstrar que a propriedade é mantida, vamos abusar
 de diversas propriedades da nossa construção, em particular da
 convergência dos processos truncados uniformemente na condição
 inicial.
-
-% \begin{proposicao}
-%   \label{prop:quase-prop-feller}
-%   Para todo $t > 0$, teremos que $\lim_{y \to \infty} X^y(t) =
-%   X^\infty(t)$  \qc.
-% \end{proposicao}
-% \begin{proof}
-%   Fixe um $t > 0$ e uma realização do processo. Como estamos supondo
-%   que $\gamma_y \xrightarrow{y\to\infty} 0$, então podemos supor que
-%   $\gamma_y T_0 < t$. Assim, usando a Proposição
-%   \ref{prop:reinicia-infinito}, teremos que:
-%   \begin{displaymath}
-%     |X^y(t) - X^\infty(t)| = |X^\infty(t-\gamma_yT_0) - X^\infty(t)|.
-%   \end{displaymath}
-
-%   Agora, pela Proposição \ref{prop:proc-descontinuidades}, teremos que
-%   todo $t > 0$ fixado é \qc um ponto de continuidade do processo,
-%   portando como $\gamma_y T_0 \xrightarrow{y \to \infty} 0$ \qc, temos
-%   que a quantidade acima converge à zero \qc. 
-% \end{proof}
 
 
 Uma dificuldade introduzida ao aceitar pesos não homogêneos é que
@@ -559,28 +550,6 @@ problema. Intuitivamente ela nos diz que um estado $x$ onde $\gamma_x$
   De onde concluímos o que desejávamos.
 \end{proof}
 
-
-% \begin{proposicao}
-%   \label{prop:semigrupo-feller}
-%   Se $f: \Nzb \to \R$ é uma função contínua, então para todo $t > 0$,
-%   $\Psi_t f$ também é uma função contínua.
-% \end{proposicao}
-% \begin{proof}
-%   Fixe um $t > 0$ arbitrário. Pela Proposição
-%   \ref{prop:quase-prop-feller}, teremos que $X^y(t)
-%   \xrightarrow{y\to\infty} X^\infty(t)$ \qc. Como $f$ é contínua,
-%   teremos que $f(X^y(t)) \xrightarrow{y\to\infty} f(X^\infty(t))$ \qc.
-
-%   O espaço $\Nzb$ é compacto, e como $f$ é contínua, ela é também
-%   limitada. Assim usando o teorema da convergência dominada, teremos
-%   que:
-%   \begin{displaymath}
-%     \Psi_t f (y) = \E \left[ f(X^y(t)) \right]
-%     \xrightarrow{y\to\infty}
-%     \E \left[ f(X^\infty(t)) \right] = \Psi_t f (\infty),
-%   \end{displaymath}
-%   de onde concluímos que $\Psi_t f$ é uma função contínua.
-% \end{proof}
 
 \begin{proposicao}
   \label{prop:semigrupo-quase-continuo}
