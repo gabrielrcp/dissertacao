@@ -932,6 +932,163 @@ problema. Intuitivamente ela nos diz que um estado $x$ onde $\gamma_x$
   quantidade vai a zero quase certamente.
 \end{proof}
 
+%% ------------------------------------------------------------------------- %%
+
+\section{Propriedade Forte de Markov}
+\label{sec:prop-forte-markov}
+
+Um resultado clássico diz que um processo de Feller markoviano é
+fortemente markoviano. Como já vimos, nosso processo não é de Feller,
+mas ele goza de algumas propriedades que irão possibilitar demonstrar
+a propriedade forte de Markov de forma análoga à maneira em que  a
+demonstramos para processos de Feller.
+
+Para cada $t > 0$, vamos denotar por $\FF_t$ a $\sigma$-algebra gerada
+por $\{X(s): s \in [0, t]\}$.
+
+\begin{proposicao}
+  \label{prop:markov-forte}
+  O processo K é fortemente Markoviano.
+\end{proposicao}
+\begin{proof}
+  Fixada uma $f: \Nzb \to \R$ contínua e $\tau$ um tempo de parada
+  para $(\FF_t)_{t \geq 0}$ quase certamente finito, vamos mostrar que
+  quase certamente:
+  \begin{equation}
+    \label{eq:markov-forte}
+    \E \left[ f(X(\tau + t) \middle| \FF_\tau \right]
+    = \Psi_t f (X(\tau))
+  \end{equation}
+
+  Para cada $h > 0$, denote por: 
+  \begin{displaymath}
+    \tau_h := \inf\left\{
+      t \geq \tau: t = k h, k \in \N
+    \right\}.
+  \end{displaymath}
+
+  $\tau_h$ é um tempo de parada para a filtração $(\FF_{k h})_{k \in
+    \N}$. Vale que $\tau \leq \tau_h < \tau + h$. Assim $\tau_h$ é \qc
+  finito. É fácil ver que $\tau_h \to \tau$ \qc quando $h \to 0$.
+
+  Como em tempo discreto a propriedade de markov é equivalente à
+  propriedade forte de markov, então teremos que para todo $h > 0$ e
+  $k \in \N$ vale que:
+ \begin{displaymath}
+    \E \left[ f(X(\tau_h + k h)) \middle| \FF_{\tau_h} \right]
+    = \Psi_{k h} f (X(\tau_h)).
+  \end{displaymath}
+  
+  Fixe um $t > 0$ e tome $h = t/k$, reescrevendo a expressão acima
+  teremos que:
+  \begin{displaymath}
+    \E \left[ f(X(\tau_h + t)) \middle| \FF_{\tau_h} \right]
+    = \Psi_t f (X(\tau_h)).
+  \end{displaymath}
+
+  Como $\tau_h \geq \tau$, então $\FF_{\tau} \subseteq \FF_{\tau_h}$.
+  Usando a definição de esperança condicional, teremos que para todo
+  evento $B \in \FF_{\tau}$:
+  \begin{equation}
+    \label{eq:markov-forte-discreto}
+    \E \left[ f(X(\tau_h + t)) \ind\{B\} \right]
+    = \E \left[ \Psi_t f (X(\tau_h)) \ind\{B\} \right].
+  \end{equation}
+
+  Agora iremos fazer $h \searrow 0$ através de ``divisores'' de $t$.
+
+  Como $f$ é uma função contínua, $X$ é um processo contínuo à direita
+  e $\tau_h \searrow \tau$ quando $h \to 0$, teremos que $f(X(\tau_h + t))
+  \to f(X(\tau + t))$ \qc, e como $f$ é limitada, então a parte da
+  esquerda de \eqref{eq:markov-forte-discreto} converge para:
+  \begin{displaymath}
+    \E \left[ f(X(\tau + t)) \ind\{B\} \right]
+  \end{displaymath}
+
+  Suponha que mostremos que $\Psi_t f (X(\tau_h)) \to \Psi_t
+  f(X(\tau))$ \qc quando $h \searrow 0$. Com isso, já que $\Psi_t f$ é
+  limitada, teremos que a parte da direita de
+  \eqref{eq:markov-forte-discreto} convergirá para:
+  \begin{displaymath}
+    \E \left[ \Psi_t f (X(\tau)) \ind\{B\} \right].
+  \end{displaymath}
+
+  Dessa forma, para todo $B \in \FF_{\tau}$, valerá que:
+  \begin{displaymath}
+    \E \left[ f(X(\tau + t)) \ind\{B\} \right]
+    = \E \left[ \Psi_t f (X(\tau)) \ind\{B\} \right].
+  \end{displaymath}
+
+  Como $\Psi_t f(X(\tau))$ é mensurável em $\FF_\tau$, concluímos que:
+  \begin{displaymath}
+    \E \left[ f(X(\tau + t)) \middle| \FF_\tau \right]
+    = \Psi_t f (X(\tau)),
+  \end{displaymath}
+  que é exatamente \eqref{eq:markov-forte}.
+
+  Dessa forma só resta mostrar que:
+  \begin{equation}
+    \label{eq:convergencia-discretizacao}
+    \Psi_t f (X(\tau_h)) \xrightarrow[\qc]{h \searrow 0}  \Psi_t f(X(\tau)).
+  \end{equation}
+
+  É exatamente nesse ponto que nossa demonstração vai divergir da
+  demonstração clássica. Se nosso processo fosse de Feller, então
+  $\Psi_t f$ seria uma função contínua, e essa convergência seria
+  evidente. Para contornar esse problema, vamos usar a Proposição
+  \ref{prop:gamma-somavel}, de maneira parecida à que fizemos quando
+  queríamos mostrar a propriedade de Markov simples.
+
+  Vamos fixar uma realização do processo onde $\sum_{x \in V_t}
+  \gamma_x < \infty$ para todo $t$, $\tau < \infty$ e $X(\tau_{h}) \to
+  X(\tau)$ quando $h \to 0$. Tais realizações tem probabilidade 1.
+
+  Tome uma sequência $h_n \searrow 0$. Sem perda de generalidade vamos
+  toma-la de forma que $h_n \leq 1$ para todo $n$.
+
+  Se existir um $n_0$ tal que $n > n_0$ implica que $X(\tau_{h_n}) =
+  X(\tau)$, então \eqref{eq:convergencia-discretizacao} é evidente.
+
+  Assim vamos que $X(\tau_{h_n})$ se aproxima de $X(\tau)$ sem ser
+  igual sempre. Como o único ponto não isolado na topologia
+  adotada para $\Nzb$ é o $\infty$, temos que nesse caso $X(\tau) =
+  \infty$.
+
+  Vamos denotar por $y_n = X(\tau_{h_n})$. Temos que $y_n \to
+  \infty$. Vamos desconsiderar os índices $n$ onde $y_n = \infty$, já
+  que neles a igualdade \eqref{eq:convergencia-discretizacao} é óbvia.
+
+
+  Como $h_n \leq 1$ e $\tau_h < \tau + h$, vale que $y_n \in V_{\tau +
+    1}$. Já que $\sum_{x \in V_{\tau + 1}} \gamma_x < \infty$ e
+  passamos por infinitos valores em $y_n$, vale que $\gamma_{y_n} \to
+  0$.
+  \begin{align*}
+    \Psi_t f(\infty) - \Psi_t f (y_n)
+    = \E \left[
+      f(X^{\infty}(t)) - f(X^{y_n}(t))
+    \right]
+  \end{align*}
+
+  Agora vamos mostrar que a quantidade dentro da esperança acima
+  converge à zero quase certamente. Como essa quantidade é limitada
+  por $2 \Vert f \Vert$, o teorema da convergência dominada irá
+  garantir que a esperança também irá à zero.
+
+  Se tomarmos um $n$ grande o suficiente, de forma que
+  $\gamma_{y_n} T_0 < t$, usando a Proposição \ref{prop:reinicia-infinito},
+  teremos que:
+  \begin{align*}
+    f(X^{\infty}(t)) - f(X^{y_n}(t)) &=
+    f(X^{\infty}(t)) - f(X^{\infty}(t-\gamma_{y_n} T_0)).
+  \end{align*}
+
+  Essa quantidade acima vai à zero porque $\gamma_{y_n} T_0 \to 0$
+  quando $n \to \infty$, $t$ é quase certamente um ponto de
+  continuidade do processo (Corolário
+  \ref{cor:continuidades-processo}) e $f$ é uma função contínua.
+\end{proof}
+
 
 
 %%% Local Variables: 
