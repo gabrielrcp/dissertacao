@@ -483,15 +483,13 @@ Enquanto que no caso $c=0$, teremos:
   Agora vamos tratar o caso $c = 0$. Para isso note que nossa
   construção do processo K permite que acoplemos várias versões do
   processo, com $c$ diferentes em um mesmo espaço de
-  probabilidade. Basta usar os mesmos processos e Poisson e variáveis
+  probabilidade. Basta usar os mesmos processos de Poisson e variáveis
   exponenciais para todos eles. Assim vamos colocar um índice $c$ em
   $\Gamma^y_c$ para denotar qual valor de $c$ estamos trabalhando.
 
-  Dessa forma teremos que para todo $y \in \Nzb$, $\Gamma^y_c$ é
-  crescente com $c$, e portanto $P ( \Gamma^\infty_c(\sigma^x_1-) \leq
-  t)$ é monótona em $c$.
-
-  Dessa forma teremos que, para todo $c > 0$:
+  Note que para todo $y \in \Nzb$, $\Gamma^y_c$ é crescente com $c$, e
+  portanto $P ( \Gamma^\infty_c(\sigma^x_1-) \leq t)$ é monótona em
+  $c$.  Dessa forma teremos que, para todo $c > 0$:
   \begin{align*}
     \liminf_{t \searrow 0} \frac{P ( \Gamma^\infty_0(\sigma^x_1-) \leq
       t)}{t} &\geq \liminf_{t \searrow 0} \frac{P (
@@ -499,7 +497,7 @@ Enquanto que no caso $c=0$, teremos:
     = \frac{\lambda_x}{c}
   \end{align*}
 
-  Assim tomando $c > 0$ cada vez menores, concluiremos que $\frac{P (
+  Tomando $c > 0$ cada vez menores, concluiremos que $\frac{P (
     \Gamma^\infty_0(\sigma^x_1-))}{t} \xrightarrow{t \searrow 0}
   \infty$
 \end{proof}
@@ -590,15 +588,15 @@ probabilidade é uma medida invariante para o processo K.
   tempo discreto $(Y^{y, h}_n)_{n \geq 0}$ dada por $Y^{y, h}_n =
   X^y(n h)$.
 
-  Fixado um estado $y \in \Nz$, defina $M = \min_{i \geq 1} \{ T_i^y >
-  h \}$. $M$ é uma variável aleatória com distribuição geométrica com
-  probabilidade de sucesso dada por $e^{-\frac{h}{\gamma_y}}$. Observe
-  que $X_t^y = y$ para todo $t \in [\Gamma^y(\sigma_M^x-),
-  \Gamma^y(\sigma_M^x-) + T_M^y)$ e, como $T_M^y > h$, existe um
-  múltiplo de $h$ nesse intervalo. Assim se $n h$ for esse múltiplo,
-  vai valer que $Y_n^{y, h} = y$. Dessa maneira a esperança de tempo
-  de retorno à um estado em $(Y_n)$ é finita.
-
+  Fixado um estado $y \in \Nz$, defina $M = \min_{i \geq 1} \{
+  \gamma_y T_i^y > h \}$. $M$ é uma variável aleatória com
+  distribuição geométrica com probabilidade de sucesso dada por
+  $e^{-\frac{h}{\gamma_y}}$. Observe que $X_t^y = y$ para todo $t \in
+  [\Gamma^y(\sigma_M^y-), \Gamma^y(\sigma_M^x-) + \gamma_y T_M^y)$ e,
+  como $\gamma_y T_M^y > h$, existe um múltiplo de $h$ nesse
+  intervalo. Assim se $n h$ for esse múltiplo, vai valer que $Y_n^{y,
+    h} = y$. Dessa maneira a esperança de tempo de retorno à um estado
+  em $(Y_n)$ é finita.
 
   Para todo $x, y \in \Nz$ vale que $P (Y^{x, h}_1 = y) > 0$. Temos
   ainda que para todo $x \in \Nzb$ $P (Y^{x, h}_1 = \infty ) > 0$ se
@@ -919,13 +917,13 @@ transladado.
 
 
 Agora temos ferramentas para calcular a dimensão de Hausdorff de
-$\RR$. Mas antes introduzir brevemente o que é a dimensão de Hausdorff
-de um conjunto. Para uma cobertura mais abrangente do assunto,
-recomendamos (???).
+$\RR$. Mas antes vamos introduzir brevemente o que é a dimensão de
+Hausdorff de um conjunto. Para uma cobertura mais abrangente do
+assunto, recomendamos (???).
 
-Para um $\epsilon > 0$, e um boreliano $A$, vamos chamar de
-$\II_\epsilon(A)$ a família de todas as coberturas de $A$ por um número
-enumerável de intervalos de comprimento menor que $\epsilon$.
+Para um $\epsilon > 0$ e um boreliano $A$ vamos denotar por
+$\II_\epsilon(A)$ a família de todas as coberturas de $A$ por um
+número enumerável de intervalos de comprimento menor que $\epsilon$.
 
 
 Para um $\rho > 0$, $\epsilon > 0$ e um boreliano $A$, definimos:
@@ -979,6 +977,7 @@ todo $\rho^\prime > \rho$ e se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
 \end{proof}
 
 \begin{proposicao}
+  \label{prop:dominar-dim-haus-sup}
   Suponha que $\sup_{x\in\Nz}\lambda_x < \infty$ e que existam um
   $\delta>0$ e um $n_0 \in \Nz$ tal que $\gamma_x \leq x^{-(1+\delta)}$
   para todo $x > n_0$. Nessas condições:
@@ -1029,6 +1028,7 @@ todo $\rho^\prime > \rho$ e se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
 \end{proof}
 
 \begin{proposicao}
+\label{prop:dominar-dim-haus-inf}
   Suponha que $\inf_{x\in\Nz}\lambda_x  > 0$ e que existam um
   $\delta>0$ e um $n_0 \in \Nz$ tal que $\gamma_x \geq x^{-(1+\delta)}$
   para todo $x > n_0$. Nessas condições:
@@ -1074,6 +1074,21 @@ todo $\rho^\prime > \rho$ e se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
   \begin{displaymath}
     \liminf_{u \to \infty} \frac{\log \Phi (u)}{\log u} \geq \frac{1}{1+\delta}
   \end{displaymath}
+\end{proof}
+
+\begin{corolario}
+  \label{prop:igualar-dim-haus}
+  Suponha que $\inf_{x \in \Nz} \lambda_x > 0$, $\sup_{x \in \Nz}
+  \lambda_x < \infty$ e que existam um $\delta > 0$ e um $n_0 \in \Nz$
+  tal que $\gamma_x = x^{-(1+\delta)}$ para todo $x > n_0$.  Nessas
+  condições:
+  \begin{displaymath}
+    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}  \geq \frac{1}{1+\delta}
+  \end{displaymath}
+\end{corolario}
+\begin{proof}
+  Basta juntar as Proposições \ref{prop:dominar-dim-haus-sup} e
+  \ref{prop:dominar-dim-haus-inf}.
 \end{proof}
 
 %%% Local Variables: 

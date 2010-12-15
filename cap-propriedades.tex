@@ -136,7 +136,7 @@ serão usadas à exaustão em seções subsequentes da dissertação.
   $A$ na métrica \eqref{eq:metrica}.
 
   Agora tome $S_1 < S_2 < \ldots < S_M$ uma ordenação dos conjunto $\{
-  \sigma^x_i: x \in \Nz \,\, i \geq 1 \,\, \Gamma(\sigma^x_i) \leq
+  \sigma^x_i: x \leq m, \: i \geq 1, \: \Gamma(\sigma^x_i) \leq
   T\}$. Finalmente fixe $N = 2M+1$ se $\Gamma(S_M) < T$ e $N = 2M$
   caso contrário. Tome $t_0 = 0$, $t_N = T$ e para $i=1,\ldots, M$:
   \begin{align*}
@@ -158,18 +158,17 @@ serão usadas à exaustão em seções subsequentes da dissertação.
   \Gamma(\sigma_i^x-), \Gamma(\sigma_i^x): x \in \Nz\}$.
 \end{proposicao}
 \begin{proof}
-  Tome $t$ é um ponto de descontinuidade de $\Gamma$, então $\Gamma(t) -
+  Tome $t$ um ponto de descontinuidade de $\Gamma$, então $\Gamma(t) -
   \Gamma(t-) > \epsilon > 0$. Fixe um $T > t$ e tome $0 = t_0 < t_1 <
-  \ldots < t_N = T$ como na Proposição \ref{prop:proc-cadlag}. Se
-  $t \not\in \{t_0, \ldots, t_N\}$, então existe um $i$ tal que $t \in
-  (t_i, t_{i+1})$. Assim teremos que $w[t_i, t_{i+1}) \geq \Gamma(t) -
-  \Gamma(t-) > \epsilon$, que contraria a nossa escolha de $\{t_0,
-  \ldots, t_N\}$.
+  \ldots < t_N = T$ como na demonstração da Proposição
+  \ref{prop:proc-cadlag}. Se $t \not\in \{t_0, \ldots, t_N\}$, então
+  existe um $i$ tal que $t \in (t_i, t_{i+1})$. Assim teremos que
+  $w[t_i, t_{i+1}) \geq \Gamma(t) - \Gamma(t-) > \epsilon$, que
+  contraria a nossa escolha de $\{t_0, \ldots, t_N\}$.
 
-  Assim temos que $t = t_i$ para algum $i$. Como na proposição
-  anterior, escolhemos os $t_i$'s sempre do conjunto proposto, temos
-  eles são os únicos candidatos possíveis para pontos de
-  descontinuidade.
+  Assim temos que $t = t_i$ para algum $i$. Como os $t_i$'s sempre
+  foram escolhidos do conjunto proposto, temos que eles são os únicos
+  candidatos possíveis para pontos de descontinuidade.
 \end{proof}
 
 \begin{corolario}
@@ -383,7 +382,7 @@ seção é especificar quando que isso ocorre.
   Denotaremos por $\Psi$ o semigrupo de transição do Processo K, isso
   é, para $t > 0$ e $f: \Nzb \to \R$:
   \begin{gather*}
-    \Psi_t f (x) = \E \left[ X^x(t) \right]\\
+    \Psi_t f (x) = \E \left[ f(X^x(t)) \right]\\
   \end{gather*}
 \end{definicao}
 
@@ -467,12 +466,11 @@ de diversas propriedades da nossa construção, em particular da
 convergência dos processos truncados uniformemente na condição
 inicial.
 
-
-Uma dificuldade introduzida ao aceitar pesos não homogêneos é que
-$\gamma_x$ pode não convergir à zero quando $x \to \infty$. Assim o
-processo iniciado em um estado $y$ ``grande'' pode ser bem diferente
-ainda do processo iniciado no $\infty$. Esse fato é o que causa a
-possibilidade do processo K poder não ser um processo de Feller.
+% Uma dificuldade introduzida ao aceitar pesos não homogêneos é que
+% $\gamma_x$ pode não convergir à zero quando $x \to \infty$. Assim o
+% processo iniciado em um estado $y$ ``grande'' pode ser bem diferente
+% ainda do processo iniciado no $\infty$. Esse fato é o que causa a
+% possibilidade do processo K poder não ser um processo de Feller.
 
 A próxima proposição vai nos ajudar a contornar esse
 problema. Intuitivamente ela nos diz que um estado $x$ onde $\gamma_x$
@@ -499,7 +497,7 @@ problema. Intuitivamente ela nos diz que um estado $x$ onde $\gamma_x$
     \sum_{x \in V^\prime_t} \gamma_x T^x_1 \leq \Gamma(t) < \infty.
   \end{displaymath}
 
-  Se denotarmos por $\nu$ a medida de $V^\prime_t$ sobre o conjunto
+  Se denotarmos por $\nu$ a distribuição de $V^\prime_t$ sobre o conjunto
   das partes de $\Nz$, como $V^\prime_t$ só depende dos processos de
   Poisson $\{N^x: x \in \Nz\}$ e esses são independentes de $\{ T^x_1:
   x \in \Nz \}$, teremos que:
@@ -600,7 +598,7 @@ problema. Intuitivamente ela nos diz que um estado $x$ onde $\gamma_x$
   Corolário \ref{cor:continuidades-processo}), e como $\gamma_{y_k}
   T_0$ converge à zero, temos que a quantidade dentro da esperança
   acima converge quase certamente à zero. Como $f$ é contínua (e
-  portanto limitada), o teorema da convergência monótona nos garante
+  portanto limitada), o teorema da convergência dominada nos garante
   que a esperança também converge à zero.
 \end{proof}
 
@@ -777,12 +775,13 @@ problema. Intuitivamente ela nos diz que um estado $x$ onde $\gamma_x$
   Vamos tratar os dois termos dessa soma separadamente.
 
   Por construção das $\lambda_n^y$, temos que para todo $y$, quase certamente:
-  \begin{displaymath}
+  \begin{equation}
+    \label{eq:dist-uniforme}
     d(X^{y, (n)}(t), X^y(\lambda_n^y(t)) \leq
     \sup_{s \in [0, T]} d(X^{\infty, (n)}(s), X^\infty(\lambda_n^\infty(s))
     \xrightarrow{n\to\infty} 0.
-  \end{displaymath}
-
+  \end{equation}
+  
   $f$ é uma função contínua em um espaço compacto, assim ela é
   uniformemente contínua. Isso é, para todo $\epsilon > 0$, existe um
   $\delta_\epsilon > 0$ tal que se $d(x, y) < \delta_\epsilon$ então
@@ -804,10 +803,10 @@ problema. Intuitivamente ela nos diz que um estado $x$ onde $\gamma_x$
         T]}d(X^{\infty, (n)}(s), X^\infty(\lambda_n^\infty(s)) \geq
       \delta_\epsilon \right).
   \end{gather*}
-  Essa última quantidade vai para $\epsilon$ quando $n\to
-  \infty$. Como $\epsilon$ foi escolhido arbitrariamente, concluímos
-  que o primeiro termo de \eqref{eq:esperancas-markov} converge à
-  zero.
+  Essa última quantidade vai para $\epsilon$ quando $n\to \infty$
+  devido à \eqref{eq:dist-uniforme}. Como $\epsilon$ foi escolhido
+  arbitrariamente, concluímos que o primeiro termo de
+  \eqref{eq:esperancas-markov} converge à zero.
 
   Para calcular o segundo termo, veja que aquela quantidade, para cada
   $y \in K$ fixado, vai à zero, já que $t$ é \qc um ponto de
