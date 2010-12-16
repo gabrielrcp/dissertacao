@@ -88,6 +88,68 @@ serão usadas à exaustão em seções subsequentes da dissertação.
   \end{displaymath}
 \end{proof}
 
+\begin{proposicao}
+  \label{prop:gamma-dist-continua}
+  Para todo $s, t > 0$, $i \geq 1$ e $x \in \Nz$ vale que:
+  \begin{align*}
+    P(\Gamma(s) = t) = P(\Gamma(\sigma^x_i) = t) =
+    P(\Gamma(\sigma^x_i-) = t) = 0
+  \end{align*}
+\end{proposicao}
+\begin{proof}
+  Para qualquer $x \in \Nz$ e $n \in \N$, temos que:
+  \begin{displaymath}
+    P\left(\sum_{i = 1}^n \gamma_x T_i^x = t\right) = 0,
+  \end{displaymath}
+  já que as $T_i^x$ são variáveis aleatórias contínuas e
+  independentes.
+
+  Dessa forma vale que:
+  \begin{align*}
+    P\left(\sum_{i = 1}^{N^x(s)} \gamma_x T_i^x = t\right) 
+    &= \sum_{n = 0}^{\infty}
+    P\left(\sum_{i = 1}^n \gamma_x T_i^x = t\right)
+    \frac{e^{-\lambda_x s} (\lambda_x s)^n}{n!} = 0
+  \end{align*}
+
+  Assim se $\nu$ for a distribuição de $\sum_{x \geq 2} (\sum_{i =
+    1}^{N^x(s)} \gamma_x T_i^x$, teremos que:
+  \begin{align*}
+    P\left(\sum_{x \in \Nz}\sum_{i = 1}^{N^x(s)} \gamma_x T_i^x = t\right) 
+    &= \int \nu(dr) P\left(\sum_{i = 1}^{N^1(s)} \gamma_1 T_i^1 = t - r\right) 
+    = 0
+  \end{align*}
+
+  Agora, observando a definição de $\Gamma$, concluímos a primeira
+  parte dessa proposição:
+  \begin{displaymath}
+    P\left( \Gamma(s) = t \right) = 0.
+  \end{displaymath}
+
+
+  Fixado $i \geq 1$ e $x \in \Nz$, se denotarmos por $g^x_i$ a
+  densidade de uma Gamma de parâmetros $\lambda_x$ e $i$, que é a
+  distribuição de $\sigma^x_i$, teremos que:
+  \begin{align*}
+    P \left( \Gamma^y_c(\sigma^x_i) = t \right) &=
+    \int P\left( \left[ \gamma_y T_0 + \sum_{j = 1}^{i} \gamma_x
+    T_i^x + \sum_{z \neq x} \sum_{j = 1}^{N^z(s)} \gamma_z
+    T^z_j + c s\right]  = t \right)g^x_i(s) ds\\
+    P \left( \Gamma^y_c(\sigma^x_i-) = t \right) &=
+    \int P\left( \left[ \gamma_y T_0 + \sum_{j = 1}^{i-1} \gamma_x
+    T_i^x + \sum_{z \neq x} \sum_{j = 1}^{N^z(s)} \gamma_z
+    T^z_j + c s\right]  = t \right)g^x_i(s) ds\\
+  \end{align*}
+
+  Usando a parte anterior, temos que a probabilidade que estamos
+  integrando vale zero, de onde concluímos que:
+ \begin{align*}
+    P \left( \Gamma^y_c(\sigma^x_i) = t \right) =
+    P \left( \Gamma^y_c(\sigma^x_i-) = t \right) =
+    0
+  \end{align*}
+\end{proof}
+
 
 \begin{proposicao}
   \label{prop:reinicia-infinito}
@@ -181,9 +243,8 @@ serão usadas à exaustão em seções subsequentes da dissertação.
   processo está contido em $\{ \Gamma(0), \Gamma(\sigma_i^x-),
   \Gamma(\sigma_i^x): x \in \Nz\}$.
 
-  Como para todo $x \in \Nz$ e $i \geq 1$, temos que
-  $P(\Gamma(\sigma_i^x-) = t) = P(\Gamma(\sigma_i^x) = t) = 0$, segue
-  que um $t > 0$ determinístico é ponto de continuidade do processo.
+  Observando a Proposição \ref{prop:gamma-dist-continua}, concluímos
+  que todo $t > 0$ é um ponto de continuidade do processo.
 \end{proof}
 
 
@@ -340,6 +401,7 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
 \end{corolario}
 \begin{proof}
   Fixado um $T > 0$, tome $\lambda_n: [0, \infty) \to [0, \infty)$
+  como na demonstração do Teorema \ref{teo:convergencia}. Elas são
   funções contínuas crescentes tais que quase certamente:
   \begin{gather*}
     \sup_{0 \leq t \leq T} |\lambda_n(t) - t|
@@ -357,14 +419,15 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
   \end{displaymath}
 
   Usando a Proposição \ref{prop:reinicia-infinito}, teremos que:
- \begin{gather*}
+ \begin{gather}
    \sup_{0 \leq t \leq T} |\lambda_n^y(t) - t| \leq
     \sup_{0 \leq t \leq T} |\lambda_n(t) - t|
-    \xrightarrow{n\to\infty} 0 \\
+    \xrightarrow{n\to\infty} 0 \notag \\
+    \label{eq:convergencia-truncado-uniforme}
     \sup_{0 \leq t \leq T} d(X^y(\lambda_n^y(t)), X^{y, (n)}(t)) \leq
     \sup_{0 \leq t \leq T} d(X^\infty(\lambda_n(t)), X^{\infty, (n)}(t))
-    \xrightarrow{n\to\infty} 0 \\
-  \end{gather*}
+    \xrightarrow{n\to\infty} 0
+  \end{gather}
 \end{proof}
 
 %% ------------------------------------------------------------------------- %%
@@ -466,16 +529,17 @@ de diversas propriedades da nossa construção, em particular da
 convergência dos processos truncados uniformemente na condição
 inicial.
 
-% Uma dificuldade introduzida ao aceitar pesos não homogêneos é que
-% $\gamma_x$ pode não convergir à zero quando $x \to \infty$. Assim o
-% processo iniciado em um estado $y$ ``grande'' pode ser bem diferente
-% ainda do processo iniciado no $\infty$. Esse fato é o que causa a
-% possibilidade do processo K poder não ser um processo de Feller.
+Uma dificuldade introduzida ao aceitar pesos não homogêneos é que o
+Processo pode não ser de Feller. Isso acontece porque o processo
+iniciado em um estado $y$ ``grande'' pode ser bem diferente do
+processo iniciado no $\infty$. Esses são os estados $y$ onde
+$\gamma_y$ é ``grande''.
 
-A próxima proposição vai nos ajudar a contornar esse
-problema. Intuitivamente ela nos diz que um estado $x$ onde $\gamma_x$
-é grande vai ser pouco visitado.
-
+Vamos contornar esse problema usando o fato que esses estados onde
+$\gamma_y$ é grande não são de fato visitados, essa idéia será
+formalizada pela Proposição \ref{prop:gamma-somavel}. Com essa
+proposição mostraremos que nosso processo tem propriedades muito
+parecidas com a de um processo de Feller.
 
 \begin{proposicao}
   \label{prop:gamma-somavel}
@@ -564,30 +628,34 @@ problema. Intuitivamente ela nos diz que um estado $x$ onde $\gamma_x$
   converge pontualmente nos pontos de continuidade de $X$. Portanto
   $X^{(n)}(t) \to X(t)$ \qc quando $n \to \infty$.
 
-  Vamos fixar agora uma dessas realizações e separar em 2 casos. O
-  primeiro é quando existe um $n_0$ tal que $n > n_0$ implica que
-  $X^{(n)}(t) = X(t)$. Nesse caso é evidente que para $n > n_0$,
-  $\Psi_s f (X^{(n)}(t)) = \Psi_s f(X(t))$.
+  Vamos fixar agora uma dessas realizações e denotar por $y_n =
+  X^{(n)}(t)$ e $y = X(t)$. Vamos separa em dois casos.
 
-  O segundo é quando $X^{(n)}(t)$ se aproxima de $X(t)$ sem ser
-  permanecer exatamente igual. Olhando para a topologia em que estamos
-  trabalhando, isso só é possível quanto $X(t) = \infty$.  Como
-  $X^{(n)}(t) \to \infty$ quando $n \to \infty$, então existe uma
-  subsequência $(n_k)$ tal que $(X^{n_k}(t))_k$ seja estritamente
-  crescente e $X^{(n_k)} \to \infty$ quando $k \to \infty$. Se
-  mostrarmos \eqref{eq:semigrupo-quase-continuo} para todas as
-  subsequências desse tipo, estaremos mostrando para a sequência
-  original também.
+  O primeiro é quando existe um $n_0$ tal que $y_n = y$ para todo $n >
+  n_0$. Nesse caso \eqref{eq:semigrupo-quase-continuo} é evidente.
 
-  Vamos denotar por $y_k = X^{(n_k)}(t)$. Por construção, se o processo
-  truncado passou por um estado $x$, então o processo original deve
-  ter passado também. Portanto $y_k \in V_t$ para todo $k$.
+  O segundo caso é o contrário do primeiro, isso é, para todo $n_0$
+  existe um $n > n_0$ tal que $y_n \neq y$. Como $y_n \to y$, então
+  concluímos que $y$ não é um ponto isolado, como o único ponto que
+  não é isolado em $\Nzb$ é o $\infty$, concluímos que $y = \infty$.
+  Note ainda que a sequência $y_n$ assume um número infinito de
+  valores diferentes.
 
-  Assim $\sum_{k = 1}^{\infty}\gamma_{y_k} \leq \sum_{x \in V_t}
-  \gamma_x < \infty$ \qc. Em particular $\gamma_{y_k} \to 0$ quando
-  $k\to\infty$. Assim $\gamma_{y_k} T_0 \to 0$ e se tomarmos um $k$
-  suficientemente grande teremos que $\gamma_{y_k} T_0 < s$. Dessa
-  forma usando a Proposição \ref{prop:reinicia-infinito} teremos que:
+  Vamos ignorar os índices $n$ onde $y_n = \infty$, visto que neles a
+  igualdade em \eqref{eq:semigrupo-quase-continuo} é trivial. 
+
+  Por construção, vemos que o processo truncado é mais ``acelerado''
+  que o processo original, isso é, se o processo truncado passou por
+  um estado $x$, então o processo original deve ter passado
+  também. Portanto $y_n \in V_t$ para todo $n$.
+
+  Dessa forma, usando a Proposição \ref{prop:gamma-somavel} e o fato
+  de $y_n$ assumir um número infinito de valores distintos, concluímos
+  que $\gamma_{y_n} \to 0$ quando $n \to \infty$.
+
+  Se tomarmos um $n$ suficientemente grande teremos que $\gamma_{y_n}
+  T_0 < s$. Dessa forma usando a Proposição
+  \ref{prop:reinicia-infinito} teremos que:
   \begin{align*}
     \Psi_s f (\infty) - \Psi_s f (y_k) &=
     \E\left[ f(X^\infty(s)) - f(X^{y_k}(s)) \right] \\
@@ -595,7 +663,7 @@ problema. Intuitivamente ela nos diz que um estado $x$ onde $\gamma_x$
   \end{align*}
 
   Agora $s$ é \qc um ponto de continuidade de $X^\infty$ (pela
-  Corolário \ref{cor:continuidades-processo}), e como $\gamma_{y_k}
+  Corolário \ref{cor:continuidades-processo}), e como $\gamma_{y_n}
   T_0$ converge à zero, temos que a quantidade dentro da esperança
   acima converge quase certamente à zero. Como $f$ é contínua (e
   portanto limitada), o teorema da convergência dominada nos garante
@@ -758,7 +826,9 @@ problema. Intuitivamente ela nos diz que um estado $x$ onde $\gamma_x$
   zero quando $n \to \infty$.
 
   Com isso o caso em que $K$ é finito é trivial. Portanto vamos supor
-  que $K$ é infinito. Tomando $\lambda_n^y$ como no Corolário
+  que $K$ é infinito.
+
+  Tomando $\lambda_n^y$ como na demonstração do Corolário
   \ref{cor:convergencia} para um $T > t$ qualquer teremos que:
   \begin{align}
     \label{eq:esperancas-markov}
@@ -774,7 +844,8 @@ problema. Intuitivamente ela nos diz que um estado $x$ onde $\gamma_x$
 
   Vamos tratar os dois termos dessa soma separadamente.
 
-  Por construção das $\lambda_n^y$, temos que para todo $y$, quase certamente:
+  Por \eqref{eq:convergencia-truncado-uniforme}, temos que para todo
+  $y$, quase certamente:
   \begin{equation}
     \label{eq:dist-uniforme}
     d(X^{y, (n)}(t), X^y(\lambda_n^y(t)) \leq
@@ -825,9 +896,10 @@ problema. Intuitivamente ela nos diz que um estado $x$ onde $\gamma_x$
   > k_n \} = e^{-\frac{1}{\delta_n}} \to 0$ quanto $n \to \infty$.
 
   Como $\delta_n \to 0$, vamos apenas considerar $n$ suficientemente
-  grande, de forma que $\delta_n < t \leq \lambda_n^y(t)$. Usando a
-  Proposição \ref{prop:reinicia-infinito} e separando nos casos
-  $\gamma_yT_0 < \delta_n$ e $\gamma_yT_0 \geq \delta_n$, teremos que:
+  grande, de forma que $\delta_n < t$ e $\delta_n <
+  \lambda_n^y(t)$. Usando a Proposição \ref{prop:reinicia-infinito} e
+  separando nos casos $\gamma_yT_0 < \delta_n$ e $\gamma_yT_0 \geq
+  \delta_n$, teremos que:
   \begin{align}
     \label{eq:markov-quase-la}
     \sup_{\stackrel{y > k_n}{y \in K}}& \left\lvert \E \left[f(X^y(\lambda_n^y(t))) -
@@ -911,7 +983,8 @@ a propriedade forte de Markov de forma análoga à maneira em que  a
 demonstramos para processos de Feller.
 
 Para cada $t > 0$, vamos denotar por $\FF_t$ a $\sigma$-algebra gerada
-por $\{X(s): s \in [0, t]\}$.
+por $\{X(s): s \in [0, t]\}$ e por $\FF$ a $\sigma$-algebra do espaço
+de probabilidades onde estamos trabalhando.
 
 \begin{proposicao}
   \label{prop:markov-forte}
@@ -924,8 +997,15 @@ por $\{X(s): s \in [0, t]\}$.
   \begin{equation}
     \label{eq:markov-forte}
     \E \left[ f(X(\tau + t) \middle| \FF_\tau \right]
-    = \Psi_t f (X(\tau))
+    = \Psi_t f (X(\tau)),
   \end{equation}
+  onde $\FF_\tau$ é definida da seguinte forma:
+  \begin{displaymath}
+    \FF_\tau = \left\{
+      A \in \FF:  A \cap \{\tau \leq t\} \in \FF_t \quad \forall t \geq 0 
+    \right\}
+  \end{displaymath}
+
 
   Para cada $h > 0$, denote por: 
   \begin{displaymath}
@@ -934,9 +1014,13 @@ por $\{X(s): s \in [0, t]\}$.
     \right\}.
   \end{displaymath}
 
-  $\tau_h$ é um tempo de parada para a filtração $(\FF_{k h})_{k \in
-    \N}$. Vale que $\tau \leq \tau_h < \tau + h$. Assim $\tau_h$ é \qc
-  finito. É fácil ver que $\tau_h \to \tau$ \qc quando $h \to 0$.
+  Note que $\tau_h \leq t$ se e somente se $\tau \leq \lfloor t
+  \rfloor_h$, onde $\lfloor t \rfloor_h := \max\{k h \leq t: k \in
+  \N\}$ Assim $\{\tau_h \leq k h\} \in \FF_{\lfloor t \rfloor_h}
+  \subseteq \FF_t$ e portanto $\tau_h$ é um tempo de parada para a
+  filtração $(\FF_{t})_{t \geq 0}$. Note ainda que $\tau \leq \tau_h
+  < \tau + h$. Assim $\tau_h$ é \qc finito e $\tau_h \to \tau$ \qc
+  quando $h \to 0$.
 
   Como em tempo discreto a propriedade de markov é equivalente à
   propriedade forte de markov, então teremos que para todo $h > 0$ e
@@ -949,13 +1033,29 @@ por $\{X(s): s \in [0, t]\}$.
   Fixe um $t > 0$ e tome $h = t/k$, reescrevendo a expressão acima
   teremos que:
   \begin{displaymath}
+    \label{eq:markov-forte-esp-cond}
     \E \left[ f(X(\tau_h + t)) \middle| \FF_{\tau_h} \right]
     = \Psi_t f (X(\tau_h)).
   \end{displaymath}
 
-  Como $\tau_h \geq \tau$, então $\FF_{\tau} \subseteq \FF_{\tau_h}$.
-  Usando a definição de esperança condicional, teremos que para todo
-  evento $B \in \FF_{\tau}$:
+
+  Vamos mostrar agora que para todo $h > 0$, $\FF_{\tau} \subseteq
+  \FF_{\tau_h}$. Para isso tome um $A \in \FF_\tau$ e um $t \geq 0$
+  arbitrários. Como $\{\tau \leq t\} \subseteq \{\tau_h \leq t\}$,
+  então:
+  \begin{displaymath}
+    A \cap \{ \tau_h \leq t \} =
+    A \cap \{ \tau \leq t \} \cap \{ \tau_h \leq t \},
+  \end{displaymath}
+  agora $A \cap \{ \tau \leq t \} \in \FF_t$ porque $A \in \FF_\tau$,
+  enquanto que $ \{ \tau_h \leq t \} \in \FF_t$ porque $\tau_h$ é
+  tempo de parada. Assim concluímos que $A \cap \{ \tau_h \leq t \}
+  \in \FF_t$ e como isso vale para todo $t$, então $A \in
+  \FF_{\tau_h}$.
+
+  Usando a definição de esperança condicional em
+  \eqref{eq:markov-forte-esp-cond}, teremos que para todo evento $B
+  \in \FF_{\tau} \subseteq \FF_{\tau_h}$:
   \begin{equation}
     \label{eq:markov-forte-discreto}
     \E \left[ f(X(\tau_h + t)) \ind\{B\} \right]
@@ -995,10 +1095,11 @@ por $\{X(s): s \in [0, t]\}$.
 
   Dessa forma só resta mostrar que:
   \begin{equation}
-    \label{eq:convergencia-discretizacao}
-    \Psi_t f (X(\tau_h)) \xrightarrow[\qc]{h \searrow 0}  \Psi_t f(X(\tau)).
+    \label{eq:convergencia-discretizacao-1}
+    \Psi_t f (X(\tau_h)) \xrightarrow[\qc]{h \searrow 0}
+    \Psi_t f(X(\tau)).
   \end{equation}
-
+  
   É exatamente nesse ponto que nossa demonstração vai divergir da
   demonstração clássica. Se nosso processo fosse de Feller, então
   $\Psi_t f$ seria uma função contínua, e essa convergência seria
@@ -1010,26 +1111,36 @@ por $\{X(s): s \in [0, t]\}$.
   \gamma_x < \infty$ para todo $t$, $\tau < \infty$ e $X(\tau_{h}) \to
   X(\tau)$ quando $h \to 0$. Tais realizações tem probabilidade 1.
 
-  Tome uma sequência $h_n \searrow 0$. Sem perda de generalidade vamos
-  toma-la de forma que $h_n \leq 1$ para todo $n$.
+
+  Tome uma sequência $h_n \searrow 0$ arbitrária. Vamos mostrar que:
+  \begin{equation}
+    \label{eq:convergencia-discretizacao-2}
+    \Psi_t f (X(\tau_{h_n})) \xrightarrow[\qc]{n \to \infty}
+    \Psi_t f(X(\tau)).
+  \end{equation}
+
+  Se isso valer para toda sequência $h_n$, então concluíremos
+  \ref{eq:convergencia-discretizacao-1}. Sem perda de generalidade
+  podemos olhar apenas para as sequências onde $h_n \leq 1$ para todo
+  $n$.
 
   Se existir um $n_0$ tal que $n > n_0$ implica que $X(\tau_{h_n}) =
-  X(\tau)$, então \eqref{eq:convergencia-discretizacao} é evidente.
+  X(\tau)$, então \eqref{eq:convergencia-discretizacao-2} é evidente.
 
-  Assim vamos que $X(\tau_{h_n})$ se aproxima de $X(\tau)$ sem ser
-  igual sempre. Como o único ponto não isolado na topologia
-  adotada para $\Nzb$ é o $\infty$, temos que nesse caso $X(\tau) =
-  \infty$.
+  Assim vamos supor o contrário, ou seja, que para todo $n_0$ existe
+  um $n > n_0$ tal que $X(\tau_{h_n}) \neq X(\tau)$. Dessa forma
+  concluímos que $X(\tau_{h_n})$ não é um ponto isolado e portanto
+  $X(\tau) = \infty$.
 
   Vamos denotar por $y_n = X(\tau_{h_n})$. Temos que $y_n \to
   \infty$. Vamos desconsiderar os índices $n$ onde $y_n = \infty$, já
-  que neles a igualdade \eqref{eq:convergencia-discretizacao} é óbvia.
-
+  que neles a igualdade em \eqref{eq:convergencia-discretizacao-2} é
+  óbvia.
 
   Como $h_n \leq 1$ e $\tau_h < \tau + h$, vale que $y_n \in V_{\tau +
-    1}$. Já que $\sum_{x \in V_{\tau + 1}} \gamma_x < \infty$ e
-  passamos por infinitos valores em $y_n$, vale que $\gamma_{y_n} \to
-  0$.
+    1}$ para todo $n$. Já que $\sum_{x \in V_{\tau + 1}} \gamma_x <
+  \infty$ e passamos por infinitos valores em $y_n$, vale que
+  $\gamma_{y_n} \to 0$.
   \begin{align*}
     \Psi_t f(\infty) - \Psi_t f (y_n)
     = \E \left[
