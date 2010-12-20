@@ -563,6 +563,116 @@ Enquanto que no caso $c=0$, teremos:
 
 %% ------------------------------------------------------------------------- %%
 
+\section{Propriedade de Feller}
+\label{sec:prop-feller}
+
+
+Uma observação interessante que fizemos sobre o processo K não
+homogêneo é que ele pode não ser de Feller.  Depois de calcular as
+taxas de transição, finalmente temos ferramentas para especificar
+explicitamente quando que isso acontece.
+
+Dizemos que um processo é de Feller se para todo $t > 0$, e toda $f:
+\Nzb \to \R$ contínua, então $\Psi_t f$ também é uma função contínua.
+
+\begin{proposicao}
+  São equivalentes:
+  \begin{enumerate}
+  \item $\lim_{x \to \infty} \gamma_x = 0$
+  \item O processo K é um processo de Feller.
+  \end{enumerate}
+\end{proposicao}
+
+\begin{proof}
+
+  Primeiramente vamos mostrar que se $\gamma_x \to 0$ quando $x \to
+  \infty$, então o processo é de Feller.
+
+  Fixe um $t > 0$ e uma $f: \Nzb \to \R$ contínua. Queremos mostrar
+  que $\Psi_t f$ é uma função contínua, isso é, que $\Psi_t f(y) \to
+  \Psi f (\infty)$ quando $y \to \infty$.
+
+  Note que:
+  \begin{displaymath}
+    \Psi_t f(\infty) - \Psi f (y) =
+    \E \left[
+      f(X^\infty(t)) - f(X^y(t))
+    \right].
+  \end{displaymath}
+
+  Como a quantidade dentro da esperança é limitada por $2 \Vert f
+  \Vert$, então se mostrarmos que ela vai quase certamente à zero,
+  seguirá pelo teorema da convergência dominada que a esperança também
+  vai à zero.
+
+  Como $\gamma_y \to 0$, então $\gamma_y T_0 \to 0$ \qc. Assim tomando
+  $y$ suficientemente grande teremos que $\gamma_y T_0 < t$. Portanto
+  usando a Proposição \ref{prop:reinicia-infinito}, teremos que:
+
+  \begin{displaymath}
+    f(X^\infty(t)) - f(X^y(t)) = 
+    f(X^\infty(t)) - f(X^\infty(t-\gamma_y T_0)).
+  \end{displaymath}
+
+  O Corolário \ref{cor:continuidades-processo} nos garante que $t$ é
+  quase certamente um ponto de contínuidade do processo, assim
+  $X^\infty(t-\gamma_y T_0) \to X^\infty(t)$ \qc, e como $f$ é
+  contínua, concluímos que a quantidade acima converge à zero \qc.
+
+
+  Agora vamos mostrar que se $\gamma_x$ não converge para zero quando
+  $x \to \infty$, então o Processo não é de Feller.
+
+  Primeiro vamos supor que existe uma sequência crescente $(y_n)$ tal
+  que $\gamma_{y_n} \to \infty$ quando $n \to \infty$.
+
+  Tome um $m \in \Nz$ e defina $f: \Nzb \to \R$ como $f(x) = \ind \{ x
+  > m \}$. Essa função é contínua e teremos que $\Psi_t f (y) =
+  P\left( X^y(t) > m \right)$.
+
+  Dessa maneira, tomando $y_n > m$, teremos que:
+  \begin{gather*}
+    \Psi_t f(y_n) \geq P(\gamma_{y_n} T_0 > t) \xrightarrow{n \to
+      \infty} 1\\
+    \Psi_t f(\infty) = P(X^{\infty}(t) > m) < 1, 
+  \end{gather*}
+  então o processo não é de Feller.
+  
+
+
+  Caso não existe uma susequência onde $\gamma_y$ vá ao infinito,
+  então $\gamma_y$ é limitada. Como ela não converge para zero, então
+  ela tem algum outro ponto de acumulação. Assim existe um $a > 0$ e
+  uma sequência crescente $(y_n)$ tal que $\gamma_{y_n} \to a$ quando
+  $n \to \infty$.
+
+  Por absurdo, vamos supor que o processo seja de Feller. Assim
+  teremos que para todo $y \in \Nz$ e $t > 0$ vale que $p_{x y} (t)
+  \to p_{\infty y} (t)$ quando $x \to \infty$. Usando a Proposição
+  \ref{prop:reinicia-infinito} teremos que:
+  \begin{displaymath}
+    p_{y_n y}(t) = \int_0^t \frac{1}{\gamma_{y_n}}
+    e^{-\frac{s}{\gamma_{y_n}}} p_{\infty y} (t-s) ds.
+  \end{displaymath}
+  
+  Tomando limite $n \to \infty$ e usando o teorema de convergência
+  dominada, teremos que:
+  \begin{align*}
+     p_{\infty y}(t)
+     &= \int_0^t \frac{1}{a} e^{-\frac{s}{a}} p_{\infty y}(t-s) d s\\
+     &= \frac{1}{a} e^{-\frac{t}{a}} \int_0^t  e^{\frac{s}{a}} p_{\infty y}(s) d s
+  \end{align*}
+
+  Como  $p_{\infty y}(t) \to 0$ quando $t \searrow 0$, concluíremos que:
+  \begin{displaymath}
+    \frac{p_{\infty y}}{t} \xrightarrow{t \searrow 0} 0.
+  \end{displaymath}
+
+  Mas esse resultado contradiz  Proposição \ref{prop:taxa-inf-x}.
+\end{proof}
+
+%% ------------------------------------------------------------------------- %%
+
 \section{Medida invariante}
 \label{sec:invariante}
 

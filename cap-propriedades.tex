@@ -451,88 +451,6 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
   % \end{gather*}
 \end{proof}
 
-%% ------------------------------------------------------------------------- %%
-
-\section{Propriedade de Feller}
-\label{sec:prop-feller}
-
-
-Uma observação interessante sobre esse processo que fizemos durante a
-introdução é que ele pode não ser de Feller. Nosso objetivo nessa
-seção é especificar quando que isso ocorre.
-
-\begin{definicao}
-  \label{def:semigrupo}
-  Denotaremos por $\Psi$ o semigrupo de transição do Processo K, isso
-  é, para $t > 0$ e $f: \Nzb \to \R$:
-  \begin{gather*}
-    \Psi_t f (x) = \E \left[ f(X^x(t)) \right]\\
-  \end{gather*}
-\end{definicao}
-
-Dizemos que um processo é de Feller se para todo $t > 0$, e toda $f:
-\Nzb \to \R$ contínua, então $\Psi_t f$ também é uma função contínua.
-
-\begin{proposicao}
-  São equivalentes:
-  \begin{enumerate}
-  \item $\lim_{x \to \infty} \gamma_x = 0$
-  \item O processo K é um processo de Feller.
-  \end{enumerate}
-\end{proposicao}
-
-\begin{proof}
-
-  Primeiramente vamos mostrar que se $\gamma_x \to 0$ quando $x \to
-  \infty$, então o processo é de Feller.
-
-  Fixe um $t > 0$ e uma $f: \Nzb \to \R$ contínua. Queremos mostrar
-  que $\Psi_t f$ é uma função contínua, isso é, que $\Psi_t f(y) \to
-  \Psi f (\infty)$ quando $y \to \infty$.
-
-  Note que:
-  \begin{displaymath}
-    \Psi_t f(\infty) - \Psi f (y) =
-    \E \left[
-      f(X^\infty(t)) - f(X^y(t))
-    \right].
-  \end{displaymath}
-
-  Como a quantidade dentro da esperança é limitada por $2 \Vert f
-  \Vert$, então se mostrarmos que ela vai quase certamente à zero,
-  seguirá pelo teorema da convergência dominada que a esperança também
-  vai à zero.
-
-  Como $gamma_y \to 0$, então $\gamma_y T_0 \to 0$ \qc. Assim tomando
-  $y$ suficientemente grande teremos que $\gamma_y T_0 < t$. Portanto
-  usando a Proposição \ref{prop:reinicia-infinito}, teremos que:
-
-  \begin{displaymath}
-    f(X^\infty(t)) - f(X^y(t)) = 
-    f(X^\infty(t)) - f(X^\infty(t-\gamma_y T_0)).
-  \end{displaymath}
-
-  O Corolário \ref{cor:continuidades-processo} nos garante que $t$ é
-  quase certamente um ponto de contínuidade do processo, assim
-  $X^\infty(t-\gamma_y T_0) \to X^\infty(t)$ \qc, e como $f$ é
-  contínua, concluímos que a quantidade acima converge à zero \qc.
-
-  Agora vamos mostrar que se $\gamma_x$ não converge para zero quando
-  $x \to \infty$, então o processo K não é de Feller.
-
-  Como $\gamma_x$ não vai à zero, existe um $\delta > 0$ e uma
-  sequência $(x_n)$ com $x_n \to \infty$ e $\gamma_{x_n} >
-  \delta$. Dessa forma temos que para todo $t > 0$:
-  \begin{align*}
-    P(\gamma_{x_n} T_0 > t) &=
-    \exp\left\{ -\frac{t}{\gamma_{x_n}}\right\}
-    \geq  \exp\left\{ -\frac{t}{\delta}\right\}.
-  \end{align*}
-
-  Agora tomemos um $\epsilon > 0 $ tal que $\epsilon < e^{-t/\delta}$,
-  vamos dividir em dois casos:
-
-\end{proof}
 
 %% ------------------------------------------------------------------------- %%
 
@@ -551,10 +469,11 @@ convergência dos processos truncados uniformemente na condição
 inicial.
 
 Uma dificuldade introduzida ao aceitar pesos não homogêneos é que o
-Processo pode não ser de Feller. Isso acontece porque o processo
-iniciado em um estado $y$ ``grande'' pode ser bem diferente do
-processo iniciado no $\infty$. Esses são os estados $y$ onde
-$\gamma_y$ é ``grande''.
+processo pode não ser de Feller. Isso acontece porque podem existir
+estados $y$, ``grandes'' onde $\gamma_y$ também é grande, assim
+iniciar o processo nesses estados é diferente de iniciar no
+$\infty$. Mostraremos isso com detalhes na Seção
+\ref{sec:prop-feller}.
 
 Vamos contornar esse problema usando o fato que esses estados onde
 $\gamma_y$ é grande não são de fato visitados, essa idéia será
@@ -631,6 +550,16 @@ parecidas com a de um processo de Feller.
 
   De onde concluímos o que desejávamos.
 \end{proof}
+
+
+\begin{definicao}
+  \label{def:semigrupo}
+  Denotaremos por $\Psi$ o semigrupo de transição do Processo K, isso
+  é, para $t > 0$ e $f: \Nzb \to \R$:
+  \begin{gather*}
+    \Psi_t f (x) = \E \left[ f(X^x(t)) \right]\\
+  \end{gather*}
+\end{definicao}
 
 
 \begin{proposicao}
