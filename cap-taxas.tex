@@ -2,7 +2,12 @@
 \chapter{Taxas de Transição}
 \label{cap:taxas}
 
-Vamos começar a escrever e depois penso no que escrever aqui.
+Nesse capítulo vamos nos preocupar em calcular as taxas de transição
+do processo K. Usando essas taxas iremos calcular sua medida invariante.
+
+No fim do capítulo iremos calcular a dimensão de Hausdorff do tempo em
+que o processo K passa no infinito.
+
 
 %% ------------------------------------------------------------------------- %%
 
@@ -16,10 +21,8 @@ seguinte definição, para $x, y \in \Nzb$, $t > 0$:
 \end{equation}
 Denotaremos ainda por $P(t)$ a ``matriz'' cujas entradas sejam $p_{xy}(t)$.
 
-
 Nessa seção vamos estudar a continuidade ou não continuidade dessas
 funções na origem.
-
 
 Começaremos com uma caracterização básica dessas funções.
 \begin{proposicao}
@@ -38,7 +41,7 @@ Começaremos com uma caracterização básica dessas funções.
   da propriedade de Markov do processo. Para o quarto, considere
   $X^{x, (n)}$ como na Seção \ref{sec:aproximacoes} e defina $p^n_{x
     y}(t) := P(X^{x, (n)}(t) = y)$. Note que $p^n_{xy}$ é Lebesgue
-  mensurável porque $X^{x, (n)}$ é um processo markoviano de saltos.
+  mensurável porque $X^{x, (n)}$ é um processo Markoviano de saltos.
 
   Como todo $t > 0$ fixo é \qc um ponto de continuidade do processo, e
   a função $f_y(z) = \ind\{ z = y \}$ é uma função contínua para $y
@@ -152,8 +155,9 @@ Começaremos com uma caracterização básica dessas funções.
   Pela construção do processo, temos que $\theta(t) \geq c
   \Xi(t)$, onde $\Xi(t)$ é a inversa de $\Gamma^\infty(t)$.
 
-  Portanto $\E [\theta(t)] > 0$. Usando o teorema de Fubbini obtemos
-  que:
+  Como $\Gamma^\infty(t)$ é \qc finito para todo $t$, então $\Xi(t) >
+  0$ \qc. Portanto $\E [\theta(t)] > 0$. Usando o teorema de Fubbini
+  obtemos que:
   \begin{displaymath}
     \E[\theta(t)] =  \int_0^t p_{\infty \infty} (s) ds
   \end{displaymath}
@@ -162,7 +166,7 @@ Começaremos com uma caracterização básica dessas funções.
   > 0$ tem medida de Lebesgue positiva. Em particular existe um $s >
   0$ tal que $p_{\infty \infty}(s) > 0$. Fixe tal $s$.
 
-  Tome uma sequência abitrária $(t_n)$, onde $t_n \searrow 0$ e
+  Tome uma sequência arbitrária $(t_n)$, onde $t_n \searrow 0$ e
   $p_{\infty \infty} (t_n)$ convirja para um número $u$ quanto $n \to
   \infty$.  Se mostrarmos que $u = 1$, seguirá que o limite dado em
   \eqref{eq:continuidade-infinito} existe e vale $1$.
@@ -457,7 +461,7 @@ Enquanto que no caso $c=0$, teremos:
   \end{align*}
 
   Com isso verificamos a condição do Teorema Tauberiano, de onde
-  obtemod que:
+  obtemos que:
   \begin{align*}
     \lim_{t \searrow 0} \frac{P( \Gamma^\infty(\sigma^x_1-) \leq
       t)}{\phi(\frac{1}{t})} = 1
@@ -572,8 +576,8 @@ homogêneo é que ele pode não ser de Feller.  Depois de calcular as
 taxas de transição, finalmente temos ferramentas para especificar
 explicitamente quando que isso acontece.
 
-Dizemos que um processo é de Feller se para todo $t > 0$, e toda $f:
-\Nzb \to \R$ contínua, então $\Psi_t f$ também é uma função contínua.
+Dizemos que um processo é de Feller se $\Psi_t f$ é uma função contínua
+para todo $t > 0$ e toda $f: \Nzb \to \R$ contínua.
 
 \begin{proposicao}
   São equivalentes:
@@ -594,7 +598,7 @@ Dizemos que um processo é de Feller se para todo $t > 0$, e toda $f:
 
   Note que:
   \begin{displaymath}
-    \Psi_t f(\infty) - \Psi f (y) =
+    \Psi_t f(\infty) - \Psi_t f (y) =
     \E \left[
       f(X^\infty(t)) - f(X^y(t))
     \right].
@@ -615,7 +619,7 @@ Dizemos que um processo é de Feller se para todo $t > 0$, e toda $f:
   \end{displaymath}
 
   O Corolário \ref{cor:continuidades-processo} nos garante que $t$ é
-  quase certamente um ponto de contínuidade do processo, assim
+  quase certamente um ponto de continuidade do processo, assim
   $X^\infty(t-\gamma_y T_0) \to X^\infty(t)$ \qc, e como $f$ é
   contínua, concluímos que a quantidade acima converge à zero \qc.
 
@@ -639,8 +643,7 @@ Dizemos que um processo é de Feller se para todo $t > 0$, e toda $f:
   então o processo não é de Feller.
   
 
-
-  Caso não existe uma susequência onde $\gamma_y$ vá ao infinito,
+  Caso não existe uma subsequência onde $\gamma_y$ vá ao infinito,
   então $\gamma_y$ é limitada. Como ela não converge para zero, então
   ela tem algum outro ponto de acumulação. Assim existe um $a > 0$ e
   uma sequência crescente $(y_n)$ tal que $\gamma_{y_n} \to a$ quando
@@ -663,12 +666,12 @@ Dizemos que um processo é de Feller se para todo $t > 0$, e toda $f:
      &= \frac{1}{a} e^{-\frac{t}{a}} \int_0^t  e^{\frac{s}{a}} p_{\infty y}(s) d s
   \end{align*}
 
-  Como  $p_{\infty y}(t) \to 0$ quando $t \searrow 0$, concluíremos que:
+  Como  $p_{\infty y}(t) \to 0$ quando $t \searrow 0$, concluiremos que:
   \begin{displaymath}
-    \frac{p_{\infty y}}{t} \xrightarrow{t \searrow 0} 0.
+    \frac{p_{\infty y}(t)}{t} \xrightarrow{t \searrow 0} 0.
   \end{displaymath}
 
-  Mas esse resultado contradiz  Proposição \ref{prop:taxa-inf-x}.
+  O que contradiz a Proposição \ref{prop:taxa-inf-x}.
 \end{proof}
 
 %% ------------------------------------------------------------------------- %%
@@ -901,7 +904,7 @@ Hausdorf do tempo em que o processo passa no infinito.  Para o
 restante dessa seção, considere sempre que $c = 0$.
 
 Em vista da Proposição \ref{prop:reinicia-infinito}, vamos considerar
-somemente o processo K iniciado no $\infty$, visto que o conjunto dos
+somente o processo K iniciado no $\infty$, visto que o conjunto dos
 instantes onde o processo está no infinito ao iniciar em um estado $y$
 é igual ao mesmo conjunto do processo iniciado em $\infty$ mas
 transladado.

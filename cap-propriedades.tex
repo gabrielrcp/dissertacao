@@ -112,7 +112,7 @@ serão usadas à exaustão em seções subsequentes da dissertação.
     \frac{e^{-\lambda_x s} (\lambda_x s)^n}{n!} = 0
   \end{align*}
 
-  Assim se $\nu$ for a distribuição de $\sum_{x \geq 2} (\sum_{i =
+  Assim se $\nu$ for a distribuição de $\sum_{x \geq 2} \sum_{i =
     1}^{N^x(s)} \gamma_x T_i^x$, teremos que:
   \begin{align*}
     P\left(\sum_{x \in \Nz}\sum_{i = 1}^{N^x(s)} \gamma_x T_i^x = t\right) 
@@ -395,7 +395,7 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
 
 \begin{corolario}
   \label{cor:convergencia}
-  Para todo $y \in \Nzb$ e todo $T > 0$, para quase toda trajetória do
+  Para todo $y \in \Nzb$, todo $T > 0$ e quase toda trajetória do
   processo, existe uma sequência de funções $\lambda^y_n: [0, T) \to
   [0, \infty)$ crescentes e contínuas tal que:
   \begin{gather}
@@ -437,18 +437,9 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
   Pela Proposição \ref{prop:reinicia-infinito}, depois de $\gamma_y
   T_0$, teremos que o processo iniciado em $y$ se comportará
   exatamente igual ao processo iniciado no $\infty$, e como antes
-  disso teremos $\lambda^y_n(t) = t$ e $X^\infty(t) = X^{\infty,
+  disso teremos $\lambda^y_n(t) = t$ e $X^\infty(\lambda_n^y(t)) = X^{y,
     (n)}(t)$, então concluímos
   \eqref{eq:convergencia-truncado-uniforme}.
-
-  % \begin{gather*}
-  %   \sup_{0 \leq t \leq T} |\lambda_n^y(t) - t| \leq
-  %   \sup_{0 \leq t \leq T} |\lambda_n(t) - t|
-  %   \xrightarrow{n\to\infty} 0 \notag \\
-  %   \sup_{0 \leq t \leq T} d(X^y(\lambda_n^y(t)), X^{y, (n)}(t)) \leq
-  %   \sup_{0 \leq t \leq T} d(X^\infty(\lambda_n(t)), X^{\infty, (n)}(t))
-  %   \xrightarrow{n\to\infty} 0
-  % \end{gather*}
 \end{proof}
 
 
@@ -476,7 +467,7 @@ $\infty$. Mostraremos isso com detalhes na Seção
 \ref{sec:prop-feller}.
 
 Vamos contornar esse problema usando o fato que esses estados onde
-$\gamma_y$ é grande não são de fato visitados, essa idéia será
+$\gamma_y$ é grande não são de fato visitados, essa ideia será
 formalizada pela Proposição \ref{prop:gamma-somavel}. Com essa
 proposição mostraremos que nosso processo tem propriedades muito
 parecidas com a de um processo de Feller.
@@ -778,8 +769,8 @@ parecidas com a de um processo de Feller.
   Com isso o caso em que $K$ é finito é trivial. Portanto vamos supor
   que $K$ é infinito.
 
-  Tomando $\lambda_n^y$ como na demonstração do Corolário
-  \ref{cor:convergencia} para um $T > t$ qualquer teremos que:
+  Tome $\lambda_n^y$ como no Corolário \ref{cor:convergencia} para um
+  $T > t$ qualquer. Vale que:
   \begin{align}
     \label{eq:esperancas-markov}
     \sup_{y \in K} | \Psi^n_t f (y) - \Psi_t f(y) | 
@@ -933,8 +924,8 @@ mas ele goza de algumas propriedades que irão possibilitar demonstrar
 a propriedade forte de Markov de forma análoga à maneira em que  a
 demonstramos para processos de Feller.
 
-Para cada $t > 0$, vamos denotar por $\FF_t$ a $\sigma$-algebra gerada
-por $\{X(s): s \in [0, t]\}$ e por $\FF$ a $\sigma$-algebra do espaço
+Para cada $t > 0$, vamos denotar por $\FF_t$ a $\sigma$-álgebra gerada
+por $\{X(s): s \in [0, t]\}$ e por $\FF$ a $\sigma$-álgebra do espaço
 de probabilidades onde estamos trabalhando.
 
 \begin{proposicao}
@@ -943,8 +934,8 @@ de probabilidades onde estamos trabalhando.
 \end{proposicao}
 \begin{proof}
   Fixada uma $f: \Nzb \to \R$ contínua e $\tau$ um tempo de parada
-  para $(\FF_t)_{t \geq 0}$ quase certamente finito, vamos mostrar que
-  quase certamente:
+  finito para $(\FF_t)_{t \geq 0}$ . Vamos mostrar que quase
+  certamente:
   \begin{equation}
     \label{eq:markov-forte}
     \E \left[ f(X(\tau + t) \middle| \FF_\tau \right]
@@ -1070,7 +1061,7 @@ de probabilidades onde estamos trabalhando.
     \Psi_t f(X(\tau)).
   \end{equation}
 
-  Se isso valer para toda sequência $h_n$, então concluíremos
+  Se isso valer para toda sequência $h_n$, então concluiremos
   \ref{eq:convergencia-discretizacao-1}. Sem perda de generalidade
   podemos olhar apenas para as sequências onde $h_n \leq 1$ para todo
   $n$.
