@@ -395,22 +395,37 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
 
 \begin{corolario}
   \label{cor:convergencia}
-  Para todo $y \in \Nzb$, teremos que  $X^{y, (n)}$ converge \qc para
-  para $X^y$ na métrica de Skorohod. Essa convergência é uniforme em
-  $y$.
+  Para todo $y \in \Nzb$ e todo $T > 0$, para quase toda trajetória do
+  processo, existe uma sequência de funções $\lambda^y_n: [0, T) \to
+  [0, \infty)$ crescentes e contínuas tal que:
+  \begin{gather}
+    \label{eq:convergencia-truncado-uniforme}
+    \lambda^y_n(t) \geq t \\
+    \sup_{t \in [0, T]} |\lambda^y_n(t) - t| \leq
+    \sup_{t \in [0, T]} |\lambda^\infty_n(t) - t|
+    \xrightarrow{n \to \infty} 0 \notag\\
+    \sup_{0 \leq t \leq T} d(X^y(\lambda_n^y(t)), X^{y, (n)}(t)) \leq
+    \sup_{0 \leq t \leq T} d(X^\infty(\lambda_n(t)), X^{\infty, (n)}(t))
+    \xrightarrow{n\to\infty} 0. \notag
+  \end{gather}
+  
+  Dessa forma, teremos que teremos que $X^{y, (n)}$ converge \qc para
+  para $X^y$ na métrica de Skorohod, sendo essa convergência uniforme
+  em $y$.
 \end{corolario}
 \begin{proof}
   Fixado um $T > 0$, tome $\lambda_n: [0, \infty) \to [0, \infty)$
   como na demonstração do Teorema \ref{teo:convergencia}. Elas são
   funções contínuas crescentes tais que quase certamente:
   \begin{gather*}
+    \lambda_n(t) \geq t\\
     \sup_{0 \leq t \leq T} |\lambda_n(t) - t|
     \xrightarrow{n\to\infty} 0 \\
     \sup_{0 \leq t \leq T} d(X^\infty(\lambda_n(t)), X^{\infty, (n)}(t))
     \xrightarrow{n\to\infty} 0. \\
   \end{gather*}
 
-  Para $y \in \Nz$, defina:
+  Tome $\lambda^\infty_n = \lambda_n$ e para $y \in \Nz$, defina:
   \begin{displaymath}
     \lambda_n^y(t) = \begin{cases}
       t & \textrm{ se } t < \gamma_y T_0\\
@@ -418,16 +433,22 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
     \end{cases}
   \end{displaymath}
 
-  Usando a Proposição \ref{prop:reinicia-infinito}, teremos que:
- \begin{gather}
-   \sup_{0 \leq t \leq T} |\lambda_n^y(t) - t| \leq
-    \sup_{0 \leq t \leq T} |\lambda_n(t) - t|
-    \xrightarrow{n\to\infty} 0 \notag \\
-    \label{eq:convergencia-truncado-uniforme}
-    \sup_{0 \leq t \leq T} d(X^y(\lambda_n^y(t)), X^{y, (n)}(t)) \leq
-    \sup_{0 \leq t \leq T} d(X^\infty(\lambda_n(t)), X^{\infty, (n)}(t))
-    \xrightarrow{n\to\infty} 0
-  \end{gather}
+
+  Pela Proposição \ref{prop:reinicia-infinito}, depois de $\gamma_y
+  T_0$, teremos que o processo iniciado em $y$ se comportará
+  exatamente igual ao processo iniciado no $\infty$, e como antes
+  disso teremos $\lambda^y_n(t) = t$ e $X^\infty(t) = X^{\infty,
+    (n)}(t)$, então concluímos
+  \eqref{eq:convergencia-truncado-uniforme}.
+
+  % \begin{gather*}
+  %   \sup_{0 \leq t \leq T} |\lambda_n^y(t) - t| \leq
+  %   \sup_{0 \leq t \leq T} |\lambda_n(t) - t|
+  %   \xrightarrow{n\to\infty} 0 \notag \\
+  %   \sup_{0 \leq t \leq T} d(X^y(\lambda_n^y(t)), X^{y, (n)}(t)) \leq
+  %   \sup_{0 \leq t \leq T} d(X^\infty(\lambda_n(t)), X^{\infty, (n)}(t))
+  %   \xrightarrow{n\to\infty} 0
+  % \end{gather*}
 \end{proof}
 
 %% ------------------------------------------------------------------------- %%
@@ -896,10 +917,11 @@ parecidas com a de um processo de Feller.
   > k_n \} = e^{-\frac{1}{\delta_n}} \to 0$ quanto $n \to \infty$.
 
   Como $\delta_n \to 0$, vamos apenas considerar $n$ suficientemente
-  grande, de forma que $\delta_n < t$ e $\delta_n <
-  \lambda_n^y(t)$. Usando a Proposição \ref{prop:reinicia-infinito} e
-  separando nos casos $\gamma_yT_0 < \delta_n$ e $\gamma_yT_0 \geq
-  \delta_n$, teremos que:
+  grande, de forma que $\delta_n < t \leq \lambda_n^y(t)$. A segunda
+  igualdade vale de acordo com
+  \eqref{eq:convergencia-truncado-uniforme}. Usando a Proposição
+  \ref{prop:reinicia-infinito} e separando nos casos $\gamma_yT_0 <
+  \delta_n$ e $\gamma_yT_0 \geq \delta_n$, teremos que:
   \begin{align}
     \label{eq:markov-quase-la}
     \sup_{\stackrel{y > k_n}{y \in K}}& \left\lvert \E \left[f(X^y(\lambda_n^y(t))) -
