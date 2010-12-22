@@ -591,8 +591,8 @@ parecidas com a de um processo de Feller.
   também. Portanto $y_n \in V_t$ para todo $n$.
 
   Dessa forma, usando a Proposição \ref{prop:gamma-somavel} e o fato
-  de $y_n$ assumir um número infinito de valores distintos, concluímos
-  que $\gamma_{y_n} \to 0$ quando $n \to \infty$.
+  de que $y_n \to \infty$, concluímos que $\gamma_{y_n} \to 0$ quando
+  $n \to \infty$.
 
   Se tomarmos um $n$ suficientemente grande teremos que $\gamma_{y_n}
   T_0 < s$. Dessa forma usando a Proposição
@@ -1062,7 +1062,7 @@ de probabilidades onde estamos trabalhando.
   \end{equation}
 
   Se isso valer para toda sequência $h_n$, então concluiremos
-  \ref{eq:convergencia-discretizacao-1}. Sem perda de generalidade
+  \eqref{eq:convergencia-discretizacao-1}. Sem perda de generalidade
   podemos olhar apenas para as sequências onde $h_n \leq 1$ para todo
   $n$.
 
@@ -1071,18 +1071,21 @@ de probabilidades onde estamos trabalhando.
 
   Assim vamos supor o contrário, ou seja, que para todo $n_0$ existe
   um $n > n_0$ tal que $X(\tau_{h_n}) \neq X(\tau)$. Dessa forma
-  concluímos que $X(\tau_{h_n})$ não é um ponto isolado e portanto
-  $X(\tau) = \infty$.
+  concluímos que $X(\tau)$ não é um ponto isolado de $\Nzb$. Como
+  $\infty$ é o único ponto que não é isolado na topologia de $\Nzb$,
+  então $X(\tau) = \infty$.
 
-  Vamos denotar por $y_n = X(\tau_{h_n})$. Temos que $y_n \to
-  \infty$. Vamos desconsiderar os índices $n$ onde $y_n = \infty$, já
-  que neles a igualdade em \eqref{eq:convergencia-discretizacao-2} é
-  óbvia.
+  Vamos denotar por $y_n = X(\tau_{h_n})$. Vamos desconsiderar os
+  índices $n$ onde $y_n = \infty$, já que neles a igualdade em
+  \eqref{eq:convergencia-discretizacao-2} é óbvia.
 
   Como $h_n \leq 1$ e $\tau_h < \tau + h$, vale que $y_n \in V_{\tau +
-    1}$ para todo $n$. Já que $\sum_{x \in V_{\tau + 1}} \gamma_x <
-  \infty$ e passamos por infinitos valores em $y_n$, vale que
-  $\gamma_{y_n} \to 0$.
+    1}$ para todo $n$. Já que $y_n \to \infty$, cada $y \in \Nz$
+  ``aparece'' nessa sequência um número finito de vezes.  Dessa forma
+  tomando $n$ grande, estaremos nos limitando à ``cauda'' de $\sum_{x
+    \in V_{\tau + 1}} \gamma_x$. Como essa série é convergente,
+  concluímos que $\gamma_{y_n} \to 0$.
+
   \begin{align*}
     \Psi_t f(\infty) - \Psi_t f (y_n)
     = \E \left[
@@ -1095,9 +1098,9 @@ de probabilidades onde estamos trabalhando.
   por $2 \Vert f \Vert$, o teorema da convergência dominada irá
   garantir que a esperança também irá à zero.
 
-  Se tomarmos um $n$ grande o suficiente, de forma que
-  $\gamma_{y_n} T_0 < t$, usando a Proposição \ref{prop:reinicia-infinito},
-  teremos que:
+  Se tomarmos um $n$ grande o suficiente, de forma que $\gamma_{y_n}
+  T_0 < t$, usando a Proposição \ref{prop:reinicia-infinito}, teremos
+  que:
   \begin{align*}
     f(X^{\infty}(t)) - f(X^{y_n}(t)) &=
     f(X^{\infty}(t)) - f(X^{\infty}(t-\gamma_{y_n} T_0)).
