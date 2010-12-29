@@ -48,9 +48,10 @@ serão usadas à exaustão em seções subsequentes da dissertação.
   certamente finito. Tomando uma sequência $t_n \to \infty$ quando $n
   \to \infty$, teremos que $P(\cap_{n = 1}^{\infty} \{ \Gamma^y (t_n)
   < \infty \} \cap \{ \Gamma \textrm{ é crescente}\}) = 1$. Assim para
-  realizações dentro desse evento, teremos que para todo $t \geq 0$,
-  existe um $n$ tal que $t_n > t$. Portando $\Gamma(t) < \Gamma(t_n) <
-  \infty$.
+  realizações dentro desse evento, teremos que $\Gamma(t_n) < \infty$
+  para todo $n$, e assim para cada $t \geq 0$ arbitrário podemos
+  escolher um $n$ tal que $t_n > t$. Dessa maneira $\Gamma(t) <
+  \Gamma(t_n) < \infty$.
 \end{proof}
 
 
@@ -75,13 +76,14 @@ serão usadas à exaustão em seções subsequentes da dissertação.
   \begin{equation*}
     \Gamma(t+s) - \Gamma(t) = 
     c s + 
-    \sum_{x \in \N} \sum_{i = N_x(t)+1}^{N_x(t+s)} \gamma_x T^x_i.
+    \sum_{x \in \Nz} \sum_{i = N_x(t)+1}^{N_x(t+s)} \gamma_x T^x_i.
   \end{equation*}
 
-  Para cada $x$, como $N_x$ é localmente finito, temos que $N_x(t+s) =
-  N_x(t)$ para $s$ pequeno o suficiente. Assim quando $s \searrow 0$,
-  nós iremos calcular o limite da ``cauda'' de uma série convergente,
-  de onde concluímos que:
+  Para cada $x$, como $N_x$ é localmente finito, vale que $N_x(t+s) =
+  N_x(t)$ para $s$ pequeno o suficiente. Dessa forma cada termo da
+  série (em $x$) converge à zero. Encarando essa soma como uma
+  integral sobre uma medida de contagem e usando o teorema da
+  convergência monótona, concluímos que:
 
   \begin{displaymath}
     \lim_{s \searrow 0} \Gamma(t+s) - \Gamma(t) = 0
@@ -178,8 +180,8 @@ serão usadas à exaustão em seções subsequentes da dissertação.
 \end{proposicao}
 \begin{proof}
 
-  Iremos mostrar que o processo iniciado no $\infty$ é Càdlàg. Isso
-  irá mostrar que o processo é Càdlàg para qualquer condição inicial,
+  Iremos mostrar que o processo iniciado no $\infty$ é càdlàg. Isso
+  irá mostrar que o processo é càdlàg para qualquer condição inicial,
   visto que iniciando em $y$, iremos continuar em $y$ até $\gamma_y
   T^y_0$, e depois continuaremos como uma cópia do processo iniciado no
   $\infty$.
@@ -191,11 +193,13 @@ serão usadas à exaustão em seções subsequentes da dissertação.
   arbitrários. Seguindo \cite{billingsley:99}, vamos mostrar que
   existem $0 = t_0 < t_1 < \ldots < t_N = T$ tais que $w[t_{i-1}, t_i)
   < \epsilon$, para todo $i = 1, \ldots, N$. Onde $w(A) = \sup_{t, s
-    \in A} |X^\infty(t) - X^\infty(s)|$ para $A \subseteq \R$.
+    \in A} d(X^\infty(t), X^\infty(s))$ para $A \subseteq
+  \R$. Lembrando que estamos trabalhando com a métrica
+  \eqref{eq:metrica} sobre $\Nzb$.
 
   Tome um $m \in \Nz$ tal que o $\diam\{x \in \Nzb: x > m \} =
   \frac{1}{m+1} < \epsilon$, onde $\diam(A)$ é o diâmetro do conjunto
-  $A$ na métrica \eqref{eq:metrica}.
+  $A$.
 
   Agora tome $S_1 < S_2 < \ldots < S_M$ uma ordenação dos conjunto $\{
   \sigma^x_i: x \leq m, \: i \geq 1, \: \Gamma(\sigma^x_i) \leq
@@ -220,13 +224,13 @@ serão usadas à exaustão em seções subsequentes da dissertação.
   \Gamma(\sigma_i^x-), \Gamma(\sigma_i^x): x \in \Nz\}$.
 \end{proposicao}
 \begin{proof}
-  Tome $t$ um ponto de descontinuidade de $\Gamma$, então $\Gamma(t) -
-  \Gamma(t-) > \epsilon > 0$. Fixe um $T > t$ e tome $0 = t_0 < t_1 <
-  \ldots < t_N = T$ como na demonstração da Proposição
-  \ref{prop:proc-cadlag}. Se $t \not\in \{t_0, \ldots, t_N\}$, então
-  existe um $i$ tal que $t \in (t_i, t_{i+1})$. Assim teremos que
-  $w[t_i, t_{i+1}) \geq \Gamma(t) - \Gamma(t-) > \epsilon$, que
-  contraria a nossa escolha de $\{t_0, \ldots, t_N\}$.
+  Tome $t$ um ponto de descontinuidade de $X$. Como $X$ é càdlàg,
+  então existe um $\epsilon > 0$ tal que $d(X(t), X(t-)) > \epsilon$.
+  Fixe um $T > t$ e tome $0 = t_0 < t_1 < \ldots < t_N = T$ como na
+  demonstração da Proposição \ref{prop:proc-cadlag}. Se $t \not\in
+  \{t_0, \ldots, t_N\}$, então existe um $i$ tal que $t \in (t_i,
+  t_{i+1})$. Assim teremos que $w[t_i, t_{i+1}) \geq d(X(t), X(t-)) >
+  \epsilon$, que contraria a nossa escolha de $\{t_0, \ldots, t_N\}$.
 
   Assim temos que $t = t_i$ para algum $i$. Como os $t_i$'s sempre
   foram escolhidos do conjunto proposto, temos que eles são os únicos
@@ -254,7 +258,7 @@ serão usadas à exaustão em seções subsequentes da dissertação.
 \label{sec:aproximacoes}
 
 Fixado um natural $n \in \Nz$, vamos ``truncar'' nosso processo em
-$\{1, 2, \ldots, n, \infty\}$. Depois vamos mostrar mostrar que esses
+$\{1, 2, \ldots, n, \infty\}$. Depois vamos mostrar que esses
 processos truncados convergem ao processo original.
 
 Primeiramente, para $n \in \Nz$ e $y \in \{1, \ldots, n, \infty\}$,
@@ -299,7 +303,7 @@ $(X^{(n)}(t))_t$ converge para $(X(t))_t$ de alguma forma.
 \end{teorema}
 
 A métrica de Skorohod é uma métrica sobre o espaço das trajetórias
-Càdlàg que permite pequenas distorções temporais. Como
+càdlàg que permite pequenas distorções temporais. Como
 referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
 
 \begin{proof}
@@ -307,7 +311,7 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
   \cite{fontes:08}.
 
   Para provar a proposição, vamos mostrar que o item (c) da Proposição
-  5.3 do Capítulo 5 de \cite{ethier:86} vale quase certamente. Assim
+  5.3 do Capítulo 3 de \cite{ethier:86} vale quase certamente. Assim
   fixe uma realização qualquer do processo.
 
   Por simplicidade, consideraremos sempre que o processo iniciou no
@@ -325,7 +329,7 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
   suficientemente grande $\Gamma^{(n)}(S^m_{i+1}-) >
   \Gamma^{(n)}(S^m_i)$ para todo $i < L^m_n$.
 
-  Para esses valores de $n$, defina $\lambda_n^m: [0, L_n^m] \to \R^+$
+  Para esses valores de $n$, defina $\lambda_n^m: [0, \infty) \to \R^+$
   da seguinte forma:
   \begin{displaymath}
     \lambda_n^m(t) = \begin{cases}
@@ -334,9 +338,11 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
       \left[t - \Gamma^{(n)}(S_i^m)\right]
       & \textrm{ se }
       \Gamma^{(n)}(S_i^m) \leq t \leq \Gamma^{(n)}(S_{i+1}^m-) \\
-      \Gamma(S_{i+1}^m-) - \Gamma^{(m)}(S_{i+1}^m-) + t
+      \Gamma(S_{i+1}^m-) - \Gamma^{(n)}(S_{i+1}^m-) + t
       & \textrm{ se }
-      \Gamma^{(n)}(S_{i+1}^m-) \leq t \leq \Gamma^{(n)}(S_{i+1}^m).
+      \Gamma^{(n)}(S_{i+1}^m-) \leq t \leq \Gamma^{(n)}(S_{i+1}^m)\\
+      \Gamma(S^m_{L_n^m}) - \Gamma^{(n)}(S^m_{L_n^m}) + t
+      & \textrm{ se } t > \Gamma^{(n)}(S^m_{L_n^m})
     \end{cases}
   \end{displaymath}
 
@@ -347,14 +353,16 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
     \lambda_n^m(\Gamma^{(n)}(S_i^m)) &= \Gamma(S_i^m),
   \end{align*}
   enquanto que nos pontos interiores, ``completamos'' $\lambda_n^m$ de
-  maneira linear.
+  maneira linear. Depois de $\Gamma^{(n)}(S^m_{L_n^m})$, deixamos
+  $\lambda_n^m$ evoluir de maneira linear com coeficiente 1, já que
+  isso não vai mais nos importar.
 
   Como $\Gamma(t) \geq \Gamma^{(n)}(t)$ para todo $n \in \Nz$, teremos
-  que $\lambda(t) \geq t$. Usando a linearidade por partes, e o fato
-  que $\Gamma(\sigma^x_i) = \Gamma(\sigma_i^x-) + \gamma_x T^x_i$,
-  teremos que:
+  que $\lambda_n^m(t) \geq t$. Usando a linearidade por partes, o fato que
+  $\Gamma(\sigma^x_i) = \Gamma(\sigma_i^x-) + \gamma_x T^x_i$ e
+  $\Gamma^{(n)}(S^m_{L_N^m}) \geq T$, teremos que:
   \begin{displaymath}
-    \sup_{0 \leq t \leq T} |\lambda_n^m(t) - t| =
+    \sup_{0 \leq t \leq T} |\lambda_n^m(t) - t| \leq
     \max_{0 \leq i \leq L_n^m} \{ \Gamma(S_i^m) -
     \Gamma^{(n)}(S_i^m)\}.
   \end{displaymath}
@@ -379,7 +387,7 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
   \ldots, m\}$ teremos que $X(\lambda_n^m(t)) = x$ se e somente se
   $X^{(n)}(t) = x$. De onde concluímos que:
   \begin{displaymath}
-    \sup_{0 \leq t \leq T} d\left(X(\lambda_n^m(t)), X^{(n)}\right)
+    \sup_{0 \leq t \leq T} d\left(X(\lambda_n^m(t)), X^{(n)} (t)\right)
     \leq \delta_m
   \end{displaymath}
 
@@ -396,8 +404,8 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
 \begin{corolario}
   \label{cor:convergencia}
   Para todo $y \in \Nzb$, todo $T > 0$ e quase toda trajetória do
-  processo, existe uma sequência de funções $\lambda^y_n: [0, T) \to
-  [0, \infty)$ crescentes e contínuas tal que:
+  processo, existe uma sequência de funções $\lambda^y_n: [0, \infty) \to
+  [0, \infty)$ contínuas  e bijetoras tais que:
   \begin{gather}
     \label{eq:convergencia-truncado-uniforme}
     \lambda^y_n(t) \geq t \\
@@ -410,8 +418,8 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
   \end{gather}
   
   Dessa forma, teremos que teremos que $X^{y, (n)}$ converge \qc para
-  para $X^y$ na métrica de Skorohod, sendo essa convergência uniforme
-  em $y$.
+  $X^y$ na métrica de Skorohod, sendo essa convergência uniforme em
+  $y$.
 \end{corolario}
 \begin{proof}
   Fixado um $T > 0$, tome $\lambda_n: [0, \infty) \to [0, \infty)$
@@ -518,7 +526,7 @@ parecidas com a de um processo de Feller.
   \infty$ para todo $n$.
 
   Note que se $t < s$, então $V^\prime_t \subseteq V^\prime_s$. Assim
-  para qualquer $t > 0$, existe um $n$ tal que $t_n > t$, e portando:
+  para qualquer $t > 0$, existe um $n$ tal que $t_n > t$, e portanto:
   \begin{displaymath}
     \sum_{x \in V^\prime_t}\gamma_x T^x_1 \leq
     \sum_{x \in V^\prime_{t_n}}\gamma_x T^x_1 < \infty
