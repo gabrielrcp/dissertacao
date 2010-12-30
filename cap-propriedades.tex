@@ -111,7 +111,9 @@ serão usadas à exaustão em seções subsequentes da dissertação.
     P\left(\sum_{i = 1}^{N^x(s)} \gamma_x T_i^x = t\right) 
     &= \sum_{n = 0}^{\infty}
     P\left(\sum_{i = 1}^n \gamma_x T_i^x = t\right)
-    \frac{e^{-\lambda_x s} (\lambda_x s)^n}{n!} = 0
+    \frac{e^{-\lambda_x s} (\lambda_x s)^n}{n!} = 0\\
+    P\left(\sum_{i = 1}^{N^x(s)} \gamma_x T_i^x = 0\right) 
+    &= e^{-\lambda_x s}
   \end{align*}
 
   Assim se $\nu$ for a distribuição de $\sum_{x \geq 2} \sum_{i =
@@ -119,7 +121,23 @@ serão usadas à exaustão em seções subsequentes da dissertação.
   \begin{align*}
     P\left(\sum_{x \in \Nz}\sum_{i = 1}^{N^x(s)} \gamma_x T_i^x = t\right) 
     &= \int \nu(dr) P\left(\sum_{i = 1}^{N^1(s)} \gamma_1 T_i^1 = t - r\right) 
-    = 0
+    = \nu\left( \{ t\} \right) e^{-\lambda_1 s}
+  \end{align*}
+
+  Fazendo indução, concluímos que para todo $n \in \Nz$, vale que:
+  \begin{align*}
+    P\left(\sum_{x \in \Nz}\sum_{i = 1}^{N^x(s)} \gamma_x T_i^x = t\right) 
+    &= \exp\left\{ -s \sum_{x = 1}^n \lambda_x \right\}
+    P\left(\sum_{x > n} \sum_{i = 1}^{N^x(s)} \gamma_x T_i^x =
+      t\right) \\
+    &\leq \exp\left\{ -s \sum_{x = 1}^n \lambda_x \right\}
+  \end{align*}
+
+  Como $\sum_{x \in \Nz} \lambda_x = \infty$, tomando valores de $n$
+  cada vez maiores, concluímos que:
+  \begin{align*}
+    P\left(\sum_{x \in \Nz}\sum_{i = 1}^{N^x(s)} \gamma_x T_i^x = t\right) 
+    &= 0
   \end{align*}
 
   Agora, observando a definição de $\Gamma$, concluímos a primeira
@@ -587,16 +605,18 @@ parecidas com a de um processo de Feller.
   existe um $n > n_0$ tal que $y_n \neq y$. Como $y_n \to y$, então
   concluímos que $y$ não é um ponto isolado, como o único ponto que
   não é isolado em $\Nzb$ é o $\infty$, concluímos que $y = \infty$.
-  Note ainda que a sequência $y_n$ assume um número infinito de
-  valores diferentes.
 
   Vamos ignorar os índices $n$ onde $y_n = \infty$, visto que neles a
   igualdade em \eqref{eq:semigrupo-quase-continuo} é trivial. 
 
-  Por construção, vemos que o processo truncado é mais ``acelerado''
-  que o processo original, isso é, se o processo truncado passou por
-  um estado $x$, então o processo original deve ter passado
-  também. Portanto $y_n \in V_t$ para todo $n$.
+  Tome um $r > 0$ tal que $\Gamma^{(1)}(r-) > t$ e tome $t^\prime =
+  \Gamma(r)$. Se um estado $x\in \Nz$ foi visitado por um processo
+  truncado $X^{(n)}$ até o instante $t$, então
+  $\Gamma^{(n)}(\sigma_1^x-) \leq t$. Note que $\Gamma^{(n)}$ são
+  crescentes em $n$, dessa forma $\sigma_1^x < r$ e como $\Gamma$ é
+  crescente, valerá que $\Gamma(\sigma_1^x-) < \Gamma(r) =
+  t^\prime$. Portanto se $x \in \Nz$ foi visitado por um processo
+  truncado, então $x \in V_{t^\prime}$.
 
   Dessa forma, usando a Proposição \ref{prop:gamma-somavel} e o fato
   de que $y_n \to \infty$, concluímos que $\gamma_{y_n} \to 0$ quando
@@ -700,20 +720,25 @@ parecidas com a de um processo de Feller.
     \right\rvert.
   \end{displaymath}
 
+\label{prop:semigrupo-quase-continuo}
+
   Como a parte interna dessa esperança pode ser dominada por $2\lVert
   g \rVert$, se mostrarmos que ela converge quase certamente para
   zero, seguirá do teorema da convergência dominada que a esperança também
-  converge à zero. Como $X^{(n)}(t) \in V_t$ para todo $n$, teremos
-  que:
+  converge à zero.
+
+  Com o mesmo argumento que usamos na demonstração da Proposição
+  \ref{prop:semigrupo-quase-continuo}, temos que existe um $t^{\prime}
+  > 0$ tal que $X^{(n)}(t) \in V_{t^\prime}$ para todo $n$. Dessa forma:
   \begin{align*}
     \left\lvert \Psi_{s}^n g (X^{(n)}(t)) - \Psi_{s} g (X^{(n)}(t))
     \right\rvert
-    &\leq \sup_{y \in V_t}  \left\lvert \Psi_{s}^n g (y) - \Psi_{s} g (y)
+    &\leq \sup_{y \in V_{t^\prime}}  \left\lvert \Psi_{s}^n g (y) - \Psi_{s} g (y)
     \right\rvert
   \end{align*}
 
-  A Proposição \ref{prop:gamma-somavel} nos garante que para quase
-  todo $V_t$, a condição da Proposição
+  A Proposição \ref{prop:gamma-somavel} nos garante que, para quase
+  todo $V_{t^\prime}$, a condição da Proposição
   \ref{prop:convergencia-semigrupo} é satisfeita. Portanto a
   quantidade acima vai à zero \qc.
 
