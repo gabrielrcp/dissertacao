@@ -2,28 +2,42 @@
 \chapter{Introdução}
 \label{cap:introducao}
 
-Lembrar de escrever por aqui.
-\begin{itemize}
-\item Nosso processo pode não ser de Feller.
-\item Limite de escala de trap-models.
-\end{itemize}
+Estudaremos uma família de processos markovianos em tempo contínuo sobre
+um espaço de estados enumerável. A primeira menção sobre esse tipo de
+processos foi dada por \cite{kolmogorov:54}. Seu objetivo nesse artigo
+era dar um exemplo de um processo que tivesse um estado com taxa de
+saída infinita.
 
-%% ------------------------------------------------------------------------- %%
-\section{Considerações Preliminares}
-\label{sec:consideracoes_preliminares}
+\cite{kendall:56} estudaram mais a fundo o exemplo de Kolmogorov,
+mostrando que as equações ``forward'' e ``backward'' podem não ser
+suficientes para estudar esse processo.
 
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto.
+Anos mais tarde, \cite{reuter:69} mostrou que apenas a matriz de taxas
+desse processo é suficiente para caracterizar as probabilidades de
+transição do processo.
 
+Os autores de todos esses artigos abordaram o processo de uma maneira
+bastante analítica. Em particular nenhum deles deu uma contrução
+explícita para o processo estudado, se apoiando em teoremas de
+existência.
 
-%% ------------------------------------------------------------------------- %%
-\section{Objetivos}
-\label{sec:objetivo}
+Recentemente, \cite{fontes:08} revisitaram esse tipo de processo,
+com a motivação de que eles aparecem como limite de escala para
+\emph{Trap Models}. A maneira como abordamos o processo foi muito
+inspirada nesse trabalho, em especial a construção apresentada aqui é
+uma adaptação da construção deles.
 
-Texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto texto texto texto texto texto texto texto
-texto texto texto texto texto texto.
+Nós estudamos uma família de processos, que iremos chamar de Processos
+K não homogêneos, que é uma extenção natural dos processos estudados
+neste último artigo. A extenção vem do fato de admitirmos estados com
+pesos não homogêneos. Uma definição precisa do que são estes pesos
+será dada no Capítulo \ref{cap:construcao}.
+
+A adição de pesos resultou em um comportamento inesperado. Existem
+processos de K não homogêneos que não têm a propriedade de Feller.
+Iremos explicitar quando isso acontece na Seção \ref{sec:prop-feller}.
+Apesar disso, nosso processo possui propriedades que permitem que
+trabalhemos com ele como se fosse um processo de Feller.
 
 %% ------------------------------------------------------------------------- %%
 \section{Contribuições}
@@ -32,11 +46,14 @@ texto texto texto texto texto texto.
 As principais contribuições deste trabalho são as seguintes:
 
 \begin{itemize}
-  \item Item 1. Texto texto texto texto texto texto texto texto texto texto
-  texto texto texto texto texto texto texto texto texto texto.
 
-  \item Item 2. Texto texto texto texto texto texto texto texto texto texto
-  texto texto texto texto texto texto texto texto texto texto.
+\item Não temos conhecimento de outro texto que trabalhe com processos
+  K não homogêneos de maneira construtiva.
+
+\item Calculamos explicitamente a matriz de taxas do processo K. Assim
+  fornecemos uma maneira de ligar nossa construção com os textos dos
+  anos 50 e 60 citados anteriormente que não use a teoria das formas
+  de Dirichlet.
 
 \end{itemize}
 
@@ -44,7 +61,7 @@ As principais contribuições deste trabalho são as seguintes:
 \section{Organização do Trabalho}
 \label{sec:organizacao_trabalho}
 
-No capítulo x, vamos fazer y...
+
 
 
 %%% Local Variables: 
