@@ -1204,6 +1204,212 @@ todo $\rho^\prime > \rho$ e se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
   \ref{prop:dominar-dim-haus-inf}.
 \end{proof}
 
+%% ------------------------------------------------------------------------- %%
+
+\section{Gerador infinitesimal}
+\label{sec:gerador}
+
+
+Normalmente o gerador infinitesimal é usado no estudo de processos
+estocásticos para garantir a existência do processo estudado. Se
+inicia com um gerador e argumenta-se, usando o teorema de 
+Hille-Yosida, que existe um processo com esse gerador.
+
+Nós estamos indo na direção oposta. Já temos uma construção do nosso
+processo, e queremos saber qual a ``cara'' do seu
+gerador. 
+
+Aqui vamos nos limitar ao caso homogêneo, isso é, $\lambda_x = 1$ para
+todo $x \in \Nz$. Vamos ainda tratar apenas o caso $c = 0$.
+
+O primeiro passo vai ser definir a classe de funções onde iremos
+definir o gerador. Essa classe tem que ser pequena o suficiente para
+que o gerador esteja bem definido, mas rica o suficiente para que ele
+caracterize o semigrupo. A classe adotada será:
+
+\begin{equation}
+  \label{eq:classe-gerador}
+  \DDD = \left\{ f \in \CC: \sum_{x\in \Nz} |f(x)-f(\infty)| < \infty,
+    \:
+    \sum_{x\in \Nz} f(x)-f(\infty) = 0, \:
+    \lim_{x \to \infty} \frac{f(x) - f(\infty)}{\gamma_x} \textrm{ existe}
+  \right\},
+\end{equation}
+onde $\CC$ é o conjunto das funções contínuas de $\Nzb$ em $\R$.
+
+\begin{definicao}
+  \label{def:gerador}
+  O gerador infinitesimal $\AAA$ é uma função $\AAA: \DDD \to \CC$,
+  definida através do limite:
+  \begin{equation}
+    \label{eq:def-gerador}
+    \AAA f = \lim_{t \searrow 0} \frac{\Psi_t f - f}{t}.
+  \end{equation}
+\end{definicao}
+
+Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
+
+\begin{proposicao}
+  \label{prop:gerador-x}
+  Para $f \in \DDD$ e $x \in \Nz$, vale que:
+  \begin{equation}
+    \label{eq:gerador-x}
+    \lim_{t \searrow 0} \frac{\Psi_t f(x) - f(x)}{t} = \frac{f(\infty)
+    - f(x)}{\gamma_x}
+  \end{equation}
+\end{proposicao}
+
+\begin{proof}
+  
+\end{proof}
+
+
+\begin{proposicao}
+  \label{prop:gerador-inf}
+  Para $f \in \DDD$, vale que:
+  \begin{equation}
+    \label{eq:gerador-inf}
+    \lim_{t \searrow 0} \frac{\Psi_t f(\infty) - f(\infty)}{t} =
+    \lim_{x \to \infty} \frac{f(\infty) - f(x)}{\gamma_x}
+  \end{equation}
+\end{proposicao}
+\begin{proof}
+  
+\end{proof}
+
+\begin{teorema}
+  A função $\AAA$, definida nas proposições \ref{prop:gerador-x} e
+  \ref{prop:gerador-inf} é um gerador infinitesimal que caracteriza
+  o semigrupo $\Psi_t$.
+\end{teorema}
+\begin{proof}
+  Seguindo \cite{liggett:85}, munindo $\CC$ da norma do supremo, vamos
+  mostrar que:
+  \begin{enumerate}
+  \item $\AAA$ leva funções de $\DDD$ em $\CC$;
+  \item $\DDD$ é denso em $\CC$.
+  \item A imagem de $I - \AAA$ é densa em $\CC$, onde $I$ é a identidade.
+  \end{enumerate}
+
+  O item 1 é evidente de \eqref{eq:gerador-x} e
+  \eqref{eq:gerador-inf}.
+
+  Para o item 2, tome uma $g \in \CC$ e $\epsilon > 0$ arbitrários e
+  vamos encontrar uma $f \in \DDD$ tal que $\Vert f - g \Vert <
+  \epsilon$.
+
+  Como $g$ é contínua, existe um $n_0$ tal que $|g(x) - g(\infty)| <
+  \epsilon/2$ para $x > n_0$. Fixe tal $n_0$. Vamos definir $f(x) =
+  g(x)$ para $x \leq n_0$.
+
+  Agora tome um $m$ tal que $ \frac{1}{m} |\sum_{x = 1}^{n_0} (g(x) -
+  g(\infty))| < \epsilon/2$ e para $n_0 < x \leq n_0 + m$ defina $f(x) =
+  g(\infty) -\frac{1}{m} \sum_{x = 1}^{n_0} (g(x) - g(\infty))$.
+
+  Para $x > n_0 + m$ ou $x = \infty$, tome $f(x) = g(\infty)$.
+
+  Como $f(x) = f(\infty)$ para $x > n_0 + m$, então $f$ é contínua,
+  $\lim_{x \to \infty} \frac{f(x) - f(\infty)}{\gamma_x} = 0$ e 
+  $\sum_{x \in \Nz} |f(x) - f(\infty)| < \infty$. Vale ainda que:
+  \begin{align*}
+    \sum_{x \Nz} f(x) - f(\infty) 
+    &= \sum_{x = 1}^{n_0} (f(x) - f(\infty)) + 
+    \sum_{x = n_0 + 1}^m (f(x) - f(\infty)) \\
+    &= \sum_{x = 1}^{n_0} (g(x) - g(\infty)) +
+    m \left( - \frac{1}{m}  \sum_{x = 1}^{n_0} (g(x) - g(\infty))
+    \right)\\
+    &= 0.
+  \end{align*}
+
+  Portanto $f \in \DDD$. Ainda pela nossa construção é fácil ver que
+  $\sup_{x \in \Nzb} |f(x) - g(x)| < \epsilon$. Assim concluímos que
+  $\DDD$ é denso em $\CC$.
+
+  Resta mostrar o item 3. Para isso considere a seguinte classe:
+  \begin{equation}
+    \label{eq:imagem-gerador}
+    \GG = \left\{ g \in \CC: \sum_{x \in \Nz} \frac{\gamma_x}{1 +
+        \gamma_x} \left| g(x) - g(\infty) \right| < \infty \right\}.
+  \end{equation}
+
+  Vamos mostrar que essa classe é densa em $\CC$ e que a ela está
+  contida na imagem de $I - \AAA$.
+
+  Para mostrar que $\GG$ é densa, tome uma $f \in \CC$ e $\epsilon >
+  0$ e vamos encontrar uma $g \in \GG$ tal que $\Vert f - g \Vert <
+  \epsilon$.
+
+  Como $f \in \CC$, existe $n_0$ tal que $|f(x) - f(\infty)| <
+  \epsilon$ para $x > n_0$. Fixe um tal $n_0$. Defina $g(x) = f(x)$
+  para $x \leq n_0$ e $g(x) = f(\infty)$ para $x > n_0$.
+
+  Para $x \leq n_0$, teremos que $|g(x) - f(x)| = 0 < \epsilon$,
+  enquanto que para $x > n_0$ vale que $|g(x) - f(x)| = |f(\infty) -
+  f(x)| < \epsilon$. Assim $\Vert f - g \Vert < \epsilon$.
+
+  Como $g(x) = g(\infty)$ para $x > n_0$, então $g \in \GG$ pois:
+  \begin{displaymath}
+    \sum_{x \in \Nz} \frac{\gamma_x}{1 +
+        \gamma_x} \left| g(x) - g(\infty) \right|
+      =
+      \sum_{x = 1}^{n_0} \frac{\gamma_x}{1 +
+        \gamma_x} \left| g(x) - g(\infty) \right| <  \infty.
+  \end{displaymath}
+
+  Agora só resta mostrar que se $\GG$ está contido na imagem de $I -
+  \AAA$. Para isso tome um $g \in \GG$ e vamos encontrar uma $f \in
+  \DDD$ tal que $f - \AAA f = g$.
+
+  Como $\sum_{x \in \Nz} \gamma_x < \infty$ e $1 + \gamma_x \geq 1$,
+  então $\sum_{x \in \Nz} \frac{\gamma_x}{1+\gamma_x} < \infty$. Assim
+  a constante $K$ abaixo está bem definida:
+  \begin{displaymath}
+    K = -\left( \sum_{x \in \Nz} \frac{\gamma_x}{1+\gamma_x} \right)^{-1}
+    \sum_{x \in \Nz} \frac{\gamma_x}{1 +
+      \gamma_x} \left[ g(x) - g(\infty) \right].
+  \end{displaymath}
+
+  Com base nela, vamos definir:
+  \begin{equation}
+    \label{eq:inversa-imagem}
+    f(x) = \begin{cases}
+      g(\infty) - K & \textrm{ se } x = \infty\\
+      \frac{1}{1+\gamma_x} \left[
+        \gamma_xg(x) + g(\infty) - K
+      \right] & \textrm{ caso contrário.}
+    \end{cases}
+  \end{equation}
+
+  Com base nessa definição, é fácil ver que:
+  \begin{align}
+    \label{eq:inversa-imagem-2}
+    \frac{f(x) - f(\infty)}{\gamma_x} &=
+    \frac{g(x) - g(\infty) }{1+\gamma_x} +
+    \frac{K}{1+\gamma_x} \xrightarrow{x \to \infty} K.
+  \end{align}
+
+  Agora usando a definição de $K$ e o fato de $g \in \GG$, podemos calcular:
+  \begin{align*}
+    \sum_{x \in \Nz} \left|f(x) - f(\infty)\right|
+    &\leq \sum_{x\in\Nz} \frac{\gamma_x}{1+\gamma_x} |g(x) -
+    g(\infty)|
+    + \sum_{x\in\Nz} \frac{\gamma_x}{1+\gamma_x} |K| < \infty\\
+    \sum_{x \in \Nz} \left[f(x) - f(\infty)\right]
+    &= \sum_{x\in\Nz} \frac{\gamma_x}{1+\gamma_x} \left[g(x) -
+    g(\infty)\right]
+    + \sum_{x\in\Nz} \frac{\gamma_x}{1+\gamma_x} K\\
+    &= \sum_{x\in\Nz} \frac{\gamma_x}{1+\gamma_x} \left[g(x) -
+    g(\infty)\right]
+  - \sum_{x\in\Nz} \frac{\gamma_x}{1+\gamma_x} \left[g(x) -
+    g(\infty)\right] = 0.
+  \end{align*}
+
+  Observando $\eqref{eq:classe-gerador}$, concluímos que $f \in
+  \DDD$. Além disso é fácil ver de \eqref{eq:inversa-imagem-2} que $f
+  - \AAA f = g$.
+\end{proof}
+
+
 %%% Local Variables: 
 %%% TeX-master: "tese"
 %%% End: 
