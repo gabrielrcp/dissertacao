@@ -1260,7 +1260,58 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
 \end{proposicao}
 
 \begin{proof}
-  
+  Esse resultado vale para toda $f \in \CC$. Não facilitará em nada
+  nos restringir à $\DDD$. Assim vamos fixar uma $f \in \CC$ e $x \in \Nz$
+  arbitrários.
+
+  Para um $\epsilon > 0$ fixado arbitrariamente vamos mostrar que:
+  \begin{align}
+    \label{eq:gerador-x-sup}
+    \limsup_{t \searrow 0} \frac{\Psi_t f (x) - f(x)}{t} &\leq
+    \frac{f(\infty) - f(x) + \epsilon}{\gamma_x}\\
+    \label{eq:gerador-x-inf}
+    \liminf_{t \searrow 0} \frac{\Psi_t f (x) - f(x)}{t} &\geq
+    \frac{f(\infty) - f(x) - \epsilon}{\gamma_x}, 
+  \end{align}
+  de onde conclui-se imediatamente \eqref{eq:gerador-x}.
+
+  Agora vamos começar a fazer a conta:
+  \begin{align*}
+    \limsup_{t \searrow 0}
+    \frac{\Psi_t f(x) - f(x)}{t}
+    &= \limsup_{t \searrow 0}
+    \sum_{y \in \Nzb} \left[ f(y) - f(x) \right] \frac{p_{x y}(t)}{t}\\
+    &= \limsup_{t \searrow 0}
+    \sum_{y \in \Nzb\setminus\{x\}} \left[ f(y) - f(x) \right] \frac{p_{x y}(t)}{t}.
+  \end{align*}
+
+
+  Como $f \in \CC$, podemos tomar um $m \in \Nz$ tal que $m > x$ e
+  $f(y) < f(\infty) + \epsilon$ para $y > m$. Ainda com base na
+  Proposições \ref{prop:taxa-x-y} concluímos que cada termo da série
+  acima converge para zero quanto $t \searrow 0$. Portanto:
+  \begin{align*}
+    \limsup_{t \searrow 0}
+    \frac{\Psi_t f(x) - f(x)}{t}
+    &= \limsup_{t \searrow 0}
+    \sum_{y > m} \left[ f(y) - f(x) \right] \frac{p_{x y}(t)}{t}\\
+    &\leq \limsup_{t \searrow 0} \left[ f(\infty) - f(x) + \epsilon \right]
+    \sum_{y > m} \frac{p_{x y}(t)}{t}\\
+    &=\limsup_{t \searrow 0} \left[ f(\infty) - f(x) + \epsilon \right]
+    \frac{1 - P\left( X^x(t) \leq m \right)}{t}\\
+    &=\limsup_{t \searrow 0} \left[ f(\infty) - f(x) + \epsilon \right]
+    \left[
+      \frac{1 - p_{x x}(t)}{t}
+      - \sum_{\substack{y \leq m \\ y\neq x}} \frac{p_{x y}(t)}{t}
+    \right]\\
+  \end{align*}
+
+  Agora usando a Proposição \ref{prop:taxa-x-x}, verificamos que o
+  primeiro termo da expressão acima converge para
+  $\frac{1}{\gamma_x}$, enquanto que o segundo converge para zero pela
+  Proposição \ref{prop:taxa-x-y}. Dessa forma concluímos
+  \eqref{eq:gerador-x-sup}. A expressão \eqref{eq:gerador-x-inf} pode
+  ser demonstrada de forma análoga.
 \end{proof}
 
 
