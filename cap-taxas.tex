@@ -1325,7 +1325,169 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
   \end{equation}
 \end{proposicao}
 \begin{proof}
-  
+  Fixe uma $h \in \DDD$ arbitrária. Vamos denotar por $\bar{h}(x) =
+  h(x) - h(\infty)$, além disso vamos definir $K = \lim_{x \to \infty}
+  -\bar{h}(x)/\gamma_x$, limite que existe pela definição de $\DDD$.
+
+  Por toda essa demonstração, vamos supor que $\gamma_1 \geq g_x$ para
+  todo $x \in \Nz$, $x > 2$. Não perdemos generalidade
+  ao fazer essa suposição porque basta trocar $1$  no nosso
+  argumento pelo estado que tem $\gamma$ máximo. Tal estado
+  existe porque $\gamma_x \to 0$ quando $x \to \infty$.
+
+  Outra notação que iremos usar bastante será:
+  \begin{displaymath}
+    \Gamma^{<x>}(t) = \sum_{y\in\Nz\setminus\{x\}} \sum_{i =
+      1}^{N^y(t)} \gamma_y T^y_i ,
+  \end{displaymath}
+  essa é a função $\Gamma$, do processo iniciado no $\infty$ com
+  $c=0$, mas excluímos o estado $x$ da somatória.  
+
+  Para um $\epsilon > 0$ fixado arbitráriamente, vamos mostrar que:
+  \begin{align}
+    \label{eq:gerador-inf-sup}
+    \limsup_{t \searrow 0} \frac{\Psi_t h(\infty) - h(\infty)}{t} 
+    &\leq K + \epsilon\\
+    \label{eq:gerador-inf-inf}
+    \liminf_{t \searrow 0} \frac{\Psi_t h(\infty) - h(\infty)}{t} 
+    &\geq K - \epsilon,
+  \end{align}
+  de onde concluíremos \eqref{eq:gerador-inf} imediatamente.
+
+  Agora vamos começar a fazer as contas de fato.
+  \begin{align*}
+    \Psi_t h (\infty) - h(\infty) &=
+    \sum_{x \in \Nz} \bar{h}(x) P\left( X^\infty(t) = x \right)\\
+    &= 
+    \sum_{x \in \Nz} \bar{h}(x) P\left( X^\infty(t) = x \text{ pela
+        primeira vez}\right)\\
+    &+ \sum_{x \in \Nz} \bar{h}(x) P\left( X^\infty(t) = x \text{ não pela
+        primeira vez}\right)
+  \end{align*}
+
+  Mostraremos no Lema (???) que o segundo termo, dividido por $t$
+  converge para zero quando $t \searrow 0$, assim podemos nos
+  concentrar apenas nas primeiras visitas. Usando o fato de que
+  $\sum_{x\in\Nz}\bar{h}(x) = 0$, podemos escrever o primeiro termo da
+  expressão acima como:
+  \begin{displaymath}
+    \sum_{x \in \Nz} \bar{h}(x) \left[
+      P\left( X^\infty(t) = x \text{ pela primeira vez} \right) - 1 
+    \right]
+  \end{displaymath}
+
+  Note que $X^\infty(t) = x$ pela primeira vez se e somente se
+  $\Gamma^{<x>}(\sigma^x_1) \leq t < \Gamma^{<x>}(\sigma^x_1) +
+  \gamma_x T^x_1$. Assim se denotarmos por $f_x$ a densidade de
+  $\Gamma^{<x>}(\sigma^x_1)$ e por $F_x$ a sua função de distribuição,
+  teremos que:
+  \begin{align*}
+    \sum_{x \in \Nz} \bar{h}(x) \left[
+      P\left( X^\infty(t) = x \text{ pela primeira vez} \right) - 1 
+    \right]
+    &= - \sum_{x \in \Nz} \bar{h}(x) \left[
+      \int_0^t f_x (s) \left(1 - e^{-\frac{t-s}{\gamma_x}} \right) ds
+    \right]\\
+    &= - \sum_{x \in \Nz} \frac{\bar{h}(x)}{\gamma_x} \left[
+      \int_0^t F_x (s) e^{-\frac{t-s}{\gamma_x}} ds
+    \right],
+  \end{align*}
+  onde a última igualdade veio de uma integração por partes.
+
+  Como $F_x(0) = 0$, temos que cada termo da série acima, dividido por
+  $t$ converge para zero quando $t \searrow 0$. Assim podemos nos
+  preocupar apenas com a cauda da série. Dessa forma tome um $m$ tal
+  que $-\frac{\bar{h}(x)}{\gamma_x} < K + \epsilon$ sempre que $x >
+  m$.
+
+  Como $\gamma_1 \geq \gamma_x$, então $\Gamma^{<x>}$ domina
+  estocasticamente $\Gamma^{1}$. Dessa forma $F_x(t) \leq
+  F_1(t)$.
+
+  Juntando tudo, podemos escrever:
+  \begin{align*}
+    \limsup_{t \searrow 0} \frac{\Psi_t h(\infty) - h(\infty)}{t}
+    &\leq \left( K + \epsilon \right) \limsup_{t \searrow
+      0}\frac{1}{t} \int_0^t F_1(s) \sum_{x >
+      m}e^{-\frac{t-s}{\gamma_x}} ds\\
+    &= \left( K + \epsilon \right) \limsup_{t \searrow
+      0}\frac{1}{t} \int_0^t F_1(s) \left[
+      1 + \sum_{x > 1} e^{-\frac{t-s}{\gamma_x}}
+    \right] ds\\
+    &- \left( K + \epsilon \right) \limsup_{t \searrow
+      0}\frac{1}{t} \int_0^t F_1(s) \left[
+      1 + \sum_{x=2}^m e^{-\frac{t-s}{\gamma_x}}
+    \right] ds\\
+  \end{align*}
+
+  O segundo termo dessa soma vale zero já que $F_1(s) \to 0$ quando $s
+  \searrow 0$ e a soma lá é finita. Resta calcular o primeiro
+  termo. Para isso defina:
+  \begin{align*}
+    \Phi(t) &:= \int_0^t F_1(s) \left[
+      1 + \sum_{x > 1} e^{-\frac{t-s}{\gamma_x}}
+    \right] ds.
+  \end{align*}
+
+  Vamos mostrar que $\Phi(t) = t$. Faremos isso calculando a
+  transformada de Laplace de $\Phi$ e a identificando com a da
+  identidade.
+
+  Note que $\Phi$ é a convolução de duas outras funções, assim vamos
+  calcular a transformada de Laplace delas. Para um $\beta > 0$
+  fixado, usando integração por partes, podemos calcular a tranformada
+  de Laplace da primeira por:
+  \begin{align*}
+    \int_0^{\infty} e^{-\beta t} F_1(t) dt 
+    &= \frac{1}{\beta} \int_0^\infty e^{-\beta t}  f_1(t) dt\\
+    &= \frac{1}{\beta}
+    \E \left[ \exp \{-\beta \Gamma^{<1>} (\sigma_1^1)\}  \right]\\
+    &= \frac{1}{\beta}
+    \left( 1 + \sum_{x > 1}
+      \frac{\beta\gamma_x}{1 + \beta \gamma_x}  \right)^{-1}.
+  \end{align*}
+
+  Enquanto que a segunda irá valer:
+  \begin{align*}
+    \int_0^{\infty} e^{-\beta t} \left[
+      1 + \sum_{x > 1} e^{-\frac{t}{\gamma_x}}
+    \right]  dt 
+    &= \frac{1}{\beta} + \sum_{x > 1} \int_0^\infty \exp \left\{
+      - \left(\beta + \frac{1}{\gamma_x} \right) t \right\} dt\\
+    &= \frac{1}{\beta} + \sum_{x > 1} \frac{\gamma_x}{1 +
+      \beta\gamma_x}\\
+    &= \frac{1}{\beta} \left(
+      1 + \sum_{x > 1} \frac{\beta\gamma_x}{1 +
+      \beta\gamma_x}
+    \right)
+  \end{align*}
+
+  Multiplicando as duas, obteremos que:
+  \begin{displaymath}
+    \int_0^\infty e^{- \beta t} \Phi(t) dt = \frac{1}{\beta^2}.
+  \end{displaymath}
+
+  Agora indentificamos essa transformada de Laplace com a da
+  identidade, isso é:
+  \begin{displaymath}
+    \int_0^\infty t e^{- \beta t}  d t = \frac{1}{\beta^2}.
+  \end{displaymath}
+
+
+  Dessa forma podemos concluir que:
+  \begin{align*}
+    \limsup_{t \searrow 0} \frac{\Psi_t h(\infty) - h(\infty)}{t}
+    &\leq \left( K + \epsilon \right) \limsup_{t \searrow
+      0}\frac{1}{t}  \Phi(t)\\
+    &= K + \epsilon.
+  \end{align*}
+
+
+  Com isso mostramos \eqref{eq:gerador-inf-sup}. Podemos mostrar
+  \eqref{eq:gerador-inf-inf} de forma análoga, mas em vez de usar que
+  $\Gamma^{<x>}$ domina $\Gamma^{<1>}$, usaremos que $\Gamma$ domina
+  $\Gamma^{<x>}$. Também teremos que colocar $x = 1$ na soma que
+  define $\Phi$.
 \end{proof}
 
 \begin{teorema}
