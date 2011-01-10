@@ -156,7 +156,7 @@ Começaremos com uma caracterização básica dessas funções.
   \Xi(t)$, onde $\Xi(t)$ é a inversa de $\Gamma^\infty(t)$.
 
   Como $\Gamma^\infty(t)$ é \qc finito para todo $t$, então $\Xi(t) >
-  0$ \qc. Portanto $\E [\theta(t)] > 0$. Usando o teorema de Fubbini
+  0$ \qc. Portanto $\E [\theta(t)] > 0$. Usando o teorema de Fubini
   obtemos que:
   \begin{displaymath}
     \E[\theta(t)] =  \int_0^t p_{\infty \infty} (s) ds
@@ -900,7 +900,7 @@ zero quase certamente no caso $c = 0$.
 
 Nessa seção tentaremos expandir um pouco o caso $c = 0$,
 especificamente iremos dar uma maneira de calcular a dimensão de
-Hausdorf do tempo em que o processo passa no infinito.  Para o
+Hausdorff do tempo em que o processo passa no infinito.  Para o
 restante dessa seção, considere sempre que $c = 0$.
 
 Em vista da Proposição \ref{prop:reinicia-infinito}, vamos considerar
@@ -1059,7 +1059,7 @@ assim faz sentido definir:
 
 É possível mostrar que $m^\rho(\bullet)$ é uma medida sobre os
 borelianos de $\R$. Medida essa que chamados de medida de Hausdorff de
-dimensão $\rho$.  A medida de Hausdorf de dimensão $1$ é a medida de
+dimensão $\rho$.  A medida de Hausdorff de dimensão $1$ é a medida de
 Lebesgue.
 
 Também vale que se $m^\rho(A) = 0$, então $m^{\rho^\prime} = 0$ para
@@ -1084,7 +1084,7 @@ todo $\rho^\prime > \rho$ e se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
 \end{teorema}
 \begin{proof}
   A primeira igualdade é vem do fato de um conjunto enumerável não
-  alterar a dimensão de Hausdorf de um conjunto, enquanto que a
+  alterar a dimensão de Hausdorff de um conjunto, enquanto que a
   segunda é o Corolário 5.3 de \cite{bertoin:97}, traduzido para a
   nossa notação.
 \end{proof}
@@ -1211,15 +1211,15 @@ todo $\rho^\prime > \rho$ e se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
 
 
 Normalmente o gerador infinitesimal é usado no estudo de processos
-estocásticos para garantir a existência do processo estudado. Se
-inicia com um gerador e argumenta-se, usando o teorema de 
-Hille-Yosida, que existe um processo com esse gerador.
+estocásticos para garantir a existência do processo
+estudado. Descreve-se as taxas de transição por meio de uma expressão
+e argumenta-se, usando o teorema de Hille-Yosida, que existe um
+processo com essa expressão como gerador.
 
 Nós estamos indo na direção oposta. Já temos uma construção do nosso
-processo, e queremos saber qual a ``cara'' do seu
-gerador. 
+processo, e queremos saber qual a ``cara'' do seu gerador.
 
-Aqui vamos nos limitar ao caso homogêneo, isso é, $\lambda_x = 1$ para
+Vamos nos limitar ao caso homogêneo, isso é, $\lambda_x = 1$ para
 todo $x \in \Nz$. Vamos ainda tratar apenas o caso $c = 0$.
 
 O primeiro passo vai ser definir a classe de funções onde iremos
@@ -1231,7 +1231,7 @@ caracterize o semigrupo. A classe adotada será:
   \label{eq:classe-gerador}
   \DDD = \left\{ f \in \CC: \sum_{x\in \Nz} |f(x)-f(\infty)| < \infty,
     \:
-    \sum_{x\in \Nz} f(x)-f(\infty) = 0, \:
+    \sum_{x\in \Nz} \left( f(x)-f(\infty)\right) = 0, \:
     \lim_{x \to \infty} \frac{f(x) - f(\infty)}{\gamma_x} \textrm{ existe}
   \right\},
 \end{equation}
@@ -1277,29 +1277,27 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
 
   Agora vamos começar a fazer a conta:
   \begin{align*}
-    \limsup_{t \searrow 0}
     \frac{\Psi_t f(x) - f(x)}{t}
-    &= \limsup_{t \searrow 0}
-    \sum_{y \in \Nzb} \left[ f(y) - f(x) \right] \frac{p_{x y}(t)}{t}\\
-    &= \limsup_{t \searrow 0}
+    &= \sum_{y \in \Nzb} \left[ f(y) - f(x) \right] \frac{p_{x y}(t)}{t}\\
+    &=
     \sum_{y \in \Nzb\setminus\{x\}} \left[ f(y) - f(x) \right] \frac{p_{x y}(t)}{t}.
   \end{align*}
 
 
   Como $f \in \CC$, podemos tomar um $m \in \Nz$ tal que $m > x$ e
-  $f(y) < f(\infty) + \epsilon$ para $y > m$. Ainda com base na
-  Proposições \ref{prop:taxa-x-y} concluímos que cada termo da série
-  acima converge para zero quanto $t \searrow 0$. Portanto:
+  $f(y) < f(\infty) + \epsilon$ para $y > m$. Com base na Proposição
+  \ref{prop:taxa-x-y} concluímos que cada termo da série acima
+  converge para zero quanto $t \searrow 0$. Portanto:
   \begin{align*}
     \limsup_{t \searrow 0}
     \frac{\Psi_t f(x) - f(x)}{t}
     &= \limsup_{t \searrow 0}
     \sum_{y > m} \left[ f(y) - f(x) \right] \frac{p_{x y}(t)}{t}\\
-    &\leq \limsup_{t \searrow 0} \left[ f(\infty) - f(x) + \epsilon \right]
+    &\leq \left[ f(\infty) - f(x) + \epsilon \right] \limsup_{t \searrow 0} 
     \sum_{y > m} \frac{p_{x y}(t)}{t}\\
-    &=\limsup_{t \searrow 0} \left[ f(\infty) - f(x) + \epsilon \right]
+    &= \left[ f(\infty) - f(x) + \epsilon \right] \limsup_{t \searrow 0}
     \frac{1 - P\left( X^x(t) \leq m \right)}{t}\\
-    &=\limsup_{t \searrow 0} \left[ f(\infty) - f(x) + \epsilon \right]
+    &= \left[ f(\infty) - f(x) + \epsilon \right] \limsup_{t \searrow 0}
     \left[
       \frac{1 - p_{x x}(t)}{t}
       - \sum_{\substack{y \leq m \\ y\neq x}} \frac{p_{x y}(t)}{t}
@@ -1329,21 +1327,19 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
   h(x) - h(\infty)$, além disso vamos definir $K = \lim_{x \to \infty}
   -\bar{h}(x)/\gamma_x$, limite que existe pela definição de $\DDD$.
 
-  Por toda essa demonstração, vamos supor que $\gamma_1 \geq g_x$ para
-  todo $x \in \Nz$, $x > 2$. Não perdemos generalidade
-  ao fazer essa suposição porque basta trocar $1$  no nosso
-  argumento pelo estado que tem $\gamma$ máximo. Tal estado
-  existe porque $\gamma_x \to 0$ quando $x \to \infty$.
+  Por toda essa demonstração, vamos supor que $\gamma_1 \geq \gamma_x$
+  para todo $x \in \Nz$. Não perdemos generalidade ao fazer
+  essa suposição porque basta trocar $1$ no nosso argumento pelo
+  estado que tem $\gamma$ máximo. Tal estado existe porque $\gamma_x
+  \to 0$ quando $x \to \infty$.
 
   Outra notação que iremos usar bastante será:
   \begin{displaymath}
     \Gamma^{<x>}(t) = \sum_{y\in\Nz\setminus\{x\}} \sum_{i =
-      1}^{N^y(t)} \gamma_y T^y_i ,
+      1}^{N^y(t)} \gamma_y T^y_i .
   \end{displaymath}
-  essa é a função $\Gamma$, do processo iniciado no $\infty$ com
-  $c=0$, mas excluímos o estado $x$ da somatória.  
 
-  Para um $\epsilon > 0$ fixado arbitráriamente, vamos mostrar que:
+  Para um $\epsilon > 0$ fixado arbitrariamente, vamos mostrar que:
   \begin{align}
     \label{eq:gerador-inf-sup}
     \limsup_{t \searrow 0} \frac{\Psi_t h(\infty) - h(\infty)}{t} 
@@ -1352,7 +1348,7 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
     \liminf_{t \searrow 0} \frac{\Psi_t h(\infty) - h(\infty)}{t} 
     &\geq K - \epsilon,
   \end{align}
-  de onde concluíremos \eqref{eq:gerador-inf} imediatamente.
+  de onde concluiremos \eqref{eq:gerador-inf} imediatamente.
 
   Agora vamos começar a fazer as contas de fato.
   \begin{align*}
@@ -1365,11 +1361,11 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
         primeira vez}\right)
   \end{align*}
 
-  Tomando $f = |\bar{h}|$ no Lema \ref{lema:gerador-erro} vemos que o
-  segundo termo, dividido por $t$ converge para zero quando $t
-  \searrow 0$, assim podemos nos concentrar apenas nas primeiras
-  visitas. Usando o fato de que $\sum_{x\in\Nz}\bar{h}(x) = 0$,
-  podemos escrever o primeiro termo da expressão acima como:
+  O Lema \ref{lema:gerador-erro} nos diz que o segundo termo, dividido
+  por $t$ converge para zero quando $t \searrow 0$, assim podemos nos
+  concentrar apenas nas primeiras visitas. Usando o fato de que
+  $\sum_{x\in\Nz}\bar{h}(x) = 0$, podemos escrever o primeiro termo da
+  expressão acima como:
   \begin{displaymath}
     \sum_{x \in \Nz} \bar{h}(x) \left[
       P\left( X^\infty(t) = x \text{ pela primeira vez} \right) - 1 
@@ -1385,6 +1381,9 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
     \sum_{x \in \Nz} \bar{h}(x) \left[
       P\left( X^\infty(t) = x \text{ pela primeira vez} \right) - 1 
     \right]
+    &= \sum_{x \in \Nz} \bar{h}(x) \left[
+      \int_0^t f_x (s) e^{-\frac{t-s}{\gamma_x}} ds - 1
+    \right]\\
     &= - \sum_{x \in \Nz} \bar{h}(x) \left[
       \int_0^t f_x (s) \left(1 - e^{-\frac{t-s}{\gamma_x}} \right) ds
     \right]\\
@@ -1394,14 +1393,14 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
   \end{align*}
   onde a última igualdade veio de uma integração por partes.
 
-  Como $F_x(0) = 0$, temos que cada termo da série acima, dividido por
-  $t$ converge para zero quando $t \searrow 0$. Assim podemos nos
-  preocupar apenas com a cauda da série. Dessa forma tome um $m$ tal
-  que $-\frac{\bar{h}(x)}{\gamma_x} < K + \epsilon$ sempre que $x >
-  m$.
+  Como $F_x(t) \to 0$ quanto $t \searrow 0$, temos que cada termo da
+  série acima, dividido por $t$ converge para zero quando $t \searrow
+  0$. Assim podemos nos preocupar apenas com a cauda da série. Dessa
+  forma tome um $m$ tal que $-\frac{\bar{h}(x)}{\gamma_x} < K +
+  \epsilon$ sempre que $x > m$.
 
   Como $\gamma_1 \geq \gamma_x$, então $\Gamma^{<x>}$ domina
-  estocasticamente $\Gamma^{1}$. Dessa forma $F_x(t) \leq
+  estocasticamente $\Gamma^{<1>}$. Dessa forma $F_x(t) \leq
   F_1(t)$.
 
   Juntando tudo, podemos escrever:
@@ -1435,7 +1434,7 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
 
   Note que $\Phi$ é a convolução de duas outras funções, assim vamos
   calcular a transformada de Laplace delas. Para um $\beta > 0$
-  fixado, usando integração por partes, podemos calcular a tranformada
+  fixado, usando integração por partes, podemos calcular a transformada
   de Laplace da primeira por:
   \begin{align*}
     \int_0^{\infty} e^{-\beta t} F_1(t) dt 
@@ -1467,8 +1466,8 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
     \int_0^\infty e^{- \beta t} \Phi(t) dt = \frac{1}{\beta^2}.
   \end{displaymath}
 
-  Agora indentificamos essa transformada de Laplace com a da
-  identidade, isso é:
+  Agora identificamos essa transformada de Laplace com a da
+  identidade, já que:
   \begin{displaymath}
     \int_0^\infty t e^{- \beta t}  d t = \frac{1}{\beta^2}.
   \end{displaymath}
@@ -1511,9 +1510,14 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
   \begin{align*}
     P \left( \Gamma^{<x>} (\sigma^x_2) \leq t \right)
     &\leq P \left( \Gamma^{<1>} (\sigma^1_2) \leq t \right)\\
-    &= P \left( -\frac{\Gamma^{<1>}(\sigma^1_2)}{t} \geq - 1 \right)\\
+    &= P \left( \exp \left\{
+        -\frac{\Gamma^{<1>}(\sigma^1_2)}{t}
+      \right\}
+        \geq e^{-1} \right)\\
     &\leq \mathrm{cte }\:
-    \E \left[  -\frac{\Gamma^{<1>}(\sigma^1_2)}{t}  \right]\\
+    \E \left[ \exp \left\{
+        -\frac{\Gamma^{<1>}(\sigma^1_2)}{t}
+      \right\} \right]\\
     &= \mathrm{cte} \: \left\{ \E \left[  -\frac{\Gamma^{<1>}(\sigma^1_1)}{t}
       \right] \right\}^2 \\
     &= \mathrm{cte} \: \left( 1 + \sum_{y > 1} \frac{\gamma_y}{t +
@@ -1523,7 +1527,7 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
   \end{align*}
 
   O evento $ \{X^\infty(t) = x \text{ não pela primeira vez}\}$ está
-  contido no evento $\{ \Gamma^{<x>} (\sigma^x_2) \leq t, \gamma_x
+  contido no evento $\{ \Gamma^{<x>} (\sigma^x_2) \leq t,\, \gamma_x
   T^x_1 \leq t\}$. Assim usando a estimativa acima e o fato que
   $\Gamma^{<x>} (\sigma^x_2)$ é independente de $T_1^x$, obtemos que:
   \begin{align*}
@@ -1545,14 +1549,14 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
     \sum_{x \not\in A_t} f(x) \frac{1 - e^{-t/\gamma_x}}{t} \notag
   \end{align}
 
-  Vamos mostrar que cada um desses termos converge à zero quando $t
+  Vamos mostrar que os dois termos convergem à zero quando $t
   \searrow 0$.
 
   Para a primeira parte note que, para cada $t > 0$ fixado,
   $A_t$ é um conjunto finito mas a sua cardinalidade vai para o
   infinito quando $t \searrow 0$. Note também que, como $h \in \DDD$,
   então $f(x)/\gamma_x$ converge. Assim essa quantidade é limitada por
-  uma constante. Se denotarmos pot $\#A_t$ a cardinalidade de $A_t$,
+  uma constante. Se denotarmos por $\#A_t$ a cardinalidade de $A_t$,
   poderemos escrever:
   \begin{align*}
     \left( \sum_{y \in \Nz} \frac{\gamma_y}{t + \gamma_y} \right)^{-2}
@@ -1576,7 +1580,7 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
 
   Vamos tratar agora o segundo. Como $\frac{f(x)}{\gamma_x}$ converge,
   então essa sequência é limitada. Assim $f(x) \leq \mathrm{cte}\;
-  \gamma_x$. Juntanto isso ao fato de que $1 - e^{-t/\gamma_x} \leq 1$
+  \gamma_x$. Juntando isso ao fato de que $1 - e^{-t/\gamma_x} \leq 1$
   podemos escrever:
   \begin{align}
     \label{eq:erro-gerador-quase}
@@ -1602,10 +1606,10 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
     \sum_{x \not\in A_t} \frac{\gamma_x}{t} \xrightarrow{t \searrow 0} 0.
   \end{displaymath}
   
-  O segundo caso ocorre quando $\sum_{x
-    \not\in A_t} \frac{\gamma_x}{t}$. Nesse caso é fácil ver que o
+  O segundo caso ocorre quando $\sum_{x \not\in A_t}
+  \frac{\gamma_x}{t}$ é limitado. Nesse caso é fácil ver que o
   denominador de \eqref{eq:erro-gerador-quase} diverge, assim a
-  expressão converge para zero quanto $t \searrow 0$.  
+  expressão converge para zero quanto $t \searrow 0$.
 \end{proof}
 
 \begin{teorema}
@@ -1643,7 +1647,7 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
   $\lim_{x \to \infty} \frac{f(x) - f(\infty)}{\gamma_x} = 0$ e 
   $\sum_{x \in \Nz} |f(x) - f(\infty)| < \infty$. Vale ainda que:
   \begin{align*}
-    \sum_{x \Nz} f(x) - f(\infty) 
+    \sum_{x \in \Nz} (f(x) - f(\infty) )
     &= \sum_{x = 1}^{n_0} (f(x) - f(\infty)) + 
     \sum_{x = n_0 + 1}^m (f(x) - f(\infty)) \\
     &= \sum_{x = 1}^{n_0} (g(x) - g(\infty)) +
@@ -1671,12 +1675,13 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
   \epsilon$.
 
   Como $f \in \CC$, existe $n_0$ tal que $|f(x) - f(\infty)| <
-  \epsilon$ para $x > n_0$. Fixe um tal $n_0$. Defina $g(x) = f(x)$
+  \epsilon/2$ para $x > n_0$. Fixe um tal $n_0$. Defina $g(x) = f(x)$
   para $x \leq n_0$ e $g(x) = f(\infty)$ para $x > n_0$.
 
   Para $x \leq n_0$, teremos que $|g(x) - f(x)| = 0 < \epsilon$,
   enquanto que para $x > n_0$ vale que $|g(x) - f(x)| = |f(\infty) -
-  f(x)| < \epsilon$. Assim $\Vert f - g \Vert < \epsilon$.
+  f(x)| \leq \epsilon/2$. Assim $\Vert f - g \Vert \leq \epsilon/2 <
+  \epsilon$.
 
   Como $g(x) = g(\infty)$ para $x > n_0$, então $g \in \GG$ pois:
   \begin{displaymath}
@@ -1706,7 +1711,7 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
     f(x) = \begin{cases}
       g(\infty) - K & \textrm{ se } x = \infty\\
       \frac{1}{1+\gamma_x} \left[
-        \gamma_xg(x) + g(\infty) - K
+        \gamma_x g(x) + g(\infty) - K
       \right] & \textrm{ caso contrário.}
     \end{cases}
   \end{equation}
