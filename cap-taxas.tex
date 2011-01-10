@@ -1591,9 +1591,15 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
     \sum_{x \not\in A_t} \frac{\gamma_x}{t}.
   \end{align}
 
-  Agora vamos separar em 2 casos. O primeiro ocorre quando $\sum_{x
-    \not\in A_t} \frac{\gamma_x}{t}$ vai para o infinito quanto $t
-  \searrow 0$.
+  Agora vamos separar em 2 casos.  O primeiro ocorre quando $\sum_{x
+    \not\in A_t} \frac{\gamma_x}{t}$ é limitado. Nesse caso é fácil
+  ver que o denominador de \eqref{eq:erro-gerador-quase} diverge
+  quando $t\searrow 0$. Dessa forma a expressão acima converge para zero
+  quanto $t \searrow 0$.
+
+
+  O segundo ocorre quando $\sum_{x \not\in A_t} \frac{\gamma_x}{t}$
+  vai para o infinito quanto $t \searrow 0$.
 
   Quando $y \not\in A_t$, vale que $\gamma_y \leq t$ e
   consequentemente $\frac{\gamma_x}{t+\gamma_x} \geq \frac{\gamma_y}{2
@@ -1605,11 +1611,6 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
     \right)^{-2}
     \sum_{x \not\in A_t} \frac{\gamma_x}{t} \xrightarrow{t \searrow 0} 0.
   \end{displaymath}
-  
-  O segundo caso ocorre quando $\sum_{x \not\in A_t}
-  \frac{\gamma_x}{t}$ é limitado. Nesse caso é fácil ver que o
-  denominador de \eqref{eq:erro-gerador-quase} diverge, assim a
-  expressão converge para zero quanto $t \searrow 0$.
 \end{proof}
 
 \begin{teorema}
