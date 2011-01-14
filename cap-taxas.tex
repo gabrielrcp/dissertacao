@@ -1325,19 +1325,23 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
 \begin{proof}
   Fixe uma $h \in \DDD$ arbitrária. Vamos denotar por $\bar{h}(x) =
   h(x) - h(\infty)$, além disso vamos definir $K = \lim_{x \to \infty}
-  -\bar{h}(x)/\gamma_x$, limite que existe pela definição de $\DDD$.
+  -\bar{h}(x)/\gamma_x$, limite que existe pela definição de
+  $\DDD$. Sem perda de generalidade vamos supor que $K \geq 0$.
 
-  Por toda essa demonstração, vamos supor que $\gamma_1 \geq \gamma_x$
-  para todo $x \in \Nz$. Não perdemos generalidade ao fazer
-  essa suposição porque basta trocar $1$ no nosso argumento pelo
-  estado que tem $\gamma$ máximo. Tal estado existe porque $\gamma_x
+  Por toda essa demonstração, vamos supor que $\gamma_1 \geq \gamma_2
+  \geq \gamma_x$ para todo $x > 2$. Não perdemos generalidade ao fazer
+  essa suposição porque basta trocar $1$ e $2$ no nosso argumento pelos
+  estados que têm $\gamma$ máximo. Tais estados existem porque $\gamma_x
   \to 0$ quando $x \to \infty$.
 
   Outra notação que iremos usar bastante será:
-  \begin{displaymath}
-    \Gamma^{<x>}(t) = \sum_{y\in\Nz\setminus\{x\}} \sum_{i =
-      1}^{N^y(t)} \gamma_y T^y_i .
-  \end{displaymath}
+  \begin{align*}
+    \Gamma^{<x>}(t) &= \sum_{z\in\Nz\setminus\{x\}} \sum_{i =
+      1}^{N^z(t)} \gamma_y T^z_i \\
+    \Gamma^{<x, y>}(t) &= \sum_{z\in\Nz\setminus\{x,y\}} \sum_{i =
+      1}^{N^z(t)} \gamma_y T^z_i .
+  \end{align*}
+
 
   Para um $\epsilon > 0$ fixado arbitrariamente, vamos mostrar que:
   \begin{align}
@@ -1355,10 +1359,10 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
     \Psi_t h (\infty) - h(\infty) &=
     \sum_{x \in \Nz} \bar{h}(x) P\left( X^\infty(t) = x \right)\\
     &= 
-    \sum_{x \in \Nz} \bar{h}(x) P\left( X^\infty(t) = x \text{ pela
-        primeira vez}\right)\\
+    \sum_{x \in \Nz} \bar{h}(x) P\left( X^\infty(t) = x \text{ pela } 1^{a}
+        \text{ vez}\right)\\
     &+ \sum_{x \in \Nz} \bar{h}(x) P\left( X^\infty(t) = x \text{ não pela
-        primeira vez}\right)
+      } 1^a \text{ vez}\right)
   \end{align*}
 
   O Lema \ref{lema:gerador-erro} nos diz que o segundo termo, dividido
@@ -1366,65 +1370,186 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
   concentrar apenas nas primeiras visitas. Usando o fato de que
   $\sum_{x\in\Nz}\bar{h}(x) = 0$, podemos escrever o primeiro termo da
   expressão acima como:
-  \begin{displaymath}
-    \sum_{x \in \Nz} \bar{h}(x) \left[
-      P\left( X^\infty(t) = x \text{ pela primeira vez} \right) - 1 
+  \begin{align}
+    \notag
+    & \sum_{x \in \Nz} \bar{h}(x) \left[
+      P\left( X^\infty(t) = x \text{ pela } 1^a \text{ vez} \right) - 
+      P\left( X^\infty(t) = 1 \text{ pela } 1^a \text{ vez} \right)
+    \right] \\
+    \label{eq:gerador-inf-1}
+    &= \sum_{x > 1} \bar{h}(x) \left[
+      P\left( X^\infty(t) = x \text{ pela } 1^a \text{ vez} \right) - 
+      P\left( X^\infty(t) = 1 \text{ pela } 1^a \text{ vez} \right)
     \right]
-  \end{displaymath}
+  \end{align}
+  
+
+  Agora podemos escrever:
+  \begin{align*}
+    P\left( X^\infty(t) = x \text{ pela } 1^a \text{ vez} \right) &=
+    P\left(
+      X^\infty(t) = x \text{ pela } 1^a \text{ vez},
+      \sigma^x_1 < \sigma^1_1
+    \right) \\ &+
+    P\left(
+      X^\infty(t) = x \text{ pela } 1^a \text{ vez},
+      \sigma^x_1 > \sigma^1_1
+    \right),
+  \end{align*}
+  e com base nisso reescrever \eqref{eq:gerador-inf-1} como:
+  \begin{gather}
+    \label{eq:gerador-inf-2}
+    \sum_{x > 1} \bar{h}(x) \left[
+      P\left(
+        X^\infty(t) = x \text{ pela } 1^a \text{ vez},
+        \sigma^x_1 < \sigma^1_1
+      \right) - 
+      P\left(
+        X^\infty(t) = 1 \text{ pela } 1^a \text{ vez},
+        \sigma^1_1 < \sigma^x_1
+      \right)
+    \right]
+    + \epsilon_t
+  \end{gather}
+
+  Para mostrar que $\frac{\epsilon_t}{t} \to 0$ quando $t
+  \searrow 0$, note que:
+  \begin{align}
+    \left| \frac{\epsilon_t}{t} \right|
+    \label{eq:gerador-inf-visita-1-antes}
+    & \leq  \frac{1}{t} \sum_{x > 1}|\bar{h}(x)|
+    P\left(
+      X^\infty(t) = x \text{ pela } 1^a \text{ vez},
+      \sigma^x_1 > \sigma^1_1
+    \right)\\
+    \label{eq:gerador-inf-visita-x-antes}    
+    &+ \frac{1}{t} \sum_{x > 1}|\bar{h}(x)|
+    P\left(
+      X^\infty(t) = 1 \text{ pela } 1^a \text{ vez},
+      \sigma^1_1 > \sigma^x_1
+    \right)
+  \end{align}
+
+  Para dominar \eqref{eq:gerador-inf-visita-1-antes}, note que
+  $\Gamma^{<1, x>}(\sigma_1^x)$ domina estocasticamente $\Gamma^{<1,
+    2>}(\sigma_1^2)$, dessa forma:
+  \begin{align*}
+    \frac{1}{t} P\left(
+      X^\infty(t) = x \text{ pela } 1^a \text{ vez},
+      \sigma^x_1 > \sigma^1_1
+    \right)
+    &\frac{1}{t} \leq P(\Gamma^{<1, x>}(\sigma^x_1) \leq t, \gamma_1 T^1_1 \leq
+    t)\\
+    &\leq P(\Gamma^{<1, 2>}(\sigma^2_1) \leq t) \frac{1 -
+      e^{-t/\gamma_1}}{t}\\
+    &\leq \frac{P(\Gamma^{<1, 2>}(\sigma^2_1) \leq t)}{\gamma_1}.
+  \end{align*}
+
+  Essa última quantidade não depende de $x$ e vai à zero quando $t
+  \searrow 0$. Dessa forma concluímos que
+  \eqref{eq:gerador-inf-visita-1-antes} converge à zero quando $t
+  \searrow 0$.    
+
+  Para controlar \eqref{eq:gerador-inf-visita-1-antes}, note que se
+  X(t) = 1 e $\sigma_1^1 > \sigma_1^x$ então o processo passou por $1$
+  e por $x$ até o instante $t$. Como $\gamma_1 \geq \gamma_x$, usando
+  a propriedade de falta de memória da exponencial nos $\sigma$'s,
+  obtemos que a probabilidade de termos passado por $1$ e por $x$ é
+  menor ou igual à probabilidade do processo ter passado por $x$ pelo
+  menos duas vezes. Dessa forma, usando o Lema
+  \ref{lema:gerador-erro}, concluímos que
+  \eqref{eq:gerador-inf-visita-1-antes} converge à zero quando $t
+  \searrow 0$.
+
+  
+  Voltando a trabalhar com \eqref{eq:gerador-inf-2}, perceba que,
+  condicionado em $\{\sigma^x_1 < \sigma^1_1\}$, $\sigma^x_1$ tem
+  distribuição exponencial de média $1/2$. Ainda vale que $\Gamma^{<1,
+    x>}(\bullet)$ é independente de $\{\sigma^x_1,
+  \sigma^1_1\}$. Assim se $S$ for uma v.a. exponencial de média $1/2$,
+  independente de todo o processo, teremos que a distribuição de
+  $\Gamma^{<1, x>}(\sigma_1^x)$ condicionada em $\sigma^x_1 <
+  \sigma_1^1$ será igual à distribuição de $\Gamma^{<1, x>}(S)$.
+
 
   Note que $X^\infty(t) = x$ pela primeira vez se e somente se
   $\Gamma^{<x>}(\sigma^x_1) \leq t < \Gamma^{<x>}(\sigma^x_1) +
-  \gamma_x T^x_1$. Assim se denotarmos por $f_x$ a densidade de
-  $\Gamma^{<x>}(\sigma^x_1)$ e por $F_x$ a sua função de distribuição,
-  teremos que:
+  \gamma_x T^x_1$.
+
+  Juntando tudo, se denotarmos por $f_x$ a densidade de $\Gamma^{<1,
+    x>}(S)$ e por $F_x$ a sua função de distribuição, podemos escrever
+  \eqref{eq:gerador-inf-2}, a menos do $\epsilon_t$, por:
+  \begin{align}
+    & \frac{1}{2} \sum_{x > 1} \bar{h}(x) \int_0^t f_x (s) \left(
+      e^{-\frac{t-s}{\gamma_x}} - e^{-\frac{t-s}{\gamma_1}}
+    \right) d s \notag\\
+    \label{eq:gerador-inf-3}
+    &= - \frac{1}{2} \sum_{x > 1} \bar{h}(x) \int_0^t f_x (s) \left(
+      1 - e^{-\frac{t-s}{\gamma_x}}
+    \right) d s\\
+    \label{eq:gerador-inf-4}
+    &+ \frac{1}{2} \sum_{x > 1} \bar{h}(x) \int_0^t f_x (s) \left(
+      1 - e^{-\frac{t-s}{\gamma_1}}
+    \right) d s
+  \end{align}
+
+
+  Podemos escrever:
   \begin{align*}
-    \sum_{x \in \Nz} \bar{h}(x) \left[
-      P\left( X^\infty(t) = x \text{ pela primeira vez} \right) - 1 
-    \right]
-    &= \sum_{x \in \Nz} \bar{h}(x) \left[
-      \int_0^t f_x (s) e^{-\frac{t-s}{\gamma_x}} ds - 1
-    \right]\\
-    &= - \sum_{x \in \Nz} \bar{h}(x) \left[
-      \int_0^t f_x (s) \left(1 - e^{-\frac{t-s}{\gamma_x}} \right) ds
-    \right]\\
-    &= - \sum_{x \in \Nz} \frac{\bar{h}(x)}{\gamma_x} \left[
-      \int_0^t F_x (s) e^{-\frac{t-s}{\gamma_x}} ds
-    \right],
+    \left| \frac{1}{t} \sum_{x > 1} \bar{h}(x) \int_0^t f_x (s) \left(
+        1 - e^{-\frac{t-s}{\gamma_1}}
+      \right) d s \right| &\leq
+  \sum_{x > 1} |\bar{h}(x)| \int_0^t f_x (s) \frac{1}{t}\left(
+    1 - e^{-\frac{t-s}{\gamma_1}}
+  \right) d s \\
+  & \leq \sum_{x > 1} |\bar{h}(x)| \frac{F_x(t)}{\gamma_1} d s  .
   \end{align*}
-  onde a última igualdade veio de uma integração por partes.
+  Note que cada termo dessa série converge para zero quando $t
+  \searrow 0$, enquanto que eles são dominados por $|\bar{h}(x)| /
+  \gamma_1$, que é somável. Assim usando o teorema da convergência
+  dominada, concluímos que \eqref{eq:gerador-inf-4} dividido por
+  $t$ converge para zero quando $t \searrow 0$.
+
+  Fazendo uma integração por partes, obtemos que
+  \eqref{eq:gerador-inf-3} é igual à:
+  \begin{align*}
+    - \frac{1}{2} \sum_{x > 1} \frac{\bar{h}(x)}{\gamma_x} \left[
+      \int_0^t F_x (s) e^{-\frac{t-s}{\gamma_x}} ds
+    \right].
+  \end{align*}
 
   Como $F_x(t) \to 0$ quanto $t \searrow 0$, temos que cada termo da
   série acima, dividido por $t$ converge para zero quando $t \searrow
-  0$. Assim podemos nos preocupar apenas com a cauda da série. Dessa
-  forma tome um $m$ tal que $-\frac{\bar{h}(x)}{\gamma_x} < K +
+  0$. Assim podemos nos preocupar apenas com a cauda da série. Para
+  isso tome um $m > 2$ tal que $-\frac{\bar{h}(x)}{\gamma_x} < K +
   \epsilon$ sempre que $x > m$.
 
-  Como $\gamma_1 \geq \gamma_x$, então $\Gamma^{<x>}$ domina
-  estocasticamente $\Gamma^{<1>}$. Dessa forma $F_x(t) \leq
-  F_1(t)$.
+  Como $\gamma_2\geq \gamma_x$, então $\Gamma^{<1, x>}$ domina
+  estocasticamente $\Gamma^{<1, 2>}$. Dessa forma $F_x(t) \leq
+  F_2(t)$.
 
   Juntando tudo, podemos escrever:
   \begin{align*}
     \limsup_{t \searrow 0} \frac{\Psi_t h(\infty) - h(\infty)}{t}
     &\leq \left( K + \epsilon \right) \limsup_{t \searrow
-      0}\frac{1}{t} \int_0^t F_1(s) \sum_{x >
+      0}\frac{1}{t} \int_0^t \frac{F_2(s)}{2} \sum_{x >
       m}e^{-\frac{t-s}{\gamma_x}} ds\\
     &= \left( K + \epsilon \right) \limsup_{t \searrow
-      0}\frac{1}{t} \int_0^t F_1(s) \left[
-      1 + \sum_{x > 1} e^{-\frac{t-s}{\gamma_x}}
+      0}\frac{1}{t} \int_0^t \frac{F_2(s)}{2} \left[
+      2 + \sum_{x > 2} e^{-\frac{t-s}{\gamma_x}}
     \right] ds\\
     &- \left( K + \epsilon \right) \limsup_{t \searrow
-      0}\frac{1}{t} \int_0^t F_1(s) \left[
-      1 + \sum_{x=2}^m e^{-\frac{t-s}{\gamma_x}}
+      0}\frac{1}{t} \int_0^t \frac{F_2(s)}{2} \left[
+      2 + \sum_{x=3}^m e^{-\frac{t-s}{\gamma_x}}
     \right] ds\\
   \end{align*}
 
-  O segundo termo dessa soma vale zero já que $F_1(s) \to 0$ quando $s
+  O segundo termo dessa soma vale zero já que $F_2(s) \to 0$ quando $s
   \searrow 0$ e a soma lá é finita. Resta calcular o primeiro
   termo. Para isso defina:
   \begin{align*}
-    \Phi(t) &:= \int_0^t F_1(s) \left[
-      1 + \sum_{x > 1} e^{-\frac{t-s}{\gamma_x}}
+    \Phi(t) &:= \int_0^t \frac{F_2(s)}{2} \left[
+      2 + \sum_{x > 2} e^{-\frac{t-s}{\gamma_x}}
     \right] ds.
   \end{align*}
 
@@ -1437,26 +1562,26 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
   fixado, usando integração por partes, podemos calcular a transformada
   de Laplace da primeira por:
   \begin{align*}
-    \int_0^{\infty} e^{-\beta t} F_1(t) dt 
-    &= \frac{1}{\beta} \int_0^\infty e^{-\beta t}  f_1(t) dt\\
+    \int_0^{\infty} e^{-\beta t} \frac{F_2(t)}{2} dt 
+    &= \frac{1}{2 \beta} \int_0^\infty e^{-\beta t}  f_2(t) dt\\
+    &= \frac{1}{2 \beta}
+    \E \left[ \exp \{-\beta \Gamma^{<1,2>} (S)\}  \right]\\
     &= \frac{1}{\beta}
-    \E \left[ \exp \{-\beta \Gamma^{<1>} (\sigma_1^1)\}  \right]\\
-    &= \frac{1}{\beta}
-    \left( 1 + \sum_{x > 1}
+    \left( 2 + \sum_{x > 2}
       \frac{\beta\gamma_x}{1 + \beta \gamma_x}  \right)^{-1}.
   \end{align*}
 
   Enquanto que a segunda irá valer:
   \begin{align*}
     \int_0^{\infty} e^{-\beta t} \left[
-      1 + \sum_{x > 1} e^{-\frac{t}{\gamma_x}}
+      2 + \sum_{x > 2} e^{-\frac{t}{\gamma_x}}
     \right]  dt 
-    &= \frac{1}{\beta} + \sum_{x > 1} \int_0^\infty \exp \left\{
+    &= \frac{2}{\beta} + \sum_{x > 2} \int_0^\infty \exp \left\{
       - \left(\beta + \frac{1}{\gamma_x} \right) t \right\} dt\\
-    &= \frac{1}{\beta} + \sum_{x > 1} \frac{\gamma_x}{1 +
+    &= \frac{2}{\beta} + \sum_{x > 2} \frac{\gamma_x}{1 +
       \beta\gamma_x}\\
     &= \frac{1}{\beta} \left(
-      1 + \sum_{x > 1} \frac{\beta\gamma_x}{1 +
+      2 + \sum_{x > 2} \frac{\beta\gamma_x}{1 +
       \beta\gamma_x}
     \right)
   \end{align*}
@@ -1484,8 +1609,8 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
 
   Com isso mostramos \eqref{eq:gerador-inf-sup}. Podemos mostrar
   \eqref{eq:gerador-inf-inf} de forma análoga, mas em vez de usar que
-  $\Gamma^{<x>}$ domina $\Gamma^{<1>}$, usaremos que $\Gamma$ domina
-  $\Gamma^{<x>}$. Também teremos que colocar $x = 1$ na soma que
+  $\Gamma^{<1,x>}$ domina $\Gamma^{<1,2>}$, usaremos que $\Gamma^{<1>}$ domina
+  $\Gamma^{<1, x>}$. Também teremos que colocar $x = 2$ na soma que
   define $\Phi$.
 \end{proof}
 
@@ -1495,8 +1620,8 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
   \begin{equation}
     \label{eq:gerador-erro}
     \lim_{t \searrow 0} \frac{1}{t} \sum_{x\in\Nz} |h(x) - h(\infty)|
-    P\left( X^\infty(t) = x \text{ não pela
-        primeira vez}\right) = 0
+    P\left( X^\infty \text{passou mais que 1 vez por x até o
+      instante } t \right) = 0
   \end{equation}
 \end{lema}
 \begin{proof}
@@ -1526,10 +1651,11 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
         \gamma_y}  \right)^{-2}
   \end{align*}
 
-  O evento $ \{X^\infty(t) = x \text{ não pela primeira vez}\}$ está
-  contido no evento $\{ \Gamma^{<x>} (\sigma^x_2) \leq t,\, \gamma_x
-  T^x_1 \leq t\}$. Assim usando a estimativa acima e o fato que
-  $\Gamma^{<x>} (\sigma^x_2)$ é independente de $T_1^x$, obtemos que:
+  O evento $\{ X^\infty $ passou mais que 1 vez por x até o instante
+  $t\}$ está contido no evento $\{ \Gamma^{<x>} (\sigma^x_2) \leq t,\,
+  \gamma_x T^x_1 \leq t\}$. Assim usando a estimativa acima e o fato
+  que $\Gamma^{<x>} (\sigma^x_2)$ é independente de $T_1^x$, obtemos
+  que:
   \begin{align*}
     \frac{1}{t} \sum_{x\in\Nz} f(x) P\left( X^\infty(t) = x \text{ não
         pela primeira vez}\right) 
