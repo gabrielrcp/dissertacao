@@ -1210,22 +1210,38 @@ todo $\rho^\prime > \rho$ e se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
 \label{sec:gerador}
 
 
-Normalmente o gerador infinitesimal é usado no estudo de processos
+O gerador infinitesimal é normalmente usado no estudo de processos
 estocásticos para garantir a existência do processo
 estudado. Descreve-se as taxas de transição por meio de uma expressão
-e argumenta-se, usando o teorema de Hille-Yosida, que existe um
-processo com essa expressão como gerador.
+e argumenta-se, geralmente usando o teorema de Hille-Yosida, que
+existe um processo com essa expressão como gerador.
 
 Nós estamos indo na direção oposta. Já temos uma construção do nosso
 processo, e queremos saber qual a ``cara'' do seu gerador.
 
-Vamos nos limitar ao caso homogêneo, isso é, $\lambda_x = 1$ para
-todo $x \in \Nz$. Vamos ainda tratar apenas o caso $c = 0$.
+Por simplicidade, vamos nos limitar nesse seção ao caso homogêneo,
+isso é, $\lambda_x = 1$ para todo $x \in \Nz$.
 
-O primeiro passo vai ser definir a classe de funções onde iremos
-definir o gerador. Essa classe tem que ser pequena o suficiente para
-que o gerador esteja bem definido, mas rica o suficiente para que ele
-caracterize o semigrupo. A classe adotada será:
+O exemplo K1 de \cite{kendall:56} é o nosso Processo K homogêneo, com
+$c = 1$ e $\gamma_x = 1/\alpha_{x+1}$. Nesse artigo eles calcularam o
+gerador infinitesimal, $\AAA$, de tal processo. O domínio dele é o
+conjunto das funções $f: \Nzb \to \R$ tal que $\lim_{x \to \infty} \frac{f(x)
+  - f(\infty)}{\gamma_x}$ existe e vale $\sum_{x
+  \in \Nz} [f(\infty) - f(x)]$, série essa que tem que convergir
+absolutamente. Em funções $f$ desse domínio, o gerador vale:
+\begin{align*}
+  \AAA f (x) = \begin{cases}
+    \frac{f(\infty) - f(x)}{\gamma_x} & \text{se } x \in \Nz\\
+    \sum_{x\in \Nz} [f(x) - f(\infty)] & \text{se } x = \infty.
+  \end{cases}
+\end{align*}
+
+Aqui nós vamos tratar apenas do caso $c = 0$.
+
+O primeiro passo vai ser definir a classe de funções sobre a qual
+iremos definir o gerador. Essa classe tem que ser pequena o suficiente
+para que o gerador esteja bem definido, mas rica o suficiente para que
+ele caracterize o semigrupo. A classe adotada será:
 
 \begin{equation}
   \label{eq:classe-gerador}
@@ -1247,7 +1263,9 @@ onde $\CC$ é o conjunto das funções contínuas de $\Nzb$ em $\R$.
   \end{equation}
 \end{definicao}
 
-Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
+Agora vamos mostrar nas proposições \ref{prop:gerador-x} e
+\ref{prop:gerador-inf} que esse limite de fato existe e calcular o seu
+valor.
 
 \begin{proposicao}
   \label{prop:gerador-x}
@@ -1438,7 +1456,7 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
       X^\infty(t) = x \text{ pela } 1^a \text{ vez},
       \sigma^x_1 > \sigma^1_1
     \right)
-    &\frac{1}{t} \leq P(\Gamma^{<1, x>}(\sigma^x_1) \leq t, \gamma_1 T^1_1 \leq
+    & \leq \frac{1}{t} P(\Gamma^{<1, x>}(\sigma^x_1) \leq t, \gamma_1 T^1_1 \leq
     t)\\
     &\leq P(\Gamma^{<1, 2>}(\sigma^2_1) \leq t) \frac{1 -
       e^{-t/\gamma_1}}{t}\\
@@ -1450,7 +1468,7 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
   \eqref{eq:gerador-inf-visita-1-antes} converge à zero quando $t
   \searrow 0$.    
 
-  Para controlar \eqref{eq:gerador-inf-visita-1-antes}, note que se
+  Para controlar \eqref{eq:gerador-inf-visita-x-antes}, note que se
   X(t) = 1 e $\sigma_1^1 > \sigma_1^x$ então o processo passou por $1$
   e por $x$ até o instante $t$. Como $\gamma_1 \geq \gamma_x$, usando
   a propriedade de falta de memória da exponencial nos $\sigma$'s,
@@ -1625,7 +1643,7 @@ Agora vamos mostrar que esse limite de fato existe, e calcular o seu valor.
   \end{equation}
 \end{lema}
 \begin{proof}
-  Novamente vamos supor, sem perda de generalidade, que $\gamma_1 \leq
+  Novamente vamos supor, sem perda de generalidade, que $\gamma_1 \geq
   \gamma_x$ para todo $x \in \Nz$. Vamos também denotar por $f(x) =
   |h(x) - h(\infty)|$.
 
