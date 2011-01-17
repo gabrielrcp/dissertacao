@@ -1,5 +1,5 @@
 %% ------------------------------------------------------------------------- %%
-\chapter{Taxas de Transição}
+\chapter{Probabilidades de transição}
 \label{cap:taxas}
 
 Nesse capítulo vamos nos preocupar em calcular as taxas de transição
@@ -885,324 +885,6 @@ probabilidade é uma medida invariante para o processo K.
   processo K no caso $c = 0$.
 \end{proof}
 
-%% ------------------------------------------------------------------------- %%
-
-\section{Tempo no infinito}
-\label{sec:tempo-infinito}
-
-Na demonstração da Proposição \ref{prop:continuidade} mostramos que,
-no caso $c > 0$, o tempo que o processo passa no infinito tem medida
-de Lebesgue positiva quase certamente.
-
-Usando a Proposição \ref{prop:naocontinuidade}, é fácil mostrar que a
-medida de Lebesgue do tempo em que o processo passa no infinito vale
-zero quase certamente no caso $c = 0$.
-
-Nessa seção tentaremos expandir um pouco o caso $c = 0$,
-especificamente iremos dar uma maneira de calcular a dimensão de
-Hausdorff do tempo em que o processo passa no infinito.  Para o
-restante dessa seção, considere sempre que $c = 0$.
-
-Em vista da Proposição \ref{prop:reinicia-infinito}, vamos considerar
-somente o processo K iniciado no $\infty$, visto que o conjunto dos
-instantes onde o processo está no infinito ao iniciar em um estado $y$
-é igual ao mesmo conjunto do processo iniciado em $\infty$ mas
-transladado.
-
-\begin{definicao}
-  Vamos denotar por $\RR$ a imagem de $\Gamma^\infty$. Isso é:
-  \begin{displaymath}
-    \RR = \left\{
-      t \geq 0 : \exists s \geq 0 \textrm{ tal que } \Gamma^\infty(s) = t
-    \right\}.
-  \end{displaymath}
-\end{definicao}
-
-\begin{proposicao}
-  Quase certamente, temos que $X(t) = \infty$ se e somente se $t \in \RR$.
-\end{proposicao}
-\begin{proof}
-  Vamos fixar uma realização do nosso processo onde $\Gamma$ é
-  estritamente crescente, càdlàg, limitada em compactos e $\lim_{t \to
-    \infty} \Gamma(t) = \infty$.
-
-  Nessas realizações, tome um $t \in \RR$. Assim existe um (único por
-  $\Gamma$ ser crescente) $s \geq 0$ tal que $\Gamma(s) = t$. Por
-  absurdo, suponha que $X(t) = x < \infty$. Assim existe um $i \geq 1$
-  tal que $\Gamma(\sigma_i^x -) \leq t < \Gamma(\sigma_i^x)$. Portanto
-  $\Gamma(s) < \Gamma(\sigma_i^x)$. Como $\Gamma$ é crescente,
-  concluímos que $s < \sigma_i^x$, de onde concluímos que
-  $\Gamma(\sigma_i^x-) > \Gamma(s) = t$, o que contraria a hipótese.
-
-  Agora tome um $t \geq 0$ tal que $X(t) = \infty$. Defina $s = \inf
-  \{ r \geq 0 :  \Gamma(r) > t \}$. Usando a definição do ínfimo e o
-  fato de $\Gamma$ ser crescente e càdlàg, concluímos que $\Gamma(s-)
-  \leq t$ e $\Gamma(s) \geq t$. Agora, por absurdo, suponha que
-  $\Gamma(s) > t$. Assim teremos que $\Gamma(s-) \leq t <
-  \Gamma(s)$. Assim como os pontos de descontinuidade de $\Gamma$
-  correspondem às marcas dos processos de Poisson, teremos que existe
-  um $\sigma_i^x = s$, de onde concluímos a contradição de que $X(t) =
-  x \neq \infty$. Portanto, como não pode acontecer que $\Gamma(s) >
-  t$, teremos que $\Gamma(s) = t$ e assim $t \in \RR$.
-\end{proof}
-
-\begin{proposicao}
-  Agora vamos denotar por $\RRb$ o fecho de $\RR$. Temos que:
-  \begin{displaymath}
-    \RRb = \RR \cup \{ \Gamma(s-) : s > 0 \}.
-  \end{displaymath}
-\end{proposicao}
-\begin{proof}
-  Novamente considere as realizações onde $\Gamma$ é càdlàg, crescente
-  e limitada em compactos.
-
-  Fixado um $s > 0$ vamos mostrar que $\Gamma(s-) \in \RRb$. Para isso
-  tome uma sequência $(s_n)_{n \geq 1}$ tal que $s_n \nearrow s$. Por
-  definição, temos que $\Gamma(s_n) \in \RR$ para todo $n$ e
-  $\Gamma(s_n) \to \Gamma(s-)$. De onde concluímos que $\Gamma(s-) \in
-  \RRb$.
-
-  Agora tome um $t \in \RRb \setminus \RR$. Por definição existe uma
-  sequência $(t_n)_n \in \RR$ tal que $t_n \to t$. Como $t_n \in \RR$,
-  existe $s_n$ tal que $\Gamma(s_n) = t_n$.
-
-  Note que $(s_n)$ é limitada, assim existe uma subsequencia de $(s_n)$
-  que seja convergente. Assim sem perda de generalidade, vamos supor
-  que $(s_n)$ seja convergente e denotar seu limite por $s$.
-
-  Como $s_n \to s$, $\Gamma(s_n) \to t$ e $\Gamma$ é càdlàg, então
-  temos que $t \in \{ \Gamma(s), \Gamma(s-) \}$. Já que estamos
-  supondo que $t \not\in \RR$, seque que $t = \Gamma(s-)$.
-\end{proof}
-
-\begin{proposicao}
-  $\RRb \setminus \RR$ é quase certamente enumerável.
-\end{proposicao}
-\begin{proof}
-  O conjunto dos pontos onde $\Gamma$ não é contínua é $\{ \sigma_i^x:
-  x \in \Nz, \, i \geq 1\}$. Assim temos que $\RRb \setminus \RR
-  \subseteq \{ \Gamma(\sigma_i^x-): x \in \Nz, \, i \geq 1\}$, que é
-  um conjunto enumerável.
-\end{proof}
-
-\begin{proposicao}
-  $\Gamma^\infty_0$, quando enxergada como um processo estocástico, é
-  um subordinador. Isso é, um processo que toma valores em $[0,
-  \infty)$, iniciado em zero, crescente, contínuo à direita, que tem
-  incrementos estacionários e independentes.
-\end{proposicao}
-\begin{proof}
-
-  Já mostramos que $\Gamma$ é crescente e contínua à direita, e basta
-  olhar para a definição para ver que $\Gamma^\infty(0) = 0$.
-
-  Tome $\FF_t$ a $\sigma$-álgebra gerada por $\{ \Gamma(s): s \in [0,
-  t]\}$ e repare que para $t, s > 0$:
-  \begin{displaymath}
-    \Gamma(t+s) - \Gamma(t) = \sum_{x \in \Nz} \sum_{i =
-      N(t)+1}^{N(t+s)} \gamma_x T_i^x.
-  \end{displaymath}
-
-  Agora usando o fato das $\{ T_i^x: x \in \Nzb, \, i \geq 1\}$ serem
-  independentes e identicamente distribuídas e os processos de Poisson
-  terem incrementos estacionários e independentes, teremos que essa
-  quantidade é independente de $\FF_t$ e tem a mesma distribuição que
-  $\Gamma(s) - \Gamma(0)$.
-\end{proof}
-
-\begin{proposicao}
-  O expoente de Laplace de $\Gamma^\infty_0$ é dado por:
-  \begin{displaymath}
-    \Phi(u) = u \sum_{x \in \Nz} \frac{\lambda_x \gamma_x}{1 + u\gamma_x}.
-  \end{displaymath}
-  Isso é para $u \geq 0$, teremos que:
-  \begin{displaymath}
-    \E \left[
-      \exp \left\{
-        -u \Gamma^\infty_0 (t)
-      \right\}
-    \right] = 
-    \exp\left\{
-      -t \Phi(u)
-    \right\}.
-  \end{displaymath}
-\end{proposicao}
-
-
-Agora temos ferramentas para calcular a dimensão de Hausdorff de
-$\RR$. Mas antes vamos introduzir brevemente o que é a dimensão de
-Hausdorff de um conjunto. Para uma cobertura mais abrangente do
-assunto, recomendamos (???).
-
-Para um $\epsilon > 0$ e um boreliano $A$ vamos denotar por
-$\II_\epsilon(A)$ a família de todas as coberturas de $A$ por um
-número enumerável de intervalos de comprimento menor que $\epsilon$.
-
-
-Para um $\rho > 0$, $\epsilon > 0$ e um boreliano $A$, definimos:
-\begin{equation}
-  \label{eq:dim-hausdorff-eps}
-  m^\rho_\epsilon(A) = \inf_{\II \in \II_\epsilon(A)} 
-  \sum_{I \in \II} (\mathrm{l}(I))^\rho, 
-\end{equation}
-onde  $\mathrm{l}(I)$ é o comprimento do intervalo $I$.
-
-Quando diminuímos $\epsilon$, diminuímos o número de coberturas
-possíveis, assim o ínfimo aumenta. Portando o limite de
-\eqref{eq:dim-hausdorff-eps} quando $\epsilon \searrow 0$ existe, e
-assim faz sentido definir:
-
-\begin{equation}
-  \label{eq:dim-hausdorf}
-  m^\rho(A) = \lim_{\epsilon \searrow 0} m^\rho_\epsilon (A)
-\end{equation}
-
-É possível mostrar que $m^\rho(\bullet)$ é uma medida sobre os
-borelianos de $\R$. Medida essa que chamados de medida de Hausdorff de
-dimensão $\rho$.  A medida de Hausdorff de dimensão $1$ é a medida de
-Lebesgue.
-
-Também vale que se $m^\rho(A) = 0$, então $m^{\rho^\prime} = 0$ para
-todo $\rho^\prime > \rho$ e se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
-= \infty$ para todo $\rho^\prime(A) < \rho$.
-
-\begin{definicao}
-  Definimos a dimensão de Hausdorff de um boreliano $A$ como:
-  \begin{displaymath}
-    \dim_H(A) = \sup \left\{ \rho > 0 : m^\rho(A) < \infty \right\}
-    = \inf \left\{ \rho > 0: m^\rho(A) = 0 \right\}
-  \end{displaymath}
-\end{definicao}
-
-\begin{teorema}
-  Para todo $t > 0$, vale que quase certamente:
-  \begin{displaymath}
-    \dim_H(\RR^\infty \cap [0, t]) = 
-    \dim_H(\RRb^\infty \cap [0, t]) =
-    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}
-  \end{displaymath}
-\end{teorema}
-\begin{proof}
-  A primeira igualdade é vem do fato de um conjunto enumerável não
-  alterar a dimensão de Hausdorff de um conjunto, enquanto que a
-  segunda é o Corolário 5.3 de \cite{bertoin:97}, traduzido para a
-  nossa notação.
-\end{proof}
-
-\begin{proposicao}
-  \label{prop:dominar-dim-haus-sup}
-  Suponha que $\sup_{x\in\Nz}\lambda_x < \infty$ e que existam um
-  $\delta>0$ e um $n_0 \in \Nz$ tal que $\gamma_x \leq x^{-(1+\delta)}$
-  para todo $x > n_0$. Nessas condições:
-  \begin{equation}
-    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}  \leq \frac{1}{1+\delta}
-  \end{equation}
-\end{proposicao}
-
-\begin{proof}
-  Tome $K > 0$ tal que $\lambda_x \leq K$ para todo $x \in \Nz$. Assim
-  teremos que para alguma constante $C$:
-  \begin{align*}
-    \Phi(u) &= \sum_{x \in \Nz} \frac{\lambda_x}{\frac{1}{u\gamma_x} +
-      1}\\
-    &\leq C + \sum_{x > n_0} \frac{K}{\frac{x^{1+\delta}}{u} + 1}\\
-    &=u^{\frac{1}{1+\delta}} \left[
-      \frac{C}{u^{\frac{1}{1+\delta}}} +
-      \frac{1}{u^{\frac{1}{1+\delta}}} \sum_{x > n_0} \frac{K}{
-        \left( \frac{x}{u^{\frac{1}{1+\delta}}}  \right)^{1+\delta}
-        + 1
-      }
-    \right].
-  \end{align*}
-
-  Agora vamos nos concentrar na quantidade dentro dos colchetes. Para
-  isso vamos fazer a mudança de variáveis $v =
-  u^{\frac{1}{1+\delta}}$. Se tomarmos $v$ inteiro maior que $n_0$ e
-  agrupando os termos da série entre múltiplos de $v$, obteremos:
-  \begin{align*}
-    \frac{C}{v} + \frac{1}{v} \sum_{x > n_0} \frac{K}{ \left(
-        \frac{x}{v} \right)^{1+\delta} + 1 }
-    &\leq
-    \frac{C}{v} + \sum_{y=1}^{\infty} \frac{K}{y^{1+\delta} + 1}
-    \xrightarrow{v \to \infty} C^\prime,
-  \end{align*}
-  onde $C^\prime$ é uma constante positiva.
-
-  Como jogar $u$ para o infinito é equivalente à jogar $v$ para o
-  infinito, e que que o limite seguindo $v$ inteiro é um limitante
-  superior para $\liminf$, teremos que:
-
-  \begin{align*}
-    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} &\leq
-    \frac{1}{1+\delta} + \liminf_{u \to \infty} 
-    \frac{\log{C^\prime}}{\log u}\\
-    &= \frac{1}{1+\delta}.
-  \end{align*}
-\end{proof}
-
-\begin{proposicao}
-\label{prop:dominar-dim-haus-inf}
-  Suponha que $\inf_{x\in\Nz}\lambda_x  > 0$ e que existam um
-  $\delta>0$ e um $n_0 \in \Nz$ tal que $\gamma_x \geq x^{-(1+\delta)}$
-  para todo $x > n_0$. Nessas condições:
-  \begin{equation}
-    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}  \geq \frac{1}{1+\delta}
-  \end{equation}
-\end{proposicao}
-
-\begin{proof}
-  Tome $K > 0$ tal que $\lambda_x \geq K$ para todo $x \in \Nz$. Dessa
-  forma:
-  \begin{align*}
-    \Phi(u) &= \sum_{x \in \Nz} \frac{\lambda_x}{\frac{1}{u\gamma_x} +
-      1}\\
-    &\geq \sum_{x > n_0}
-    \frac{K}{\left(\frac{x}{u^{\frac{1}{1+\delta}}}\right)^{1+\delta} +1}.
-  \end{align*}
-
-  Portanto, tomando $u > n_0$, e agrupando a série em somas sobre os inteiros
-  que estão entre os múltiplos de $u$, teremos que:
-  \begin{align*}
-    \Phi(u^{1+\delta}) 
-    &\geq \sum_{x > n_0}
-    \frac{K}{\left(\frac{x}{u}\right)^{1+\delta} +1}\\
-    &\geq \sum_{x \geq u}
-    \frac{K}{\left(\frac{x}{u}\right)^{1+\delta} +1}\\
-    &\geq \lfloor u \rfloor \sum_{y = 1}^{\infty}
-    \frac{K}{y^{1+\delta} + 1}.
-  \end{align*}
-
-  Dessa forma:
-  \begin{align*}
-    \frac{\log \Phi(u)}{\log u} \geq \frac{\log\lfloor
-      u^{\frac{1}{1+\delta}} \rfloor }{\log u} + 
-    \frac{1}{\log u} \sum_{y = 1}^{\infty}
-    \frac{K}{y^{1+\delta} + 1}.
-  \end{align*}
-
-  Como essa série é convergente, ao fazer $u \to \infty$ o segundo
-  termo desaparecerá, enquanto que o primeiro irá convergir para
-  $\frac{1}{1+\delta}$. De onde concluímos que:
-
-  \begin{displaymath}
-    \liminf_{u \to \infty} \frac{\log \Phi (u)}{\log u} \geq \frac{1}{1+\delta}
-  \end{displaymath}
-\end{proof}
-
-\begin{corolario}
-  \label{prop:igualar-dim-haus}
-  Suponha que $\inf_{x \in \Nz} \lambda_x > 0$, $\sup_{x \in \Nz}
-  \lambda_x < \infty$ e que existam um $\delta > 0$ e um $n_0 \in \Nz$
-  tal que $\gamma_x = x^{-(1+\delta)}$ para todo $x > n_0$.  Nessas
-  condições:
-  \begin{displaymath}
-    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} = \frac{1}{1+\delta}
-  \end{displaymath}
-\end{corolario}
-\begin{proof}
-  Basta juntar as Proposições \ref{prop:dominar-dim-haus-sup} e
-  \ref{prop:dominar-dim-haus-inf}.
-\end{proof}
 
 %% ------------------------------------------------------------------------- %%
 
@@ -1888,6 +1570,327 @@ valor.
   Observando $\eqref{eq:classe-gerador}$, concluímos que $f \in
   \DDD$. Além disso é fácil ver de \eqref{eq:inversa-imagem-2} que $f
   - \AAA f = g$.
+\end{proof}
+
+
+
+%% ------------------------------------------------------------------------- %%
+
+\section{Tempo no infinito}
+\label{sec:tempo-infinito}
+
+Na demonstração da Proposição \ref{prop:continuidade} mostramos que,
+no caso $c > 0$, o tempo que o processo passa no infinito tem medida
+de Lebesgue positiva quase certamente.
+
+Usando a Proposição \ref{prop:naocontinuidade}, é fácil mostrar que a
+medida de Lebesgue do tempo em que o processo passa no infinito vale
+zero quase certamente no caso $c = 0$.
+
+Nessa seção tentaremos expandir um pouco o caso $c = 0$,
+especificamente iremos dar uma maneira de calcular a dimensão de
+Hausdorff do tempo em que o processo passa no infinito.  Para o
+restante dessa seção, considere sempre que $c = 0$.
+
+Em vista da Proposição \ref{prop:reinicia-infinito}, vamos considerar
+somente o processo K iniciado no $\infty$, visto que o conjunto dos
+instantes onde o processo está no infinito ao iniciar em um estado $y$
+é igual ao mesmo conjunto do processo iniciado em $\infty$ mas
+transladado.
+
+\begin{definicao}
+  Vamos denotar por $\RR$ a imagem de $\Gamma^\infty$. Isso é:
+  \begin{displaymath}
+    \RR = \left\{
+      t \geq 0 : \exists s \geq 0 \textrm{ tal que } \Gamma^\infty(s) = t
+    \right\}.
+  \end{displaymath}
+\end{definicao}
+
+\begin{proposicao}
+  Quase certamente, temos que $X(t) = \infty$ se e somente se $t \in \RR$.
+\end{proposicao}
+\begin{proof}
+  Vamos fixar uma realização do nosso processo onde $\Gamma$ é
+  estritamente crescente, càdlàg, limitada em compactos e $\lim_{t \to
+    \infty} \Gamma(t) = \infty$.
+
+  Nessas realizações, tome um $t \in \RR$. Assim existe um (único por
+  $\Gamma$ ser crescente) $s \geq 0$ tal que $\Gamma(s) = t$. Por
+  absurdo, suponha que $X(t) = x < \infty$. Assim existe um $i \geq 1$
+  tal que $\Gamma(\sigma_i^x -) \leq t < \Gamma(\sigma_i^x)$. Portanto
+  $\Gamma(s) < \Gamma(\sigma_i^x)$. Como $\Gamma$ é crescente,
+  concluímos que $s < \sigma_i^x$, de onde concluímos que
+  $\Gamma(\sigma_i^x-) > \Gamma(s) = t$, o que contraria a hipótese.
+
+  Agora tome um $t \geq 0$ tal que $X(t) = \infty$. Defina $s = \inf
+  \{ r \geq 0 :  \Gamma(r) > t \}$. Usando a definição do ínfimo e o
+  fato de $\Gamma$ ser crescente e càdlàg, concluímos que $\Gamma(s-)
+  \leq t$ e $\Gamma(s) \geq t$. Agora, por absurdo, suponha que
+  $\Gamma(s) > t$. Assim teremos que $\Gamma(s-) \leq t <
+  \Gamma(s)$. Assim como os pontos de descontinuidade de $\Gamma$
+  correspondem às marcas dos processos de Poisson, teremos que existe
+  um $\sigma_i^x = s$, de onde concluímos a contradição de que $X(t) =
+  x \neq \infty$. Portanto, como não pode acontecer que $\Gamma(s) >
+  t$, teremos que $\Gamma(s) = t$ e assim $t \in \RR$.
+\end{proof}
+
+\begin{proposicao}
+  Agora vamos denotar por $\RRb$ o fecho de $\RR$. Temos que:
+  \begin{displaymath}
+    \RRb = \RR \cup \{ \Gamma(s-) : s > 0 \}.
+  \end{displaymath}
+\end{proposicao}
+\begin{proof}
+  Novamente considere as realizações onde $\Gamma$ é càdlàg, crescente
+  e limitada em compactos.
+
+  Fixado um $s > 0$ vamos mostrar que $\Gamma(s-) \in \RRb$. Para isso
+  tome uma sequência $(s_n)_{n \geq 1}$ tal que $s_n \nearrow s$. Por
+  definição, temos que $\Gamma(s_n) \in \RR$ para todo $n$ e
+  $\Gamma(s_n) \to \Gamma(s-)$. De onde concluímos que $\Gamma(s-) \in
+  \RRb$.
+
+  Agora tome um $t \in \RRb \setminus \RR$. Por definição existe uma
+  sequência $(t_n)_n \in \RR$ tal que $t_n \to t$. Como $t_n \in \RR$,
+  existe $s_n$ tal que $\Gamma(s_n) = t_n$.
+
+  Note que $(s_n)$ é limitada, assim existe uma subsequencia de $(s_n)$
+  que seja convergente. Assim sem perda de generalidade, vamos supor
+  que $(s_n)$ seja convergente e denotar seu limite por $s$.
+
+  Como $s_n \to s$, $\Gamma(s_n) \to t$ e $\Gamma$ é càdlàg, então
+  temos que $t \in \{ \Gamma(s), \Gamma(s-) \}$. Já que estamos
+  supondo que $t \not\in \RR$, seque que $t = \Gamma(s-)$.
+\end{proof}
+
+\begin{proposicao}
+  $\RRb \setminus \RR$ é quase certamente enumerável.
+\end{proposicao}
+\begin{proof}
+  O conjunto dos pontos onde $\Gamma$ não é contínua é $\{ \sigma_i^x:
+  x \in \Nz, \, i \geq 1\}$. Assim temos que $\RRb \setminus \RR
+  \subseteq \{ \Gamma(\sigma_i^x-): x \in \Nz, \, i \geq 1\}$, que é
+  um conjunto enumerável.
+\end{proof}
+
+\begin{proposicao}
+  $\Gamma^\infty_0$, quando enxergada como um processo estocástico, é
+  um subordinador. Isso é, um processo que toma valores em $[0,
+  \infty)$, iniciado em zero, crescente, contínuo à direita, que tem
+  incrementos estacionários e independentes.
+\end{proposicao}
+\begin{proof}
+
+  Já mostramos que $\Gamma$ é crescente e contínua à direita, e basta
+  olhar para a definição para ver que $\Gamma^\infty(0) = 0$.
+
+  Tome $\FF_t$ a $\sigma$-álgebra gerada por $\{ \Gamma(s): s \in [0,
+  t]\}$ e repare que para $t, s > 0$:
+  \begin{displaymath}
+    \Gamma(t+s) - \Gamma(t) = \sum_{x \in \Nz} \sum_{i =
+      N(t)+1}^{N(t+s)} \gamma_x T_i^x.
+  \end{displaymath}
+
+  Agora usando o fato das $\{ T_i^x: x \in \Nzb, \, i \geq 1\}$ serem
+  independentes e identicamente distribuídas e os processos de Poisson
+  terem incrementos estacionários e independentes, teremos que essa
+  quantidade é independente de $\FF_t$ e tem a mesma distribuição que
+  $\Gamma(s) - \Gamma(0)$.
+\end{proof}
+
+\begin{proposicao}
+  O expoente de Laplace de $\Gamma^\infty_0$ é dado por:
+  \begin{displaymath}
+    \Phi(u) = u \sum_{x \in \Nz} \frac{\lambda_x \gamma_x}{1 + u\gamma_x}.
+  \end{displaymath}
+  Isso é para $u \geq 0$, teremos que:
+  \begin{displaymath}
+    \E \left[
+      \exp \left\{
+        -u \Gamma^\infty_0 (t)
+      \right\}
+    \right] = 
+    \exp\left\{
+      -t \Phi(u)
+    \right\}.
+  \end{displaymath}
+\end{proposicao}
+
+
+Agora temos ferramentas para calcular a dimensão de Hausdorff de
+$\RR$. Mas antes vamos introduzir brevemente o que é a dimensão de
+Hausdorff de um conjunto.
+
+Para um $\epsilon > 0$ e um boreliano $A$ vamos denotar por
+$\II_\epsilon(A)$ a família de todas as coberturas de $A$ por um
+número enumerável de intervalos de comprimento menor que $\epsilon$.
+
+
+Para um $\rho > 0$, $\epsilon > 0$ e um boreliano $A$, definimos:
+\begin{equation}
+  \label{eq:dim-hausdorff-eps}
+  m^\rho_\epsilon(A) = \inf_{\II \in \II_\epsilon(A)} 
+  \sum_{I \in \II} (\mathrm{l}(I))^\rho, 
+\end{equation}
+onde  $\mathrm{l}(I)$ é o comprimento do intervalo $I$.
+
+Quando diminuímos $\epsilon$, diminuímos o número de coberturas
+possíveis, assim o ínfimo aumenta. Portando o limite de
+\eqref{eq:dim-hausdorff-eps} quando $\epsilon \searrow 0$ existe, e
+assim faz sentido definir:
+
+\begin{displaymath}
+  m^\rho(A) = \lim_{\epsilon \searrow 0} m^\rho_\epsilon (A)
+\end{displaymath}
+
+É possível mostrar que $m^\rho(\bullet)$ é uma medida sobre os
+borelianos de $\R$. Medida essa que chamados de medida de Hausdorff de
+dimensão $\rho$.  A medida de Hausdorff de dimensão $1$ é a medida de
+Lebesgue.
+
+Também vale que se $m^\rho(A) = 0$, então $m^{\rho^\prime}(A) = 0$ para
+todo $\rho^\prime > \rho$ e se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
+= \infty$ para todo $\rho^\prime < \rho$.
+
+\begin{definicao}
+  Definimos a dimensão de Hausdorff de um boreliano $A$ como:
+  \begin{displaymath}
+    \dim_H(A) = \sup \left\{ \rho > 0 : m^\rho(A) < \infty \right\}
+    = \inf \left\{ \rho > 0: m^\rho(A) = 0 \right\}
+  \end{displaymath}
+\end{definicao}
+
+\begin{teorema}
+  \label{teo:dim-hausdorff}
+  Para todo $t > 0$, vale que quase certamente:
+  \begin{equation}
+    \label{eq:dim-hausdorff}
+    \dim_H(\RR^\infty \cap [0, t]) = 
+    \dim_H(\RRb^\infty \cap [0, t]) =
+    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}
+  \end{equation}
+\end{teorema}
+\begin{proof}
+  A primeira igualdade é vem do fato de um conjunto enumerável não
+  alterar a dimensão de Hausdorff de um conjunto, enquanto que a
+  segunda é o Corolário 5.3 de \cite{bertoin:97}, traduzido para a
+  nossa notação.
+\end{proof}
+
+\begin{proposicao}
+  \label{prop:dominar-dim-haus-sup}
+  Suponha que $\sup_{x\in\Nz}\lambda_x < \infty$ e que existam um
+  $\delta>0$ e um $n_0 \in \Nz$ tal que $\gamma_x \leq x^{-(1+\delta)}$
+  para todo $x > n_0$. Nessas condições:
+  \begin{equation}
+    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}  \leq \frac{1}{1+\delta}
+  \end{equation}
+\end{proposicao}
+
+\begin{proof}
+  Tome $K > 0$ tal que $\lambda_x \leq K$ para todo $x \in \Nz$. Assim
+  teremos que para alguma constante $C$:
+  \begin{align*}
+    \Phi(u) &= \sum_{x \in \Nz} \frac{\lambda_x}{\frac{1}{u\gamma_x} +
+      1}\\
+    &\leq C + \sum_{x > n_0} \frac{K}{\frac{x^{1+\delta}}{u} + 1}\\
+    &=u^{\frac{1}{1+\delta}} \left[
+      \frac{C}{u^{\frac{1}{1+\delta}}} +
+      \frac{1}{u^{\frac{1}{1+\delta}}} \sum_{x > n_0} \frac{K}{
+        \left( \frac{x}{u^{\frac{1}{1+\delta}}}  \right)^{1+\delta}
+        + 1
+      }
+    \right].
+  \end{align*}
+
+  Agora vamos nos concentrar na quantidade dentro dos colchetes. Para
+  isso vamos fazer a mudança de variáveis $v =
+  u^{\frac{1}{1+\delta}}$. Se tomarmos $v$ inteiro maior que $n_0$ e
+  agrupando os termos da série entre múltiplos de $v$, obteremos:
+  \begin{align*}
+    \frac{C}{v} + \frac{1}{v} \sum_{x > n_0} \frac{K}{ \left(
+        \frac{x}{v} \right)^{1+\delta} + 1 }
+    &\leq
+    \frac{C}{v} + \sum_{y=1}^{\infty} \frac{K}{y^{1+\delta} + 1}
+    \xrightarrow{v \to \infty} C^\prime,
+  \end{align*}
+  onde $C^\prime$ é uma constante positiva.
+
+  Como jogar $u$ para o infinito é equivalente à jogar $v$ para o
+  infinito, e que que o limite seguindo $v$ inteiro é um limitante
+  superior para $\liminf$, teremos que:
+
+  \begin{align*}
+    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} &\leq
+    \frac{1}{1+\delta} + \liminf_{u \to \infty} 
+    \frac{\log{C^\prime}}{\log u}\\
+    &= \frac{1}{1+\delta}.
+  \end{align*}
+\end{proof}
+
+\begin{proposicao}
+\label{prop:dominar-dim-haus-inf}
+  Suponha que $\inf_{x\in\Nz}\lambda_x  > 0$ e que existam um
+  $\delta>0$ e um $n_0 \in \Nz$ tal que $\gamma_x \geq x^{-(1+\delta)}$
+  para todo $x > n_0$. Nessas condições:
+  \begin{equation}
+    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}  \geq \frac{1}{1+\delta}
+  \end{equation}
+\end{proposicao}
+
+\begin{proof}
+  Tome $K > 0$ tal que $\lambda_x \geq K$ para todo $x \in \Nz$. Dessa
+  forma:
+  \begin{align*}
+    \Phi(u) &= \sum_{x \in \Nz} \frac{\lambda_x}{\frac{1}{u\gamma_x} +
+      1}\\
+    &\geq \sum_{x > n_0}
+    \frac{K}{\left(\frac{x}{u^{\frac{1}{1+\delta}}}\right)^{1+\delta} +1}.
+  \end{align*}
+
+  Portanto, tomando $u > n_0$, e agrupando a série em somas sobre os inteiros
+  que estão entre os múltiplos de $u$, teremos que:
+  \begin{align*}
+    \Phi(u^{1+\delta}) 
+    &\geq \sum_{x > n_0}
+    \frac{K}{\left(\frac{x}{u}\right)^{1+\delta} +1}\\
+    &\geq \sum_{x \geq u}
+    \frac{K}{\left(\frac{x}{u}\right)^{1+\delta} +1}\\
+    &\geq \lfloor u \rfloor \sum_{y = 1}^{\infty}
+    \frac{K}{y^{1+\delta} + 1}.
+  \end{align*}
+
+  Dessa forma:
+  \begin{align*}
+    \frac{\log \Phi(u)}{\log u} \geq \frac{\log\lfloor
+      u^{\frac{1}{1+\delta}} \rfloor }{\log u} + 
+    \frac{1}{\log u} \sum_{y = 1}^{\infty}
+    \frac{K}{y^{1+\delta} + 1}.
+  \end{align*}
+
+  Como essa série é convergente, ao fazer $u \to \infty$ o segundo
+  termo desaparecerá, enquanto que o primeiro irá convergir para
+  $\frac{1}{1+\delta}$. De onde concluímos que:
+
+  \begin{displaymath}
+    \liminf_{u \to \infty} \frac{\log \Phi (u)}{\log u} \geq \frac{1}{1+\delta}
+  \end{displaymath}
+\end{proof}
+
+\begin{corolario}
+  \label{prop:igualar-dim-haus}
+  Suponha que $\inf_{x \in \Nz} \lambda_x > 0$, $\sup_{x \in \Nz}
+  \lambda_x < \infty$ e que existam um $\delta > 0$ e um $n_0 \in \Nz$
+  tal que $\gamma_x = x^{-(1+\delta)}$ para todo $x > n_0$.  Nessas
+  condições:
+  \begin{displaymath}
+    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} = \frac{1}{1+\delta}
+  \end{displaymath}
+\end{corolario}
+\begin{proof}
+  Basta juntar as Proposições \ref{prop:dominar-dim-haus-sup} e
+  \ref{prop:dominar-dim-haus-inf}.
 \end{proof}
 
 

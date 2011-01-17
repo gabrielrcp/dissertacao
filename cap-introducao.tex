@@ -2,42 +2,51 @@
 \chapter{Introdução}
 \label{cap:introducao}
 
-Estudaremos uma família de processos markovianos em tempo contínuo sobre
-um espaço de estados enumerável. A primeira menção sobre esse tipo de
-processos foi dada por \cite{kolmogorov:51}. Seu objetivo nesse artigo
-era dar um exemplo de um processo que tivesse um estado com taxa de
-saída infinita.
+%% ------------------------------------------------------------------------- %%
+\section{Considerações Preliminares}
+\label{sec:consideracoes_preliminares}
+
+Estudaremos uma família de processos markovianos em tempo contínuo
+sobre um espaço de estados enumerável. A primeira menção desse tipo de
+processos foi dada por \cite{kolmogorov:51}. Seu objetivo era dar um
+exemplo de um processo que tivesse um estado com taxa de saída
+infinita.
 
 \cite{kendall:56} estudaram mais a fundo o exemplo de Kolmogorov,
-mostrando que as equações ``forward'' e ``backward'' podem não ser
-suficientes para estudar esse processo.
+encontrando equações \emph{forward} e \emph{backward} para as
+probabilidades de transição.
 
 Anos mais tarde, \cite{reuter:69} mostrou que apenas a matriz de taxas
 desse processo é suficiente para caracterizar as probabilidades de
-transição do processo.
+transição do exemplo de Kolmogorov. Ele também introduziu a não
+homogeneidade.
 
 Os autores de todos esses artigos abordaram o processo de uma maneira
-bastante analítica. Em particular nenhum deles deu uma contrução
+bastante analítica. Em particular nenhum deles deu uma construção
 explícita para o processo estudado, se apoiando em teoremas de
 existência.
 
 Recentemente, \cite{fontes:08} revisitaram esse tipo de processo,
 com a motivação de que eles aparecem como limite de escala para
-\emph{Trap Models}. A maneira como abordamos o processo foi muito
+Modelos de Armadilha. A maneira como abordamos o processo foi muito
 inspirada nesse trabalho, em especial a construção apresentada aqui é
 uma adaptação da construção deles.
 
+%% ------------------------------------------------------------------------- %%
+%\section{Objetivos}
+%\label{sec:objetivo}
+
 Nós estudamos uma família de processos, que iremos chamar de Processos
-K não homogêneos, que é uma extenção natural dos processos estudados
-neste último artigo. A extenção vem do fato de admitirmos estados com
-pesos não homogêneos. Uma definição precisa do que são estes pesos
-será dada no Capítulo \ref{cap:construcao}.
+K não homogêneos, que é uma extensão natural dos processos estudados
+neste último artigo. A extensão vem do fato de darmos um peso para
+cada estado. Uma definição precisa do que são estes pesos será dada no
+Capítulo \ref{cap:construcao}.
 
 A adição de pesos resultou em um comportamento inesperado. Existem
 processos de K não homogêneos que não têm a propriedade de Feller.
 Iremos explicitar quando isso acontece na Seção \ref{sec:prop-feller}.
-Apesar disso, nosso processo possui propriedades que permitem que
-trabalhemos com ele como se fosse um processo de Feller.
+Apesar disso, essa família possui propriedades que permitem que
+trabalhemos quase como estivéssemos com processos de Feller.
 
 %% ------------------------------------------------------------------------- %%
 \section{Contribuições}
@@ -51,9 +60,11 @@ As principais contribuições deste trabalho são as seguintes:
   K não homogêneos de maneira construtiva.
 
 \item Calculamos explicitamente a matriz de taxas do processo K. Assim
-  fornecemos uma maneira de ligar nossa construção com os textos dos
-  anos 50 e 60 citados anteriormente que não use a teoria das formas
-  de Dirichlet.
+  fornecemos uma maneira de ligar nossa construção (caso $c > 0$) com
+  os textos dos anos 50 e 60 citados anteriormente que não use a
+  teoria das formas de Dirichlet.
+
+\item Encontramos o gerador no caso homogêneo quando $c = 0$.
 
 \end{itemize}
 
@@ -61,19 +72,23 @@ As principais contribuições deste trabalho são as seguintes:
 \section{Organização do Trabalho}
 \label{sec:organizacao_trabalho}
 
-No Capítulo \ref{cap:construcao} vamos mostrar uma construção do
-processo K não homogêneo e colocar algumas definições básicas.
+No Capítulo \ref{cap:construcao} vamos construir o processo K não
+homogêneo e colocar algumas definições básicas.
 
 O Capítulo \ref{cap:propriedades} vai nos fornecer ferramentas para
 trabalhar. Nele vamos dar uma maneira de aproximar processos K por
 processos Markovianos de Saltos e provar a propriedade (forte) de
 Markov.
 
-Por fim no Capítulo \ref{cap:taxas} vamos nos focar nas probabilidades
-de transição. Vamos mostrar que elas são funções contínuas no tempo e
-calcular suas derivadas na origem. Por fim vamos calcular a medida
-invariante do processo e dar um resultado relativo à dimensão de
-Hausdorf do tempo em que o processo passa no infinito.
+No Capítulo \ref{cap:taxas} vamos nos focar nas probabilidades de
+transição. Mostraremos que elas são funções contínuas no tempo e
+calcular suas derivadas na origem. Isso nos permitirá encontrar a
+medida invariante do processo.  Aprofundando um pouco mais no
+cálculo de taxas de transição, exibiremos o gerador infinitesimal do
+processo no caso homogêneo.
+
+Por fim mostraremos um resultado relativo à dimensão de Hausdorff do
+tempo em que o processo passa no infinito.
 
 
 %%% Local Variables: 
