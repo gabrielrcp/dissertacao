@@ -8,7 +8,7 @@ dissertação.
 
 Apresentaremos uma maneira de aproximar o processo K por processos
 Markovianos de salto, bem como provaremos que o processo K é
-Markoviano.
+fortemente Markoviano.
 
 %% ------------------------------------------------------------------------- %%
 
@@ -204,9 +204,6 @@ serão usadas à exaustão em seções subsequentes da dissertação.
   T^y_0$, e depois continuaremos como uma cópia do processo iniciado no
   $\infty$.
 
-  %%% O Billingsley só faz isso no caso de funcoes cadlag de [0,
-  %%% \infty) em \R. Lembrar de achar outra referencia que faça isso
-  %%% em um esp. metrico completo ou escrever eu mesmo.
   Fixe uma realização do processo e fixe $T > 0$ e $\epsilon > 0$
   arbitrários. Seguindo \cite{billingsley:99}, vamos mostrar que
   existem $0 = t_0 < t_1 < \ldots < t_N = T$ tais que $w[t_{i-1}, t_i)
@@ -275,9 +272,9 @@ serão usadas à exaustão em seções subsequentes da dissertação.
 \section{Aproximações}
 \label{sec:aproximacoes}
 
-Fixado um natural $n \in \Nz$, vamos ``truncar'' nosso processo em
-$\{1, 2, \ldots, n, \infty\}$. Depois vamos mostrar que esses
-processos truncados convergem ao processo original.
+Nessa seção vamos introduzir o que chamaremos de processos truncados,
+que serão processos markovianos de saltos que irão convergir para o
+processo K original.
 
 Primeiramente, para $n \in \Nz$ e $y \in \{1, \ldots, n, \infty\}$,
 vamos definir:
@@ -295,7 +292,7 @@ O processo truncado em $n \in \Nz$, com estado inicial $y \in \{1,
     y, & \textrm{ se }  t < \gamma_y T_0^y\\
     x, & \textrm{ se } \Gamma^{y,(n)}_c(\sigma_i^x-) \leq t <
     \Gamma^{y,(n)}_c(\sigma^x_i)
-    \textrm{ para algum } i \\
+    \text{ para algum } i \\
     \infty, & \textrm{ caso contrário.}
   \end{cases}
 \end{equation}
@@ -950,10 +947,10 @@ parecidas com a de um processo de Feller.
 \label{sec:prop-forte-markov}
 
 Um resultado clássico diz que um processo de Feller markoviano é
-fortemente markoviano. Como já vimos, nosso processo não é de Feller,
-mas ele goza de algumas propriedades que irão possibilitar demonstrar
-a propriedade forte de Markov de forma análoga à maneira em que  a
-demonstramos para processos de Feller.
+fortemente markoviano. Já comentamos que o processo K não homogêneo
+pode não ser de Feller, mas ele goza de algumas propriedades que irão
+possibilitar demonstrar a propriedade forte de Markov de forma análoga
+à maneira em que a demonstramos para processos de Feller.
 
 Para cada $t > 0$, vamos denotar por $\FF_t$ a $\sigma$-álgebra gerada
 por $\{X(s): s \in [0, t]\}$ e por $\FF$ a $\sigma$-álgebra do espaço

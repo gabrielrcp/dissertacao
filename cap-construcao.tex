@@ -23,14 +23,14 @@ entrar em $x$. Enquanto que $c$ controla o tempo em que o estado fica
 em $\infty$.
 
 Seguindo \cite{fontes:08}, iremos definir o processo K através de uma
-construção. O espaço de probabilidade onde iremos definí-lo
+construção. O espaço de probabilidade onde iremos defini-lo
 será um espaço que admita as seguintes famílias de variáveis
 aleatórias independentes:
 
 \begin{itemize}
 \item $\{ N_x: x \in \Nz \}$: processos pontuais de Poisson
   independentes, onde $N_x$ tem taxa $\lambda_x$ para cada $x \in \N$.
-\item $\{T_0\} \cup \{T_n^x: x \in \Nzb , \, n = 1, 2, 3, \ldots \}$:
+\item $\{T_0\} \cup \{T_n^x: x \in \Nz , \, n = 1, 2, 3, \ldots \}$:
   variáveis aleatórias exponencias de média $1$.
 \end{itemize}
 
@@ -41,11 +41,11 @@ iremos denotar por $0 < \sigma_1^x < \sigma_2^x < \ldots$ .
 Agora podemos definir uma função aleatória que será nossa principal
 ferramenta para trabalhar com esse processo. Para $t \geq 0$ e $y \in
 \Nzb$, sob a convenção que $\gamma_\infty = 0$ e $\sum_{i=1}^{0}(
-\bullet ) = 0$.:
+\bullet ) = 0$, definimos:
 
 \begin{equation}
   \label{def:Gamma}
-  \Gamma(t) = \Gamma^y_c (t) = \gamma_y T_0
+  \Gamma(t) := \Gamma^y_c (t) = \gamma_y T_0
   + \sum_{x \in \N} \sum_{n = 1}^{N_x(t)}
   \gamma_x T_n^x
   + ct
@@ -53,8 +53,10 @@ ferramenta para trabalhar com esse processo. Para $t \geq 0$ e $y \in
 
 Agora vamos impor algumas restrições nos nossos parâmetros. Que serão:
 \begin{align}
+  \label{eq:rest-gamma-lambda}
   \sum_{x \in \Nz} \lambda_x\gamma_x < +\infty\\
-  \sum_{x \in \Nz} \lambda_x = \infty\\
+  \label{eq:rest-lambda}
+  \sum_{x \in \Nz} \lambda_x = \infty
 \end{align}
 
 A primeira fará com que $\Gamma$ seja \qc finita para todo $t \in
@@ -63,8 +65,8 @@ A primeira fará com que $\Gamma$ seja \qc finita para todo $t \in
 \ref{sec:visualizacao} que o processo K sem essa segunda condição é
 bastante simples.
 
-Definimos o processo K com condição inicial $y \in \Nzb$ de $X^y_c$ em
-um instante $t \geq 0$ por:
+Denotaremos o processo K com condição inicial $y \in \Nzb$ por
+$X^y_c$. Ele é definido para um instante $t \geq 0$ por:
 
 \begin{equation}
   \label{def:procK}
@@ -99,8 +101,8 @@ Para essa seção, vamos supor que $\sum_{x \in \Nz} \lambda_x <
 \infty$. Veremos nessa seção que o processo K com essa suposição é
 bastante simples. Usaremos essa simplicidade para explicar como nossa
 construção funciona. Essa será a única seção em que iremos assumir
-essa condição. De fato, no resto do texto, é assumido exatamente o
-oposto.
+essa condição. De fato, no resto do texto, é assumido
+\eqref{eq:rest-lambda}, que é exatamente o oposto.
 
 A sobreposição de todos os processos de Poisson $\{N_x : x \in \Nz\}$
 será um processo de Poisson de taxa $\sum_{x \in \Nz}
@@ -117,7 +119,7 @@ Uma maneira de enxergar o processo K é olhar para o eixo das ordenadas
 do gráfico de $\Gamma$. Se projetarmos um ponto $t$ desse eixo no
 gráfico e ele ``cair'' em um salto da $\Gamma$, isso significa que no
 instante $t$ o processo está no estado $x$ cujo processo de poisson
-gerou esse salto.
+gerou esse salto, caso contrário o processo está no $\infty$.
 
 Com essa visualização, é fácil perceber que o processo K é um processo
 Markoviano de saltos.
