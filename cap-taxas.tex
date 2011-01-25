@@ -2,15 +2,13 @@
 \chapter{Probabilidades de transição}
 \label{cap:taxas}
 
-Nesse capítulo vamos nos concentrar em problemas ligados às
-probabilidades de transição do processo K. Primeiramente vamos tratar
+Nesse capítulo nos concentraremos em problemas ligados às
+probabilidades de transição do Processo K. Primeiramente trataremos
 de problemas relacionados à continuidade das mesmas, para depois
-calcular suas derivadas na origem. Isso nos permitirá calcular a
-medida invariante do processo.
-
-Por fim iremos exibir o gerador infinitesimal no caso homogêneo e
-fecharemos o capítulo estudando a dimensão de Hausdorff do tempo em
-que o processo K passa no infinito.
+calcularmos suas derivadas na origem. Isso nos permitirá calcular a
+medida invariante do processo.  Por fim iremos exibir o gerador
+infinitesimal no caso homogêneo e fecharemos o capítulo estudando a
+dimensão de Hausdorff do tempo em que o Processo K passa no infinito.
 
 
 %% ------------------------------------------------------------------------- %%
@@ -19,14 +17,14 @@ que o processo K passa no infinito.
 \label{sec:continuidade}
 
 Para deixar a nossa notação menos carregada, vamos introduzir a
-seguinte definição, para $x, y \in \Nzb$, $t > 0$:
+seguinte definição para $x, y \in \Nzb$ e $t > 0$:
 \begin{equation}
   p_{xy} (t) = P(X^x(t) = y).
 \end{equation}
 Denotaremos ainda por $P(t)$ a ``matriz'' cujas entradas sejam $p_{xy}(t)$.
 
 Nessa seção vamos estudar a continuidade dessas funções. Começaremos
-com uma caracterização básica delas.
+com uma caracterização básica das mesmas.
 
 \begin{proposicao}
   \label{prop:transicao-mensuravel}
@@ -41,17 +39,18 @@ com uma caracterização básica delas.
 
 \begin{proof}
   Os três primeiros itens saem diretamente da definição de $p_{x y}$ e
-  da propriedade de Markov do processo. Para o quarto, considere
-  $X^{x, (n)}$ como na Seção \ref{sec:aproximacoes} e defina $p^n_{x
-    y}(t) := P(X^{x, (n)}(t) = y)$. Note que $p^n_{xy}$ é Lebesgue
-  mensurável porque $X^{x, (n)}$ é um processo Markoviano de saltos.
+  da propriedade de Markov do processo. Para o quarto, consideremos
+  $X^{x, (n)}$ como na Seção \ref{sec:aproximacoes} e defininemos
+  $p^n_{x y}(t) := P(X^{x, (n)}(t) = y)$. Observemos que $p^n_{xy}$ é
+  Lebesgue mensurável porque $X^{x, (n)}$ é um processo Markoviano de
+  saltos.
 
-  Como todo $t > 0$ fixo é \qc um ponto de continuidade do processo, e
-  a função $f_y(z) = \ind\{ z = y \}$ é uma função contínua para $y
-  \in \Nz$ e usando o Teorema \ref{teo:convergencia}, junto com o
-  teorema da convergência dominada, temos que $p_{x y}^n(t)
-  \xrightarrow{n\to\infty} p_{x y}(t)$ para todo $x \in \Nzb$ e $y \in
-  \Nz$. 
+  Fixado $x \in \Nzb$ e $y \in \Nz$, notemos que $f_y(z) = \ind\{ z =
+  y \}$ é uma função contínua e todo $t > 0$ fixado é \qc um ponto de
+  continuidade de $X^x$. Assim podemos usar o Teorema
+  \ref{teo:convergencia}, junto com o teorema da convergência
+  dominada, para concluir que $p_{x y}^n(t) \xrightarrow{n\to\infty}
+  p_{x y}(t)$.
 
   Assim, como limite de funções mensuráveis também é uma função
   mensurável, teremos que para todo $x \in \Nzb$ e $y \in \Nz$, $p_{x
@@ -85,6 +84,7 @@ com uma caracterização básica delas.
   \begin{displaymath}
     p_{xx}(t) \geq P( \gamma_x T^x_0 > t) = e^{-\frac{t}{\gamma_x}}
     \xrightarrow{t \searrow 0} 1.
+    \qedhere
   \end{displaymath}
 \end{proof}
 
@@ -150,7 +150,7 @@ com uma caracterização básica delas.
 \end{proposicao}
 
 \begin{proof}
-  Considere a função:
+  Consideremos a função:
   \begin{displaymath}
     \theta(t) = \int_0^t \ind \{ X^\infty (s) = \infty \} ds.
   \end{displaymath}.
@@ -167,9 +167,9 @@ com uma caracterização básica delas.
 
   Assim obtemos que o conjunto dos $t > 0$ onde $p_{\infty \infty}(t)
   > 0$ tem medida de Lebesgue positiva. Em particular existe um $s >
-  0$ tal que $p_{\infty \infty}(s) > 0$. Fixe tal $s$.
+  0$ tal que $p_{\infty \infty}(s) > 0$. Fixemos tal $s$.
 
-  Tome uma sequência arbitrária $(t_n)$, onde $t_n \searrow 0$ e
+  Tomemos uma sequência arbitrária $(t_n)$, onde $t_n \searrow 0$ e
   $p_{\infty \infty} (t_n)$ convirja para um número $u$ quanto $n \to
   \infty$.  Se mostrarmos que $u = 1$, seguirá que o limite dado em
   \eqref{eq:continuidade-infinito} existe e vale $1$.
@@ -208,7 +208,7 @@ com uma caracterização básica delas.
   \end{align*}
 
   Estamos interessados em estimar $\theta(t) :=
-  \theta_\infty(t)$. Para isso note que $\theta_m(t)$ é decrescente em
+  \theta_\infty(t)$. Para isso notemos que $\theta_m(t)$ é decrescente em
   $m$. Dessa forma, se $\Xi$ for a função inversa de $\Gamma^\infty$, teremos
   que:
   \begin{align*}
@@ -217,8 +217,8 @@ com uma caracterização básica delas.
   \end{align*}
 
 
-  Como $\theta_m(t) \leq t$, essa série (em $x$) converge. Assim temos
-  que $\lim_{m\to\infty} \theta_m(t) = 0$ \qc. E portanto $\theta(t) =
+  Como $\theta_m(t) \leq t$, essa série em $x$ converge. Assim temos
+  que $\lim_{m\to\infty} \theta_m(t) = 0$ \qc e, portanto, $\theta(t) =
   0$ \qc. Dessa forma também vale que $\E[\theta(t)] = 0$. Agora
   usando o teorema de Fubini, teremos:
   \begin{align*}
@@ -233,7 +233,7 @@ com uma caracterização básica delas.
   quase todo $t$. A continuidade de $p_{\infty \infty}$ nos diz que
   $p_{\infty \infty}(t) = 0$ para todo $t > 0$.
 
-  Agora tome um $x \in \Nz$ arbitrário. Condicionando no valor de
+  Agora tomemos um $x \in \Nz$ arbitrário. Condicionando no valor de
   $\gamma_x T_0$ e usando a Proposição \ref{prop:reinicia-infinito}
   teremos que:
   \begin{align*}
@@ -264,7 +264,7 @@ com uma caracterização básica delas.
 \label{sec:matrizq}
 
 Nessa seção vamos calcular a matriz de taxas de transição do 
-processo K. Vamos defini-la pelo limite:
+processo K. Vamos definí-la pelo limite:
 \begin{displaymath}
   Q = \lim_{t \searrow 0} \frac{P(t) - I}{t} 
 \end{displaymath}.
@@ -419,11 +419,11 @@ Enquanto que no caso $c=0$, teremos:
   termo de \eqref{erros_taxa_inf} também converge à zero.
 
 
-  Agora note que, como $\Gamma^\infty$ é não decrescente e $\sigma^x_1
+  Agora notemos que, como $\Gamma^\infty$ é não decrescente e $\sigma^x_1
   < \sigma^x_i$ para $i \geq 2$, então $\Gamma^\infty(\sigma^x_1) \leq
-  \Gamma^\infty(\sigma^x_i -)$ e assim o evento no terceiro termo de
+  \Gamma^\infty(\sigma^x_i -)$ e, assim, o evento no terceiro termo de
   \eqref{erros_taxa_inf} está contido no evento do segundo
-  termo. Assim como mostramos que o segundo termo vai a zero, teremos
+  termo. Como mostramos que o segundo termo vai a zero, teremos
   que o terceiro também irá.
 
   Resta calcular o limite do primeiro termo. Ao fazer isso
@@ -456,8 +456,8 @@ Enquanto que no caso $c=0$, teremos:
         \lambda_x\gamma_x}{1 + u v \gamma_x}}. \\
   \end{align*}
 
-  Agora note que quando $u$ vai ao infinito, os termos de cada uma das
-  somas vai a zero monotonamente com $u$, assim usando o teorema da
+  Notemos que quando $u$ vai ao infinito, os termos de cada uma das
+  somas vai a zero monotonamente com $u$; assim usando o teorema da
   convergência monótona, teremos que:
   \begin{align*}
       \lim_{u \to \infty} \frac{\phi(uv)}{\phi (u)} &= \frac{1}{v}.
@@ -487,16 +487,16 @@ Enquanto que no caso $c=0$, teremos:
   $\lim_{t \searrow 0} \frac{\phi(\frac{1}{t})}{t} =
   \frac{\lambda_x}{c}$.
 
-  Agora vamos tratar o caso $c = 0$. Para isso note que nossa
-  construção do processo K permite que acoplemos várias versões do
+  Agora vamos tratar o caso $c = 0$. Para isso observemos que nossa
+  construção do Processo K permite que acoplemos várias versões do
   processo, com $c$ diferentes em um mesmo espaço de
   probabilidade. Basta usar os mesmos processos de Poisson e variáveis
   exponenciais para todos eles. Assim vamos colocar um índice $c$ em
-  $\Gamma^y_c$ para denotar qual valor de $c$ estamos trabalhando.
+  $\Gamma^y_c$ para denotar com qual valor de $c$ estamos trabalhando.
 
-  Note que para todo $y \in \Nzb$, $\Gamma^y_c$ é crescente com $c$, e
-  portanto $P ( \Gamma^\infty_c(\sigma^x_1-) \leq t)$ é monótona em
-  $c$.  Dessa forma teremos que, para todo $c > 0$:
+  Notemos que, para todo $y \in \Nzb$, $\Gamma^y_c$ é crescente com
+  $c$ e, portanto, $P ( \Gamma^\infty_c(\sigma^x_1-) \leq t)$ é
+  monótona em $c$.  Dessa forma teremos que, para todo $c > 0$:
   \begin{align*}
     \liminf_{t \searrow 0} \frac{P ( \Gamma^\infty_0(\sigma^x_1-) \leq
       t)}{t} &\geq \liminf_{t \searrow 0} \frac{P (
@@ -574,10 +574,10 @@ Enquanto que no caso $c=0$, teremos:
 \label{sec:prop-feller}
 
 
-Uma observação interessante que fizemos sobre o processo K não
+Uma observação interessante que fizemos sobre o Processo K não
 homogêneo é que ele pode não ser de Feller.  Depois de calcular as
 taxas de transição, finalmente temos ferramentas para especificar
-explicitamente quando que isso acontece.
+explicitamente quando isso acontece.
 
 Dizemos que um processo é de Feller se $\Psi_t f$ é uma função contínua
 para todo $t > 0$ e toda $f: \Nzb \to \R$ contínua.
@@ -586,7 +586,7 @@ para todo $t > 0$ e toda $f: \Nzb \to \R$ contínua.
   São equivalentes:
   \begin{enumerate}
   \item $\lim_{x \to \infty} \gamma_x = 0$
-  \item O processo K é um processo de Feller.
+  \item O Processo K é um processo de Feller.
   \end{enumerate}
 \end{proposicao}
 
@@ -595,11 +595,11 @@ para todo $t > 0$ e toda $f: \Nzb \to \R$ contínua.
   Primeiramente vamos mostrar que se $\gamma_x \to 0$ quando $x \to
   \infty$, então o processo é de Feller.
 
-  Fixe um $t > 0$ e uma $f: \Nzb \to \R$ contínua. Queremos mostrar
+  Fixemos um $t > 0$ e uma $f: \Nzb \to \R$ contínua. Queremos mostrar
   que $\Psi_t f$ é uma função contínua, isso é, que $\Psi_t f(y) \to
   \Psi f (\infty)$ quando $y \to \infty$.
 
-  Note que:
+  Notemos que:
   \begin{displaymath}
     \Psi_t f(\infty) - \Psi_t f (y) =
     \E \left[
@@ -608,9 +608,9 @@ para todo $t > 0$ e toda $f: \Nzb \to \R$ contínua.
   \end{displaymath}
 
   Como a quantidade dentro da esperança é limitada por $2 \Vert f
-  \Vert$, então se mostrarmos que ela vai quase certamente à zero,
+  \Vert$, então, se mostrarmos que ela vai quase certamente à zero,
   seguirá pelo teorema da convergência dominada que a esperança também
-  vai à zero.
+  irá à zero.
 
   Como $\gamma_y \to 0$, então $\gamma_y T_0 \to 0$ \qc. Assim tomando
   $y$ suficientemente grande teremos que $\gamma_y T_0 < t$. Portanto
@@ -623,19 +623,19 @@ para todo $t > 0$ e toda $f: \Nzb \to \R$ contínua.
 
   O Corolário \ref{cor:continuidades-processo} nos garante que $t$ é
   quase certamente um ponto de continuidade do processo, assim
-  $X^\infty(t-\gamma_y T_0) \to X^\infty(t)$ \qc, e como $f$ é
+  $X^\infty(t-\gamma_y T_0) \to X^\infty(t)$ \qc e, como $f$ é
   contínua, concluímos que a quantidade acima converge à zero \qc.
 
 
   Agora vamos mostrar que se $\gamma_x$ não converge para zero quando
   $x \to \infty$, então o Processo não é de Feller.
 
-  Primeiro vamos supor que existe uma sequência crescente $(y_n)$ tal
+  Primeiro vamos supor que exista uma sequência crescente $(y_n)$ tal
   que $\gamma_{y_n} \to \infty$ quando $n \to \infty$.
 
-  Tome um $m \in \Nz$ e defina $f: \Nzb \to \R$ como $f(x) = \ind \{ x
-  > m \}$. Essa função é contínua e teremos que $\Psi_t f (y) =
-  P\left( X^y(t) > m \right)$.
+  Tomemos um $m \in \Nz$ e definamos $f: \Nzb \to \R$ como $f(x) =
+  \ind \{ x > m \}$. Essa função é contínua e teremos que $\Psi_t f
+  (y) = P\left( X^y(t) > m \right)$.
 
   Dessa maneira, tomando $y_n > m$, teremos que:
   \begin{gather*}
@@ -646,7 +646,7 @@ para todo $t > 0$ e toda $f: \Nzb \to \R$ contínua.
   então o processo não é de Feller.
   
 
-  Caso não existe uma subsequência onde $\gamma_y$ vá ao infinito,
+  Caso não exista uma subsequência onde $\gamma_y$ vá ao infinito,
   então $\gamma_y$ é limitada. Como ela não converge para zero, então
   ela tem algum outro ponto de acumulação. Assim existe um $a > 0$ e
   uma sequência crescente $(y_n)$ tal que $\gamma_{y_n} \to a$ quando
@@ -683,7 +683,7 @@ para todo $t > 0$ e toda $f: \Nzb \to \R$ contínua.
 \label{sec:invariante}
 
 O objetivo dessa seção é mostrar que a seguinte distribuição de
-probabilidade é uma medida invariante para o processo K.
+probabilidade é uma medida invariante para o Processo K.
 
 \begin{equation}
   \label{eq:invariante}
@@ -697,29 +697,29 @@ probabilidade é uma medida invariante para o processo K.
 
 \begin{proposicao}
   \label{prop:existe-unica-invariante}
-  O processo K tem uma única medida invariante.
+  O Processo K tem uma única medida invariante.
 \end{proposicao}
 \begin{proof}
-  Fixe um número real $h > 0$ e considere uma cadeia de Markov em
+  Fixemos um número real $h > 0$ e consideremos uma cadeia de Markov em
   tempo discreto $(Y^{y, h}_n)_{n \geq 0}$ dada por $Y^{y, h}_n =
   X^y(n h)$.
 
-  Fixado um estado $y \in \Nz$, defina $M = \min_{i \geq 1} \{
+  Fixado um estado $y \in \Nz$, definamos $M = \min_{i \geq 1} \{
   \gamma_y T_i^y > h \}$. $M$ é uma variável aleatória com
   distribuição geométrica com probabilidade de sucesso dada por
-  $e^{-\frac{h}{\gamma_y}}$. Observe que $X_t^y = y$ para todo $t \in
-  [\Gamma^y(\sigma_M^y-), \Gamma^y(\sigma_M^x-) + \gamma_y T_M^y)$ e,
-  como $\gamma_y T_M^y > h$, existe um múltiplo de $h$ nesse
+  $e^{-\frac{h}{\gamma_y}}$. Observemos que $X_t^y = y$ para todo $t
+  \in [\Gamma^y(\sigma_M^y-), \Gamma^y(\sigma_M^x-) + \gamma_y T_M^y)$
+  e, como $\gamma_y T_M^y > h$, existe um múltiplo de $h$ nesse
   intervalo. Assim se $n h$ for esse múltiplo, vai valer que $Y_n^{y,
     h} = y$. Dessa maneira a esperança de tempo de retorno à um estado
   em $(Y_n)$ é finita.
 
-  Para todo $x, y \in \Nz$ vale que $P (Y^{x, h}_1 = y) > 0$. Temos
-  ainda que para todo $x \in \Nzb$ $P (Y^{x, h}_1 = \infty ) > 0$ se
-  $c > 0$. Enquanto que $P (Y^{x, h}_1 = \infty) = 0$ para $c =
-  0$. Assim a cadeia é irredutível no caso $c > 0$ e no caso $c = 0$
-  temos que $\Nz$ é uma classe de comunicação fechada, enquanto que
-  $\infty$ é um estado transiente.
+  Para todo $x \in \Nzb$ e $y \in \Nz$ vale que $P (Y^{x, h}_1 = y) >
+  0$.  Temos ainda que $P (Y^{x, h}_1 = \infty ) > 0$ se $c > 0$,
+  enquanto que $P (Y^{x, h}_1 = \infty) = 0$ para $c = 0$. Assim a
+  cadeia é irredutível no caso $c > 0$ e, no caso $c = 0$, temos que
+  $\Nz$ é uma classe de comunicação fechada, enquanto que $\infty$ é
+  um estado transiente.
 
 
   Em todo caso, para cada escolha de $h$, existe uma única medida de
@@ -729,7 +729,7 @@ probabilidade é uma medida invariante para o processo K.
     \sum_{x \in \Nzb} \mu_h(x) P ( X^x (nh) = y)
   \end{displaymath}
 
-  Agora fixe um inteiro $m \geq 1$ e um número real $h > 0$, temos que:
+  Fixando um inteiro $m \geq 1$ e um número real $h > 0$, temos que:
   \begin{align*}
     \mu_h (y) &= \sum_{x \in \Nzb} \mu_h(x) P ( Y_{m}^ {x, h} = y)\\
     &= \sum_{x \in \Nzb} \mu_h(x) P ( X^x (m h) = y) \\
@@ -737,10 +737,10 @@ probabilidade é uma medida invariante para o processo K.
   \end{align*}
 
   Portanto $\mu_h$ é uma medida invariante para $(Y^{\bullet, mh}_n)_{n
-    \geq 0}$ e como ela é única, teremos que $\mu_h = \mu_{m h}$.
+    \geq 0}$ e, como ela é única, teremos que $\mu_h = \mu_{m h}$.
 
   Assim concluímos que $\mu_{h} = \mu_1$ para todo $h > 0$ racional.
-  Agora fixado um $h > 0$ irracional, tome uma sequencia de números
+  Fixado um $h > 0$ irracional, tome uma sequência de números
   racionais $(h_n)$ que convirjam para $h$. Teremos que:
   \begin{align*}
     \mu_1(y) &= \sum_{x \in \Nzb} \mu_1(x) P ( Y_{1}^ {x, h_n} = y)\\
@@ -748,22 +748,23 @@ probabilidade é uma medida invariante para o processo K.
     &= \sum_{x \in \Nzb} \mu_1(x) p_{x y} (h_n).    
   \end{align*}
   
-  Cada termo dessa soma é dominado por $\mu_1(x)$, que tem soma $1$,
-  assim usando a Proposição \ref{prop:transicao-continua} e o teorema da
+  Cada termo dessa soma é dominado por $\mu_1(x)$, que tem soma $1$.
+  Assim usando a Proposição \ref{prop:transicao-continua} e o teorema da
   convergência dominada, concluímos que:
   \begin{align*}
     \mu_1 (y) &= \sum_{x \in \Nzb} \mu_1(x) p_{x y} (h)\\
-    &= \sum_{x \in \Nzb} \mu_1(x) P(Y_1^{x, h} = y)\\
+    &= \sum_{x \in \Nzb} \mu_1(x) P(Y_1^{x, h} = y).
   \end{align*}
-  ou seja, $\mu_1$ é uma probabilidade invariante para $(Y_n^{\bullet,
-    h})_n $ e como a probabilidade invariante é única, concluímos que
-  $\mu_1 = \mu_h$ para todo $h > 0$.
+
+  Dessa forma $\mu_1$ é uma probabilidade invariante para
+  $(Y_n^{\bullet, h})_n $ e, como a probabilidade invariante é única,
+  concluímos que $\mu_1 = \mu_h$ para todo $h > 0$.
 \end{proof}
 
 
 \begin{proposicao}
   A probabilidade $\pi$ definida em \eqref{eq:invariante} é a medida
-  invariante do processo K, caso $c > 0$.
+  invariante do Processo K, caso $c > 0$.
 \end{proposicao}
 \begin{proof}
   Seja $\mu$ a única probabilidade invariante do nosso processo que
@@ -788,13 +789,13 @@ probabilidade é uma medida invariante para o processo K.
       y}(t)}{t}$ converge à zero quando $t \searrow 0$ para cada $x
   \in \Nz \setminus \{y\}$.
 
-  Agora note que $p_{x y} (t) \leq P(\Gamma^x (\sigma_1^y -) \leq t)
-  \leq P(\Gamma^\infty (\sigma_1^y -) \leq t)$, quantidade essa que
-  não depende de $x$. Na demonstração da Proposição
+  Levando em conta que $p_{x y} (t) \leq P(\Gamma^x (\sigma_1^y -)
+  \leq t) \leq P(\Gamma^\infty (\sigma_1^y -) \leq t)$, quantidade
+  essa que não depende de $x$. Na demonstração da Proposição
   \ref{prop:taxa-inf-x} mostramos que $\frac{1}{t}P(\Gamma^\infty
   (\sigma_1^y -) \leq t)$ converge para $\frac{\lambda_y}{c}$ quanto
-  $t \searrow 0$. Portanto para $t$ suficientemente pequeno, teremos
-  que existe uma constante $K$, que não depende de $x$, tal que
+  $t \searrow 0$. Portanto, para $t$ suficientemente pequeno, teremos
+  que existe uma constante $K$ que não depende de $x$, tal que
   $\frac{p_{x y}(t)}{t} \leq K$ para todo $x \in \Nz\setminus \{y\}$.
 
   Como $\mu(x)$ é somável em $x$, o teorema da convergência dominada
@@ -809,9 +810,9 @@ probabilidade é uma medida invariante para o processo K.
     0 = \mu(\infty) \frac{\lambda_y}{c} - \mu(y) \frac{1}{\gamma_y}.
   \end{gather*}
 
-  Juntando a esse sistema de equações a restrição de que
-  $\sum_{x\in\Nzb}\mu(x) = 1$, teremos um sistema de equações cuja uma única
-  solução, que é a $\pi$ dada em \eqref{eq:invariante}.
+  Adicionando a restrição de que $\sum_{x\in\Nzb}\mu(x) = 1$,
+  obteremos um sistema de equações cuja uma única solução é a $\pi$
+  dada em \eqref{eq:invariante}.
 \end{proof}
 
 \begin{lema}
@@ -831,9 +832,9 @@ probabilidade é uma medida invariante para o processo K.
   Ainda sabemos que $\Gamma^y_0(\sigma^x_i-)$ é uma variável aleatória
   contínua. Assim $P( \Gamma^y_0(\sigma^x_i-) = t) = 0$.
 
-  Assim vamos fixar uma realização do processo onde
-  $X^y_0(t) = x < \infty$ e $\Gamma^y_0(\sigma^x_i-) \neq t$ para todo
-  $x \in \Nz$ e $i \geq 1$. Tais realizações tem probabilidade $1$.
+  Dessa forma vamos fixar uma realização do processo onde $X^y_0(t) =
+  x < \infty$ e $\Gamma^y_0(\sigma^x_i-) \neq t$ para todo $x \in \Nz$
+  e $i \geq 1$. Tais realizações têm probabilidade $1$.
 
 
   Agora há duas possibilidades. A primeira é que $t < \gamma_y
@@ -856,18 +857,31 @@ probabilidade é uma medida invariante para o processo K.
   Vamos denotar a probabilidade definida em \eqref{eq:invariante} por
   $\pi_c$
 
-  Mostramos na proposição \ref{prop:naocontinuidade} que para todo $y
+  Mostramos na Proposição \ref{prop:naocontinuidade} que para todo $y
   \in \Nzb$, $P(X^y(t) = \infty) = 0$. Assim é trivial verificar que
   $0 = \pi_0(\infty) = \sum_{y\in\Nzb} \pi_0(y) P(X^y(t) =
   \infty)$.
 
-  Note que para todo $x \in \Nzb$, $\pi_c(x) \xrightarrow{c\searrow0}
-  \pi_0(x)$.
+  A partir de agora fixemos um $x \in \Nz$ arbitrário. Vamos mostrar que:
+  \begin{align*}
+    \pi_0(x) &= \sum_{y \in \Nzb} \pi_0 (y) P(X^y_0 (t) = x).
+  \end{align*}
 
-  Pelo Lema \ref{lema:c_continuo}, e usando o fato que, para $x \in
-  \Nz$ fixado, a função $f_x(y) = \ind\{y = x\}$ é contínua e
-  limitada, teremos que $P(X^y_c (t) = x) = \E [f_x(X^y_c(t))]
-  \xrightarrow{c\searrow0} \E [f_x(X^y_c(t))] = P(X^y_0(t) = x)$.
+  Observemos que $f_x(y) = \ind\{y = x\}$ é uma função contínua e
+  limitada. Dessa forma, pelo Lema \ref{lema:c_continuo}, obtemos que
+  $f_x(X^y_c(t)) \xrightarrow{c\searrow 0} f_x(X^y_0(t))$ \qc para
+  todo $y\in\Nzb$.
+
+
+  Assim aplicando o teorema da convergência dominada concluímos que:
+  \begin{displaymath}
+    P(X^y_c (t) = x) = \E [f_x(X^y_c(t))]
+    \xrightarrow{c\searrow0}
+    \E [f_x(X^y_0(t))] = P(X^y_0(t) = x).
+  \end{displaymath}
+
+  Observando \eqref{eq:invariante}, notamos que $\pi_c(y)
+  \xrightarrow{c\searrow 0} \pi_0(y)$ para todo $y \in \Nzb$.
 
   Como $\pi_c$ é invariante para $(X^y_c)$, teremos que para todo $x
   \in \Nz$ e $t \geq 0$:
@@ -876,8 +890,9 @@ probabilidade é uma medida invariante para o processo K.
     \pi_c(x) &= \sum_{y \in \Nzb} \pi_c (y) P(X^y_c (t) = x).\\
   \end{align*}
 
+
   Cada termo dessa soma pode ser dominado por $\pi_0(y)$ se $y \neq
-  \infty$ e por $1$ se $y = \infty$, assim tomando limite $c\searrow0$
+  \infty$ e por $1$ se $y = \infty$; assim tomando limite $c\searrow0$
   e usando o teorema da convergência dominada, teremos que:
 
   \begin{align*}
@@ -895,14 +910,14 @@ probabilidade é uma medida invariante para o processo K.
 \label{sec:gerador}
 
 
-O gerador infinitesimal é normalmente usado no estudo de processos
+O gerador infinitesimal é muitas vezes usado no estudo de processos
 estocásticos para garantir a existência do processo
-estudado. Descreve-se as taxas de transição por meio de uma expressão
+estudado. Descrevem-se as taxas de transição por meio de uma expressão
 e argumenta-se, geralmente usando o teorema de Hille-Yosida, que
 existe um processo com essa expressão como gerador.
 
 Nós estamos indo na direção oposta. Já temos uma construção do nosso
-processo, e queremos saber qual a ``cara'' do seu gerador.
+processo e queremos saber qual como é o seu gerador.
 
 Por simplicidade, vamos nos limitar nesse seção ao caso homogêneo,
 isso é, $\lambda_x = 1$ para todo $x \in \Nz$.
@@ -923,8 +938,8 @@ absolutamente. Em funções $f$ desse domínio, o gerador vale:
 
 Aqui nós vamos tratar apenas do caso $c = 0$.
 
-O primeiro passo vai ser definir a classe de funções sobre a qual
-iremos definir o gerador. Essa classe tem que ser pequena o suficiente
+O primeiro passo será definir a classe de funções sobre a qual
+definiremos o gerador. Essa classe tem que ser pequena o suficiente
 para que o gerador esteja bem definido, mas rica o suficiente para que
 ele caracterize o semigrupo. A classe adotada será:
 
@@ -1026,7 +1041,7 @@ valor.
   \end{equation}
 \end{proposicao}
 \begin{proof}
-  Fixe uma $h \in \DDD$ arbitrária. Vamos denotar por $\bar{h}(x) =
+  Fixemos uma $h \in \DDD$ arbitrária. Vamos denotar por $\bar{h}(x) =
   h(x) - h(\infty)$, além disso vamos definir $K = \lim_{x \to \infty}
   -\bar{h}(x)/\gamma_x$, limite que existe pela definição de
   $\DDD$. Sem perda de generalidade vamos supor que $K \geq 0$.
@@ -1037,7 +1052,7 @@ valor.
   estados que têm $\gamma$ máximo. Tais estados existem porque $\gamma_x
   \to 0$ quando $x \to \infty$.
 
-  Outra notação que iremos usar bastante será:
+  Outra notação que usaremosserá:
   \begin{align*}
     \Gamma^{<x>}(t) &= \sum_{z\in\Nz\setminus\{x\}} \sum_{i =
       1}^{N^z(t)} \gamma_y T^z_i \\
@@ -1153,7 +1168,7 @@ valor.
   \eqref{eq:gerador-inf-visita-1-antes} converge à zero quando $t
   \searrow 0$.    
 
-  Para controlar \eqref{eq:gerador-inf-visita-x-antes}, note que se
+  Para controlar \eqref{eq:gerador-inf-visita-x-antes}, notemos que se
   X(t) = 1 e $\sigma_1^1 > \sigma_1^x$ então o processo passou por $1$
   e por $x$ até o instante $t$. Como $\gamma_1 \geq \gamma_x$, usando
   a propriedade de falta de memória da exponencial nos $\sigma$'s,
@@ -1165,23 +1180,24 @@ valor.
   \searrow 0$.
 
   
-  Voltando a trabalhar com \eqref{eq:gerador-inf-2}, perceba que,
+  Voltando a trabalhar com \eqref{eq:gerador-inf-2}, notemos que,
   condicionado em $\{\sigma^x_1 < \sigma^1_1\}$, $\sigma^x_1$ tem
   distribuição exponencial de média $1/2$. Ainda vale que $\Gamma^{<1,
     x>}(\bullet)$ é independente de $\{\sigma^x_1,
-  \sigma^1_1\}$. Assim se $S$ for uma v.a. exponencial de média $1/2$,
+  \sigma^1_1\}$. Assim se $S$ for uma v.a. exponencial de média $1/2$
   independente de todo o processo, teremos que a distribuição de
   $\Gamma^{<1, x>}(\sigma_1^x)$ condicionada em $\sigma^x_1 <
   \sigma_1^1$ será igual à distribuição de $\Gamma^{<1, x>}(S)$.
 
 
-  Note que $X^\infty(t) = x$ pela primeira vez se e somente se
+  Notemos que $X^\infty(t) = x$ pela primeira vez se e somente se
   $\Gamma^{<x>}(\sigma^x_1) \leq t < \Gamma^{<x>}(\sigma^x_1) +
   \gamma_x T^x_1$.
 
-  Juntando tudo, se denotarmos por $f_x$ a densidade de $\Gamma^{<1,
-    x>}(S)$ e por $F_x$ a sua função de distribuição, podemos escrever
-  \eqref{eq:gerador-inf-2}, a menos do $\epsilon_t$, por:
+  Levando em conta todas as considerações anteriores, se denotarmos
+  por $f_x$ a densidade de $\Gamma^{<1, x>}(S)$ e por $F_x$ a sua
+  função de distribuição, podemos escrever \eqref{eq:gerador-inf-2}, a
+  menos do $\epsilon_t$, por:
   \begin{align}
     & \frac{1}{2} \sum_{x > 1} \bar{h}(x) \int_0^t f_x (s) \left(
       e^{-\frac{t-s}{\gamma_x}} - e^{-\frac{t-s}{\gamma_1}}
@@ -1207,9 +1223,9 @@ valor.
   \right) d s \\
   & \leq \sum_{x > 1} |\bar{h}(x)| \frac{F_x(t)}{\gamma_1} d s  .
   \end{align*}
-  Note que cada termo dessa série converge para zero quando $t
+  Observemos que cada termo dessa série converge para zero quando $t
   \searrow 0$, enquanto que eles são dominados por $|\bar{h}(x)| /
-  \gamma_1$, que é somável. Assim usando o teorema da convergência
+  \gamma_1$, que é somável. Assim, usando o teorema da convergência
   dominada, concluímos que \eqref{eq:gerador-inf-4} dividido por
   $t$ converge para zero quando $t \searrow 0$.
 
@@ -1222,16 +1238,16 @@ valor.
   \end{align*}
 
   Como $F_x(t) \to 0$ quanto $t \searrow 0$, temos que cada termo da
-  série acima, dividido por $t$ converge para zero quando $t \searrow
+  série acima dividido por $t$ converge para zero quando $t \searrow
   0$. Assim podemos nos preocupar apenas com a cauda da série. Para
-  isso tome um $m > 2$ tal que $-\frac{\bar{h}(x)}{\gamma_x} < K +
+  isso tomemos um $m > 2$ tal que $-\frac{\bar{h}(x)}{\gamma_x} < K +
   \epsilon$ sempre que $x > m$.
 
   Como $\gamma_2\geq \gamma_x$, então $\Gamma^{<1, x>}$ domina
   estocasticamente $\Gamma^{<1, 2>}$. Dessa forma $F_x(t) \leq
   F_2(t)$.
 
-  Juntando tudo, podemos escrever:
+  Com todas essas considerações, podemos escrever:
   \begin{align*}
     \limsup_{t \searrow 0} \frac{\Psi_t h(\infty) - h(\infty)}{t}
     &\leq \left( K + \epsilon \right) \limsup_{t \searrow
@@ -1248,8 +1264,8 @@ valor.
   \end{align*}
 
   O segundo termo dessa soma vale zero já que $F_2(s) \to 0$ quando $s
-  \searrow 0$ e a soma lá é finita. Resta calcular o primeiro
-  termo. Para isso defina:
+  \searrow 0$ e a soma é finita. Resta calcular o primeiro termo. Para
+  isso vamos definir:
   \begin{align*}
     \Phi(t) &:= \int_0^t \frac{F_2(s)}{2} \left[
       2 + \sum_{x > 2} e^{-\frac{t-s}{\gamma_x}}
@@ -1260,10 +1276,10 @@ valor.
   transformada de Laplace de $\Phi$ e a identificando com a da
   identidade.
 
-  Note que $\Phi$ é a convolução de duas outras funções, assim vamos
-  calcular a transformada de Laplace delas. Para um $\beta > 0$
-  fixado, usando integração por partes, podemos calcular a transformada
-  de Laplace da primeira por:
+  Notemos que $\Phi$ é a convolução de duas outras funções; assim
+  vamos calcular a transformada de Laplace delas. Para um $\beta > 0$
+  fixado, usando integração por partes, podemos calcular a
+  transformada de Laplace da primeira por:
   \begin{align*}
     \int_0^{\infty} e^{-\beta t} \frac{F_2(t)}{2} dt 
     &= \frac{1}{2 \beta} \int_0^\infty e^{-\beta t}  f_2(t) dt\\
@@ -1312,9 +1328,9 @@ valor.
 
   Com isso mostramos \eqref{eq:gerador-inf-sup}. Podemos mostrar
   \eqref{eq:gerador-inf-inf} de forma análoga, mas em vez de usar que
-  $\Gamma^{<1,x>}$ domina $\Gamma^{<1,2>}$, usaremos que $\Gamma^{<1>}$ domina
-  $\Gamma^{<1, x>}$. Também teremos que colocar $x = 2$ na soma que
-  define $\Phi$.
+  $\Gamma^{<1,x>}$ domina $\Gamma^{<1,2>}$, usaremos que
+  $\Gamma^{<1>}$ domina $\Gamma^{<1, x>}$. Também teremos que inserir
+  $x = 2$ na soma que define $\Phi$.
 \end{proof}
 
 \begin{lema}
@@ -1354,11 +1370,11 @@ valor.
         \gamma_y}  \right)^{-2}
   \end{align*}
 
-  O evento $\{ X^\infty $ passou mais que 1 vez por x até o instante
-  $t\}$ está contido no evento $\{ \Gamma^{<x>} (\sigma^x_2) \leq t,\,
-  \gamma_x T^x_1 \leq t\}$. Assim usando a estimativa acima e o fato
-  que $\Gamma^{<x>} (\sigma^x_2)$ é independente de $T_1^x$, obtemos
-  que:
+  Observemos que o evento $\{ X^\infty $ passou mais que 1 vez por x
+  até o instante $t\}$ está contido no evento $\{ \Gamma^{<x>}
+  (\sigma^x_2) \leq t,\, \gamma_x T^x_1 \leq t\}$. Assim usando a
+  estimativa acima e o fato que $\Gamma^{<x>} (\sigma^x_2)$ é
+  independente de $T_1^x$, obtemos que:
   \begin{align*}
     \frac{1}{t} \sum_{x\in\Nz} f(x) P\left( X^\infty(t) = x \text{ não
         pela primeira vez}\right) 
@@ -1381,9 +1397,9 @@ valor.
   Vamos mostrar que os dois termos convergem à zero quando $t
   \searrow 0$.
 
-  Para a primeira parte note que, para cada $t > 0$ fixado,
-  $A_t$ é um conjunto finito mas a sua cardinalidade vai para o
-  infinito quando $t \searrow 0$. Note também que, como $h \in \DDD$,
+  Para o primeiro termo notemos que, para cada $t > 0$ fixado, $A_t$ é
+  um conjunto finito mas a sua cardinalidade vai para o infinito
+  quando $t \searrow 0$. Observemos também que, como $h \in \DDD$,
   então $f(x)/\gamma_x$ converge. Assim essa quantidade é limitada por
   uma constante. Se denotarmos por $\#A_t$ a cardinalidade de $A_t$,
   poderemos escrever:
@@ -1430,10 +1446,10 @@ valor.
   O segundo ocorre quando $\sum_{x \not\in A_t} \frac{\gamma_x}{t}$
   vai para o infinito quanto $t \searrow 0$.
 
-  Quando $y \not\in A_t$, vale que $\gamma_y \leq t$ e
-  consequentemente $\frac{\gamma_x}{t+\gamma_x} \geq \frac{\gamma_y}{2
-    t}$. Portanto podemos dominar \eqref{eq:erro-gerador-quase} (a
-  menos da constante) por:
+  Quando $y \not\in A_t$, vale que $\gamma_y \leq t$ e,
+  consequentemente, $\frac{\gamma_x}{t+\gamma_x} \geq \frac{\gamma_y}{2
+    t}$. Portanto podemos dominar \eqref{eq:erro-gerador-quase} a
+  menos da constante por:
   \begin{displaymath}
     \left(
       \frac{1}{2} \sum_{y \not\in A_t} \frac{\gamma_y}{t}
@@ -1459,19 +1475,20 @@ valor.
   O item 1 é evidente de \eqref{eq:gerador-x} e
   \eqref{eq:gerador-inf}.
 
-  Para o item 2, tome uma $g \in \CC$ e $\epsilon > 0$ arbitrários e
+  Para o item 2, tomemos uma $g \in \CC$ e $\epsilon > 0$ arbitrários e
   vamos encontrar uma $f \in \DDD$ tal que $\Vert f - g \Vert <
   \epsilon$.
 
   Como $g$ é contínua, existe um $n_0$ tal que $|g(x) - g(\infty)| <
-  \epsilon/2$ para $x > n_0$. Fixe tal $n_0$. Vamos definir $f(x) =
+  \epsilon/2$ para $x > n_0$. Fixemos tal $n_0$. Vamos definir $f(x) =
   g(x)$ para $x \leq n_0$.
 
-  Agora tome um $m$ tal que $ \frac{1}{m} |\sum_{x = 1}^{n_0} (g(x) -
-  g(\infty))| < \epsilon/2$ e para $n_0 < x \leq n_0 + m$ defina $f(x) =
-  g(\infty) -\frac{1}{m} \sum_{x = 1}^{n_0} (g(x) - g(\infty))$.
+  Agora tomemos um $m$ tal que $ \frac{1}{m} |\sum_{x = 1}^{n_0} (g(x)
+  - g(\infty))| < \epsilon/2$ e, para $n_0 < x \leq n_0 + m$,
+  definamos $f(x) = g(\infty) -\frac{1}{m} \sum_{x = 1}^{n_0} (g(x) -
+  g(\infty))$.
 
-  Para $x > n_0 + m$ ou $x = \infty$, tome $f(x) = g(\infty)$.
+  Para $x > n_0 + m$ ou $x = \infty$, tomemos $f(x) = g(\infty)$.
 
   Como $f(x) = f(\infty)$ para $x > n_0 + m$, então $f$ é contínua,
   $\lim_{x \to \infty} \frac{f(x) - f(\infty)}{\gamma_x} = 0$ e 
@@ -1486,11 +1503,11 @@ valor.
     &= 0.
   \end{align*}
 
-  Portanto $f \in \DDD$. Ainda pela nossa construção é fácil ver que
-  $\sup_{x \in \Nzb} |f(x) - g(x)| < \epsilon$. Assim concluímos que
-  $\DDD$ é denso em $\CC$.
+  Portanto $f \in \DDD$. Ainda $\sup_{x \in \Nzb} |f(x) - g(x)| <
+  \epsilon$ por construção. Assim concluímos que $\DDD$ é denso em
+  $\CC$.
 
-  Resta mostrar o item 3. Para isso considere a seguinte classe:
+  Resta mostrar o item 3. Para isso consideremos a seguinte classe:
   \begin{equation}
     \label{eq:imagem-gerador}
     \GG = \left\{ g \in \CC: \sum_{x \in \Nz} \frac{\gamma_x}{1 +
@@ -1505,12 +1522,12 @@ valor.
   \epsilon$.
 
   Como $f \in \CC$, existe $n_0$ tal que $|f(x) - f(\infty)| <
-  \epsilon/2$ para $x > n_0$. Fixe um tal $n_0$. Defina $g(x) = f(x)$
+  \epsilon/2$ para $x > n_0$. Fixemos um tal $n_0$. Definamos $g(x) = f(x)$
   para $x \leq n_0$ e $g(x) = f(\infty)$ para $x > n_0$.
 
   Para $x \leq n_0$, teremos que $|g(x) - f(x)| = 0 < \epsilon$,
   enquanto que para $x > n_0$ vale que $|g(x) - f(x)| = |f(\infty) -
-  f(x)| \leq \epsilon/2$. Assim $\Vert f - g \Vert \leq \epsilon/2 <
+  f(x)| < \epsilon/2$. Assim $\Vert f - g \Vert \leq \epsilon/2 <
   \epsilon$.
 
   Como $g(x) = g(\infty)$ para $x > n_0$, então $g \in \GG$ pois:
@@ -1523,7 +1540,7 @@ valor.
   \end{displaymath}
 
   Agora só resta mostrar que se $\GG$ está contido na imagem de $I -
-  \AAA$. Para isso tome um $g \in \GG$ e vamos encontrar uma $f \in
+  \AAA$. Para isso tomemos um $g \in \GG$ e vamos encontrar uma $f \in
   \DDD$ tal que $f - \AAA f = g$.
 
   Como $\sum_{x \in \Nz} \gamma_x < \infty$ e $1 + \gamma_x \geq 1$,
@@ -1546,7 +1563,7 @@ valor.
     \end{cases}
   \end{equation}
 
-  Com base nessa definição, é fácil ver que:
+  Com base nessa definição, observamos que:
   \begin{align}
     \label{eq:inversa-imagem-2}
     \frac{f(x) - f(\infty)}{\gamma_x} &=
@@ -1554,7 +1571,7 @@ valor.
     \frac{K}{1+\gamma_x} \xrightarrow{x \to \infty} K.
   \end{align}
 
-  Agora usando a definição de $K$ e o fato de $g \in \GG$, podemos calcular:
+  Usando a definição de $K$ e o fato de $g \in \GG$, podemos calcular:
   \begin{align*}
     \sum_{x \in \Nz} \left|f(x) - f(\infty)\right|
     &\leq \sum_{x\in\Nz} \frac{\gamma_x}{1+\gamma_x} |g(x) -
@@ -1571,8 +1588,24 @@ valor.
   \end{align*}
 
   Observando $\eqref{eq:classe-gerador}$, concluímos que $f \in
-  \DDD$. Além disso é fácil ver de \eqref{eq:inversa-imagem-2} que $f
-  - \AAA f = g$.
+  \DDD$.
+
+  Para verificar que $f - \AAA f = g$, observe que para $x \in \Nz$:
+  \begin{align*}
+    f(\infty) - \AAA f (\infty) &=
+    g(\infty) - K - (-K) = g(\infty) \\
+    f(x) - \AAA f (x) &=
+    \frac{1}{1+\gamma_x} \left[
+      \gamma_x g(x) + g(\infty) - K
+    \right] - \left(
+      - \frac{g(x) - g(\infty) }{1+\gamma_x} -
+      \frac{K}{1+\gamma_x}
+    \right)\\
+    &=
+   \frac{\gamma_x g(x)}{1+\gamma_x}
+    + \frac{g(x)}{1+\gamma_x} = g(x)
+    \qedhere
+  \end{align*}
 \end{proof}
 
 
@@ -1586,17 +1619,17 @@ Na demonstração da Proposição \ref{prop:continuidade} mostramos que,
 no caso $c > 0$, o tempo que o processo passa no infinito tem medida
 de Lebesgue positiva quase certamente.
 
-Usando a Proposição \ref{prop:naocontinuidade}, é fácil mostrar que a
+Usando a Proposição \ref{prop:naocontinuidade}, podemos mostrar que a
 medida de Lebesgue do tempo em que o processo passa no infinito vale
 zero quase certamente no caso $c = 0$.
 
-Nessa seção tentaremos expandir um pouco o caso $c = 0$,
-especificamente iremos dar uma maneira de calcular a dimensão de
-Hausdorff do tempo em que o processo passa no infinito.  Para o
-restante dessa seção, considere sempre que $c = 0$.
+Nessa seção expandiremos um pouco o caso $c = 0$, especificamente
+apresentaremos uma maneira de calcular a dimensão de Hausdorff do
+tempo em que o processo passa no infinito.  Para o restante dessa
+seção, consideraremos sempre que $c = 0$.
 
 Em vista da Proposição \ref{prop:reinicia-infinito}, vamos considerar
-somente o processo K iniciado no $\infty$, visto que o conjunto dos
+somente o Processo K iniciado no $\infty$, visto que o conjunto dos
 instantes onde o processo está no infinito ao iniciar em um estado $y$
 é igual ao mesmo conjunto do processo iniciado em $\infty$ mas
 transladado.
@@ -1620,18 +1653,19 @@ transladado.
 
   Nessas realizações, tome um $t \in \RR$. Assim existe um (único por
   $\Gamma$ ser crescente) $s \geq 0$ tal que $\Gamma(s) = t$. Por
-  absurdo, suponha que $X(t) = x < \infty$. Assim existe um $i \geq 1$
-  tal que $\Gamma(\sigma_i^x -) \leq t < \Gamma(\sigma_i^x)$. Portanto
-  $\Gamma(s) < \Gamma(\sigma_i^x)$. Como $\Gamma$ é crescente,
-  concluímos que $s < \sigma_i^x$, de onde concluímos que
-  $\Gamma(\sigma_i^x-) > \Gamma(s) = t$, o que contraria a hipótese.
+  absurdo, vamos supor que $X(t) = x < \infty$. Assim existe um $i
+  \geq 1$ tal que $\Gamma(\sigma_i^x -) \leq t <
+  \Gamma(\sigma_i^x)$. Portanto $\Gamma(s) < \Gamma(\sigma_i^x)$. Como
+  $\Gamma$ é crescente, concluímos que $s < \sigma_i^x$, de onde
+  concluímos que $\Gamma(\sigma_i^x-) > \Gamma(s) = t$, o que
+  contraria a hipótese.
 
-  Agora tome um $t \geq 0$ tal que $X(t) = \infty$. Defina $s = \inf
-  \{ r \geq 0 :  \Gamma(r) > t \}$. Usando a definição do ínfimo e o
-  fato de $\Gamma$ ser crescente e càdlàg, concluímos que $\Gamma(s-)
-  \leq t$ e $\Gamma(s) \geq t$. Agora, por absurdo, suponha que
-  $\Gamma(s) > t$. Assim teremos que $\Gamma(s-) \leq t <
-  \Gamma(s)$. Assim como os pontos de descontinuidade de $\Gamma$
+  Agora tomemos um $t \geq 0$ tal que $X(t) = \infty$. Definamos $s =
+  \inf \{ r \geq 0 : \Gamma(r) > t \}$. Usando a definição do ínfimo e
+  o fato de $\Gamma$ ser crescente e càdlàg, concluímos que
+  $\Gamma(s-) \leq t$ e $\Gamma(s) \geq t$. Agora, por absurdo,
+  suponhamos que $\Gamma(s) > t$. Assim teremos que $\Gamma(s-) \leq t
+  < \Gamma(s)$. Como os pontos de descontinuidade de $\Gamma$
   correspondem às marcas dos processos de Poisson, teremos que existe
   um $\sigma_i^x = s$, de onde concluímos a contradição de que $X(t) =
   x \neq \infty$. Portanto, como não pode acontecer que $\Gamma(s) >
@@ -1645,22 +1679,22 @@ transladado.
   \end{displaymath}
 \end{proposicao}
 \begin{proof}
-  Novamente considere as realizações onde $\Gamma$ é càdlàg, crescente
+  Novamente consideremos as realizações onde $\Gamma$ é càdlàg, crescente
   e limitada em compactos.
 
   Fixado um $s > 0$ vamos mostrar que $\Gamma(s-) \in \RRb$. Para isso
-  tome uma sequência $(s_n)_{n \geq 1}$ tal que $s_n \nearrow s$. Por
+  tomemos uma sequência $(s_n)_{n \geq 1}$ tal que $s_n \nearrow s$. Por
   definição, temos que $\Gamma(s_n) \in \RR$ para todo $n$ e
   $\Gamma(s_n) \to \Gamma(s-)$. De onde concluímos que $\Gamma(s-) \in
   \RRb$.
 
-  Agora tome um $t \in \RRb \setminus \RR$. Por definição existe uma
+  Agora tomemos um $t \in \RRb \setminus \RR$. Por definição existe uma
   sequência $(t_n)_n \in \RR$ tal que $t_n \to t$. Como $t_n \in \RR$,
   existe $s_n$ tal que $\Gamma(s_n) = t_n$.
 
-  Note que $(s_n)$ é limitada, assim existe uma subsequencia de $(s_n)$
-  que seja convergente. Assim sem perda de generalidade, vamos supor
-  que $(s_n)$ seja convergente e denotar seu limite por $s$.
+  Notemos que $(s_n)$ é limitada, assim existe uma subsequência de
+  $(s_n)$ que seja convergente. Assim sem perda de generalidade, vamos
+  supor que $(s_n)$ seja convergente e denotar seu limite por $s$.
 
   Como $s_n \to s$, $\Gamma(s_n) \to t$ e $\Gamma$ é càdlàg, então
   temos que $t \in \{ \Gamma(s), \Gamma(s-) \}$. Já que estamos
@@ -1679,7 +1713,7 @@ transladado.
 
 \begin{proposicao}
   $\Gamma^\infty$, quando enxergada como um processo estocástico, é
-  um subordinador. Isso é, um processo que toma valores em $[0,
+  um subordinador, isso é, um processo que toma valores em $[0,
   \infty)$, iniciado em zero, crescente, contínuo à direita, que tem
   incrementos estacionários e independentes.
 \end{proposicao}
@@ -1688,7 +1722,7 @@ transladado.
   Já mostramos que $\Gamma$ é crescente e contínua à direita, e basta
   olhar para a definição para ver que $\Gamma^\infty(0) = 0$.
 
-  Tome $\FF_t$ a $\sigma$-álgebra gerada por $\{ \Gamma(s): s \in [0,
+  Tomemos $\FF_t$ a $\sigma$-álgebra gerada por $\{ \Gamma(s): s \in [0,
   t]\}$ e repare que para $t, s > 0$:
   \begin{displaymath}
     \Gamma(t+s) - \Gamma(t) = \sum_{x \in \Nz} \sum_{i =
@@ -1707,7 +1741,7 @@ transladado.
   \begin{displaymath}
     \Phi(u) = u \sum_{x \in \Nz} \frac{\lambda_x \gamma_x}{1 + u\gamma_x}.
   \end{displaymath}
-  Isso é para $u \geq 0$, teremos que:
+  Isso é, para $u \geq 0$, teremos que:
   \begin{displaymath}
     \E \left[
       \exp \left\{
@@ -1739,8 +1773,8 @@ Para um $\rho > 0$, $\epsilon > 0$ e um boreliano $A$, definimos:
 onde  $\mathrm{l}(I)$ é o comprimento do intervalo $I$.
 
 Quando diminuímos $\epsilon$, diminuímos o número de coberturas
-possíveis, assim o ínfimo aumenta. Portando o limite de
-\eqref{eq:dim-hausdorff-eps} quando $\epsilon \searrow 0$ existe, e
+possíveis, assim o ínfimo aumenta. Portanto o limite de
+\eqref{eq:dim-hausdorff-eps} quando $\epsilon \searrow 0$ existe e
 assim faz sentido definir:
 
 \begin{displaymath}
@@ -1748,12 +1782,12 @@ assim faz sentido definir:
 \end{displaymath}
 
 É possível mostrar que $m^\rho(\bullet)$ é uma medida sobre os
-borelianos de $\R$. Medida essa que chamados de medida de Hausdorff de
+borelianos de $\R$, medida essa que chamados de medida de Hausdorff de
 dimensão $\rho$.  A medida de Hausdorff de dimensão $1$ é a medida de
 Lebesgue.
 
 Também vale que se $m^\rho(A) = 0$, então $m^{\rho^\prime}(A) = 0$ para
-todo $\rho^\prime > \rho$ e se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
+todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
 = \infty$ para todo $\rho^\prime < \rho$.
 
 \begin{definicao}
@@ -1775,7 +1809,7 @@ todo $\rho^\prime > \rho$ e se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
   \end{equation}
 \end{teorema}
 \begin{proof}
-  A primeira igualdade é vem do fato de um conjunto enumerável não
+  A primeira igualdade vem do fato de um conjunto enumerável não
   alterar a dimensão de Hausdorff de um conjunto, enquanto que a
   segunda é o Corolário 5.3 de \cite{bertoin:97}, traduzido para a
   nossa notação.
@@ -1783,17 +1817,17 @@ todo $\rho^\prime > \rho$ e se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
 
 \begin{proposicao}
   \label{prop:dominar-dim-haus-sup}
-  Suponha que $\sup_{x\in\Nz}\lambda_x < \infty$ e que existam um
+  Supondo que $\sup_{x\in\Nz}\lambda_x < \infty$ e que existam um
   $\delta>0$ e um $n_0 \in \Nz$ tal que $\gamma_x \leq x^{-(1+\delta)}$
-  para todo $x > n_0$. Nessas condições:
+  para todo $x > n_0$, vai valer que:
   \begin{equation}
     \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}  \leq \frac{1}{1+\delta}
   \end{equation}
 \end{proposicao}
 
 \begin{proof}
-  Tome $K > 0$ tal que $\lambda_x \leq K$ para todo $x \in \Nz$. Assim
-  teremos que para alguma constante $C$:
+  Tomemos $K > 0$ tal que $\lambda_x \leq K$ para todo $x \in
+  \Nz$. Assim teremos que para alguma constante $C$:
   \begin{align*}
     \Phi(u) &= \sum_{x \in \Nz} \frac{\lambda_x}{\frac{1}{u\gamma_x} +
       1}\\
@@ -1810,7 +1844,7 @@ todo $\rho^\prime > \rho$ e se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
   Agora vamos nos concentrar na quantidade dentro dos colchetes. Para
   isso vamos fazer a mudança de variáveis $v =
   u^{\frac{1}{1+\delta}}$. Se tomarmos $v$ inteiro maior que $n_0$ e
-  agrupando os termos da série entre múltiplos de $v$, obteremos:
+  agruparmos os termos da série entre múltiplos de $v$, obteremos:
   \begin{align*}
     \frac{C}{v} + \frac{1}{v} \sum_{x > n_0} \frac{K}{ \left(
         \frac{x}{v} \right)^{1+\delta} + 1 }
@@ -1821,7 +1855,7 @@ todo $\rho^\prime > \rho$ e se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
   onde $C^\prime$ é uma constante positiva.
 
   Como jogar $u$ para o infinito é equivalente à jogar $v$ para o
-  infinito, e que o limite seguindo $v$ inteiro é um limitante
+  infinito e como o limite seguindo $v$ inteiro é um limitante
   superior para $\liminf$, teremos que:
 
   \begin{align*}
@@ -1829,21 +1863,22 @@ todo $\rho^\prime > \rho$ e se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
     \frac{1}{1+\delta} + \liminf_{u \to \infty} 
     \frac{\log{C^\prime}}{\log u}\\
     &= \frac{1}{1+\delta}.
+    \qedhere
   \end{align*}
 \end{proof}
 
 \begin{proposicao}
 \label{prop:dominar-dim-haus-inf}
-  Suponha que $\inf_{x\in\Nz}\lambda_x  > 0$ e que existam um
+  Supondo que $\inf_{x\in\Nz}\lambda_x  > 0$ e que existam um
   $\delta>0$ e um $n_0 \in \Nz$ tal que $\gamma_x \geq x^{-(1+\delta)}$
-  para todo $x > n_0$. Nessas condições:
+  para todo $x > n_0$, vai valer que:
   \begin{equation}
     \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}  \geq \frac{1}{1+\delta}
   \end{equation}
 \end{proposicao}
 
 \begin{proof}
-  Tome $K > 0$ tal que $\lambda_x \geq K$ para todo $x \in \Nz$. Dessa
+  Tomemos $K > 0$ tal que $\lambda_x \geq K$ para todo $x \in \Nz$. Dessa
   forma:
   \begin{align*}
     \Phi(u) &= \sum_{x \in \Nz} \frac{\lambda_x}{\frac{1}{u\gamma_x} +
@@ -1874,26 +1909,27 @@ todo $\rho^\prime > \rho$ e se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
 
   Como essa série é convergente, ao fazer $u \to \infty$ o segundo
   termo desaparecerá, enquanto que o primeiro irá convergir para
-  $\frac{1}{1+\delta}$. De onde concluímos que:
+  $\frac{1}{1+\delta}$, de onde concluímos que:
 
   \begin{displaymath}
-    \liminf_{u \to \infty} \frac{\log \Phi (u)}{\log u} \geq \frac{1}{1+\delta}
+    \liminf_{u \to \infty} \frac{\log \Phi (u)}{\log u} \geq
+    \frac{1}{1+\delta}
+    \qedhere
   \end{displaymath}
 \end{proof}
 
 \begin{corolario}
   \label{prop:igualar-dim-haus}
-  Suponha que $\inf_{x \in \Nz} \lambda_x > 0$, $\sup_{x \in \Nz}
+  Supondo que $\inf_{x \in \Nz} \lambda_x > 0$, $\sup_{x \in \Nz}
   \lambda_x < \infty$ e que existam um $\delta > 0$ e um $n_0 \in \Nz$
-  tal que $\gamma_x = x^{-(1+\delta)}$ para todo $x > n_0$.  Nessas
-  condições:
+  tal que $\gamma_x = x^{-(1+\delta)}$ para todo $x > n_0$, vai valer que:
   \begin{displaymath}
     \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} = \frac{1}{1+\delta}
   \end{displaymath}
 \end{corolario}
 \begin{proof}
-  Basta juntar as Proposições \ref{prop:dominar-dim-haus-sup} e
-  \ref{prop:dominar-dim-haus-inf}.
+  Esse corolário é evidente ao observar as Proposições
+  \ref{prop:dominar-dim-haus-sup} e \ref{prop:dominar-dim-haus-inf}.
 \end{proof}
 
 
