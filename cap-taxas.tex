@@ -48,8 +48,8 @@ com uma caracterização básica das mesmas.
   Fixado $x \in \Nzb$ e $y \in \Nz$, notemos que $f_y(z) = \ind\{ z =
   y \}$ é uma função contínua e todo $t > 0$ fixado é \qc um ponto de
   continuidade de $X^x$. Assim podemos usar o Teorema
-  \ref{teo:convergencia}, junto com o teorema da convergência
-  dominada, para concluir que $p_{x y}^n(t) \xrightarrow{n\to\infty}
+  \ref{teo:convergencia}, junto com o Teorema da Convergência
+  Dominada, para concluir que $p_{x y}^n(t) \xrightarrow{n\to\infty}
   p_{x y}(t)$.
 
   Assim, como limite de funções mensuráveis também é uma função
@@ -184,7 +184,7 @@ com uma caracterização básica das mesmas.
   Pela Proposição \ref{prop:continuidade-facil}, se $x \in \Nz$ então
   $p_{x \infty}(t_n) \to 0$ quando $n \to \infty$. Cada termo
   dessa soma é menor ou igual à $p_{\infty x} (s)$, que é somável em
-  $x$. Assim usando o teorema da convergência dominada, concluímos
+  $x$. Assim usando o Teorema da Convergência Dominada, concluímos
   que:
   \begin{displaymath}
     p_{\infty\infty}(s) = p_{\infty \infty}(s)u.
@@ -457,8 +457,8 @@ Enquanto que no caso $c=0$, teremos:
   \end{align*}
 
   Notemos que quando $u$ vai ao infinito, os termos de cada uma das
-  somas vai a zero monotonamente com $u$; assim usando o teorema da
-  convergência monótona, teremos que:
+  somas vai a zero monotonamente com $u$; assim usando o Teorema da
+  Convergência Monótona, teremos que:
   \begin{align*}
       \lim_{u \to \infty} \frac{\phi(uv)}{\phi (u)} &= \frac{1}{v}.
   \end{align*}
@@ -483,7 +483,7 @@ Enquanto que no caso $c=0$, teremos:
   \end{align*}
 
   Novamente cada termo da soma vai a zero monotonamente quanto $t
-  \searrow 0$, assim pelo teorema da convergência monótona, teremos que
+  \searrow 0$, assim pelo Teorema da Convergência Monótona, teremos que
   $\lim_{t \searrow 0} \frac{\phi(\frac{1}{t})}{t} =
   \frac{\lambda_x}{c}$.
 
@@ -609,7 +609,7 @@ para todo $t > 0$ e toda $f: \Nzb \to \R$ contínua.
 
   Como a quantidade dentro da esperança é limitada por $2 \Vert f
   \Vert$, então, se mostrarmos que ela vai quase certamente à zero,
-  seguirá pelo teorema da convergência dominada que a esperança também
+  seguirá pelo Teorema da Convergência Dominada que a esperança também
   irá à zero.
 
   Como $\gamma_y \to 0$, então $\gamma_y T_0 \to 0$ \qc. Assim tomando
@@ -661,8 +661,8 @@ para todo $t > 0$ e toda $f: \Nzb \to \R$ contínua.
     e^{-\frac{s}{\gamma_{y_n}}} p_{\infty y} (t-s) ds.
   \end{displaymath}
   
-  Tomando limite $n \to \infty$ e usando o teorema de convergência
-  dominada, teremos que:
+  Tomando limite $n \to \infty$ e usando o Teorema de Convergência
+  Dominada, teremos que:
   \begin{align*}
      p_{\infty y}(t)
      &= \int_0^t \frac{1}{a} e^{-\frac{s}{a}} p_{\infty y}(t-s) d s\\
@@ -749,8 +749,8 @@ probabilidade é uma medida invariante para o Processo K.
   \end{align*}
   
   Cada termo dessa soma é dominado por $\mu_1(x)$, que tem soma $1$.
-  Assim usando a Proposição \ref{prop:transicao-continua} e o teorema da
-  convergência dominada, concluímos que:
+  Assim usando a Proposição \ref{prop:transicao-continua} e o Teorema da
+  Convergência Dominada, concluímos que:
   \begin{align*}
     \mu_1 (y) &= \sum_{x \in \Nzb} \mu_1(x) p_{x y} (h)\\
     &= \sum_{x \in \Nzb} \mu_1(x) P(Y_1^{x, h} = y).
@@ -798,7 +798,7 @@ probabilidade é uma medida invariante para o Processo K.
   que existe uma constante $K$ que não depende de $x$, tal que
   $\frac{p_{x y}(t)}{t} \leq K$ para todo $x \in \Nz\setminus \{y\}$.
 
-  Como $\mu(x)$ é somável em $x$, o teorema da convergência dominada
+  Como $\mu(x)$ é somável em $x$, o Teorema da Convergência Dominada
   nos garante que:
   \begin{displaymath}
     \sum_{x \in \Nz \setminus \{y\}} \mu(x)
@@ -873,7 +873,7 @@ probabilidade é uma medida invariante para o Processo K.
   todo $y\in\Nzb$.
 
 
-  Assim aplicando o teorema da convergência dominada concluímos que:
+  Assim aplicando o Teorema da Convergência Dominada concluímos que:
   \begin{displaymath}
     P(X^y_c (t) = x) = \E [f_x(X^y_c(t))]
     \xrightarrow{c\searrow0}
@@ -893,7 +893,7 @@ probabilidade é uma medida invariante para o Processo K.
 
   Cada termo dessa soma pode ser dominado por $\pi_0(y)$ se $y \neq
   \infty$ e por $1$ se $y = \infty$; assim tomando limite $c\searrow0$
-  e usando o teorema da convergência dominada, teremos que:
+  e usando o Teorema da Convergência Dominada, teremos que:
 
   \begin{align*}
     \pi_0(x) &= \sum_{y \in \Nzb} \pi_0 (y) P(X^y_0 (t) = x).\\
@@ -1212,7 +1212,6 @@ valor.
     \right) d s
   \end{align}
 
-
   Podemos escrever:
   \begin{align*}
     \left| \frac{1}{t} \sum_{x > 1} \bar{h}(x) \int_0^t f_x (s) \left(
@@ -1225,8 +1224,8 @@ valor.
   \end{align*}
   Observemos que cada termo dessa série converge para zero quando $t
   \searrow 0$, enquanto que eles são dominados por $|\bar{h}(x)| /
-  \gamma_1$, que é somável. Assim, usando o teorema da convergência
-  dominada, concluímos que \eqref{eq:gerador-inf-4} dividido por
+  \gamma_1$, que é somável. Assim, usando o Teorema da Convergência
+  Dominada, concluímos que \eqref{eq:gerador-inf-4} dividido por
   $t$ converge para zero quando $t \searrow 0$.
 
   Fazendo uma integração por partes, obtemos que
