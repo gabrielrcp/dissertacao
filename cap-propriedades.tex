@@ -165,30 +165,32 @@ serão usadas à exaustão em seções subsequentes.
   \begin{align*}
     P \left(
       \sum_{z \neq x} \sum_{j = 1}^{N^z(\sigma^x_i)} \gamma_z T^z_j
+      + c \sigma^x_i
       \in A
     \right)
     &= \int_0^\infty
      P \left(
       \sum_{z \neq x} \sum_{j = 1}^{N^z(s)} \gamma_z T^z_j
-      \in A
+      \in A - c s
     \right)
     g_i^x (s) d s
   \end{align*}
 
   Usando argumentos análogos aos que usamos para provar que
   $\Gamma(t)$ é uma variável contínua, concluímos que a probabilidade
-  que está dentro da integral vale zero.
+  que está sendo integrada vale zero, e portanto a integral também
+  vale zero.
 
-  Por construção, obtemos que:
+  Por construção, observamos que:
   \begin{align*}
     \Gamma^y_c(\sigma^x_i)  &=
      \gamma_y T_0 + \sum_{j = 1}^{i} \gamma_x
-    T_j^x + \sum_{z \neq x} \sum_{j = 1}^{N^z(s)} \gamma_z
-    T^z_j + c s\\
+    T_j^x + \sum_{z \neq x} \sum_{j = 1}^{N^z(\sigma^x_i)} \gamma_z
+    T^z_j + c \sigma^x_i\\
     \Gamma^y_c(\sigma^x_i -)  &=
      \gamma_y T_0 + \sum_{j = 1}^{i-1} \gamma_x
-    T_j^x + \sum_{z \neq x} \sum_{j = 1}^{N^z(s)} \gamma_z
-    T^z_j + c s.
+    T_j^x + \sum_{z \neq x} \sum_{j = 1}^{N^z(\sigma_i^x)} \gamma_z
+    T^z_j + c \sigma_i^x.
   \end{align*}
 
   Dessa forma, tanto $\Gamma(\sigma^x_i)$ quanto
@@ -502,7 +504,7 @@ tomamos os limites dos processos truncados introduzidos na Seção
 \ref{sec:aproximacoes}.
 
 Note que nem sempre o limite de processos Markovianos é um processo
-Markoviano. Para demonstrar que essaa propriedade é mantida, vamos
+Markoviano. Para demonstrar que essa propriedade é mantida, vamos
 abusar de diversas propriedades da nossa construção, em particular da
 convergência dos processos truncados uniformemente na condição
 inicial.
