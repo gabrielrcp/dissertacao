@@ -1507,45 +1507,15 @@ valor.
   \epsilon$ por construção. Assim concluímos que $\DDD$ é denso em
   $\CC$.
 
-  Resta mostrar o item 3. Para isso consideremos a seguinte classe:
-  \begin{equation}
-    \label{eq:imagem-gerador}
-    \GG = \left\{ g \in \CC: \sum_{x \in \Nz} \frac{\gamma_x}{1 +
-        \gamma_x} \left| g(x) - g(\infty) \right| < \infty \right\}.
-  \end{equation}
+  Resta mostrar o item 3. Para isso vamos mostrar que a imagem de $I -
+  \AAA$ é o conjunto das funções contínuas.
 
-  Vamos mostrar que essa classe é densa em $\CC$ e que a ela está
-  contida na imagem de $I - \AAA$.
+  Tomemos uma $g \in \CC$ e vamos encontrar uma $f \in \DDD$ tal que
+  $f - \AAA f = g$.
 
-  Para mostrar que $\GG$ é densa, tome uma $f \in \CC$ e $\epsilon >
-  0$ e vamos encontrar uma $g \in \GG$ tal que $\Vert f - g \Vert <
-  \epsilon$.
-
-  Como $f \in \CC$, existe $n_0$ tal que $|f(x) - f(\infty)| <
-  \epsilon/2$ para $x > n_0$. Fixemos um tal $n_0$. Definamos $g(x) = f(x)$
-  para $x \leq n_0$ e $g(x) = f(\infty)$ para $x > n_0$.
-
-  Para $x \leq n_0$, teremos que $|g(x) - f(x)| = 0 < \epsilon$,
-  enquanto que para $x > n_0$ vale que $|g(x) - f(x)| = |f(\infty) -
-  f(x)| < \epsilon/2$. Assim $\Vert f - g \Vert \leq \epsilon/2 <
-  \epsilon$.
-
-  Como $g(x) = g(\infty)$ para $x > n_0$, então $g \in \GG$ pois:
-  \begin{displaymath}
-    \sum_{x \in \Nz} \frac{\gamma_x}{1 +
-        \gamma_x} \left| g(x) - g(\infty) \right|
-      =
-      \sum_{x = 1}^{n_0} \frac{\gamma_x}{1 +
-        \gamma_x} \left| g(x) - g(\infty) \right| <  \infty.
-  \end{displaymath}
-
-  Agora só resta mostrar que se $\GG$ está contido na imagem de $I -
-  \AAA$. Para isso tomemos um $g \in \GG$ e vamos encontrar uma $f \in
-  \DDD$ tal que $f - \AAA f = g$.
-
-  Como $\sum_{x \in \Nz} \gamma_x < \infty$ e $1 + \gamma_x \geq 1$,
-  então $\sum_{x \in \Nz} \frac{\gamma_x}{1+\gamma_x} < \infty$. Assim
-  a constante $K$ abaixo está bem definida:
+  Observemos que $\sum_{x \in \Nz} \frac{\gamma_x}{1+\gamma_x} <
+  \infty$ e $g$ é limitada. Assim a constante $K$ abaixo está bem
+  definida:
   \begin{displaymath}
     K = -\left( \sum_{x \in \Nz} \frac{\gamma_x}{1+\gamma_x} \right)^{-1}
     \sum_{x \in \Nz} \frac{\gamma_x}{1 +
@@ -1553,25 +1523,25 @@ valor.
   \end{displaymath}
 
   Com base nela, vamos definir:
-  \begin{equation}
-    \label{eq:inversa-imagem}
+  \begin{equation*}
+    %\label{eq:inversa-imagem}
     f(x) = \begin{cases}
       g(\infty) - K & \textrm{ se } x = \infty\\
       \frac{1}{1+\gamma_x} \left[
         \gamma_x g(x) + g(\infty) - K
       \right] & \textrm{ caso contrário.}
     \end{cases}
-  \end{equation}
+  \end{equation*}
 
   Com base nessa definição, observamos que:
-  \begin{align}
-    \label{eq:inversa-imagem-2}
+  \begin{align*}
+    %\label{eq:inversa-imagem-2}
     \frac{f(x) - f(\infty)}{\gamma_x} &=
     \frac{g(x) - g(\infty) }{1+\gamma_x} +
     \frac{K}{1+\gamma_x} \xrightarrow{x \to \infty} K.
-  \end{align}
+  \end{align*}
 
-  Usando a definição de $K$ e o fato de $g \in \GG$, podemos calcular:
+  Usando a definição de $K$, podemos calcular:
   \begin{align*}
     \sum_{x \in \Nz} \left|f(x) - f(\infty)\right|
     &\leq \sum_{x\in\Nz} \frac{\gamma_x}{1+\gamma_x} |g(x) -
