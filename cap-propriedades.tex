@@ -94,83 +94,106 @@ serão usadas à exaustão em seções subsequentes.
 
 \begin{proposicao}
   \label{prop:gamma-dist-continua}
-  Para todo $s, t > 0$, $i \geq 1$ e $x \in \Nz$ vale que:
-  \begin{align*}
-    P(\Gamma(s) = t) = P(\Gamma(\sigma^x_i) = t) =
-    P(\Gamma(\sigma^x_i-) = t) = 0
-  \end{align*}
+  Para todo $t > 0$, $i \geq 1$ e $x \in \Nz$ vale que $\Gamma(t)$,
+  $\Gamma(\sigma^x_i)$ e $\Gamma(\sigma^x_i-)$ são variáveis
+  aleatórias contínuas.
 \end{proposicao}
 \begin{proof}
-  Para qualquer $x \in \Nz$ e $n \in \N$, temos que:
+
+  Primeiramente fixemos um $t > 0$ e mostraremos que $\Gamma(t)$ é uma
+  variável aleatória contínua.
+
+  Fixemos um boreliano $A$ arbitrário que tenha medida de Lebesgue
+  zero. Vamos mostrar que $P(\Gamma(t) \in A) = 0$, de onde seguirá,
+  através do Teorema de Radon-Nikodym, que $\Gamma(t)$ tem uma
+  distribuição contínua.
+
+
+  Para cada $n \in \Nz$, vale que:
   \begin{displaymath}
-    P\left(\sum_{i = 1}^n \gamma_x T_i^x = t\right) = 0,
+    P\left(\sum_{i = 1}^n \gamma_x T_i^x \in A \right) = 0,
   \end{displaymath}
   já que as $T_i^x$ são variáveis aleatórias contínuas e
   independentes.
 
   Dessa forma vale que:
   \begin{align*}
-    P\left(\sum_{i = 1}^{N^x(s)} \gamma_x T_i^x = t\right) 
+    P\left(\sum_{i = 1}^{N^x(t)} \gamma_x T_i^x \in A \right) 
     &= \sum_{n = 0}^{\infty}
-    P\left(\sum_{i = 1}^n \gamma_x T_i^x = t\right)
-    \frac{e^{-\lambda_x s} (\lambda_x s)^n}{n!} = 0\\
-    P\left(\sum_{i = 1}^{N^x(s)} \gamma_x T_i^x = 0\right) 
-    &= e^{-\lambda_x s}
+    P\left(\sum_{i = 1}^n \gamma_x T_i^x \in A \right)
+    \frac{e^{-\lambda_x t} (\lambda_x t)^n}{n!}\\
+    &= \ind\{ 0 \in A\} e^{-\lambda_x t} 
   \end{align*}
 
-  Assim se $\nu$ for a distribuição de $\sum_{x \geq 2} \sum_{i =
-    1}^{N^x(s)} \gamma_x T_i^x$, temos que:
+  Assim se denotarmos por $\nu$ a distribuição de $\sum_{x \geq 2}
+  \sum_{i = 1}^{N^x(s)} \gamma_x T_i^x$ e denotarmos por $A+s$ o
+  conjunto $A$ transladado por $s$, teremos que:
   \begin{align*}
-    P\left(\sum_{x \in \Nz}\sum_{i = 1}^{N^x(s)} \gamma_x T_i^x = t\right) 
-    &= \int \nu(dr) P\left(\sum_{i = 1}^{N^1(s)} \gamma_1 T_i^1 = t - r\right) 
-    = \nu\left( \{ t\} \right) e^{-\lambda_1 s}
+    P\left(\sum_{x \in \Nz}\sum_{i = 1}^{N^x(t)} \gamma_x T_i^x \in A  \right) 
+    &= \int \nu(d s) P\left(\sum_{i = 1}^{N^1(t)} \gamma_1 T_i^1 \in A - s\right).
   \end{align*}
+
+  Observemos que $0 \in A - s$ se e somente se $s \in A$, dessa forma
+  a expressão acima vale $\nu(A) e^{-\lambda_1 t}$.
 
   Fazendo indução, concluímos que para todo $n \in \Nz$, vale que:
   \begin{align*}
-    P\left(\sum_{x \in \Nz}\sum_{i = 1}^{N^x(s)} \gamma_x T_i^x = t\right) 
-    &= \exp\left\{ -s \sum_{x = 1}^n \lambda_x \right\}
-    P\left(\sum_{x > n} \sum_{i = 1}^{N^x(s)} \gamma_x T_i^x =
-      t\right) \\
-    &\leq \exp\left\{ -s \sum_{x = 1}^n \lambda_x \right\}
+    P\left(\sum_{x \in \Nz}\sum_{i = 1}^{N^x(t)} \gamma_x T_i^x \in A \right) 
+    &= \exp\left\{ -t \sum_{x = 1}^n \lambda_x \right\}
+    P\left(\sum_{x > n} \sum_{i = 1}^{N^x(t)} \gamma_x T_i^x \in A \right) \\
+    &\leq \exp\left\{ -t \sum_{x = 1}^n \lambda_x \right\}
   \end{align*}
 
   Como $\sum_{x \in \Nz} \lambda_x = \infty$, tomando valores de $n$
   cada vez maiores, concluímos que:
   \begin{align*}
-    P\left(\sum_{x \in \Nz}\sum_{i = 1}^{N^x(s)} \gamma_x T_i^x = t\right) 
+    P\left(\sum_{x \in \Nz}\sum_{i = 1}^{N^x(t)} \gamma_x T_i^x \in A \right) 
     &= 0
   \end{align*}
 
-  Agora, observando a definição de $\Gamma$, concluímos a primeira
+  Observando a definição de $\Gamma$, concluímos a primeira
   parte dessa proposição:
   \begin{displaymath}
-    P\left( \Gamma(s) = t \right) = 0.
+    P\left( \Gamma(t) \in A \right) = 0.
   \end{displaymath}
 
 
   Fixado $i \geq 1$ e $x \in \Nz$, se denotarmos por $g^x_i$ a
   densidade de uma distribuição gamma de parâmetros $\lambda_x$ e $i$,
-  que é a lei de $\sigma^x_i$, temos que:
+  que é a lei de $\sigma^x_i$, teremos que:
+
   \begin{align*}
-    P \left( \Gamma^y_c(\sigma^x_i) = t \right) &=
-    \int P\left( \left[ \gamma_y T_0 + \sum_{j = 1}^{i} \gamma_x
-    T_i^x + \sum_{z \neq x} \sum_{j = 1}^{N^z(s)} \gamma_z
-    T^z_j + c s\right]  = t \right)g^x_i(s) ds\\
-    P \left( \Gamma^y_c(\sigma^x_i-) = t \right) &=
-    \int P\left( \left[ \gamma_y T_0 + \sum_{j = 1}^{i-1} \gamma_x
-    T_i^x + \sum_{z \neq x} \sum_{j = 1}^{N^z(s)} \gamma_z
-    T^z_j + c s\right]  = t \right)g^x_i(s) ds\\
+    P \left(
+      \sum_{z \neq x} \sum_{j = 1}^{N^z(\sigma^x_i)} \gamma_z T^z_j
+      \in A
+    \right)
+    &= \int_0^\infty
+     P \left(
+      \sum_{z \neq x} \sum_{j = 1}^{N^z(s)} \gamma_z T^z_j
+      \in A
+    \right)
+    g_i^x (s) d s
   \end{align*}
 
-  Usando a parte anterior, temos que a probabilidade que estamos
-  integrando vale zero, de onde concluímos que:
- \begin{displaymath}
-    P \left( \Gamma^y_c(\sigma^x_i) = t \right) =
-    P \left( \Gamma^y_c(\sigma^x_i-) = t \right) =
-    0
-    \qedhere
-  \end{displaymath}
+  Usando argumentos análogos aos que usamos para provar que
+  $\Gamma(t)$ é uma variável contínua, concluímos que a probabilidade
+  que está dentro da integral vale zero.
+
+  Por construção, obtemos que:
+  \begin{align*}
+    \Gamma^y_c(\sigma^x_i)  &=
+     \gamma_y T_0 + \sum_{j = 1}^{i} \gamma_x
+    T_j^x + \sum_{z \neq x} \sum_{j = 1}^{N^z(s)} \gamma_z
+    T^z_j + c s\\
+    \Gamma^y_c(\sigma^x_i -)  &=
+     \gamma_y T_0 + \sum_{j = 1}^{i-1} \gamma_x
+    T_j^x + \sum_{z \neq x} \sum_{j = 1}^{N^z(s)} \gamma_z
+    T^z_j + c s.
+  \end{align*}
+
+  Dessa forma, tanto $\Gamma(\sigma^x_i)$ quanto
+  $\Gamma(\sigma^x_i-)$, são somas de variáveis aleatórias contínuas e
+  independentes, sendo portanto também contínuas.
 \end{proof}
 
 
