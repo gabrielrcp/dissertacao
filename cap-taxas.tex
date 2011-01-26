@@ -3,17 +3,17 @@
 \label{cap:taxas}
 
 Nesse capítulo nos concentraremos em problemas ligados às
-probabilidades de transição do Processo K. Primeiramente trataremos
-de problemas relacionados à continuidade das mesmas, para depois
+probabilidades de transição do Processo K. Primeiramente trataremos de
+problemas relacionados à continuidade das mesmas, para depois
 calcularmos suas derivadas na origem. Isso nos permitirá calcular a
-medida invariante do processo.  Por fim iremos exibir o gerador
+medida invariante do processo.  Por fim exibiremos o gerador
 infinitesimal no caso homogêneo e fecharemos o capítulo estudando a
 dimensão de Hausdorff do tempo em que o Processo K passa no infinito.
 
 
 %% ------------------------------------------------------------------------- %%
 
-\section{Continuidade}
+\section{Continuidade das probabilidas de transição}
 \label{sec:continuidade}
 
 Para deixar a nossa notação menos carregada, vamos introduzir a
@@ -175,7 +175,8 @@ com uma caracterização básica das mesmas.
   \eqref{eq:continuidade-infinito} existe e vale $1$.
 
 
-  Usando a Proposição \ref{prop:transicao-continua}, temos que:
+  Usando as proposições \ref{prop:transicao-mensuravel} e
+  \ref{prop:transicao-continua}, obteremos que:
   \begin{displaymath}
     p_{\infty\infty}(s) = \lim_{n \to \infty} p_{\infty \infty}(s+t_n) = \lim_{n \to
       \infty} \sum_{x \in \Nzb} p_{\infty x}(s) p_{x \infty} (t_n)
@@ -202,7 +203,7 @@ com uma caracterização básica das mesmas.
   Essa demonstração é uma adaptação direta do Lema \emph{3.15} de
   \cite{fontes:08}.
 
-  Para $m \in \Nzb$. Vamos definir:
+  Para $m \in \Nzb$  definimos:
   \begin{align*}
     \theta_m(t) := \int_0^t \ind \left\{ X^\infty_0(s) \geq m \right\} ds
   \end{align*}
@@ -266,8 +267,9 @@ com uma caracterização básica das mesmas.
 Nessa seção vamos calcular a matriz de taxas de transição do 
 processo K. Vamos definí-la pelo limite:
 \begin{displaymath}
-  Q = \lim_{t \searrow 0} \frac{P(t) - I}{t} 
-\end{displaymath}.
+  Q = \lim_{t \searrow 0} \frac{P(t) - I}{t}, 
+\end{displaymath}
+onde $I$ é a matriz identidade.
 
 Vamos mostrar que, para o caso $c > 0$, essa matriz vale:
 \begin{displaymath}
@@ -413,11 +415,8 @@ Enquanto que no caso $c=0$, teremos:
   \end{align*}
 
   Quando $s \to 0$, a probabilidade dentro da integral converge para
-  $P \left( \sum_{y \neq x} \sum_{i = 1}^{N_y (\sigma^x_1)} \gamma_y
-    T^y_i = 0 \right)$, que vale zero já que o conjunto das marcas dos
-  processos de Poisson é densa em $[0, \infty)$, portanto o segundo
-  termo de \eqref{erros_taxa_inf} também converge à zero.
-
+  zero pela Proposição \ref{prop:gamma-dist-continua}. Portanto o
+  segundo termo de \eqref{erros_taxa_inf} converge à zero.
 
   Agora notemos que, como $\Gamma^\infty$ é não decrescente e $\sigma^x_1
   < \sigma^x_i$ para $i \geq 2$, então $\Gamma^\infty(\sigma^x_1) \leq
@@ -440,7 +439,7 @@ Enquanto que no caso $c=0$, teremos:
   \begin{align*}
     \phi (u) := \E \left[ e^{-u \Gamma^\infty (\sigma^x_1-)}  \right] =
     \lambda_x \left( \lambda_x + uc + u \sum_{y \neq x}
-      \frac{\lambda_x \gamma_x}{1 + u\gamma_x}  \right)^{-1}
+      \frac{\lambda_x \gamma_x}{1 + u\gamma_x}  \right)^{-1}.
   \end{align*}
 
   Por enquanto vamos nos concentrar no caso $c > 0$. Para $u, v > 0$
@@ -501,19 +500,18 @@ Enquanto que no caso $c=0$, teremos:
     \liminf_{t \searrow 0} \frac{P ( \Gamma^\infty_0(\sigma^x_1-) \leq
       t)}{t} &\geq \liminf_{t \searrow 0} \frac{P (
       \Gamma^\infty_c(\sigma^x_1-) \leq t)}{t}
-    = \frac{\lambda_x}{c}
+    = \frac{\lambda_x}{c}.
   \end{align*}
 
   Tomando $c > 0$ cada vez menores, concluiremos que $\frac{P (
     \Gamma^\infty_0(\sigma^x_1-))}{t} \xrightarrow{t \searrow 0}
-  \infty$
+  \infty$.
 \end{proof}
 
 \begin{proposicao}
   \label{prop:taxa-inf-inf}
-  Vale que:
   \begin{displaymath}
-    \lim_{t \searrow 0} \frac{p_{\infty \infty}(t) - 1}{t} = -\infty
+    \lim_{t \searrow 0} \frac{p_{\infty \infty}(t) - 1}{t} = -\infty.
   \end{displaymath}
 \end{proposicao}
 \begin{proof}
@@ -525,7 +523,7 @@ Enquanto que no caso $c=0$, teremos:
     \label{eq:taxa-inf-inf}
     \frac{p_{\infty \infty} (t) - 1}{t} = - \sum_{x \in \Nz}
     \frac{p_{\infty x} (t)}{t} \leq - \sum_{x = 1}^n \frac{p_{\infty
-        x} (t)}{t}
+        x} (t)}{t}.
   \end{equation}
   
   Usando a Proposição \ref{prop:taxa-inf-x}, obtemos que a parte da
@@ -533,7 +531,7 @@ Enquanto que no caso $c=0$, teremos:
   quantidade essa que vai para $-\infty$ quando $n \to \infty$. Como a
   desigualdade \eqref{eq:taxa-inf-inf} vale para todo $n$, concluímos que:
   \begin{align*}
-    \lim_{t \searrow 0}\frac{p_{\infty \infty} (t) - 1}{t} &= - \infty
+    \lim_{t \searrow 0}\frac{p_{\infty \infty} (t) - 1}{t} &= - \infty.
   \end{align*}
 \end{proof}
 
@@ -543,7 +541,7 @@ Enquanto que no caso $c=0$, teremos:
   \begin{displaymath}
     \lim_{t \searrow 0} \frac{p_{x \infty}(t)}{t} = \begin{cases}
       \frac{1}{\gamma_x} & \textrm{ se } c > 0 \\
-      0 & \textrm{ se } c = 0 \\
+      0 & \textrm{ se } c = 0 . \\
     \end{cases}
   \end{displaymath}
 \end{proposicao}
@@ -557,15 +555,16 @@ Enquanto que no caso $c=0$, teremos:
     &= \frac{1}{t} \int_0^t p_{\infty \infty} (t-s)
     \frac{1}{\gamma_x}e^{-\frac{s}{\gamma_x}} ds\\
     &= \frac{e^{-t}}{\gamma_x} \frac{1}{t} \int_0^t p_{\infty \infty} (s)
-    e^{\frac{s}{\gamma_x}} ds\\
+    e^{\frac{s}{\gamma_x}} ds .\\
   \end{align*}
 
   A Proposição \ref{prop:continuidade} nos diz que $p_{\infty \infty}
   (t) \xrightarrow{t \searrow 0} 1$, de onde concluímos que:
-   \begin{align*}
+   \begin{displaymath}
     \frac{p_{x \infty}(t)}{t} \xrightarrow{t \searrow 0} 
-    \frac{1}{\gamma_x}
-  \end{align*}
+    \frac{1}{\gamma_x}.
+    \qedhere
+  \end{displaymath}
 \end{proof}
 
 %% ------------------------------------------------------------------------- %%
@@ -610,12 +609,11 @@ para todo $t > 0$ e toda $f: \Nzb \to \R$ contínua.
   Como a quantidade dentro da esperança é limitada por $2 \Vert f
   \Vert$, então, se mostrarmos que ela vai quase certamente à zero,
   seguirá pelo Teorema da Convergência Dominada que a esperança também
-  irá à zero.
+  irá a zero.
 
-  Como $\gamma_y \to 0$, então $\gamma_y T_0 \to 0$ \qc. Assim tomando
-  $y$ suficientemente grande teremos que $\gamma_y T_0 < t$. Portanto
+  Como $\gamma_y \to 0$, então $\gamma_y T_0 \to 0$ \qc. Assim, tomando
+  $y$ suficientemente grande, teremos que $\gamma_y T_0 < t$. Portanto
   usando a Proposição \ref{prop:reinicia-infinito}, teremos que:
-
   \begin{displaymath}
     f(X^\infty(t)) - f(X^y(t)) = 
     f(X^\infty(t)) - f(X^\infty(t-\gamma_y T_0)).
@@ -623,12 +621,13 @@ para todo $t > 0$ e toda $f: \Nzb \to \R$ contínua.
 
   O Corolário \ref{cor:continuidades-processo} nos garante que $t$ é
   quase certamente um ponto de continuidade do processo, assim
-  $X^\infty(t-\gamma_y T_0) \to X^\infty(t)$ \qc e, como $f$ é
-  contínua, concluímos que a quantidade acima converge à zero \qc.
+  $X^\infty(t-\gamma_y T_0) \xrightarrow{y\to\infty} X^\infty(t)$ \qc
+  e, como $f$ é contínua, concluímos que a quantidade acima converge a
+  zero \qc.
 
 
   Agora vamos mostrar que se $\gamma_x$ não converge para zero quando
-  $x \to \infty$, então o Processo não é de Feller.
+  $x \to \infty$, então o processo não é de Feller.
 
   Primeiro vamos supor que exista uma sequência crescente $(y_n)$ tal
   que $\gamma_{y_n} \to \infty$ quando $n \to \infty$.
@@ -666,15 +665,15 @@ para todo $t > 0$ e toda $f: \Nzb \to \R$ contínua.
   \begin{align*}
      p_{\infty y}(t)
      &= \int_0^t \frac{1}{a} e^{-\frac{s}{a}} p_{\infty y}(t-s) d s\\
-     &= \frac{1}{a} e^{-\frac{t}{a}} \int_0^t  e^{\frac{s}{a}} p_{\infty y}(s) d s
+     &= \frac{1}{a} e^{-\frac{t}{a}} \int_0^t  e^{\frac{s}{a}}
+     p_{\infty y}(s) d s .
   \end{align*}
 
   Como  $p_{\infty y}(t) \to 0$ quando $t \searrow 0$, concluiremos que:
   \begin{displaymath}
-    \frac{p_{\infty y}(t)}{t} \xrightarrow{t \searrow 0} 0.
+    \frac{p_{\infty y}(t)}{t} \xrightarrow{t \searrow 0} 0,
   \end{displaymath}
-
-  O que contradiz a Proposição \ref{prop:taxa-inf-x}.
+  o que contradiz a Proposição \ref{prop:taxa-inf-x}.
 \end{proof}
 
 %% ------------------------------------------------------------------------- %%
@@ -687,7 +686,7 @@ probabilidade é uma medida invariante para o Processo K.
 
 \begin{equation}
   \label{eq:invariante}
-  \pi(x) = \begin{cases}
+  \pi(x) := \begin{cases}
     \frac{\lambda_x \gamma_x}{c + \sum_{y \in \Nz} \lambda_y \gamma_y}
     & \textrm{ se } x \in \Nz \\
     \frac{c}{c + \sum_{y \in \Nz} \lambda_y \gamma_y}
@@ -704,7 +703,7 @@ probabilidade é uma medida invariante para o Processo K.
   tempo discreto $(Y^{y, h}_n)_{n \geq 0}$ dada por $Y^{y, h}_n =
   X^y(n h)$.
 
-  Fixado um estado $y \in \Nz$, definamos $M = \min_{i \geq 1} \{
+  Fixado um estado $y \in \Nz$, definamos $M = \min \{ i \geq 1:
   \gamma_y T_i^y > h \}$. $M$ é uma variável aleatória com
   distribuição geométrica com probabilidade de sucesso dada por
   $e^{-\frac{h}{\gamma_y}}$. Observemos que $X_t^y = y$ para todo $t
@@ -892,15 +891,15 @@ probabilidade é uma medida invariante para o Processo K.
 
 
   Cada termo dessa soma pode ser dominado por $\pi_0(y)$ se $y \neq
-  \infty$ e por $1$ se $y = \infty$; assim tomando limite $c\searrow0$
-  e usando o Teorema da Convergência Dominada, teremos que:
-
+  \infty$ e por $1$ se $y = \infty$; assim tomando o limite
+  $c\searrow0$ e usando o Teorema da Convergência Dominada, teremos
+  que:
   \begin{align*}
     \pi_0(x) &= \sum_{y \in \Nzb} \pi_0 (y) P(X^y_0 (t) = x).\\
   \end{align*}
 
-  De onde concluímos que $\pi_0$ é uma medida invariante para o o
-  processo K no caso $c = 0$.
+  De onde concluímos que $\pi_0$ é uma medida invariante para o
+  Processo K no caso $c = 0$.
 \end{proof}
 
 
@@ -1098,7 +1097,7 @@ valor.
     &= \sum_{x > 1} \bar{h}(x) \left[
       P\left( X^\infty(t) = x \text{ pela } 1^a \text{ vez} \right) - 
       P\left( X^\infty(t) = 1 \text{ pela } 1^a \text{ vez} \right)
-    \right]
+    \right].
   \end{align}
   
 
@@ -1150,7 +1149,7 @@ valor.
 
   Para dominar \eqref{eq:gerador-inf-visita-1-antes}, note que
   $\Gamma^{<1, x>}(\sigma_1^x)$ domina estocasticamente $\Gamma^{<1,
-    2>}(\sigma_1^2)$, dessa forma:
+    2>}(\sigma_1^2)$. Dessa forma:
   \begin{align*}
     \frac{1}{t} P\left(
       X^\infty(t) = x \text{ pela } 1^a \text{ vez},
@@ -1163,9 +1162,9 @@ valor.
     &\leq \frac{P(\Gamma^{<1, 2>}(\sigma^2_1) \leq t)}{\gamma_1}.
   \end{align*}
 
-  Essa última quantidade não depende de $x$ e vai à zero quando $t
+  Essa última quantidade não depende de $x$ e vai a zero quando $t
   \searrow 0$. Dessa forma concluímos que
-  \eqref{eq:gerador-inf-visita-1-antes} converge à zero quando $t
+  \eqref{eq:gerador-inf-visita-1-antes} converge a zero quando $t
   \searrow 0$.    
 
   Para controlar \eqref{eq:gerador-inf-visita-x-antes}, notemos que se
@@ -1263,8 +1262,8 @@ valor.
   \end{align*}
 
   O segundo termo dessa soma vale zero já que $F_2(s) \to 0$ quando $s
-  \searrow 0$ e a soma é finita. Resta calcular o primeiro termo. Para
-  isso vamos definir:
+  \searrow 0$ e a soma dentro da integral é finita. Resta calcular o
+  primeiro termo. Para isso vamos definir:
   \begin{align*}
     \Phi(t) &:= \int_0^t \frac{F_2(s)}{2} \left[
       2 + \sum_{x > 2} e^{-\frac{t-s}{\gamma_x}}
@@ -1339,7 +1338,7 @@ valor.
     \label{eq:gerador-erro}
     \lim_{t \searrow 0} \frac{1}{t} \sum_{x\in\Nz} |h(x) - h(\infty)|
     P\left( X^\infty \text{passou mais que 1 vez por x até o
-      instante } t \right) = 0
+      instante } t \right) = 0.
   \end{equation}
 \end{lema}
 \begin{proof}
@@ -1378,7 +1377,8 @@ valor.
     \frac{1}{t} \sum_{x\in\Nz} f(x) P\left( X^\infty(t) = x \text{ não
         pela primeira vez}\right) 
     &\leq \mathrm{cte} \: \left( \sum_{y \in \Nz} \frac{\gamma_y}{t +
-        \gamma_y}  \right)^{-2} \sum_{x \in \Nz} f(x) \frac{1 - e^{-t/\gamma_x}}{t}
+        \gamma_y}  \right)^{-2} \sum_{x \in \Nz} f(x) \frac{1 -
+      e^{-t/\gamma_x}}{t} .
   \end{align*}
 
   Se denotarmos por $A_t = \{ x \in \Nz: \gamma_x > t \}$,
@@ -1390,10 +1390,10 @@ valor.
     &= \left( \sum_{y \in \Nz} \frac{\gamma_y}{t + \gamma_y} \right)^{-2}
     \sum_{x \in A_t} f(x) \frac{1 - e^{-t/\gamma_x}}{t}\\
     &+ \left( \sum_{y \in \Nz} \frac{\gamma_y}{t + \gamma_y} \right)^{-2}
-    \sum_{x \not\in A_t} f(x) \frac{1 - e^{-t/\gamma_x}}{t} \notag
+    \sum_{x \not\in A_t} f(x) \frac{1 - e^{-t/\gamma_x}}{t} .\notag
   \end{align}
 
-  Vamos mostrar que os dois termos convergem à zero quando $t
+  Vamos mostrar que os dois termos convergem a zero quando $t
   \searrow 0$.
 
   Para o primeiro termo notemos que, para cada $t > 0$ fixado, $A_t$ é
@@ -1419,7 +1419,7 @@ valor.
   \end{align*}
 
   Com isso concluímos que o primeiro termo de
-  \eqref{eq:erro-gerador-partes} converge à zero quando $t \searrow
+  \eqref{eq:erro-gerador-partes} converge a zero quando $t \searrow
   0$.
 
   Vamos tratar agora o segundo. Como $\frac{f(x)}{\gamma_x}$ converge,
@@ -1453,7 +1453,8 @@ valor.
     \left(
       \frac{1}{2} \sum_{y \not\in A_t} \frac{\gamma_y}{t}
     \right)^{-2}
-    \sum_{x \not\in A_t} \frac{\gamma_x}{t} \xrightarrow{t \searrow 0} 0.
+    \sum_{x \not\in A_t} \frac{\gamma_x}{t} \xrightarrow{t \searrow 0}
+    0.\qedhere
   \end{displaymath}
 \end{proof}
 
@@ -1592,7 +1593,7 @@ Usando a Proposição \ref{prop:naocontinuidade}, podemos mostrar que a
 medida de Lebesgue do tempo em que o processo passa no infinito vale
 zero quase certamente no caso $c = 0$.
 
-Nessa seção expandiremos um pouco o caso $c = 0$, especificamente
+Nessa seção expandiremos um pouco o caso $c = 0$. Especificamente
 apresentaremos uma maneira de calcular a dimensão de Hausdorff do
 tempo em que o processo passa no infinito.  Para o restante dessa
 seção, consideraremos sempre que $c = 0$.
@@ -1642,7 +1643,7 @@ transladado.
 \end{proof}
 
 \begin{proposicao}
-  Agora vamos denotar por $\RRb$ o fecho de $\RR$. Temos que:
+  Se denotarmos por $\RRb$ o fecho de $\RR$, Teremos que:
   \begin{displaymath}
     \RRb = \RR \cup \{ \Gamma(s-) : s > 0 \}.
   \end{displaymath}
@@ -1662,7 +1663,7 @@ transladado.
   existe $s_n$ tal que $\Gamma(s_n) = t_n$.
 
   Notemos que $(s_n)$ é limitada, assim existe uma subsequência de
-  $(s_n)$ que seja convergente. Assim sem perda de generalidade, vamos
+  $(s_n)$ que seja convergente. Assim, sem perda de generalidade, vamos
   supor que $(s_n)$ seja convergente e denotar seu limite por $s$.
 
   Como $s_n \to s$, $\Gamma(s_n) \to t$ e $\Gamma$ é càdlàg, então
@@ -1745,9 +1746,8 @@ Quando diminuímos $\epsilon$, diminuímos o número de coberturas
 possíveis, assim o ínfimo aumenta. Portanto o limite de
 \eqref{eq:dim-hausdorff-eps} quando $\epsilon \searrow 0$ existe e
 assim faz sentido definir:
-
 \begin{displaymath}
-  m^\rho(A) = \lim_{\epsilon \searrow 0} m^\rho_\epsilon (A)
+  m^\rho(A) = \lim_{\epsilon \searrow 0} m^\rho_\epsilon (A).
 \end{displaymath}
 
 É possível mostrar que $m^\rho(\bullet)$ é uma medida sobre os
@@ -1763,7 +1763,7 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
   Definimos a dimensão de Hausdorff de um boreliano $A$ como:
   \begin{displaymath}
     \dim_H(A) = \sup \left\{ \rho > 0 : m^\rho(A) < \infty \right\}
-    = \inf \left\{ \rho > 0: m^\rho(A) = 0 \right\}
+    = \inf \left\{ \rho > 0: m^\rho(A) = 0 \right\}.
   \end{displaymath}
 \end{definicao}
 
@@ -1774,7 +1774,7 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
     \label{eq:dim-hausdorff}
     \dim_H(\RR^\infty \cap [0, t]) = 
     \dim_H(\RRb^\infty \cap [0, t]) =
-    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}
+    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}.
   \end{equation}
 \end{teorema}
 \begin{proof}
@@ -1790,7 +1790,8 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
   $\delta>0$ e um $n_0 \in \Nz$ tal que $\gamma_x \leq x^{-(1+\delta)}$
   para todo $x > n_0$, vai valer que:
   \begin{equation}
-    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}  \leq \frac{1}{1+\delta}
+    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}  \leq
+    \frac{1}{1+\delta} .
   \end{equation}
 \end{proposicao}
 
@@ -1831,7 +1832,7 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
     \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} &\leq
     \frac{1}{1+\delta} + \liminf_{u \to \infty} 
     \frac{\log{C^\prime}}{\log u}\\
-    &= \frac{1}{1+\delta}.
+    &= \frac{1}{1+\delta} .
     \qedhere
   \end{align*}
 \end{proof}
@@ -1842,7 +1843,8 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
   $\delta>0$ e um $n_0 \in \Nz$ tal que $\gamma_x \geq x^{-(1+\delta)}$
   para todo $x > n_0$, vai valer que:
   \begin{equation}
-    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}  \geq \frac{1}{1+\delta}
+    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}  \geq
+    \frac{1}{1+\delta} .
   \end{equation}
 \end{proposicao}
 
@@ -1879,10 +1881,9 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
   Como essa série é convergente, ao fazer $u \to \infty$ o segundo
   termo desaparecerá, enquanto que o primeiro irá convergir para
   $\frac{1}{1+\delta}$, de onde concluímos que:
-
   \begin{displaymath}
     \liminf_{u \to \infty} \frac{\log \Phi (u)}{\log u} \geq
-    \frac{1}{1+\delta}
+    \frac{1}{1+\delta} .
     \qedhere
   \end{displaymath}
 \end{proof}
@@ -1893,11 +1894,12 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
   \lambda_x < \infty$ e que existam um $\delta > 0$ e um $n_0 \in \Nz$
   tal que $\gamma_x = x^{-(1+\delta)}$ para todo $x > n_0$, vai valer que:
   \begin{displaymath}
-    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} = \frac{1}{1+\delta}
+    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} =
+    \frac{1}{1+\delta} .
   \end{displaymath}
 \end{corolario}
 \begin{proof}
-  Esse corolário é evidente ao observar as Proposições
+  Esse corolário é evidente ao observar as proposições
   \ref{prop:dominar-dim-haus-sup} e \ref{prop:dominar-dim-haus-inf}.
 \end{proof}
 

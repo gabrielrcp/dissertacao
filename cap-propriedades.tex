@@ -27,10 +27,10 @@ serão usadas à exaustão em seções subsequentes.
   então o conjunto das marcas dos processos de Poisson é \qc densa em
   $\R^+$. Em outras palavras, quase certamente, para todo $0 \leq s <
   t$, teremos que existe um $x \in \Nz$ e $i \geq 1$ tal que $s <
-  \sigma^x_i < t$. Dessa forma usando a definição de $\Gamma$, temos
+  \sigma^x_i < t$. Dessa forma, usando a definição de $\Gamma$, temos
   que:
   \begin{displaymath}
-    \Gamma(t) - \Gamma(s) \geq \gamma_x T^x_i > 0
+    \Gamma(t) - \Gamma(s) \geq \gamma_x T^x_i > 0.
     \qedhere
   \end{displaymath}
 \end{proof}
@@ -58,14 +58,14 @@ serão usadas à exaustão em seções subsequentes.
 
 \begin{proposicao}
   \label{prop:gamma-cadlag}
-  A função $\Gamma$ é quase certamente càdlàg. Isso é, é contínua à
+  A função $\Gamma$ é quase certamente càdlàg, isso é, contínua à
   direita e tem limites à esquerda.
 \end{proposicao}
 \begin{proof}
 
   Fixemos uma realização de $\Gamma$ onde ela seja crescente e
   limitada em compactos. Vamos pedir ainda que cada processo de
-  Poisson $N_x$, $x \in \Nz$ seja localmente finito. Tais realizações
+  Poisson $N_x$, $x \in \Nz$, seja localmente finito. Tais realizações
   têm probabilidade $1$.
 
   O fato de $\Gamma$ ser crescente e limitada em compactos já
@@ -85,9 +85,8 @@ serão usadas à exaustão em seções subsequentes.
   série em $x$ converge à zero. Encarando essa soma como uma
   integral sobre uma medida de contagem e usando o Teorema da
   Convergência Monótona, concluímos que:
-
   \begin{displaymath}
-    \lim_{s \searrow 0} \Gamma(t+s) - \Gamma(t) = 0
+    \lim_{s \searrow 0} \Gamma(t+s) - \Gamma(t) = 0.
     \qedhere
   \end{displaymath}
 \end{proof}
@@ -136,19 +135,19 @@ serão usadas à exaustão em seções subsequentes.
   Observemos que $0 \in A - s$ se e somente se $s \in A$, dessa forma
   a expressão acima vale $\nu(A) e^{-\lambda_1 t}$.
 
-  Fazendo indução, concluímos que para todo $n \in \Nz$, vale que:
+  Utilizando indução, concluímos que para todo $n \in \Nz$, vale que:
   \begin{align*}
     P\left(\sum_{x \in \Nz}\sum_{i = 1}^{N^x(t)} \gamma_x T_i^x \in A \right) 
     &= \exp\left\{ -t \sum_{x = 1}^n \lambda_x \right\}
     P\left(\sum_{x > n} \sum_{i = 1}^{N^x(t)} \gamma_x T_i^x \in A \right) \\
-    &\leq \exp\left\{ -t \sum_{x = 1}^n \lambda_x \right\}
+    &\leq \exp\left\{ -t \sum_{x = 1}^n \lambda_x \right\}.
   \end{align*}
 
   Como $\sum_{x \in \Nz} \lambda_x = \infty$, tomando valores de $n$
   cada vez maiores, concluímos que:
   \begin{align*}
     P\left(\sum_{x \in \Nz}\sum_{i = 1}^{N^x(t)} \gamma_x T_i^x \in A \right) 
-    &= 0
+    &= 0.
   \end{align*}
 
   Observando a definição de $\Gamma$, concluímos a primeira
@@ -161,7 +160,6 @@ serão usadas à exaustão em seções subsequentes.
   Fixado $i \geq 1$ e $x \in \Nz$, se denotarmos por $g^x_i$ a
   densidade de uma distribuição gamma de parâmetros $\lambda_x$ e $i$,
   que é a lei de $\sigma^x_i$, teremos que:
-
   \begin{align*}
     P \left(
       \sum_{z \neq x} \sum_{j = 1}^{N^z(\sigma^x_i)} \gamma_z T^z_j
@@ -173,7 +171,7 @@ serão usadas à exaustão em seções subsequentes.
       \sum_{z \neq x} \sum_{j = 1}^{N^z(s)} \gamma_z T^z_j
       \in A - c s
     \right)
-    g_i^x (s) d s
+    g_i^x (s) d s.
   \end{align*}
 
   Usando argumentos análogos aos que usamos para provar que
@@ -186,7 +184,7 @@ serão usadas à exaustão em seções subsequentes.
     \Gamma^y_c(\sigma^x_i)  &=
      \gamma_y T_0 + \sum_{j = 1}^{i} \gamma_x
     T_j^x + \sum_{z \neq x} \sum_{j = 1}^{N^z(\sigma^x_i)} \gamma_z
-    T^z_j + c \sigma^x_i\\
+    T^z_j + c \sigma^x_i,\\
     \Gamma^y_c(\sigma^x_i -)  &=
      \gamma_y T_0 + \sum_{j = 1}^{i-1} \gamma_x
     T_j^x + \sum_{z \neq x} \sum_{j = 1}^{N^z(\sigma_i^x)} \gamma_z
@@ -233,15 +231,15 @@ serão usadas à exaustão em seções subsequentes.
   T^y_0$, e depois continuaremos como uma cópia do processo iniciado
   no $\infty$.
 
-  Fixemos uma realização do processo e fixe $T > 0$ e $\epsilon > 0$
+  Fixemos uma realização do processo, $T > 0$ e $\epsilon > 0$
   arbitrários. Seguindo \cite{billingsley:99}, vamos mostrar que
   existem $0 = t_0 < t_1 < \ldots < t_N = T$ tais que $w[t_{i-1}, t_i)
-  < \epsilon$, para todo $i = 1, \ldots, N$. Onde $w(A) = \sup_{t, s
+  < \epsilon$ para todo $i = 1, \ldots, N$. Onde $w(A) = \sup_{t, s
     \in A} d(X^\infty(t), X^\infty(s))$ para $A \subseteq
   \R$. Lembrando que estamos trabalhando com a métrica
   \eqref{eq:metrica} sobre $\Nzb$.
 
-  Tomemos um $m \in \Nz$ tal que o $\diam\{x \in \Nzb: x > m \} =
+  Tomemos um $m \in \Nz$ tal que $\diam\{x \in \Nzb: x > m \} =
   \frac{1}{m+1} < \epsilon$, onde $\diam(A)$ é o diâmetro do conjunto
   $A$.
 
@@ -326,7 +324,7 @@ O processo truncado em $n \in \Nz$, com estado inicial $y \in \{1,
 \end{displaymath}
 
 \begin{proposicao}
-  O processo $X^{(n)}$ é Càdlàd e Markoviano.
+  O processo $X^{(n)}$ é Càdlàg e Markoviano.
 \end{proposicao}
 \begin{proof}
   Quando truncamos o processo K, ele se comporta de maneira análoga ao
@@ -354,23 +352,23 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
   \cite{fontes:08}.
 
   Para provar a proposição, vamos mostrar que o item (c) da Proposição
-  5.3 do Capítulo 3 de \cite{ethier:86} vale quase certamente. Assim
-  fixemos uma realização qualquer do processo.
+  5.3 do Capítulo 3 de \cite{ethier:86} vale quase certamente.
 
   Como o processo sempre se inicia no $\infty$, não vamos mais
   carregar esse índice na notação.
 
-  Fixemos um $T > 0$. Para cada natural $m$, considere $\delta_m :=
-  \diam\{ x \in \Nzb: x > m \} = \frac{1}{m+1}$. Tome ainda $0 = S_0^m
-  < S_1^m < S_2^m < \ldots $ uma ordenação de $\{0\}\cup\{ \sigma^x_i
-  : x \leq m, i \geq 1\}$. Considere ainda, para cada $n > m$:
+  Fixemos uma realização qualquer do processo e um $T >
+  0$. Para cada natural $m$, considere $\delta_m := \diam\{ x \in
+  \Nzb: x > m \} = \frac{1}{m+1}$. Tome ainda $0 = S_0^m < S_1^m <
+  S_2^m < \ldots $ uma ordenação de $\{0\}\cup\{ \sigma^x_i : x \leq
+  m, i \geq 1\}$. Considere ainda, para cada $n > m$:
   \begin{displaymath}
     L^m_n := \min \left\{ i \geq 1: \Gamma^{(n)}(S^m_i) \geq T \right\}.
   \end{displaymath}
 
-  O conjunto $\{\sigma_i^x: x > m, i\geq 1\}$ é denso, assim para $n$
-  suficientemente grande \mbox{$\Gamma^{(n)}(S^m_{i+1}-) >
-    \Gamma^{(n)}(S^m_i)$} para todo $i < L^m_n$.
+  O conjunto $\{\sigma_i^x: x > m, i\geq 1\}$ é denso; assim, para $n$
+  suficientemente grande, $\Gamma^{(n)}(S^m_{i+1}-) >
+  \Gamma^{(n)}(S^m_i)$ para todo $i < L^m_n$.
 
   Para esses valores de $n$, definimos $\lambda_n^m: [0, \infty) \to
   \R^+$ da seguinte forma:
@@ -409,7 +407,7 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
     \max_{0 \leq i \leq L_n^m} \{ \Gamma(S_i^m) -
     \Gamma^{(n)}(S_i^m)\}.
   \end{displaymath}
-  Essa quantidade converge quase certamente à zero se mantivermos o
+  Essa quantidade converge quase certamente a zero se mantivermos o
   $m$ fixo e jogarmos o $n$ para infinito. Assim para cada $m$ existe
   um $n_m$ tal que para $n \geq n_m$ vale que:
   \begin{displaymath}
@@ -421,21 +419,22 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
   \begin{displaymath}
     \sup_{0 \leq t \leq T} |\lambda_n^{m_n}(t) - t| < \delta_{m_n}.
   \end{displaymath}
+
   Ainda como, para cada $m$ fixado, $n_m$ é finito, vale que $m_n$ vai
   ao infinito quando $n \to \infty$.
   
   Por construção, $t \in [\Gamma^{(n)}(S_{i}^m-),
   \Gamma^{(n)}(S_{i}^m))$ se e somente se $\lambda_n^m(t) \in
-  [\Gamma(S_{i}^m-), \Gamma(S_{i}^m))$, assim para cada $x \in \{1,
-  \ldots, m\}$ temos que $X(\lambda_n^m(t)) = x$ se e somente se
+  [\Gamma(S_{i}^m-), \Gamma(S_{i}^m))$. Assim, para cada $x \in \{1,
+  \ldots, m\}$, temos que $X(\lambda_n^m(t)) = x$ se e somente se
   $X^{(n)}(t) = x$. De onde concluímos que:
   \begin{displaymath}
     \sup_{0 \leq t \leq T} d\left(X(\lambda_n^m(t)), X^{(n)} (t)\right)
-    \leq \delta_m
+    \leq \delta_m.
   \end{displaymath}
 
-  Assim tomando $\tilde{\lambda}_n = \lambda_n^{m_n}$, concluímos que
-  quase certamente:
+  Tomando $\tilde{\lambda}_n = \lambda_n^{m_n}$, concluímos que quase
+  certamente:
   \begin{align*}
     \sup_{0 \leq t \leq T} |\tilde{\lambda}_n(t) - t|
     &\xrightarrow{n\to\infty} 0 \\
@@ -451,11 +450,11 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
   processo, existe uma sequência de funções $\lambda^y_n: [0, \infty) \to
   [0, \infty)$ contínuas  e bijetoras tais que:
   \begin{gather}
+    \lambda^y_n(t) \geq t \notag\\
     \label{eq:convergencia-truncado-uniforme}
-    \lambda^y_n(t) \geq t \\
     \sup_{t \in [0, T]} |\lambda^y_n(t) - t| \leq
     \sup_{t \in [0, T]} |\lambda^\infty_n(t) - t|
-    \xrightarrow{n \to \infty} 0 \notag\\
+    \xrightarrow{n \to \infty} 0\\
     \sup_{0 \leq t \leq T} d(X^y(\lambda_n^y(t)), X^{y, (n)}(t)) \leq
     \sup_{0 \leq t \leq T} d(X^\infty(\lambda_n(t)), X^{\infty, (n)}(t))
     \xrightarrow{n\to\infty} 0. \notag
@@ -480,15 +479,15 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
   \begin{displaymath}
     \lambda_n^y(t) = \begin{cases}
       t & \textrm{ se } t < \gamma_y T_0\\
-      \gamma_yT_0 + \lambda_n(t - \gamma_y T_0) & \textrm{ c.c.}
+      \gamma_yT_0 + \lambda_n(t - \gamma_y T_0) & \textrm{ c.c.} .
     \end{cases}
   \end{displaymath}
 
 
-  Pela Proposição \ref{prop:reinicia-infinito}, depois de $\gamma_y
-  T_0$, temos que o processo iniciado em $y$ será uma cópia do
-  processo iniciado no $\infty$, e como antes disso temos
-  $\lambda^y_n(t) = t$ e $X^y(t) = y = X^{y, (n)}(t)$, então concluímos
+  Sabemos pela Proposição \ref{prop:reinicia-infinito} que o processo
+  iniciado em um $y \in \Nz$ permanece em $y$ até o instante $\gamma_y
+  T_0$. Depois disso ele será uma cópia do processo iniciado no
+  $\infty$. Dessa forma forma concluímos
   \eqref{eq:convergencia-truncado-uniforme}.
 \end{proof}
 
@@ -518,9 +517,9 @@ $\infty$. Mostraremos isso com detalhes na Seção
 
 Vamos contornar esse problema usando o fato que esses estados onde
 $\gamma_y$ é grande não são de fato visitados. Essa ideia será
-formalizada pela Proposição \ref{prop:gamma-somavel}. Com essa
-proposição mostraremos que nosso processo tem propriedades muito
-parecidas com a de um processo de Feller.
+formalizada pela Proposição \ref{prop:gamma-somavel}. Com isso
+mostraremos que nosso processo tem propriedades muito parecidas com as
+de um processo de Feller.
 
 \begin{proposicao}
   \label{prop:gamma-somavel}
@@ -557,15 +556,15 @@ parecidas com a de um processo de Feller.
   $P(\sum_{x \in V} \gamma_x T^x_1 < \infty) = 1$. Fixado um
   $V$ desses, teremos que $\sum_{x \in V}\gamma_x < \infty$, já que
   uma soma de variáveis aleatórias exponenciais independentes é finita
-  \qc se e somente se as a soma de suas médias convergirem.
+  \qc se e somente se a soma de suas médias convergir.
 
   Com isso concluímos que para $\nu$ quase todo $V$ vale que $\sum_{x
     \in V}\gamma_x < \infty$, ou seja, $\sum_{x \in
     V^\prime_t}\gamma_x < \infty$ \qc.
 
-  Agora fixemos uma sequência $(t_n)$, com $t_n\nearrow \infty$, teremos
-  que com probabilidade $1$, $\sum_{x \in V^\prime_{t_n}}\gamma_x <
-  \infty$ para todo $n$.
+  Agora fixemos uma sequência $(t_n)$, com $t_n\nearrow
+  \infty$. Teremos que, com probabilidade $1$, $\sum_{x \in
+    V^\prime_{t_n}}\gamma_x < \infty$ para todo $n$.
 
   Notemos que $V^\prime_t \subseteq V^\prime_s$ sempre que $t \leq
   s$. Para qualquer $t > 0$, existe um $n$ tal que $t_n > t$, e
@@ -576,7 +575,7 @@ parecidas com a de um processo de Feller.
   \end{displaymath}
 
   Voltando a trabalhar com $V_t$, notemos que se $s < t$, então $V_s
-  \subseteq V_t$, observemos ainda que, por construção, $V^\prime_t =
+  \subseteq V_t$. Observemos ainda que, por construção, $V^\prime_t =
   V_{\Gamma(t)}$.
 
   Agora fixemos uma realização do processo, onde $\Gamma(t) \to
@@ -672,7 +671,7 @@ parecidas com a de um processo de Feller.
 \end{teorema}
 
 \begin{proof}
-  Fixado um $m \geq 1$, $t_1 < t_2 < \ldots < t_{m+1}$ e $f_1, \ldots,
+  Fixamos $m \geq 1$, $t_1 < t_2 < \ldots < t_{m+1}$ e $f_1, \ldots,
   f_{m+1} : \Nzb \to \R$ funções contínuas.
 
   Como $X^{(n)}$ é Markoviano, se denotarmos por $\Psi^n$ o semigrupo
@@ -700,7 +699,7 @@ parecidas com a de um processo de Feller.
   f_i(X(t_i))$ \qc já que $f_i$ é contínua, $i = 1, \ldots, m+1$.
 
   Temos ainda que $f_1, \ldots f_{m+1}$ são limitadas porque são
-  funções contínuas num espaço compacto. Assim usando o Teorema da
+  funções contínuas num espaço compacto. Assim ,usando o Teorema da
   Convergência Dominada, teremos que a parte da esquerda de
   \eqref{eq:markov-truncado} converge para:
   \begin{displaymath}
@@ -709,7 +708,7 @@ parecidas com a de um processo de Feller.
       \ldots
       f_{m}(X(t_{m})) 
       f_{m+1}(X(t_{m+1})) 
-    \right]
+    \right].
   \end{displaymath}
 
   Agora vamos estimar a parte da direita por:
@@ -720,7 +719,7 @@ parecidas com a de um processo de Feller.
       \ldots
       f_{m}(X^{(n)}(t_{m})) 
       \Psi_{t_{m+1} - t_{m}} f_{m+1} (X^{(n)}(t_{m})) 
-    \right] + \epsilon_n
+    \right] + \epsilon_n.
   \end{equation}
 
   Usando a Proposição \ref{prop:semigrupo-quase-continuo}, temos que a
@@ -766,7 +765,7 @@ parecidas com a de um processo de Feller.
   \ref{prop:convergencia-semigrupo} é satisfeita. Portanto a
   quantidade acima vai à zero \qc.
 
-Dessa forma podemos concluir que:
+  Dessa forma podemos concluir que:
   \begin{displaymath}
     \E \left[
       f_{1}(X(t_{1})) 
@@ -803,9 +802,10 @@ Dessa forma podemos concluir que:
 
 \begin{proof}
 
-  Primeiro mostremos que cada ``termo'' de \eqref{eq:convergencia-semigrupo}
-  converge para zero, ou seja, mostremos que $\Psi^n_t f (y) \to
-  \Psi_t f(y)$ quando $n \to \infty$ para qualquer $y \in K$ fixado.
+  Mostremos primeiramente que cada ``termo'' de
+  \eqref{eq:convergencia-semigrupo} converge para zero, ou seja,
+  mostremos que $\Psi^n_t f (y) \to \Psi_t f(y)$ quando $n \to \infty$
+  para qualquer $y \in K$ fixado.
 
   \begin{align}
     \label{eq:semigrupo-convergencia-pontual}
@@ -839,7 +839,7 @@ Dessa forma podemos concluir que:
         f(X^y(\lambda_n^y(t))) \right]
     \right\rvert \notag \\
     &+ \sup_{y\in K}\left\lvert \E \left[f(X^y(\lambda_n^y(t))) -
-        f(X^y(t)) \right] \right\rvert \notag
+        f(X^y(t)) \right] \right\rvert. \notag
   \end{align}
 
   Vamos tratar os dois termos dessa soma separadamente.
@@ -947,7 +947,7 @@ Dessa forma podemos concluir que:
      |\lambda_n^y(t) - t | + |s| \leq
      \sup_{r \in [0, T]} |\lambda_n^\infty(r) - r | + |s|
      < \epsilon^{\prime\prime}\\
-    |t - s - t |  = |s| < \epsilon^{\prime\prime}
+    |t - s - t |  = |s| < \epsilon^{\prime\prime}.
   \end{gather*}
   
   Portanto temos que:
@@ -955,19 +955,19 @@ Dessa forma podemos concluir que:
     d(X^\infty(\lambda_n^y(t)-s), X^\infty(t-s)) \leq
      d(X^\infty(\lambda_n^y(t)-s), X^\infty(t))+
      d(X^\infty(t), X^\infty(t-s))
-     < \epsilon^{\prime}
+     < \epsilon^{\prime}.
   \end{displaymath}
 
-  De onde finalmente concluímos que para todo $n > n_0$:
+  De onde finalmente concluímos que quase certamente para todo $n > n_0$:
   \begin{displaymath} 
     \sup_{\stackrel{y > k_n}{y \in K}}
     \sup_{0 \leq s \leq \delta_n} \left\lvert
       f(X^\infty(\lambda_n^y(t)-s)) -
       f(X^\infty(t-s))
-    \right\rvert < \epsilon
+    \right\rvert < \epsilon .
   \end{displaymath}
 
-  Como o $\epsilon$ foi tomado arbitrariamente, concluímos que essa
+  Como $\epsilon$ foi tomado arbitrariamente, concluímos que essa
   quantidade vai a zero \qc.
 \end{proof}
 
@@ -1033,12 +1033,12 @@ de probabilidades onde estamos trabalhando.
   
   Fixemos um $t > 0$ e tomemos $h = t/k$, reescrevendo a expressão acima
   teremos que:
-  \begin{displaymath}
+  \begin{equation}
     \label{eq:markov-forte-esp-cond}
     \E \left[ f(X(\tau_h + t)) \middle| \FF_{\tau_h} \right]
     = \Psi_t f (X(\tau_h)).
-  \end{displaymath}
-
+  \end{equation}
+  
 
   Vamos mostrar agora que para todo $h > 0$, $\FF_{\tau} \subseteq
   \FF_{\tau_h}$. Para isso tomemos um $A \in \FF_\tau$ e um $t \geq 0$
@@ -1046,12 +1046,13 @@ de probabilidades onde estamos trabalhando.
   então:
   \begin{displaymath}
     A \cap \{ \tau_h \leq t \} =
-    A \cap \{ \tau \leq t \} \cap \{ \tau_h \leq t \},
+    A \cap \{ \tau \leq t \} \cap \{ \tau_h \leq t \}.
   \end{displaymath}
-  agora $A \cap \{ \tau \leq t \} \in \FF_t$ porque $A \in \FF_\tau$,
-  enquanto que $ \{ \tau_h \leq t \} \in \FF_t$ porque $\tau_h$ é
-  tempo de parada. Assim concluímos que $A \cap \{ \tau_h \leq t \}
-  \in \FF_t$ e, como isso vale para todo $t$, então $A \in
+  
+  Observemos agora que $A \cap \{ \tau \leq t \} \in \FF_t$ porque $A
+  \in \FF_\tau$, enquanto que $ \{ \tau_h \leq t \} \in \FF_t$ porque
+  $\tau_h$ é tempo de parada. Assim concluímos que $A \cap \{ \tau_h
+  \leq t \} \in \FF_t$ e, como isso vale para todo $t$, então $A \in
   \FF_{\tau_h}$.
 
   Usando a definição de esperança condicional em
@@ -1147,11 +1148,12 @@ de probabilidades onde estamos trabalhando.
     \in V_{\tau + 1}} \gamma_x$. Como essa série é convergente,
   concluímos que $\gamma_{y_n} \to 0$.
 
+  Podemos desenvolver:
   \begin{align*}
     \Psi_t f(\infty) - \Psi_t f (y_n)
     = \E \left[
       f(X^{\infty}(t)) - f(X^{y_n}(t))
-    \right]
+    \right].
   \end{align*}
 
   Agora vamos mostrar que a quantidade dentro da esperança acima
@@ -1167,10 +1169,9 @@ de probabilidades onde estamos trabalhando.
     f(X^{\infty}(t)) - f(X^{\infty}(t-\gamma_{y_n} T_0)).
   \end{align*}
 
-  Essa quantidade acima vai à zero porque $\gamma_{y_n} T_0 \to 0$
-  quando $n \to \infty$, $t$ é quase certamente um ponto de
-  continuidade do processo (Corolário
-  \ref{cor:continuidades-processo}) e $f$ é uma função contínua.
+  Essa quantidade acima vai à zero \qc porque $\gamma_{y_n} T_0 \to 0$
+  \qc quando $n \to \infty$, $t$ é \qc um ponto de continuidade do
+  processo e $f$ é uma função contínua.
 \end{proof}
 
 
