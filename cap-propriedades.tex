@@ -221,7 +221,7 @@ serão usadas à exaustão em seções subsequentes.
 
 \begin{proposicao}
   \label{prop:proc-cadlag}
-  O processo K é quase certamente càdlàg.
+  O Processo K é quase certamente càdlàg.
 \end{proposicao}
 \begin{proof}
 
@@ -351,17 +351,17 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
   Essa demonstração foi adaptada diretamente do \emph{Lema 3.11} de
   \cite{fontes:08}.
 
-  Para provar a proposição, vamos mostrar que o item (c) da Proposição
-  5.3 do Capítulo 3 de \cite{ethier:86} vale quase certamente.
+  Mostraremos que o item (c) da Proposição 5.3 do Capítulo 3 de
+  \cite{ethier:86} vale quase certamente.
 
   Como o processo sempre se inicia no $\infty$, não vamos mais
   carregar esse índice na notação.
 
-  Fixemos uma realização qualquer do processo e um $T >
-  0$. Para cada natural $m$, considere $\delta_m := \diam\{ x \in
-  \Nzb: x > m \} = \frac{1}{m+1}$. Tome ainda $0 = S_0^m < S_1^m <
-  S_2^m < \ldots $ uma ordenação de $\{0\}\cup\{ \sigma^x_i : x \leq
-  m, i \geq 1\}$. Considere ainda, para cada $n > m$:
+  Fixemos uma realização do processo e um $T > 0$. Para cada natural
+  $m$, considere $\delta_m := \diam\{ x \in \Nzb: x > m \} =
+  \frac{1}{m+1}$. Tome ainda $0 = S_0^m < S_1^m < S_2^m < \ldots $ uma
+  ordenação de $\{0\}\cup\{ \sigma^x_i : x \leq m, i \geq
+  1\}$. Considere ainda, para cada $n > m$:
   \begin{displaymath}
     L^m_n := \min \left\{ i \geq 1: \Gamma^{(n)}(S^m_i) \geq T \right\}.
   \end{displaymath}
@@ -433,8 +433,7 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
     \leq \delta_m.
   \end{displaymath}
 
-  Tomando $\tilde{\lambda}_n = \lambda_n^{m_n}$, concluímos que quase
-  certamente:
+  Tomando $\tilde{\lambda}_n = \lambda_n^{m_n}$, concluímos que:
   \begin{align*}
     \sup_{0 \leq t \leq T} |\tilde{\lambda}_n(t) - t|
     &\xrightarrow{n\to\infty} 0 \\
