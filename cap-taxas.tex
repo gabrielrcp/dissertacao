@@ -18,9 +18,9 @@ dimensão de Hausdorff do tempo em que o Processo K passa no infinito.
 
 Para deixar a nossa notação menos carregada, vamos introduzir a
 seguinte definição para $x, y \in \Nzb$ e $t > 0$:
-\begin{equation}
-  p_{xy} (t) = P(X^x(t) = y).
-\end{equation}
+\begin{displaymath}
+  p_{xy} (t) := P(X^x(t) = y).
+\end{displaymath}
 Denotaremos ainda por $P(t)$ a ``matriz'' cujas entradas sejam $p_{xy}(t)$.
 
 Nessa seção vamos estudar a continuidade dessas funções. Começaremos
@@ -31,21 +31,21 @@ com uma caracterização básica das mesmas.
   Para todo $x, y, z \in \Nzb$ e $t, s > 0$ vale que:
   \begin{enumerate}
   \item $p_{xy}(t) \geq 0$
-  \item $\sum_{y \in \Nzb} p_{xy}(t) = 1$
-  \item $p_{xy}(t+s) = \sum_{z\in\Nzb}p_{xz}(t)p_{zy}(s)$
+  \item $\displaystyle \sum_{y \in \Nzb} p_{xy}(t) = 1$
+  \item $\displaystyle p_{xy}(t+s) = \sum_{z\in\Nzb}p_{xz}(t)p_{zy}(s)$
   \item $p_{xy}(\bullet)$ é uma função Lebesgue mensurável.
   \end{enumerate}
 \end{proposicao}
 
 \begin{proof}
-  Os três primeiros itens saem diretamente da definição de $p_{x y}$ e
-  da propriedade de Markov do processo. Para o quarto, consideremos
-  $X^{x, (n)}$ como na Seção \ref{sec:aproximacoes} e definiremos
-  $p^n_{x y}(t) := P(X^{x, (n)}(t) = y)$. Observemos que $p^n_{xy}$ é
-  Lebesgue mensurável porque $X^{x, (n)}$ é um processo Markoviano de
-  saltos.
+  Os três primeiros itens são consequência direta da definição de
+  $p_{x y}$ e da propriedade de Markov do processo. Para o quarto,
+  consideremos $X^{x, (n)}$ como na Seção \ref{sec:aproximacoes} e
+  definiremos $p^n_{x y}(t) := P(X^{x, (n)}(t) = y)$. Observemos que
+  $p^n_{xy}$ é Lebesgue mensurável porque $X^{x, (n)}$ é um processo
+  Markoviano de saltos.
 
-  Fixado $x \in \Nzb$ e $y \in \Nz$, notemos que $f_y(z) = \ind\{ z =
+  Fixado $x \in \Nzb$ e $y \in \Nz$, notemos que $f_y(z) := \ind\{ z =
   y \}$ é uma função contínua e todo $t > 0$ fixado é \qc um ponto de
   continuidade de $X^x$. Assim podemos usar o Teorema
   \ref{teo:convergencia}, junto com o Teorema da Convergência
@@ -170,9 +170,9 @@ com uma caracterização básica das mesmas.
   0$ tal que $p_{\infty \infty}(s) > 0$. Fixemos tal $s$.
 
   Tomemos uma sequência arbitrária $(t_n)$, onde $t_n \searrow 0$ e
-  $p_{\infty \infty} (t_n)$ convirja para um número $u$ quanto $n \to
-  \infty$.  Se mostrarmos que $u = 1$, seguirá que o limite dado em
-  \eqref{eq:continuidade-infinito} existe e vale $1$.
+  $p_{\infty \infty} (t_n)$ convirja para um número real $u$ quanto $n
+  \to \infty$.  Se mostrarmos que $u = 1$, seguirá que o limite dado
+  em \eqref{eq:continuidade-infinito} existe e vale $1$.
 
 
   Usando as proposições \ref{prop:transicao-mensuravel} e
@@ -265,7 +265,7 @@ com uma caracterização básica das mesmas.
 \label{sec:matrizq}
 
 Nessa seção vamos calcular a matriz de taxas de transição do 
-processo K. Vamos definí-la pelo limite:
+Processo K. Vamos definí-la pelo limite:
 \begin{displaymath}
   Q = \lim_{t \searrow 0} \frac{P(t) - I}{t}, 
 \end{displaymath}
@@ -313,7 +313,6 @@ Enquanto que no caso $c=0$, teremos:
     &= \frac{1}{t} \int_{0}^{t} P( X^\infty(t-s) = y ) \frac{1}{\gamma_x}
     e^{-\frac{s}{\gamma_x}} ds \\
     &\leq \frac{1}{t \gamma_x} \int_{0}^{t} p_{\infty y}(t-s) ds \\
-    &= \frac{1}{t \gamma_x} \int_{0}^{t} p_{\infty y}(t-s) ds \\
     &= \frac{1}{t \gamma_x} \int_{0}^{t} p_{\infty y}(s) ds.
   \end{align*}
 
@@ -365,7 +364,7 @@ Enquanto que no caso $c=0$, teremos:
 \end{proposicao}
 \begin{proof}
   \begin{align}
-    \frac{p_{\infty x}}{t} &= \frac{1}{t} P \left( \bigcup_{i =
+    \frac{p_{\infty x}(t)}{t} &= \frac{1}{t} P \left( \bigcup_{i =
         1}^{\infty} \left\{ \Gamma^\infty (\sigma^x_i -) \leq t <
         \Gamma^\infty(\sigma^x_i) \right\} \right) \notag \\
     &= \frac{P \left( \Gamma^\infty (\sigma^x_1 -) \leq t <
@@ -486,12 +485,12 @@ Enquanto que no caso $c=0$, teremos:
   $\lim_{t \searrow 0} \frac{\phi(\frac{1}{t})}{t} =
   \frac{\lambda_x}{c}$.
 
-  Agora vamos tratar o caso $c = 0$. Para isso observemos que nossa
-  construção do Processo K permite que acoplemos várias versões do
-  processo, com $c$ diferentes em um mesmo espaço de
-  probabilidade. Basta usar os mesmos processos de Poisson e variáveis
-  exponenciais para todos eles. Assim vamos colocar um índice $c$ em
-  $\Gamma^y_c$ para denotar com qual valor de $c$ estamos trabalhando.
+  Para tratar o caso $c = 0$ observemos que nossa construção do
+  Processo K permite que acoplemos várias versões do processo, com $c$
+  diferentes em um mesmo espaço de probabilidade. Basta usar os mesmos
+  processos de Poisson e variáveis exponenciais para todos eles. Assim
+  vamos colocar um índice $c$ em $\Gamma^y_c$ para denotar com qual
+  valor de $c$ estamos trabalhando.
 
   Notemos que, para todo $y \in \Nzb$, $\Gamma^y_c$ é crescente com
   $c$ e, portanto, $P ( \Gamma^\infty_c(\sigma^x_1-) \leq t)$ é
@@ -531,7 +530,9 @@ Enquanto que no caso $c=0$, teremos:
   quantidade essa que vai para $-\infty$ quando $n \to \infty$. Como a
   desigualdade \eqref{eq:taxa-inf-inf} vale para todo $n$, concluímos que:
   \begin{align*}
-    \lim_{t \searrow 0}\frac{p_{\infty \infty} (t) - 1}{t} &= - \infty.
+    \lim_{t \searrow 0}\frac{p_{\infty \infty} (t) - 1}{t} &= -
+    \infty.
+    \qedhere
   \end{align*}
 \end{proof}
 
@@ -555,7 +556,7 @@ Enquanto que no caso $c=0$, teremos:
     &= \frac{1}{t} \int_0^t p_{\infty \infty} (t-s)
     \frac{1}{\gamma_x}e^{-\frac{s}{\gamma_x}} ds\\
     &= \frac{e^{-t}}{\gamma_x} \frac{1}{t} \int_0^t p_{\infty \infty} (s)
-    e^{\frac{s}{\gamma_x}} ds .\\
+    e^{\frac{s}{\gamma_x}} ds .
   \end{align*}
 
   A Proposição \ref{prop:continuidade} nos diz que $p_{\infty \infty}
@@ -573,8 +574,8 @@ Enquanto que no caso $c=0$, teremos:
 \label{sec:prop-feller}
 
 
-Uma observação interessante que fizemos sobre o Processo K não
-homogêneo é que ele pode não ser de Feller.  Depois de calcular as
+Uma observação interessante que fizemos sobre Processos K não
+homogêneos é que eles podem não ser de Feller.  Depois de calcular as
 taxas de transição, finalmente temos ferramentas para especificar
 explicitamente quando isso acontece.
 
@@ -584,7 +585,7 @@ para todo $t > 0$ e toda $f: \Nzb \to \R$ contínua.
 \begin{proposicao}
   São equivalentes:
   \begin{enumerate}
-  \item $\lim_{x \to \infty} \gamma_x = 0$
+  \item $\displaystyle \lim_{x \to \infty} \gamma_x = 0$
   \item O Processo K é um processo de Feller.
   \end{enumerate}
 \end{proposicao}
@@ -592,7 +593,7 @@ para todo $t > 0$ e toda $f: \Nzb \to \R$ contínua.
 \begin{proof}
 
   Primeiramente vamos mostrar que se $\gamma_x \to 0$ quando $x \to
-  \infty$, então o processo é de Feller.
+  \infty$, então o Processo K é de Feller.
 
   Fixemos um $t > 0$ e uma $f: \Nzb \to \R$ contínua. Queremos mostrar
   que $\Psi_t f$ é uma função contínua, isso é, que $\Psi_t f(y) \to
@@ -625,31 +626,12 @@ para todo $t > 0$ e toda $f: \Nzb \to \R$ contínua.
   e, como $f$ é contínua, concluímos que a quantidade acima converge a
   zero \qc.
 
-
   Agora vamos mostrar que se $\gamma_x$ não converge para zero quando
   $x \to \infty$, então o processo não é de Feller.
 
-  Primeiro vamos supor que exista uma sequência crescente $(y_n)$ tal
-  que $\gamma_{y_n} \to \infty$ quando $n \to \infty$.
-
-  Tomemos um $m \in \Nz$ e definamos $f: \Nzb \to \R$ como $f(x) =
-  \ind \{ x > m \}$. Essa função é contínua e teremos que $\Psi_t f
-  (y) = P\left( X^y(t) > m \right)$.
-
-  Dessa maneira, tomando $y_n > m$, teremos que:
-  \begin{gather*}
-    \Psi_t f(y_n) \geq P(\gamma_{y_n} T_0 > t) \xrightarrow{n \to
-      \infty} 1\\
-    \Psi_t f(\infty) = P(X^{\infty}(t) > m) < 1, 
-  \end{gather*}
-  então o processo não é de Feller.
-  
-
-  Caso não exista uma subsequência onde $\gamma_y$ vá ao infinito,
-  então $\gamma_y$ é limitada. Como ela não converge para zero, então
-  ela tem algum outro ponto de acumulação. Assim existe um $a > 0$ e
-  uma sequência crescente $(y_n)$ tal que $\gamma_{y_n} \to a$ quando
-  $n \to \infty$.
+  Se $\gamma_x$ não convergir a zero, então existe um $\delta > 0$ e
+  uma sequência crescente $(y_n)_n$ tal que $\gamma_{y_n} > \delta$ para
+  todo $n$.
 
   Por absurdo, vamos supor que o processo seja de Feller. Assim
   teremos que para todo $y \in \Nz$ e $t > 0$ vale que $p_{x y} (t)
@@ -657,16 +639,16 @@ para todo $t > 0$ e toda $f: \Nzb \to \R$ contínua.
   \ref{prop:reinicia-infinito} teremos que:
   \begin{displaymath}
     p_{y_n y}(t) = \int_0^t \frac{1}{\gamma_{y_n}}
-    e^{-\frac{s}{\gamma_{y_n}}} p_{\infty y} (t-s) ds.
+    e^{-\frac{s}{\gamma_{y_n}}} p_{\infty y} (t-s) ds
+    \leq \frac{1}{\delta} \int_0^t p_{\infty y} (t-s) d s.
   \end{displaymath}
-  
+
   Tomando limite $n \to \infty$ e usando o Teorema de Convergência
-  Dominada, teremos que:
+  Dominada, obteremos:
   \begin{align*}
      p_{\infty y}(t)
-     &= \int_0^t \frac{1}{a} e^{-\frac{s}{a}} p_{\infty y}(t-s) d s\\
-     &= \frac{1}{a} e^{-\frac{t}{a}} \int_0^t  e^{\frac{s}{a}}
-     p_{\infty y}(s) d s .
+     &\leq \frac{1}{\delta} \int_0^t p_{\infty y}(t - s) d s\\
+     &  =  \frac{1}{\delta} \int_0^t p_{\infty y}(s) d s .
   \end{align*}
 
   Como  $p_{\infty y}(t) \to 0$ quando $t \searrow 0$, concluiremos que:
@@ -682,7 +664,7 @@ para todo $t > 0$ e toda $f: \Nzb \to \R$ contínua.
 \label{sec:invariante}
 
 O objetivo dessa seção é mostrar que a seguinte distribuição de
-probabilidade é uma medida invariante para o Processo K.
+probabilidade é uma medida invariante para o Processo K:
 
 \begin{equation}
   \label{eq:invariante}
@@ -794,8 +776,8 @@ probabilidade é uma medida invariante para o Processo K.
   \ref{prop:taxa-inf-x} mostramos que $\frac{1}{t}P(\Gamma^\infty
   (\sigma_1^y -) \leq t)$ converge para $\frac{\lambda_y}{c}$ quanto
   $t \searrow 0$. Portanto, para $t$ suficientemente pequeno, teremos
-  que existe uma constante $K$ que não depende de $x$, tal que
-  $\frac{p_{x y}(t)}{t} \leq K$ para todo $x \in \Nz\setminus \{y\}$.
+  que existe uma constante $H$ que não depende de $x$, tal que
+  $\frac{p_{x y}(t)}{t} \leq H$ para todo $x \in \Nz\setminus \{y\}$.
 
   Como $\mu(x)$ é somável em $x$, o Teorema da Convergência Dominada
   nos garante que:
@@ -916,26 +898,28 @@ e argumenta-se, geralmente usando o teorema de Hille-Yosida, que
 existe um processo com essa expressão como gerador.
 
 Nós estamos indo na direção oposta. Já temos uma construção do nosso
-processo e queremos saber qual como é o seu gerador.
+processo e queremos saber como é o seu gerador.
 
-Por simplicidade, vamos nos limitar nesse seção ao caso homogêneo,
-isso é, $\lambda_x = 1$ para todo $x \in \Nz$.
+Por simplicidade, vamos nos limitar ao caso homogêneo, isso é,
+$\lambda_x = 1$ para todo $x \in \Nz$.
 
 O exemplo K1 de \cite{kendall:56} é o nosso Processo K homogêneo, com
 $c = 1$ e $\gamma_x = 1/\alpha_{x+1}$. Nesse artigo eles calcularam o
-gerador infinitesimal, $\AAA$, de tal processo. O domínio dele é o
-conjunto das funções $f: \Nzb \to \R$ tal que $\lim_{x \to \infty} \frac{f(x)
-  - f(\infty)}{\gamma_x}$ existe e vale $\sum_{x
-  \in \Nz} [f(\infty) - f(x)]$, série essa que tem que convergir
+gerador infinitesimal, $\AAA$, de tal processo. Seu domínio é o
+conjunto das funções $f: \Nzb \to \R$ tal que $\lim_{x \to \infty}
+\frac{f(x) - f(\infty)}{\gamma_x}$ existe e vale $\sum_{x \in \Nz}
+[f(\infty) - f(x)]$, série essa que tem que convergir
 absolutamente. Em funções $f$ desse domínio, o gerador vale:
 \begin{align*}
   \AAA f (x) = \begin{cases}
+    \displaystyle
     \frac{f(\infty) - f(x)}{\gamma_x} & \text{se } x \in \Nz\\
-    \sum_{x\in \Nz} [f(x) - f(\infty)] & \text{se } x = \infty.
+    \displaystyle
+    \sum_{y\in \Nz} [f(y) - f(\infty)] & \text{se } x = \infty.
   \end{cases}
 \end{align*}
 
-Aqui nós vamos tratar apenas do caso $c = 0$.
+Nós vamos tratar apenas do caso $c = 0$.
 
 O primeiro passo será definir a classe de funções sobre a qual
 definiremos o gerador. Essa classe tem que ser pequena o suficiente
@@ -950,7 +934,7 @@ ele caracterize o semigrupo. A classe adotada será:
     \lim_{x \to \infty} \frac{f(x) - f(\infty)}{\gamma_x} \textrm{ existe}
   \right\},
 \end{equation}
-onde $\CC$ é o conjunto das funções contínuas de $\Nzb$ em $\R$.
+onde $\CC$ é o conjunto das funções de $\Nzb$ em $\R$ contínuas.
 
 \begin{definicao}
   \label{def:gerador}
@@ -990,7 +974,7 @@ valor.
     \liminf_{t \searrow 0} \frac{\Psi_t f (x) - f(x)}{t} &\geq
     \frac{f(\infty) - f(x) - \epsilon}{\gamma_x}, 
   \end{align}
-  de onde conclui-se imediatamente \eqref{eq:gerador-x}.
+  de onde conclui-se \eqref{eq:gerador-x} imediatamente.
 
   Agora vamos começar a fazer a conta:
   \begin{align*}
@@ -1041,9 +1025,9 @@ valor.
 \end{proposicao}
 \begin{proof}
   Fixemos uma $h \in \DDD$ arbitrária. Vamos denotar por $\bar{h}(x) =
-  h(x) - h(\infty)$, além disso vamos definir $K = \lim_{x \to \infty}
+  h(x) - h(\infty)$, além disso vamos definir $L = \lim_{x \to \infty}
   -\bar{h}(x)/\gamma_x$, limite que existe pela definição de
-  $\DDD$. Sem perda de generalidade vamos supor que $K \geq 0$.
+  $\DDD$. Sem perda de generalidade vamos supor que $L \geq 0$.
 
   Por toda essa demonstração, vamos supor que $\gamma_1 \geq \gamma_2
   \geq \gamma_x$ para todo $x > 2$. Não perdemos generalidade ao fazer
@@ -1064,10 +1048,10 @@ valor.
   \begin{align}
     \label{eq:gerador-inf-sup}
     \limsup_{t \searrow 0} \frac{\Psi_t h(\infty) - h(\infty)}{t} 
-    &\leq K + \epsilon\\
+    &\leq L + \epsilon\\
     \label{eq:gerador-inf-inf}
     \liminf_{t \searrow 0} \frac{\Psi_t h(\infty) - h(\infty)}{t} 
-    &\geq K - \epsilon,
+    &\geq L - \epsilon,
   \end{align}
   de onde concluiremos \eqref{eq:gerador-inf} imediatamente.
 
@@ -1198,11 +1182,11 @@ valor.
   função de distribuição, podemos escrever \eqref{eq:gerador-inf-2}, a
   menos do $\epsilon_t$, por:
   \begin{align}
-    & \frac{1}{2} \sum_{x > 1} \bar{h}(x) \int_0^t f_x (s) \left(
+     \frac{1}{2} &\sum_{x > 1} \bar{h}(x) \int_0^t f_x (s) \left(
       e^{-\frac{t-s}{\gamma_x}} - e^{-\frac{t-s}{\gamma_1}}
     \right) d s \notag\\
     \label{eq:gerador-inf-3}
-    &= - \frac{1}{2} \sum_{x > 1} \bar{h}(x) \int_0^t f_x (s) \left(
+    = &- \frac{1}{2} \sum_{x > 1} \bar{h}(x) \int_0^t f_x (s) \left(
       1 - e^{-\frac{t-s}{\gamma_x}}
     \right) d s\\
     \label{eq:gerador-inf-4}
@@ -1211,7 +1195,7 @@ valor.
     \right) d s
   \end{align}
 
-  Podemos escrever:
+  Para controlar \eqref{eq:gerador-inf-4}, podemos escrever:
   \begin{align*}
     \left| \frac{1}{t} \sum_{x > 1} \bar{h}(x) \int_0^t f_x (s) \left(
         1 - e^{-\frac{t-s}{\gamma_1}}
@@ -1238,7 +1222,7 @@ valor.
   Como $F_x(t) \to 0$ quanto $t \searrow 0$, temos que cada termo da
   série acima dividido por $t$ converge para zero quando $t \searrow
   0$. Assim podemos nos preocupar apenas com a cauda da série. Para
-  isso tomemos um $m > 2$ tal que $-\frac{\bar{h}(x)}{\gamma_x} < K +
+  isso tomemos um $m > 2$ tal que $-\frac{\bar{h}(x)}{\gamma_x} < L +
   \epsilon$ sempre que $x > m$.
 
   Como $\gamma_2\geq \gamma_x$, então $\Gamma^{<1, x>}$ domina
@@ -1248,14 +1232,14 @@ valor.
   Com todas essas considerações, podemos escrever:
   \begin{align*}
     \limsup_{t \searrow 0} \frac{\Psi_t h(\infty) - h(\infty)}{t}
-    &\leq \left( K + \epsilon \right) \limsup_{t \searrow
+    &\leq \left( L + \epsilon \right) \limsup_{t \searrow
       0}\frac{1}{t} \int_0^t \frac{F_2(s)}{2} \sum_{x >
       m}e^{-\frac{t-s}{\gamma_x}} ds\\
-    &= \left( K + \epsilon \right) \limsup_{t \searrow
+    &= \left( L + \epsilon \right) \limsup_{t \searrow
       0}\frac{1}{t} \int_0^t \frac{F_2(s)}{2} \left[
       2 + \sum_{x > 2} e^{-\frac{t-s}{\gamma_x}}
     \right] ds\\
-    &- \left( K + \epsilon \right) \limsup_{t \searrow
+    &- \left( L + \epsilon \right) \limsup_{t \searrow
       0}\frac{1}{t} \int_0^t \frac{F_2(s)}{2} \left[
       2 + \sum_{x=3}^m e^{-\frac{t-s}{\gamma_x}}
     \right] ds\\
@@ -1318,9 +1302,9 @@ valor.
   Dessa forma podemos concluir que:
   \begin{align*}
     \limsup_{t \searrow 0} \frac{\Psi_t h(\infty) - h(\infty)}{t}
-    &\leq \left( K + \epsilon \right) \limsup_{t \searrow
+    &\leq \left( L + \epsilon \right) \limsup_{t \searrow
       0}\frac{1}{t}  \Phi(t)\\
-    &= K + \epsilon.
+    &= L + \epsilon.
   \end{align*}
 
 
@@ -1399,7 +1383,7 @@ valor.
   Para o primeiro termo notemos que, para cada $t > 0$ fixado, $A_t$ é
   um conjunto finito mas a sua cardinalidade vai para o infinito
   quando $t \searrow 0$. Observemos também que, como $h \in \DDD$,
-  então $f(x)/\gamma_x$ converge. Assim essa quantidade é limitada por
+  então $f(x)/\gamma_x$ converge; assim essa quantidade é limitada por
   uma constante. Se denotarmos por $\#A_t$ a cardinalidade de $A_t$,
   poderemos escrever:
   \begin{align*}
@@ -1514,10 +1498,10 @@ valor.
   $f - \AAA f = g$.
 
   Observemos que $\sum_{x \in \Nz} \frac{\gamma_x}{1+\gamma_x} <
-  \infty$ e $g$ é limitada. Assim a constante $K$ abaixo está bem
+  \infty$ e $g$ é limitada. Assim a constante $L$ abaixo está bem
   definida:
   \begin{displaymath}
-    K = -\left( \sum_{x \in \Nz} \frac{\gamma_x}{1+\gamma_x} \right)^{-1}
+    L := -\left( \sum_{x \in \Nz} \frac{\gamma_x}{1+\gamma_x} \right)^{-1}
     \sum_{x \in \Nz} \frac{\gamma_x}{1 +
       \gamma_x} \left[ g(x) - g(\infty) \right].
   \end{displaymath}
@@ -1526,9 +1510,9 @@ valor.
   \begin{equation*}
     %\label{eq:inversa-imagem}
     f(x) = \begin{cases}
-      g(\infty) - K & \textrm{ se } x = \infty\\
+      g(\infty) - L & \textrm{ se } x = \infty\\
       \frac{1}{1+\gamma_x} \left[
-        \gamma_x g(x) + g(\infty) - K
+        \gamma_x g(x) + g(\infty) - L
       \right] & \textrm{ caso contrário.}
     \end{cases}
   \end{equation*}
@@ -1538,19 +1522,19 @@ valor.
     %\label{eq:inversa-imagem-2}
     \frac{f(x) - f(\infty)}{\gamma_x} &=
     \frac{g(x) - g(\infty) }{1+\gamma_x} +
-    \frac{K}{1+\gamma_x} \xrightarrow{x \to \infty} K.
+    \frac{L}{1+\gamma_x} \xrightarrow{x \to \infty} L.
   \end{align*}
 
-  Usando a definição de $K$, podemos calcular:
+  Usando a definição de $L$, podemos calcular:
   \begin{align*}
     \sum_{x \in \Nz} \left|f(x) - f(\infty)\right|
     &\leq \sum_{x\in\Nz} \frac{\gamma_x}{1+\gamma_x} |g(x) -
     g(\infty)|
-    + \sum_{x\in\Nz} \frac{\gamma_x}{1+\gamma_x} |K| < \infty\\
+    + \sum_{x\in\Nz} \frac{\gamma_x}{1+\gamma_x} |L| < \infty\\
     \sum_{x \in \Nz} \left[f(x) - f(\infty)\right]
     &= \sum_{x\in\Nz} \frac{\gamma_x}{1+\gamma_x} \left[g(x) -
     g(\infty)\right]
-    + \sum_{x\in\Nz} \frac{\gamma_x}{1+\gamma_x} K\\
+    + \sum_{x\in\Nz} \frac{\gamma_x}{1+\gamma_x} L\\
     &= \sum_{x\in\Nz} \frac{\gamma_x}{1+\gamma_x} \left[g(x) -
     g(\infty)\right]
   - \sum_{x\in\Nz} \frac{\gamma_x}{1+\gamma_x} \left[g(x) -
@@ -1563,13 +1547,13 @@ valor.
   Para verificar que $f - \AAA f = g$, observe que para $x \in \Nz$:
   \begin{align*}
     f(\infty) - \AAA f (\infty) &=
-    g(\infty) - K - (-K) = g(\infty) \\
+    g(\infty) - L - (-L) = g(\infty) \\
     f(x) - \AAA f (x) &=
     \frac{1}{1+\gamma_x} \left[
-      \gamma_x g(x) + g(\infty) - K
+      \gamma_x g(x) + g(\infty) - L
     \right] - \left(
       - \frac{g(x) - g(\infty) }{1+\gamma_x} -
-      \frac{K}{1+\gamma_x}
+      \frac{L}{1+\gamma_x}
     \right)\\
     &=
    \frac{\gamma_x g(x)}{1+\gamma_x}
@@ -1796,15 +1780,15 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
 \end{proposicao}
 
 \begin{proof}
-  Tomemos $K > 0$ tal que $\lambda_x \leq K$ para todo $x \in
+  Tomemos $H > 0$ tal que $\lambda_x \leq H$ para todo $x \in
   \Nz$. Assim teremos que para alguma constante $C$:
   \begin{align*}
     \Phi(u) &= \sum_{x \in \Nz} \frac{\lambda_x}{\frac{1}{u\gamma_x} +
       1}\\
-    &\leq C + \sum_{x > n_0} \frac{K}{\frac{x^{1+\delta}}{u} + 1}\\
+    &\leq C + \sum_{x > n_0} \frac{H}{\frac{x^{1+\delta}}{u} + 1}\\
     &=u^{\frac{1}{1+\delta}} \left[
       \frac{C}{u^{\frac{1}{1+\delta}}} +
-      \frac{1}{u^{\frac{1}{1+\delta}}} \sum_{x > n_0} \frac{K}{
+      \frac{1}{u^{\frac{1}{1+\delta}}} \sum_{x > n_0} \frac{H}{
         \left( \frac{x}{u^{\frac{1}{1+\delta}}}  \right)^{1+\delta}
         + 1
       }
@@ -1816,10 +1800,10 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
   u^{\frac{1}{1+\delta}}$. Se tomarmos $v$ inteiro maior que $n_0$ e
   agruparmos os termos da série entre múltiplos de $v$, obteremos:
   \begin{align*}
-    \frac{C}{v} + \frac{1}{v} \sum_{x > n_0} \frac{K}{ \left(
+    \frac{C}{v} + \frac{1}{v} \sum_{x > n_0} \frac{H}{ \left(
         \frac{x}{v} \right)^{1+\delta} + 1 }
     &\leq
-    \frac{C}{v} + \sum_{y=1}^{\infty} \frac{K}{y^{1+\delta} + 1}
+    \frac{C}{v} + \sum_{y=1}^{\infty} \frac{H}{y^{1+\delta} + 1}
     \xrightarrow{v \to \infty} C^\prime,
   \end{align*}
   onde $C^\prime$ é uma constante positiva.
@@ -1849,13 +1833,13 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
 \end{proposicao}
 
 \begin{proof}
-  Tomemos $K > 0$ tal que $\lambda_x \geq K$ para todo $x \in \Nz$. Dessa
+  Tomemos $H > 0$ tal que $\lambda_x \geq H$ para todo $x \in \Nz$. Dessa
   forma:
   \begin{align*}
     \Phi(u) &= \sum_{x \in \Nz} \frac{\lambda_x}{\frac{1}{u\gamma_x} +
       1}\\
     &\geq \sum_{x > n_0}
-    \frac{K}{\left(\frac{x}{u^{\frac{1}{1+\delta}}}\right)^{1+\delta} +1}.
+    \frac{H}{\left(\frac{x}{u^{\frac{1}{1+\delta}}}\right)^{1+\delta} +1}.
   \end{align*}
 
   Portanto, tomando $u > n_0$, e agrupando a série em somas sobre os inteiros
@@ -1863,11 +1847,11 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
   \begin{align*}
     \Phi(u^{1+\delta}) 
     &\geq \sum_{x > n_0}
-    \frac{K}{\left(\frac{x}{u}\right)^{1+\delta} +1}\\
+    \frac{H}{\left(\frac{x}{u}\right)^{1+\delta} +1}\\
     &\geq \sum_{x \geq u}
-    \frac{K}{\left(\frac{x}{u}\right)^{1+\delta} +1}\\
+    \frac{H}{\left(\frac{x}{u}\right)^{1+\delta} +1}\\
     &\geq \lfloor u \rfloor \sum_{y = 1}^{\infty}
-    \frac{K}{y^{1+\delta} + 1}.
+    \frac{H}{y^{1+\delta} + 1}.
   \end{align*}
 
   Dessa forma:
@@ -1875,7 +1859,7 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
     \frac{\log \Phi(u)}{\log u} \geq \frac{\log\lfloor
       u^{\frac{1}{1+\delta}} \rfloor }{\log u} + 
     \frac{1}{\log u} \sum_{y = 1}^{\infty}
-    \frac{K}{y^{1+\delta} + 1}.
+    \frac{H}{y^{1+\delta} + 1}.
   \end{align*}
 
   Como essa série é convergente, ao fazer $u \to \infty$ o segundo

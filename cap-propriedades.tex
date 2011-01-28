@@ -6,7 +6,7 @@ Nesse capítulo estabeleceremos resultados que serão ferramentas
 básicas para trabalhar com o Processo K durante o resto da
 dissertação.
 
-Apresentaremos uma maneira de aproximar o processo K por processos
+Apresentaremos uma maneira de aproximar o Processo K por processos
 Markovianos de salto, bem como provaremos que o processo K é
 fortemente Markoviano.
 
@@ -15,7 +15,7 @@ fortemente Markoviano.
 \section{Observações gerais}
 \label{sec:observacoes}
 
-Nessa seção apontaremos várias observações sobre o processo K, que
+Nessa seção apontaremos várias observações sobre o Processo K, que
 serão usadas à exaustão em seções subsequentes.
 
 \begin{proposicao}
@@ -103,8 +103,8 @@ serão usadas à exaustão em seções subsequentes.
   variável aleatória contínua.
 
   Fixemos um boreliano $A$ arbitrário que tenha medida de Lebesgue
-  zero. Vamos mostrar que $P(\Gamma(t) \in A) = 0$, de onde seguirá,
-  através do Teorema de Radon-Nikodym, que $\Gamma(t)$ tem uma
+  zero. Vamos mostrar que $P(\Gamma(t) \in A) = 0$, de onde seguirá
+  através do Teorema de Radon-Nikodym que $\Gamma(t)$ tem uma
   distribuição contínua.
 
 
@@ -191,9 +191,9 @@ serão usadas à exaustão em seções subsequentes.
     T^z_j + c \sigma_i^x.
   \end{align*}
 
-  Dessa forma, tanto $\Gamma(\sigma^x_i)$ quanto
-  $\Gamma(\sigma^x_i-)$, são somas de variáveis aleatórias contínuas e
-  independentes, sendo portanto também contínuas.
+  Dessa forma tanto $\Gamma(\sigma^x_i)$ quanto $\Gamma(\sigma^x_i-)$
+  são somas de variáveis aleatórias contínuas e independentes, sendo
+  portanto também contínuas.
 \end{proof}
 
 
@@ -203,8 +203,8 @@ serão usadas à exaustão em seções subsequentes.
   $X^y(t + \gamma_y T_0^y) = X^\infty(t)$.
 \end{proposicao}
 \begin{proof}
-  Fixemos um $y \in \Nz$. Primeiramente observemos que para todo $s
-  \geq 0$, temos que $\Gamma^y(s) = \Gamma^\infty(s) + \gamma_yT^y_0$.
+  Fixemos um $y \in \Nz$ e observemos que $\Gamma^y(s) =
+  \Gamma^\infty(s) + \gamma_yT^y_0$ para todo $s \geq 0$.
 
   Fixada uma realização do processo, suponha que $X^\infty(t) = x \in
   \Nz$; assim existe um $i \geq 1$ tal que $\Gamma^\infty(\sigma_i^x-)
@@ -227,7 +227,7 @@ serão usadas à exaustão em seções subsequentes.
 
   Iremos mostrar que o processo iniciado no $\infty$ é càdlàg, o que
   irá mostrar que o processo é càdlàg para qualquer condição inicial,
-  visto que, iniciando em $y$, iremos continuar em $y$ até $\gamma_y
+  visto que, iniciando em $y$, iremos permanecer em $y$ até $\gamma_y
   T^y_0$, e depois continuaremos como uma cópia do processo iniciado
   no $\infty$.
 
@@ -243,7 +243,7 @@ serão usadas à exaustão em seções subsequentes.
   \frac{1}{m+1} < \epsilon$, onde $\diam(A)$ é o diâmetro do conjunto
   $A$.
 
-  Agora tomemos $S_1 < S_2 < \ldots < S_M$ uma ordenação dos conjunto $\{
+  Agora tomemos $S_1 < \ldots < S_M$ uma ordenação dos conjunto $\{
   \sigma^x_i: x \leq m, \: i \geq 1, \: \Gamma(\sigma^x_i) \leq
   T\}$. Finalmente fixemos $N = 2M+1$ se $\Gamma(S_M) < T$ e $N = 2M$
   se $\Gamma(S_M) = T$. Tomemos $t_0 = 0$, $t_N = T$ e para $i=1,\ldots, M$:
@@ -315,7 +315,7 @@ O processo truncado em $n \in \Nz$, com estado inicial $y \in \{1,
 \ldots, n, \infty\}$ será:
 \begin{displaymath}
   X^{(n)}(t) = X^{y,(n)}_c(t) = \begin{cases}
-    y, & \textrm{ se }  t < \gamma_y T_0^y\\
+    y, & \textrm{ se }  t < \gamma_y T_0 \\
     x, & \textrm{ se } \Gamma^{y,(n)}_c(\sigma_i^x-) \leq t <
     \Gamma^{y,(n)}_c(\sigma^x_i)
     \text{ para algum } i \\
@@ -359,7 +359,7 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
 
   Fixemos uma realização do processo e um $T > 0$. Para cada natural
   $m$, considere $\delta_m := \diam\{ x \in \Nzb: x > m \} =
-  \frac{1}{m+1}$. Tome ainda $0 = S_0^m < S_1^m < S_2^m < \ldots $ uma
+  \frac{1}{m+1}$. Tome ainda $0 = S_0^m < S_1^m < \ldots $ uma
   ordenação de $\{0\}\cup\{ \sigma^x_i : x \leq m, i \geq
   1\}$. Considere ainda, para cada $n > m$:
   \begin{displaymath}
@@ -393,7 +393,7 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
     \lambda_n^m(\Gamma^{(n)}(S_i^m-)) &= \Gamma(S_i^m-)\\
     \lambda_n^m(\Gamma^{(n)}(S_i^m)) &= \Gamma(S_i^m),
   \end{align*}
-  enquanto que nos pontos interiores, ``completamos'' $\lambda_n^m$ de
+  enquanto que nos pontos interiores interpolamos $\lambda_n^m$ de
   maneira linear. Depois de $\Gamma^{(n)}(S^m_{L_n^m})$, deixamos
   $\lambda_n^m$ evoluir de maneira linear com coeficiente 1, já que
   isso terá mais importância.
@@ -407,12 +407,14 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
     \max_{0 \leq i \leq L_n^m} \{ \Gamma(S_i^m) -
     \Gamma^{(n)}(S_i^m)\}.
   \end{displaymath}
+
   Essa quantidade converge quase certamente a zero se mantivermos o
   $m$ fixo e jogarmos o $n$ para infinito. Assim para cada $m$ existe
   um $n_m$ tal que para $n \geq n_m$ vale que:
   \begin{displaymath}
     \sup_{0 \leq t \leq T} |\lambda_n^m(t) - t| < \delta_m.
   \end{displaymath}
+
   Podemos tomar a sequência $(n_m)_{m \geq 1}$ de modo que ela seja
   crescente. Agora vamos ``invertê-la'', isso é, para cada n em $\Z
   \cap [n_{i-1}, n_i)$, definimos $m_n = i$. Teremos que:
@@ -420,8 +422,8 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
     \sup_{0 \leq t \leq T} |\lambda_n^{m_n}(t) - t| < \delta_{m_n}.
   \end{displaymath}
 
-  Ainda como, para cada $m$ fixado, $n_m$ é finito, vale que $m_n$ vai
-  ao infinito quando $n \to \infty$.
+  Observemos que $m_n$ vai ao infinito quando $n \to \infty$ já que
+  $n_m$ é finito para cada $m$ fixado.
   
   Por construção, $t \in [\Gamma^{(n)}(S_{i}^m-),
   \Gamma^{(n)}(S_{i}^m))$ se e somente se $\lambda_n^m(t) \in
@@ -447,18 +449,18 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
   \label{cor:convergencia}
   Para todo $y \in \Nzb$, todo $T > 0$ e quase toda trajetória do
   processo, existe uma sequência de funções $\lambda^y_n: [0, \infty) \to
-  [0, \infty)$ contínuas  e bijetoras tais que:
-  \begin{gather}
-    \lambda^y_n(t) \geq t \notag\\
+  [0, \infty)$ contínuas e bijetoras tais que:
+  \begin{align}
+    \lambda^y_n(t) &\geq t \notag\\
     \label{eq:convergencia-truncado-uniforme}
-    \sup_{t \in [0, T]} |\lambda^y_n(t) - t| \leq
+    \sup_{t \in [0, T]} |\lambda^y_n(t) - t| &\leq
     \sup_{t \in [0, T]} |\lambda^\infty_n(t) - t|
     \xrightarrow{n \to \infty} 0\\
-    \sup_{0 \leq t \leq T} d(X^y(\lambda_n^y(t)), X^{y, (n)}(t)) \leq
+    \sup_{0 \leq t \leq T} d(X^y(\lambda_n^y(t)), X^{y, (n)}(t)) &\leq
     \sup_{0 \leq t \leq T} d(X^\infty(\lambda_n(t)), X^{\infty, (n)}(t))
     \xrightarrow{n\to\infty} 0. \notag
-  \end{gather}
-  
+  \end{align}
+
   Dessa forma, temos que $X^{y, (n)}$ converge \qc para $X^y$ na
   métrica de Skorohod, sendo essa convergência uniforme em $y$.
 \end{corolario}
@@ -471,14 +473,15 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
     \sup_{0 \leq t \leq T} |\lambda_n(t) - t|
     \xrightarrow{n\to\infty} 0 \\
     \sup_{0 \leq t \leq T} d(X^\infty(\lambda_n(t)), X^{\infty, (n)}(t))
-    \xrightarrow{n\to\infty} 0. \\
+    \xrightarrow{n\to\infty} 0.
   \end{gather*}
 
   Tomemos $\lambda^\infty_n = \lambda_n$ e para $y \in \Nz$ definimos:
   \begin{displaymath}
     \lambda_n^y(t) = \begin{cases}
-      t & \textrm{ se } t < \gamma_y T_0\\
-      \gamma_yT_0 + \lambda_n(t - \gamma_y T_0) & \textrm{ c.c.} .
+      t, & \textrm{ se } t < \gamma_y T_0\\
+      \gamma_yT_0 + \lambda_n(t - \gamma_y T_0),
+      & \textrm{ se } t \geq \gamma_y T_0
     \end{cases}
   \end{displaymath}
 
@@ -509,7 +512,7 @@ inicial.
 
 Uma dificuldade introduzida ao aceitar pesos não homogêneos é a de que
 o processo pode não ser de Feller. Isso acontece porque podem existir
-estados $y$ ``grandes'', onde $\gamma_y$ também é grande: assim
+estados $y$ ``grandes'', onde $\gamma_y$ também é grande; assim
 iniciar o processo nesses estados é diferente de iniciar no
 $\infty$. Mostraremos isso com detalhes na Seção
 \ref{sec:prop-feller}.
@@ -562,7 +565,7 @@ de um processo de Feller.
     V^\prime_t}\gamma_x < \infty$ \qc.
 
   Agora fixemos uma sequência $(t_n)$, com $t_n\nearrow
-  \infty$. Teremos que, com probabilidade $1$, $\sum_{x \in
+  \infty$. Com probabilidade $1$ vai valer que $\sum_{x \in
     V^\prime_{t_n}}\gamma_x < \infty$ para todo $n$.
 
   Notemos que $V^\prime_t \subseteq V^\prime_s$ sempre que $t \leq
@@ -597,10 +600,9 @@ de um processo de Feller.
   Denotaremos por $\Psi$ o semigrupo de transição do Processo K, isso
   é, para $t > 0$ e $f: \Nzb \to \R$:
   \begin{gather*}
-    \Psi_t f (x) = \E \left[ f(X^x(t)) \right]\\
+    \Psi_t f (x) = \E \left[ f(X^x(t)) \right]
   \end{gather*}
 \end{definicao}
-
 
 \begin{proposicao}
   \label{prop:semigrupo-quase-continuo}
@@ -650,9 +652,9 @@ de um processo de Feller.
   T_0 < s$. Dessa forma usando a Proposição
   \ref{prop:reinicia-infinito} teremos que:
   \begin{align*}
-    \Psi_s f (\infty) - \Psi_s f (y_k) &=
-    \E\left[ f(X^\infty(s)) - f(X^{y_k}(s)) \right] \\
-    &= \E\left[ f(X^\infty(s)) -f (X^\infty(s - \gamma_{y_k}T_0)) \right] \\
+    \Psi_s f (\infty) - \Psi_s f (y_n) &=
+    \E\left[ f(X^\infty(s)) - f(X^{y_n}(s)) \right] \\
+    &= \E\left[ f(X^\infty(s)) -f (X^\infty(s - \gamma_{y_n}T_0)) \right] \\
   \end{align*}
 
   Pelo Corolário \ref{cor:continuidades-processo}, $s$ é \qc um ponto
@@ -666,7 +668,7 @@ de um processo de Feller.
 
 \begin{teorema}
   \label{teo:proc_markov}
-  O processo K é um processo Markoviano.
+  O Processo K é um processo Markoviano.
 \end{teorema}
 
 \begin{proof}
@@ -698,7 +700,7 @@ de um processo de Feller.
   f_i(X(t_i))$ \qc já que $f_i$ é contínua, $i = 1, \ldots, m+1$.
 
   Temos ainda que $f_1, \ldots f_{m+1}$ são limitadas porque são
-  funções contínuas num espaço compacto. Assim ,usando o Teorema da
+  funções contínuas num espaço compacto. Assim, usando o Teorema da
   Convergência Dominada, teremos que a parte da esquerda de
   \eqref{eq:markov-truncado} converge para:
   \begin{displaymath}
@@ -736,13 +738,14 @@ de um processo de Feller.
   vamos denotar por $s = t_{m+1} - t_m$, $t = t_m$ e $g = f_{m+1}$.
   Usando o fato de $f_1, \ldots, f_m$ serem limitadas, teremos que:
   \begin{displaymath}
-    |\epsilon_n| \leq  \textrm{cte}
+    |\epsilon_n| \leq  C
     \left\lvert \E \left[
         \Psi_{s}^n g (X^{(n)}(t)) -
         \Psi_{s} g (X^{(n)}(t))
       \right]
-    \right\rvert.
+    \right\rvert,
   \end{displaymath}
+  onde $C$ é uma constante positiva.
 
   Como a parte interna dessa esperança pode ser dominada por $2\lVert
   g \rVert$, se mostrarmos que ela converge quase certamente para
@@ -785,15 +788,15 @@ de um processo de Feller.
 
 \begin{proposicao}
   \label{prop:convergencia-semigrupo}
-  Seja $K \subseteq \Nz$ tal que
+  Seja $A \subseteq \Nz$ tal que
   \begin{displaymath}
-    \lim_{n \to \infty} \sup\{ \gamma_x: x \in  K \textrm{ e } x > n\} = 0,
+    \lim_{n \to \infty} \sup\{ \gamma_x: x \in  A \textrm{ e } x > n\} = 0,
   \end{displaymath}
   sob a convenção de que $\sup \emptyset = 0$. Tomemos ainda $f: \Nzb
   \to \R$ contínua e $t > 0$. Nessas condições:
   \begin{equation}
     \label{eq:convergencia-semigrupo}
-    \sup_{y \in K} | \Psi^n_t f (y) - \Psi_t f(y) |
+    \sup_{y \in A} | \Psi^n_t f (y) - \Psi_t f(y) |
     \xrightarrow{n\to\infty} 0,
   \end{equation}
   onde $\Psi^n$ denota o semigrupo de transição de $X^{(n)}$.
@@ -804,7 +807,7 @@ de um processo de Feller.
   Mostremos primeiramente que cada ``termo'' de
   \eqref{eq:convergencia-semigrupo} converge para zero, ou seja,
   mostremos que $\Psi^n_t f (y) \to \Psi_t f(y)$ quando $n \to \infty$
-  para qualquer $y \in K$ fixado.
+  para qualquer $y \in A$ fixado.
 
   \begin{align}
     \label{eq:semigrupo-convergencia-pontual}
@@ -824,20 +827,20 @@ de um processo de Feller.
   \eqref{eq:semigrupo-convergencia-pontual} converge à zero quando $n
   \to \infty$.
 
-  Com isso o caso em que $K$ é finito é trivial; portanto vamos supor
-  que $K$ é infinito.
+  Com isso o caso em que $A$ é finito é trivial; portanto vamos supor
+  que $A$ é infinito.
 
   Tomemos $\lambda_n^y$ como no Corolário \ref{cor:convergencia} para
   um $T > t$ qualquer. Vale que:
   \begin{align}
     \label{eq:esperancas-markov}
-    \sup_{y \in K} | \Psi^n_t f (y) - \Psi_t f(y) | 
-    &= \sup_{y \in K} \left\lvert \E \left[f(X^{y, (n)}(t)) -
+    \sup_{y \in A} | \Psi^n_t f (y) - \Psi_t f(y) | 
+    &= \sup_{y \in A} \left\lvert \E \left[f(X^{y, (n)}(t)) -
         f(X^y(t)) \right]\right\rvert \\
-    &\leq \sup_{y\in K}\left\lvert \E \left[f(X^{y, (n)}(t)) -
+    &\leq \sup_{y\in A}\left\lvert \E \left[f(X^{y, (n)}(t)) -
         f(X^y(\lambda_n^y(t))) \right]
     \right\rvert \notag \\
-    &+ \sup_{y\in K}\left\lvert \E \left[f(X^y(\lambda_n^y(t))) -
+    &+ \sup_{y\in A}\left\lvert \E \left[f(X^y(\lambda_n^y(t))) -
         f(X^y(t)) \right] \right\rvert. \notag
   \end{align}
 
@@ -858,66 +861,66 @@ de um processo de Feller.
   $|f(x)-f(y)| < \epsilon$.
 
   Dessa forma, fixado um $\epsilon > 0$ arbitrário, teremos que:
-  \begin{gather*}
-    \sup_{y\in K} \left\lvert \E \left[ f(X^{y,(n)}(t)) -
+  \begin{align*}
+    \sup_{y\in A}& \left\lvert \E \left[ f(X^{y,(n)}(t)) -
         f(X^{y}(\lambda_n^y(t))) \right]
     \right\rvert\\
-    \leq \sup_{y\in K} \left\lvert \E \left[ \left(f(X^{y,(n)}(t)) -
+    &\leq \sup_{y\in A} \left\lvert \E \left[ \left(f(X^{y,(n)}(t)) -
           f(X^{y}(\lambda_n^y(t))) \right) \ind\{ d(X^{y, (n)}(t),
         X^y(\lambda_n^y(t)) < \delta_\epsilon \} \right]
     \right\rvert \\
-    + 2\Vert f \Vert \sup_{y \in K} P\left( d(X^{y, (n)}(t),
+    &+ 2\Vert f \Vert \sup_{y \in A} P\left( d(X^{y, (n)}(t),
       X^y(\lambda_n^y(t)) \geq
       \delta_\epsilon \right) \\
-    \leq \epsilon + 2 \Vert f \Vert P \left( \sup_{s \in [0,
+    &\leq \epsilon + 2 \Vert f \Vert P \left( \sup_{s \in [0,
         T]}d(X^{\infty, (n)}(s), X^\infty(\lambda_n^\infty(s)) \geq
       \delta_\epsilon \right).
-  \end{gather*}
+  \end{align*}
   Essa última quantidade converge para $\epsilon$ quando $n\to \infty$
   devido à \eqref{eq:dist-uniforme}. Como $\epsilon$ foi escolhido
   arbitrariamente, concluímos que o primeiro termo de
   \eqref{eq:esperancas-markov} converge à zero.
 
-  Para calcular o segundo termo, deve-se notar que aquela quantidade,
-  para cada $y \in K$ fixado vai à zero, já que $t$ é \qc um ponto de
+  Para calcular o segundo termo, notemos que aquela quantidade, para
+  cada $y \in A$ fixado vai à zero, já que $t$ é \qc um ponto de
   continuidade do processo e $\lambda_n^y(t) \to t$ quando
   $n\to\infty$. Dessa forma existe uma sequência $(k_n)$ tal que $k_n
   \xrightarrow{n\to\infty} \infty$ onde:
   \begin{displaymath}
-      \max_{\stackrel{y \leq k_n}{y\in K}} \left\lvert
+      \max_{\stackrel{y \leq k_n}{y\in A}} \left\lvert
       \E \left[f(X^y(\lambda_n^y(t))) - f(X^y(t)) \right]
     \right\rvert \xrightarrow{n\to \infty} 0.
   \end{displaymath}
 
-  Agora vamos tomar $\delta_n = \sqrt{\sup\{ \gamma_x: x \in K
+  Agora vamos tomar $\delta_n = \sqrt{\sup\{ \gamma_x: x \in A
     \textrm{ e } x > k_n\}}$. Por hipótese, temos que $\delta_n \to
-  0$. Notemos ainda que $\sup \{ P(\gamma_y T_0 > \delta_n) : y \in K, y
+  0$. Notemos ainda que $\sup \{ P(\gamma_y T_0 > \delta_n) : y \in A, y
   > k_n \} = e^{-\frac{1}{\delta_n}} \to 0$ quanto $n \to \infty$.
 
   Como $\delta_n \to 0$, vamos apenas considerar $n$ suficientemente
   grande, de forma que $\delta_n < t \leq \lambda_n^y(t)$. A segunda
-  igualdade vale de acordo com
+  desigualdade vale de acordo com
   \eqref{eq:convergencia-truncado-uniforme}. Usando a Proposição
   \ref{prop:reinicia-infinito} e separando nos casos $\gamma_yT_0 <
   \delta_n$ e $\gamma_yT_0 \geq \delta_n$, teremos que:
   \begin{align}
     \label{eq:markov-quase-la}
-    \sup_{\stackrel{y > k_n}{y \in K}}& \left\lvert \E \left[f(X^y(\lambda_n^y(t))) -
+    \sup_{\stackrel{y > k_n}{y \in A}}& \left\lvert \E \left[f(X^y(\lambda_n^y(t))) -
         f(X^y(t)) \right]
     \right\rvert \notag \\
-    &\leq \sup_{\stackrel{y > k_n}{y \in K}} \E \left\lvert
+    &\leq \sup_{\stackrel{y > k_n}{y \in A}} \E \left\lvert
       \left[f(X^\infty(\lambda_n^y(t)-\gamma_yT_0)) -
         f(X^\infty(t-\gamma_yT_0)) \right] \ind\{ \gamma_yT_0 <
       \delta_n \}
     \right\rvert\\
-    &+ 2 \Vert f \Vert \sup_{\stackrel{y > k_n}{y \in K}} P(\gamma_y T_0 > \delta_n).
+    &+ 2 \Vert f \Vert \sup_{\stackrel{y > k_n}{y \in A}} P(\gamma_y T_0 > \delta_n).
     \notag
   \end{align}
 
   Nós escolhemos $\delta_n$ de forma que o segundo termo dessa soma vá
   à zero quando $n \to \infty$. Podemos dominar o primeiro termo por:
   \begin{displaymath}
-     \E \left[ \sup_{\stackrel{y > k_n}{y\in K}}
+     \E \left[ \sup_{\stackrel{y > k_n}{y\in A}}
       \sup_{0 \leq s \leq \delta_n} \left\lvert
         f(X^\infty(\lambda_n^y(t)-s)) -
         f(X^\infty(t-s))
@@ -959,7 +962,7 @@ de um processo de Feller.
 
   De onde finalmente concluímos que quase certamente para todo $n > n_0$:
   \begin{displaymath} 
-    \sup_{\stackrel{y > k_n}{y \in K}}
+    \sup_{\stackrel{y > k_n}{y \in A}}
     \sup_{0 \leq s \leq \delta_n} \left\lvert
       f(X^\infty(\lambda_n^y(t)-s)) -
       f(X^\infty(t-s))
@@ -986,10 +989,10 @@ Para cada $t > 0$, vamos denotar por $\FF_t$ a $\sigma$-álgebra gerada
 por $\{X(s): s \in [0, t]\}$ e por $\FF$ a $\sigma$-álgebra do espaço
 de probabilidades onde estamos trabalhando.
 
-\begin{proposicao}
-  \label{prop:markov-forte}
-  O processo K é fortemente Markoviano.
-\end{proposicao}
+\begin{teorema}
+  \label{teo:markov-forte}
+  O Processo K é fortemente Markoviano.
+\end{teorema}
 \begin{proof}
   Fixada uma $f: \Nzb \to \R$ contínua e $\tau$ um tempo de parada
   finito para $(\FF_t)_{t \geq 0}$ . Vamos mostrar que quase
@@ -1141,24 +1144,9 @@ de probabilidades onde estamos trabalhando.
   \eqref{eq:convergencia-discretizacao-2} é óbvia.
 
   Como $h_n \leq 1$ e $\tau_h < \tau + h$, vale que $y_n \in V_{\tau +
-    1}$ para todo $n$. Já que $y_n \to \infty$, cada $y \in \Nz$
-  ``aparece'' nessa sequência um número finito de vezes.  Dessa forma
-  tomando $n$ grande, estaremos nos limitando à ``cauda'' de $\sum_{x
-    \in V_{\tau + 1}} \gamma_x$. Como essa série é convergente,
-  concluímos que $\gamma_{y_n} \to 0$.
-
-  Podemos desenvolver:
-  \begin{align*}
-    \Psi_t f(\infty) - \Psi_t f (y_n)
-    = \E \left[
-      f(X^{\infty}(t)) - f(X^{y_n}(t))
-    \right].
-  \end{align*}
-
-  Agora vamos mostrar que a quantidade dentro da esperança acima
-  converge à zero quase certamente. Como essa quantidade é limitada
-  por $2 \Vert f \Vert$, o Teorema da Convergência Dominada irá
-  garantir que a esperança também irá à zero.
+    1}$ para todo $n$.  Assim concluímos que $\gamma_{y_n} \to 0$
+  através da Proposição \ref{prop:gamma-somavel} já que $y_n \to
+  \infty$.
 
   Se tomarmos um $n$ grande o suficiente, de forma que $\gamma_{y_n}
   T_0 < t$, usando a Proposição \ref{prop:reinicia-infinito}, teremos
@@ -1168,9 +1156,19 @@ de probabilidades onde estamos trabalhando.
     f(X^{\infty}(t)) - f(X^{\infty}(t-\gamma_{y_n} T_0)).
   \end{align*}
 
-  Essa quantidade acima vai à zero \qc porque $\gamma_{y_n} T_0 \to 0$
+  Esta quantidade vai a zero \qc porque $\gamma_{y_n} T_0 \to 0$
   \qc quando $n \to \infty$, $t$ é \qc um ponto de continuidade do
   processo e $f$ é uma função contínua.
+
+  Como $f$ é limitada, utilizando o Teorema da Convergência Dominada,
+  concluíremos que:
+  \begin{align*}
+    \Psi_t f(\infty) - \Psi_t f (y_n)
+    &= \E \left[
+      f(X^{\infty}(t)) - f(X^{y_n}(t))
+    \right] \xrightarrow{n \to \infty} 0.
+    \qedhere
+  \end{align*}
 \end{proof}
 
 
