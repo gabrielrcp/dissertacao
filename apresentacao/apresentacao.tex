@@ -1,14 +1,52 @@
-\documentclass[xcolor=dvipsnames]{beamer}
+\documentclass[xcolor=pdftex,dvipsnames]{beamer}
 
 \usepackage[brazil]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usecolortheme[named=Brown]{structure}
+%\usecolortheme[named=Brown]{structure}
 \usetheme{Warsaw}
+\usecolortheme{crane}
+
+\newcommand{\AAA}{{\mathcal{A}}}
+\newcommand{\DDD}{{\mathfrak{D}}}
+\newcommand{\FFF}{{\mathfrak{F}}}
+\newcommand{\GGG}{{\mathfrak{G}}}
+
+\newcommand{\CC}{{\mathcal{C}}}
+\newcommand{\RR}{{\mathcal{R}}}
+\newcommand{\II}{{\mathcal{I}}}
+\newcommand{\RRb}{\widebar{\mathcal{R}}}
+\newcommand{\FF}{{\mathcal{F}}}
+\newcommand{\PP}{{\mathcal{P}}}
+\newcommand{\GG}{{\mathcal{G}}}
+
+
+\newcommand{\N}{{\mathbb{N}}}
+\newcommand{\Nb}{{\widebar{\N}}}
+\newcommand{\Nz}{{\mathbb{N^*}}}
+\newcommand{\Nzb}{{\mathbb{\widebar{N}^*}}}
+\newcommand{\Z}{{\mathbb{Z}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\E}{{\mathbb{E}}}
+
+
+\newcommand{\qc}{{\emph{q.c.}} }
+\newcommand{\ind}{{\mathbb{I}}}
+\newcommand{\diam}{{\mathrm{diam}}}
+
+\newtheorem{teorema}{Teorema}
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{proposicao}[teorema]{Proposição}
+\newtheorem{corolario}[teorema]{Corolário}
+\newtheorem{definicao}{Definição}
+
 
 \title{Um estudo sobre o Processo K não homogêneo}
 \author{Gabriel R. C. Peixoto \and Luiz Renato G. Fontes}
 \date{22 de fevereiro de 2011}
+%\institu[IME-USP]{Instituto de Matemática e Estatística}
+
+\setbeamercovered{invisible}
 
 \begin{document}
 
@@ -16,32 +54,44 @@
   \titlepage
   
   \begin{center}
-    Esse projeto teve o apoio financeiro do CNPQ.
+    Durante o desenvolvimento deste trabalho \\
+    o autor recebeu auxílio
+    financeiro do CNPq.
   \end{center}
 \end{frame}
 % colocar apoio financeiro CNPQ
 
 \begin{frame}{A sample slide}
 
+
+
 A displayed formula:
 
 \[
   \int_{-\infty}^\infty e^{-x^2} \, dx = \sqrt{\pi}
 \]
+\pause
 
 An itemized list:
 
 \begin{itemize}
-  \item itemized item 1
-  \item itemized item 2
+  \item itemized item 1 
+  \item itemized item 2 
   \item itemized item 3
 \end{itemize}
 
-\begin{theorem}
-  In a right triangle, the square of hypotenuse equals
-  the sum of squares of two other sides.
-\end{theorem}
+\begin{teorema}
+  In a right triangle, the square of hypotenuse equals the sum of
+  squares of two other sides.
+\end{teorema}
 
+\end{frame}
+
+\begin{frame}[t]{Testando}
+hfdfdhfd
+\begin{proof}
+é trivial
+\end{proof}
 \end{frame}
 
 \end{document}
