@@ -3,9 +3,18 @@
 \usepackage[brazil]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-%\usecolortheme[named=Brown]{structure}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathabx}
+\usepackage{mathrsfs}
+\usepackage{yfonts}
+
 \usetheme{Warsaw}
-\usecolortheme{crane}
+\usecolortheme[named=Brown]{structure}
+%\usecolortheme{crane}
+\setbeamertemplate{navigation symbols}{} 
 
 \newcommand{\AAA}{{\mathcal{A}}}
 \newcommand{\DDD}{{\mathfrak{D}}}
@@ -42,57 +51,104 @@
 
 
 \title{Um estudo sobre o Processo K não homogêneo}
-\author{Gabriel R. C. Peixoto \and Luiz Renato G. Fontes}
+\author[Peixoto, G. R. C. \and Fontes L. R. G.]
+{Gabriel R. C. Peixoto \and Luiz Renato G. Fontes}
+\institute[IME-USP]{Instituto de Matemática e Estatística da
+  Universidade de São Paulo}
 \date{22 de fevereiro de 2011}
-%\institu[IME-USP]{Instituto de Matemática e Estatística}
 
-\setbeamercovered{invisible}
+
+\setbeamercovered{dynamic}
 
 \begin{document}
 
+% Logo do IME, da USP e do CNPQ?
 \begin{frame}[plain]
   \titlepage
   
   \begin{center}
-    Durante o desenvolvimento deste trabalho \\
-    o autor recebeu auxílio
-    financeiro do CNPq.
+    Este trabalho teve apoio do CNPq.
   \end{center}
 \end{frame}
-% colocar apoio financeiro CNPQ
 
-\begin{frame}{A sample slide}
-
+\section{Construção}
 
 
-A displayed formula:
+\begin{frame}{Espaço de estados}
 
-\[
-  \int_{-\infty}^\infty e^{-x^2} \, dx = \sqrt{\pi}
-\]
-\pause
+O Processo K é um processo estocástico em tempo contínuo construído
+sobre o espaço:
 
-An itemized list:
+\begin{displaymath}
+  \Nzb = \left\{
+    1, 2, 3, \ldots
+  \right\} \cup \{ \infty \}
+\end{displaymath}
 
-\begin{itemize}
-  \item itemized item 1 
-  \item itemized item 2 
-  \item itemized item 3
-\end{itemize}
-
-\begin{teorema}
-  In a right triangle, the square of hypotenuse equals the sum of
-  squares of two other sides.
-\end{teorema}
+O infinito será um estado \emph{instantâneo}.
 
 \end{frame}
 
-\begin{frame}[t]{Testando}
-hfdfdhfd
-\begin{proof}
-é trivial
-\end{proof}
+\begin{frame}{Parâmetros}
+
+  Associa-se duas constantes positivas à cada estado $x$ do processo:
+
+  \begin{itemize}
+  \item $\lambda_x$: controla a taxa em que tendemos a entrar em no
+    estado $x$;
+    
+  \item $\gamma_x$: tempo médio em que permanecemos no estado $x$ em
+    cada visita.
+  \end{itemize}
+
+  Considere ainda uma constante $c$ não negativa, que irá controlar 
+  o tempo em que o processo passa no infinito.
+
 \end{frame}
+
+\begin{frame}{Restrições}
+
+  \begin{columns}
+    \begin{column}{0.3\textwidth}
+      \begin{enumerate}
+      \item $ \displaystyle \sum_{x\in \Nz} \lambda_x \gamma_x <
+        \infty $    
+        \bigskip
+      \item $ \displaystyle \sum_{x\in \Nz} \lambda_x = \infty $
+      \end{enumerate}
+
+    \end{column}
+    
+    \begin{column}{0.7\textwidth}
+  
+      Nescessária para a existência do processo.
+      
+      Conveniência. No caso contrário o processo é simples.
+      
+    \end{column}
+  \end{columns}
+  
+  
+\end{frame}
+
+\begin{frame}{Espaço de Probabilidade}
+
+  O Processo K é construido num Espaço de Probabilidades que admita as
+  seguintes famílias de variáveis aleatórias independentes:
+
+  \begin{itemize}
+  \item $\{ N_x: x \in \Nz\}$
+  \end{itemize}
+  
+\end{frame}
+
+\begin{frame}{Função $\Gamma$}
+  \begin{displaymath}
+    \Gamma(t) = \gamma_y T_0 
+  \end{displaymath}
+\end{frame}
+
+
 
 \end{document}
 
