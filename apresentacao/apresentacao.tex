@@ -1,4 +1,6 @@
 \documentclass[xcolor=pdftex,dvipsnames]{beamer}
+%\documentclass[xcolor=pdftex,dvipsnames,handout]{beamer}
+
 
 \usepackage[brazil]{babel}
 \usepackage[T1]{fontenc}
@@ -137,18 +139,261 @@ O infinito será um estado \emph{instantâneo}.
   seguintes famílias de variáveis aleatórias independentes:
 
   \begin{itemize}
-  \item $\{ N_x: x \in \Nz\}$
+  \item $\{ N_x: x \in \Nz\}$ : Processos de Poisson independentes,
+    com taxas $\{ \lambda_x : x \in \Nz \}$;
+  \item $\{T_0\} \cup \{ T_i^x: i, x \in \Nz  \}$ : variáveis aleatórias
+    \emph{i.i.d.} com distribuição exponencial de média $1$.
   \end{itemize}
+
+  Denotaremos por $\sigma^x_1 < \sigma^x_2 < \ldots$ as marcas do
+  Processo de Poisson $N_x$.
   
 \end{frame}
 
 \begin{frame}{Função $\Gamma$}
+
+  A construção do Processo K se baseia na seguinte função aleatória,
+  definida sobre $t \in [0, \infty)$:
+
   \begin{displaymath}
-    \Gamma(t) = \gamma_y T_0 
+    \Gamma(t) := \Gamma^y(t) := \gamma_y T_0 + \sum_{x \in \Nz} \sum_{i = 1}^{N_x (t)}
+    \gamma_x T^x_i + c t
   \end{displaymath}
 \end{frame}
 
+\begin{frame}{Definição do Processo K}
+  
+  Definimos o Processo K com estado inicial $y \in \Nzb$ como:
 
+  \begin{displaymath}
+    X(t) = X^y (t) =
+    \begin{cases}
+      y & \textrm{ se }  t < \gamma_y T_0\\
+      x & \textrm{ se } \Gamma^y(\sigma_i^x-) \leq t <
+      \Gamma^y(\sigma^x_i)
+      \textrm{ para algum } i \\
+      \infty & \textrm{ caso contrário.}
+    \end{cases}
+  \end{displaymath}
+\end{frame}
+
+\begin{frame}{Topologia}
+  
+  Usaremos a seguinte métrica sobre $\Nzb$:
+  \begin{displaymath}
+    d(x, y) = \left\lvert \frac{1}{x} - \frac{1}{y} \right\rvert
+  \end{displaymath}
+
+
+  \begin{itemize}
+  \item<2-> Todo ponto $x \in \Nz$ é um ponto isolado;
+  \item<3-> Uma sequência converge para $\infty$ se ela divergir para o
+    infinito da maneira usual.
+  \item<4-> Essa métrica é {\bf completa};
+  \item<5-> Gera uma topologia {\bf compacta};
+  \item<6-> Uma função $f: \Nzb \to \R$ é contínua se e somente se:
+    \begin{displaymath}
+      f(\infty) = \lim_{x \to \infty} f(x) .
+    \end{displaymath}
+  \end{itemize}
+
+\end{frame}
+
+\section{Resultados}
+
+\begin{frame}{Processo Truncado}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}{Propriedade de Feller}
+
+  \begin{definicao}
+    Para cada $t \in [0, \infty)$, o semigrupo de transição é um
+    operador que sobre as funções de $\Nzb$ em $\R$ definido como:
+    \begin{displaymath}
+      \Psi_t f (y) = \E \left[ f(X^y(t)) \right]
+    \end{displaymath}
+  \end{definicao} \pause
+
+  \begin{teorema}
+    Seja $f: \Nzb \to \R$ contínua e $t > 0$ arbitrários. São
+    equivalentes:
+    \begin{itemize}
+    \item $\Psi_t f$ é uma função contínua;
+    \item $\displaystyle \lim_{x \to \infty} \gamma_x = 0$.
+    \end{itemize}
+  \end{teorema}
+\end{frame}
+
+\begin{frame}{Propriedade de Feller}
+  O Processo K é ``efetivamente'' de Feller.
+\end{frame}
+
+\begin{frame}{Propriedade de Markov}
+  \begin{teorema}
+    O Processo K é fortemente markoviano.
+  \end{teorema}
+\end{frame}
+
+
+\begin{frame}{Taxas de Transição}
+  \begin{definicao}
+    Para $x, y \in \Nzb$ e $t > 0$, denota-se
+    \begin{displaymath}
+      p_{x y} (t) := P \left( X^x(t) = y \right).
+    \end{displaymath}
+    P (t) denotará a matriz cujas entradas são $p_{x y} (t)$.
+  \end{definicao} \pause
+  \begin{definicao}
+    A matriz de taxas de transição é definida como:
+    \begin{displaymath}
+      Q := \lim_{t \searrow 0} \frac{P(t) - I}{t},
+    \end{displaymath}
+    onde $I$ é a matriz identidade.
+  \end{definicao}
+\end{frame}
+
+\begin{frame}{Taxas de Transição}
+  \begin{teorema}
+    No caso $c > 0$, a matriz de taxas de transição vale:
+    \begin{displaymath}
+      Q = \left(
+        \begin{array}{ccccc}
+          -1/\gamma_1 & 0 & 0 & \cdots & 1/\gamma_1\\
+          0 & -1/\gamma_2 & 0 & \cdots & 1/\gamma_2\\
+          0 & 0 & -1/\gamma_3 & \cdots & 1/\gamma_3\\
+          \vdots & \vdots & \vdots & \ddots & \vdots \\
+          \lambda_1/c & \lambda_2/c &
+          \lambda_3/c & \cdots & -\infty\\
+        \end{array}
+      \right).
+    \end{displaymath}
+  \end{teorema}
+\end{frame}
+
+\begin{frame}{Taxas de Transição}
+  \begin{teorema}
+    No caso $c = 0$, a matriz de taxas de transição vale:
+    \begin{displaymath}
+      Q = \left(
+        \begin{array}{ccccc}
+          -1/\gamma_1 & 0 & 0 & \cdots & 0\\
+          0 & -1/\gamma_2 & 0 & \cdots & 0\\
+          0 & 0 & -1/\gamma_3 & \cdots & 0\\
+          \vdots & \vdots & \vdots & \ddots & \vdots \\
+          \infty & \infty & \infty & \cdots & -\infty\\
+        \end{array}
+      \right).
+    \end{displaymath}
+  \end{teorema}
+\end{frame}
+
+\begin{frame}{Distribuição invariante}
+  \begin{teorema}
+    A única medida de probabilidade invariante do Processo K é dada
+    por:
+    \begin{displaymath}
+      \pi(x) := \begin{cases}
+        \frac{\lambda_x \gamma_x}{c + \sum_{y \in \Nz} \lambda_y \gamma_y}
+        & \textrm{ se } x \in \Nz \\
+        \frac{c}{c + \sum_{y \in \Nz} \lambda_y \gamma_y}
+        & \textrm{ se } x = \infty \\
+      \end{cases}
+    \end{displaymath}
+  \end{teorema}
+\end{frame}
+
+
+\begin{frame}{Tempo no infinito}
+  
+\end{frame}
+
+
+\begin{frame}{Gerador infinitesimal}
+
+  Iremos nos limitar ao caso homogêneo, isso é, $\lambda_x = 1$ para
+  todo $x \in \Nz$.
+
+  \begin{definicao}
+    O gerador infinitesimal $\AAA$ calculado sobre uma função $f: \Nzb
+    \to \R$ é definido pelo limite:
+    \begin{displaymath}
+      \AAA f (x) = \lim_{t \searrow 0} \frac{\Psi f (x) - f(x)}{t}.
+    \end{displaymath}
+  \end{definicao}
+
+  Note que nem sempre esse limite pode não existir.
+
+\end{frame}  
+
+
+\begin{frame}{Gerador infinitesimal}
+  \cite{kendall:56} calcularam o gerador no caso $c = 1$.
+
+  \begin{teorema}
+  Para uma função $f: \Nzb \to \R$ tal que
+  \begin{displaymath}
+    \lim_{x \to \infty}
+    \frac{f(x) - f(\infty)}{\gamma_x} = \sum_{x \in \Nz}
+    [f(\infty) - f(x)]
+  \end{displaymath}
+  vale que:
+  \begin{displaymath}
+    \AAA f (x) = \begin{cases}
+      \displaystyle
+      \frac{f(\infty) - f(x)}{\gamma_x} & \text{se } x \in \Nz\\
+      \displaystyle
+      \sum_{y\in \Nz} [f(y) - f(\infty)] & \text{se } x = \infty.
+    \end{cases}
+  \end{displaymath}
+\end{teorema}
+\end{frame}
+
+\begin{frame}{Gerador infinitesimal}
+
+  Quando $c = 0$, o domínio onde iremos definir o gerador será 
+  o conjunto $\DDD$ das funcões $f: \Nz \to \R$ tais que:
+
+  \begin{itemize}
+  \item $\displaystyle \sum_{x\in \Nz} |f(x)-f(\infty)| < \infty$
+  \item $\displaystyle \sum_{x\in \Nz} \left( f(x)-f(\infty)\right) = 0$
+  \item $\displaystyle \lim_{x \to \infty} \frac{f(x) -
+      f(\infty)}{\gamma_x}$ existe
+  \end{itemize}  
+\end{frame}
+
+\begin{frame}{Gerador infinitesimal}
+
+  \begin{teorema}
+    Quando $c = 0$, para $f \in \DDD$, vale que:
+    \begin{displaymath}
+      \AAA f (x) = \begin{cases}
+        \displaystyle
+        \frac{f(\infty) - f(x)}{\gamma_x} & \text{ se } x \in \Nz \vspace{2mm}\\
+        \displaystyle
+        \lim_{y \to \infty} \frac{f(y) - f(x)}{\gamma_x} & \text{ se } x=\infty\\
+      \end{cases}
+    \end{displaymath}
+  \end{teorema}
+  \pause
+  \begin{teorema}
+    A função $\AAA$, definida acima é um gerador infinitesimal que
+    caracteriza o semigrupo $\Psi_t$.
+  \end{teorema}
+\end{frame}
+
+
+
+\section{Referências}
+\begin{frame}
+  \frametitle{Referências}
+  \bibliographystyle{../plainnat-ime} 
+  \bibliography{../bibliografia} 
+\end{frame}
 
 \end{document}
 
