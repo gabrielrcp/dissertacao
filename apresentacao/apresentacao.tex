@@ -12,6 +12,7 @@
 \usepackage{mathabx}
 \usepackage{mathrsfs}
 \usepackage{yfonts}
+%\graphicspath{{../figuras/}}
 
 \usetheme{Warsaw}
 \usecolortheme[named=Brown]{structure}
@@ -78,16 +79,18 @@
 
 \begin{frame}{Espaço de estados}
 
-O Processo K é um processo estocástico em tempo contínuo construído
-sobre o espaço:
+  Denota-se por $\Nz$ o conjunto dos números naturais positivos, isso
+  é:
+  \begin{displaymath}
+    \Nz = \left\{ 1, 2, 3, \ldots \right\}.
+  \end{displaymath}
 
-\begin{displaymath}
-  \Nzb = \left\{
-    1, 2, 3, \ldots
-  \right\} \cup \{ \infty \}
-\end{displaymath}
 
-O infinito será um estado \emph{instantâneo}.
+  O Processo K é um processo estocástico em tempo contínuo construído
+  sobre o espaço:
+  \begin{displaymath}
+    \Nzb = \Nz \cup \{ \infty \},
+  \end{displaymath}
 
 \end{frame}
 
@@ -110,32 +113,21 @@ O infinito será um estado \emph{instantâneo}.
 
 \begin{frame}{Restrições}
 
-  \begin{columns}
-    \begin{column}{0.3\textwidth}
-      \begin{enumerate}
-      \item $ \displaystyle \sum_{x\in \Nz} \lambda_x \gamma_x <
-        \infty $    
-        \bigskip
-      \item $ \displaystyle \sum_{x\in \Nz} \lambda_x = \infty $
-      \end{enumerate}
-
-    \end{column}
-    
-    \begin{column}{0.7\textwidth}
-  
-      Nescessária para a existência do processo.
-      
-      Conveniência. No caso contrário o processo é simples.
-      
-    \end{column}
-  \end{columns}
-  
-  
+  Impõe-se duas restrições sobre esses parâmetros:
+  \begin{block}{}
+    \begin{enumerate}
+    \item $ \displaystyle \sum_{x\in \Nz} \lambda_x \gamma_x <
+      \infty $
+      \bigskip
+    \item $ \displaystyle \sum_{x\in \Nz} \lambda_x = \infty $
+    \end{enumerate}
+  \end{block}
 \end{frame}
+
 
 \begin{frame}{Espaço de Probabilidade}
 
-  O Processo K é construido num Espaço de Probabilidades que admita as
+  O Processo K é construído num Espaço de Probabilidades que admita as
   seguintes famílias de variáveis aleatórias independentes:
 
   \begin{itemize}
@@ -163,7 +155,7 @@ O infinito será um estado \emph{instantâneo}.
 
 \begin{frame}{Definição do Processo K}
   
-  Definimos o Processo K com estado inicial $y \in \Nzb$ como:
+  O Processo K com estado inicial $y \in \Nzb$ é definido como:
 
   \begin{displaymath}
     X(t) = X^y (t) =
@@ -177,6 +169,18 @@ O infinito será um estado \emph{instantâneo}.
   \end{displaymath}
 \end{frame}
 
+\begin{frame}{Exemplos}
+  \begin{center}
+    \includegraphics[width=0.9\textwidth,trim=0cm 4.5cm 0cm 4.5cm]{gamma_c1}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Exemplos}
+  \begin{center}
+    \includegraphics[width=0.9\textwidth,trim=0cm 4.5cm 0cm 4.5cm]{gamma_c0}
+  \end{center}
+\end{frame}
+  
 \begin{frame}{Topologia}
   
   Usaremos a seguinte métrica sobre $\Nzb$:
@@ -212,7 +216,7 @@ O infinito será um estado \emph{instantâneo}.
   \Gamma^{y,(n)}_c (t) = \gamma_y T_0
   + \sum_{x =1}^{n} \sum_{i = 1}^{N_x(t)}
   \gamma_x T_i^x
-  + ct.
+  + c t.
 \end{displaymath}
 
 \begin{displaymath}
@@ -262,7 +266,7 @@ O infinito será um estado \emph{instantâneo}.
     Fixada $f: \Nzb \to \R$ contínua, $s, t > 0$ e uma sequência
     $(t_n)_n$ que convirja para $t$, valerá que:
     \begin{displaymath}
-      \Psi_s f (X(t_n)) \xrightarrow[q.c.]{n \to \infty} \Psi f (X(t))
+      \Psi_s f (X(t_n)) \xrightarrow[q.c.]{n \to \infty} \Psi_s f (X(t))
     \end{displaymath}
   \end{teorema}
 \end{frame}
@@ -445,7 +449,7 @@ O infinito será um estado \emph{instantâneo}.
 \begin{frame}{Gerador infinitesimal}
 
   Quando $c = 0$, o domínio onde iremos definir o gerador será 
-  o conjunto $\DDD$ das funcões $f: \Nz \to \R$ tais que:
+  o conjunto $\DDD$ das funções $f: \Nz \to \R$ tais que:
 
   \begin{itemize}
   \item $\displaystyle \sum_{x\in \Nz} |f(x)-f(\infty)| < \infty$
@@ -480,7 +484,7 @@ O infinito será um estado \emph{instantâneo}.
 \section{Referências}
 \begin{frame}
   \frametitle{Referências}
-  \bibliographystyle{../plainnat-ime} 
+  \bibliographystyle{plainnat} 
   \bibliography{../bibliografia} 
 \end{frame}
 

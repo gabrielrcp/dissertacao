@@ -2,10 +2,11 @@ gm <- function(x){
   x;
 }
 
-vai <- function(lim = 10, c = 1){
+vai <- function(lim = 10, c = 1, semente = 534){
   pos <- NULL;
   salto <- NULL;
   S <- 0;
+  set.seed(semente);
   while(S < lim){
     S <- S + rexp(1, 1)
     if(S < lim){
@@ -27,7 +28,7 @@ vai <- function(lim = 10, c = 1){
     y <- sum(salto[1:i])+c*x;
     print(c(x, y));
   }
-  axis(1)
-  axis(2)
+  axis(1, labels = FALSE)
+  axis(2, labels = FALSE)
 }
 
