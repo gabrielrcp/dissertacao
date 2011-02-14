@@ -203,10 +203,36 @@ O infinito será um estado \emph{instantâneo}.
 
 \begin{frame}{Processo Truncado}
 
+  Para cada $n \in \Nzb$  e $y \in \{ 1, \ldots, n\} \cup \{ \infty
+  \}$ defini-se o processo truncado em $n$ com condição inicial $y$ da
+  seguinte forma:
 
+
+\begin{displaymath}
+  \Gamma^{y,(n)}_c (t) = \gamma_y T_0
+  + \sum_{x =1}^{n} \sum_{i = 1}^{N_x(t)}
+  \gamma_x T_i^x
+  + ct.
+\end{displaymath}
+
+\begin{displaymath}
+   X^{y,(n)}_c(t) = \begin{cases}
+    y, & \textrm{ se }  t < \gamma_y T_0 \\
+    x, & \textrm{ se } \Gamma^{y,(n)}_c(\sigma_i^x-) \leq t <
+    \Gamma^{y,(n)}_c(\sigma^x_i)
+    \text{ para algum } i \\
+    \infty, & \textrm{ caso contrário.}
+  \end{cases}
+\end{displaymath}
 \end{frame}
 
 
+\begin{frame}{Processo Truncado}
+  \begin{teorema}
+    O processo truncado em $n$ converge para o Processo K quase
+    certamente na métrica de Skorohod quando $n \to \infty$.
+  \end{teorema}
+\end{frame}
 
 
 \begin{frame}{Propriedade de Feller}
@@ -220,17 +246,25 @@ O infinito será um estado \emph{instantâneo}.
   \end{definicao} \pause
 
   \begin{teorema}
-    Seja $f: \Nzb \to \R$ contínua e $t > 0$ arbitrários. São
-    equivalentes:
+    São equivalentes:
     \begin{itemize}
-    \item $\Psi_t f$ é uma função contínua;
+    \item $\Psi_t f$ é uma função contínua para todo $t > 0$ e $f:
+      \Nzb \to \infty$ contínua;
     \item $\displaystyle \lim_{x \to \infty} \gamma_x = 0$.
     \end{itemize}
   \end{teorema}
 \end{frame}
 
 \begin{frame}{Propriedade de Feller}
-  O Processo K é ``efetivamente'' de Feller.
+  O Processo K pode não apresentar a propriedade de Feller, porém
+  podemos trabalhar quase como se a tivéssemos.
+  \begin{teorema}
+    Fixada $f: \Nzb \to \R$ contínua, $s, t > 0$ e uma sequência
+    $(t_n)_n$ que convirja para $t$, valerá que:
+    \begin{displaymath}
+      \Psi_s f (X(t_n)) \xrightarrow[q.c.]{n \to \infty} \Psi f (X(t))
+    \end{displaymath}
+  \end{teorema}
 \end{frame}
 
 \begin{frame}{Propriedade de Markov}
@@ -309,8 +343,63 @@ O infinito será um estado \emph{instantâneo}.
 
 
 \begin{frame}{Tempo no infinito}
-  
+
+  Considere o conjunto dos instantes de tempo que o Processo K, passa
+  no infinito, isso é:
+  \begin{displaymath}
+    \RR = \left\{ t \geq 0: X^\infty(t) = \infty \right\}
+  \end{displaymath}
+  \pause
+  \begin{teorema}
+    A medida de Lebesgue de $\RR$ vale zero \qc quando $c = 0$ e é
+    positiva \qc quando $c = 0$.
+  \end{teorema}
 \end{frame}
+
+\begin{frame}{Tempo no infinito}
+
+  \begin{teorema}
+    $\Gamma^\infty(\bullet)$ é um subordinador, isso é, um processo
+    que toma valores em $[0, \infty)$, iniciado em zero, crescente,
+    contínuo à direita, que tem incrementos estacionários e
+    independentes.
+  \end{teorema}
+  \pause
+  Nos apoiando na teoria de subordinadores, podemos calcular
+  explicitamente a dimensão de Hausdorff de $\RR$ no caso $c=0$.
+  \begin{teorema}
+    Denotando por $\dim_H (A)$ a dimensão de Hausdorff de um conjunto
+    $A$, para todo $t > 0$ vale que quase certamente:
+    \begin{displaymath}
+      \dim_H(\RR^\infty \cap [0, t]) = 
+      \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}.
+    \end{displaymath}
+  \end{teorema}
+\end{frame}
+
+\begin{frame}{Tempo no infinito}
+
+  \begin{teorema}
+    Supondo que $\sup_{x\in\Nz}\lambda_x < \infty$ e que existam um
+    $\delta>0$ e um $n_0 \in \Nz$ tal que $\gamma_x \leq
+    x^{-(1+\delta)}$ para todo $x > n_0$, vai valer que:
+    \begin{displaymath}
+      \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}  \leq
+      \frac{1}{1+\delta} .
+    \end{displaymath}
+  \end{teorema}
+
+  \begin{teorema}
+    Supondo que $\inf_{x\in\Nz}\lambda_x > 0$ e que existam um
+    $\delta>0$ e um $n_0 \in \Nz$ tal que $\gamma_x \geq
+    x^{-(1+\delta)}$ para todo $x > n_0$, vai valer que:
+    \begin{displaymath}
+      \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}  \geq
+      \frac{1}{1+\delta} .
+    \end{displaymath}
+  \end{teorema}
+\end{frame}
+
 
 
 \begin{frame}{Gerador infinitesimal}
@@ -325,7 +414,7 @@ O infinito será um estado \emph{instantâneo}.
       \AAA f (x) = \lim_{t \searrow 0} \frac{\Psi f (x) - f(x)}{t}.
     \end{displaymath}
   \end{definicao}
-
+  
   Note que nem sempre esse limite pode não existir.
 
 \end{frame}  
