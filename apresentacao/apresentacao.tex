@@ -243,7 +243,7 @@
 
   \begin{definicao}
     Para cada $t \in [0, \infty)$, o semigrupo de transição é um
-    operador que sobre as funções de $\Nzb$ em $\R$ definido como:
+    operador sobre as funções de $\Nzb$ em $\R$ definido como:
     \begin{displaymath}
       \Psi_t f (y) = \E \left[ f(X^y(t)) \right]
     \end{displaymath}
@@ -252,9 +252,9 @@
   \begin{teorema}
     São equivalentes:
     \begin{itemize}
-    \item $\Psi_t f$ é uma função contínua para todo $t > 0$ e $f:
-      \Nzb \to \infty$ contínua;
     \item $\displaystyle \lim_{x \to \infty} \gamma_x = 0$.
+    \item $\Psi_t f$ é uma função contínua para todo $t > 0$ e $f:
+      \Nzb \to \R$ contínua;
     \end{itemize}
   \end{teorema}
 \end{frame}
@@ -356,7 +356,7 @@
   \pause
   \begin{teorema}
     A medida de Lebesgue de $\RR$ vale zero \qc quando $c = 0$ e é
-    positiva \qc quando $c = 0$.
+    positiva \qc quando $c > 0$.
   \end{teorema}
 \end{frame}
 
@@ -375,8 +375,11 @@
     Denotando por $\dim_H (A)$ a dimensão de Hausdorff de um conjunto
     $A$, para todo $t > 0$ vale que quase certamente:
     \begin{displaymath}
-      \dim_H(\RR^\infty \cap [0, t]) = 
-      \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}.
+      \dim_H(\RR \cap [0, t]) = 
+      \liminf_{u \to \infty} 
+      \frac{1}{\log u} \log \left(
+        \sum_{x \in \Nz} \frac{u \lambda_x \gamma_x}{1 + u\gamma_x}
+      \right).
     \end{displaymath}
   \end{teorema}
 \end{frame}
@@ -388,8 +391,7 @@
     $\delta>0$ e um $n_0 \in \Nz$ tal que $\gamma_x \leq
     x^{-(1+\delta)}$ para todo $x > n_0$, vai valer que:
     \begin{displaymath}
-      \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}  \leq
-      \frac{1}{1+\delta} .
+      \dim_H(\RR \cap [0, t]) \leq \frac{1}{1+\delta} .
     \end{displaymath}
   \end{teorema}
 
@@ -398,8 +400,7 @@
     $\delta>0$ e um $n_0 \in \Nz$ tal que $\gamma_x \geq
     x^{-(1+\delta)}$ para todo $x > n_0$, vai valer que:
     \begin{displaymath}
-      \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u}  \geq
-      \frac{1}{1+\delta} .
+      \dim_H(\RR \cap [0, t]) \geq \frac{1}{1+\delta} .
     \end{displaymath}
   \end{teorema}
 \end{frame}
@@ -415,11 +416,11 @@
     O gerador infinitesimal $\AAA$ calculado sobre uma função $f: \Nzb
     \to \R$ é definido pelo limite:
     \begin{displaymath}
-      \AAA f (x) = \lim_{t \searrow 0} \frac{\Psi f (x) - f(x)}{t}.
+      \AAA f (x) = \lim_{t \searrow 0} \frac{\Psi_t f (x) - f(x)}{t}.
     \end{displaymath}
   \end{definicao}
   
-  Note que nem sempre esse limite pode não existir.
+  Note que esse limite pode não existir.
 
 \end{frame}  
 
