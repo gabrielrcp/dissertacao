@@ -14,10 +14,13 @@
 \usepackage{yfonts}
 %\graphicspath{{../figuras/}}
 
-\usetheme{Warsaw}
+%\usetheme{Warsaw}
+\usetheme{Darmstadt}
+%\usetheme{Ilmenau}
 \usecolortheme[named=Brown]{structure}
-%\usecolortheme{crane}
 \setbeamertemplate{navigation symbols}{} 
+
+
 
 \newcommand{\AAA}{{\mathcal{A}}}
 \newcommand{\DDD}{{\mathfrak{D}}}
@@ -63,6 +66,12 @@
 
 \setbeamercovered{dynamic}
 
+\AtBeginSubsection{
+\begin{frame}[plain]{Sumário}
+  \tableofcontents[currentsection,currentsubsection]
+\end{frame}
+}
+
 \begin{document}
 
 % Logo do IME, da USP e do CNPQ?
@@ -74,10 +83,16 @@
   \end{center}
 \end{frame}
 
+
+\begin{frame}[plain]{Sumário}
+  \tableofcontents
+\end{frame}
+
 \section{Construção}
 
+\subsection{Espaço de estados}
 
-\begin{frame}{Espaço de estados}
+\begin{frame}
 
   Denota-se por $\Nz$ o conjunto dos números naturais positivos, isso
   é:
@@ -94,7 +109,9 @@
 
 \end{frame}
 
-\begin{frame}{Parâmetros}
+\subsection{Parâmetros}
+
+\begin{frame}
 
   Associa-se duas constantes positivas à cada estado $x$ do processo:
 
@@ -111,7 +128,7 @@
 
 \end{frame}
 
-\begin{frame}{Restrições}
+\begin{frame}
 
   Impõe-se duas restrições sobre esses parâmetros:
   \begin{block}{}
@@ -124,8 +141,9 @@
   \end{block}
 \end{frame}
 
+\subsection{Construção}
 
-\begin{frame}{Espaço de Probabilidade}
+\begin{frame}
 
   O Processo K é construído num Espaço de Probabilidades que admita as
   seguintes famílias de variáveis aleatórias independentes:
@@ -142,7 +160,7 @@
   
 \end{frame}
 
-\begin{frame}{Função $\Gamma$}
+\begin{frame}
 
   A construção do Processo K se baseia na seguinte função aleatória,
   definida sobre $t \in [0, \infty)$:
@@ -153,7 +171,7 @@
   \end{displaymath}
 \end{frame}
 
-\begin{frame}{Definição do Processo K}
+\begin{frame}
   
   O Processo K com estado inicial $y \in \Nzb$ é definido como:
 
@@ -169,19 +187,24 @@
   \end{displaymath}
 \end{frame}
 
-\begin{frame}{Exemplos}
+\subsection{Exemplos}
+
+\begin{frame}
   \begin{center}
-    \includegraphics[width=0.9\textwidth,trim=0cm 4.5cm 0cm 4.5cm]{gamma_c1}
+    \includegraphics[width=\textwidth,trim=0cm 4.5cm 0cm 4.5cm]{gamma_c1}
   \end{center}
 \end{frame}
 
-\begin{frame}{Exemplos}
+\begin{frame}
   \begin{center}
-    \includegraphics[width=0.9\textwidth,trim=0cm 4.5cm 0cm 4.5cm]{gamma_c0}
+    \includegraphics[width=\textwidth,trim=0cm 4.5cm 0cm 4.5cm]{gamma_c0}
   \end{center}
 \end{frame}
-  
-\begin{frame}{Topologia}
+
+
+\subsection{Topologia}
+
+\begin{frame}
   
   Usaremos a seguinte métrica sobre $\Nzb$:
   \begin{displaymath}
@@ -205,7 +228,9 @@
 
 \section{Resultados}
 
-\begin{frame}{Processo Truncado}
+\subsection{Processo truncado}
+
+\begin{frame}
 
   Para cada $n \in \Nzb$  e $y \in \{ 1, \ldots, n\} \cup \{ \infty
   \}$ defini-se o processo truncado em $n$ com condição inicial $y$ da
@@ -231,7 +256,7 @@
 \end{frame}
 
 
-\begin{frame}{Processo Truncado}
+\begin{frame}
   \begin{teorema}
     O processo truncado em $n$ converge para o Processo K quase
     certamente na métrica de Skorohod quando $n \to \infty$.
@@ -239,7 +264,9 @@
 \end{frame}
 
 
-\begin{frame}{Propriedade de Feller}
+\subsection{Propriedade de Feller}
+
+\begin{frame}
 
   \begin{definicao}
     Para cada $t \in [0, \infty)$, o semigrupo de transição é um
@@ -259,7 +286,7 @@
   \end{teorema}
 \end{frame}
 
-\begin{frame}{Propriedade de Feller}
+\begin{frame}
   O Processo K pode não apresentar a propriedade de Feller, porém
   podemos trabalhar quase como se a tivéssemos.
   \begin{teorema}
@@ -271,14 +298,18 @@
   \end{teorema}
 \end{frame}
 
-\begin{frame}{Propriedade de Markov}
+\subsection{Propriedade de Markov}
+
+\begin{frame}
   \begin{teorema}
     O Processo K é fortemente markoviano.
   \end{teorema}
 \end{frame}
 
 
-\begin{frame}{Taxas de Transição}
+\subsection{Taxas de transição}
+
+\begin{frame}
   \begin{definicao}
     Para $x, y \in \Nzb$ e $t > 0$, denota-se
     \begin{displaymath}
@@ -295,7 +326,7 @@
   \end{definicao}
 \end{frame}
 
-\begin{frame}{Taxas de Transição}
+\begin{frame}
   \begin{teorema}
     No caso $c > 0$, a matriz de taxas de transição vale:
     \begin{displaymath}
@@ -313,7 +344,7 @@
   \end{teorema}
 \end{frame}
 
-\begin{frame}{Taxas de Transição}
+\begin{frame}
   \begin{teorema}
     No caso $c = 0$, a matriz de taxas de transição vale:
     \begin{displaymath}
@@ -330,7 +361,9 @@
   \end{teorema}
 \end{frame}
 
-\begin{frame}{Distribuição invariante}
+\subsection{Distribuição invariante}
+
+\begin{frame}
   \begin{teorema}
     A única medida de probabilidade invariante do Processo K é dada
     por:
@@ -345,8 +378,9 @@
   \end{teorema}
 \end{frame}
 
+\subsection{Tempo no infinito}
 
-\begin{frame}{Tempo no infinito}
+\begin{frame}
 
   Considere o conjunto dos instantes de tempo que o Processo K, passa
   no infinito, isso é:
@@ -360,7 +394,7 @@
   \end{teorema}
 \end{frame}
 
-\begin{frame}{Tempo no infinito}
+\begin{frame}
 
   \begin{teorema}
     $\Gamma^\infty(\bullet)$ é um subordinador, isso é, um processo
@@ -384,7 +418,7 @@
   \end{teorema}
 \end{frame}
 
-\begin{frame}{Tempo no infinito}
+\begin{frame}
 
   \begin{teorema}
     Supondo que $\sup_{x\in\Nz}\lambda_x < \infty$ e que existam um
@@ -405,9 +439,9 @@
   \end{teorema}
 \end{frame}
 
+\subsection{Gerador infinitesimal}
 
-
-\begin{frame}{Gerador infinitesimal}
+\begin{frame}
 
   Iremos nos limitar ao caso homogêneo, isso é, $\lambda_x = 1$ para
   todo $x \in \Nz$.
@@ -425,7 +459,7 @@
 \end{frame}  
 
 
-\begin{frame}{Gerador infinitesimal}
+\begin{frame}
   \cite{kendall:56} calcularam o gerador no caso $c = 1$.
 
   \begin{teorema}
@@ -447,7 +481,7 @@
 \end{teorema}
 \end{frame}
 
-\begin{frame}{Gerador infinitesimal}
+\begin{frame}
 
   Quando $c = 0$, o domínio onde iremos definir o gerador será 
   o conjunto $\DDD$ das funções $f: \Nz \to \R$ tais que:
@@ -460,7 +494,7 @@
   \end{itemize}  
 \end{frame}
 
-\begin{frame}{Gerador infinitesimal}
+\begin{frame}
 
   \begin{teorema}
     Quando $c = 0$, para $f \in \DDD$, vale que:
@@ -482,8 +516,7 @@
 
 
 
-\section{Referências}
-\begin{frame}
+\begin{frame}[plain]
   \frametitle{Referências}
   \bibliographystyle{plainnat} 
   \bibliography{../bibliografia} 
