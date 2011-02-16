@@ -97,7 +97,7 @@
   \item Clientes chegam no banco e entram numa fila;
   \item O banco tem um único caixa, que começa a atender o primeiro
     cliente da fila assim que ele termina um atendimento;
-  \item Supõe-se que o tempo é contínuo;
+%  \item Supõe-se que o tempo é contínuo;
   \item Pode-se representar a evolução desse sistema como uma função
     $X$, que associa cada instante de tempo $t$ com a quantidade
     $X(t)$ de clientes que estão dentro do banco.
@@ -124,7 +124,7 @@
   \end{itemize}
 \end{frame}
 
-\section{Construção}
+\section{Definições e construção}
 
 \subsection{Espaço de estados e parâmetros}
 
@@ -136,20 +136,19 @@
     \Nz = \left\{ 1, 2, 3, \ldots \right\}.
   \end{displaymath}
 
-
   O Processo K é um processo estocástico em tempo contínuo construído
   sobre o espaço:
   \begin{displaymath}
     \Nzb = \Nz \cup \{ \infty \},
   \end{displaymath}
 
-
 \end{frame}
 
 
 \begin{frame}
 
-  Associa-se duas constantes positivas à cada estado $x$ do processo:
+  Associa-se duas constantes positivas à cada estado $x \in \Nz$ do
+  processo:
 
   \begin{itemize}
   \item $\lambda_x$: controla a taxa em que tendemos a entrar em no
@@ -191,7 +190,7 @@
     \emph{i.i.d.} com distribuição exponencial de média $1$.
   \end{itemize}
 
-  Denotaremos por $\sigma^x_1 < \sigma^x_2 < \ldots$ as marcas do
+  Denota-se por $\sigma^x_1 < \sigma^x_2 < \ldots$ as marcas do
   Processo de Poisson $N_x$.
   
 \end{frame}
@@ -202,8 +201,8 @@
   definida sobre $t \in [0, \infty)$:
 
   \begin{displaymath}
-    \Gamma(t) := \Gamma^y(t) := \gamma_y T_0 + \sum_{x \in \Nz} \sum_{i = 1}^{N_x (t)}
-    \gamma_x T^x_i + c t
+    \Gamma(t) := \Gamma^y(t) :=
+    \gamma_y T_0 + \sum_{x \in \Nz} \sum_{i = 1}^{N_x (t)} \gamma_x T^x_i + c t
   \end{displaymath}
 \end{frame}
 
