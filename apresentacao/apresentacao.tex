@@ -1,7 +1,6 @@
 \documentclass[xcolor=pdftex,dvipsnames]{beamer}
 %\documentclass[xcolor=pdftex,dvipsnames,handout]{beamer}
 
-
 \usepackage[brazil]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -88,9 +87,46 @@
   \tableofcontents
 \end{frame}
 
+\section{Introdução}
+
+\subsection*{Filas}
+
+\begin{frame}
+
+  \begin{itemize}
+  \item Clientes chegam no banco e entram numa fila;
+  \item O banco tem um único caixa, que começa a atender o primeiro
+    cliente da fila assim que ele termina um atendimento;
+  \item Supõe-se que o tempo é contínuo;
+  \item Pode-se representar a evolução desse sistema como uma função
+    $X$, que associa cada instante de tempo $t$ com a quantidade
+    $X(t)$ de clientes que estão dentro do banco.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    \includegraphics[width=0.8\textwidth,trim=0cm 0cm 0cm
+    1.5cm]{fila.pdf}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \begin{itemize}
+  \item Funções aleatórias como essa são chamadas de processos
+    estocásticos;
+  \item Esse processo é em tempo contínuo;
+  \item O conjunto dos valores que o processo pode assumir é chamado
+    de espaço de estados, no caso da fila apresentada ele é $\{0, 1,
+    2, \ldots\}$;
+  \item Filas normalmente são processos não explosivos, o que não é o
+    caso do Processo K.
+  \end{itemize}
+\end{frame}
+
 \section{Construção}
 
-\subsection{Espaço de estados}
+\subsection{Espaço de estados e parâmetros}
 
 \begin{frame}
 
@@ -107,9 +143,9 @@
     \Nzb = \Nz \cup \{ \infty \},
   \end{displaymath}
 
+
 \end{frame}
 
-\subsection{Parâmetros}
 
 \begin{frame}
 
