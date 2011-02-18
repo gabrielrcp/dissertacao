@@ -296,6 +296,9 @@
     O processo truncado em $n$ converge para o Processo K quase
     certamente na métrica de Skorohod quando $n \to \infty$.
   \end{teorema}
+
+  A métrica de Skorohod é uma métrica sobre as trajetórias cádlág que
+  admite pequenas distorções temporais.
 \end{frame}
 
 
@@ -322,15 +325,19 @@
 \end{frame}
 
 \begin{frame}
+
   O Processo K pode não apresentar a propriedade de Feller, porém
   podemos trabalhar quase como se a tivéssemos.
-  \begin{teorema}
-    Fixada $f: \Nzb \to \R$ contínua, $s, t > 0$ e uma sequência
-    $(t_n)_n$ que convirja para $t$, valerá que:
-    \begin{displaymath}
-      \Psi_s f (X(t_n)) \xrightarrow[q.c.]{n \to \infty} \Psi_s f (X(t))
+
+
+  \begin{block}{Intuição}
+    Se $(y_n)_n$ for uma sequência de estados que convirja para $y$ e
+    tais estados ``possam ser visitados'' pelo Processo K em tempo
+    finito, então:
+    \begin{displaymath}  
+      \Psi_t f (y_n) \xrightarrow{n \to \infty} \Psi_t f (y)
     \end{displaymath}
-  \end{teorema}
+  \end{block}
 \end{frame}
 
 \subsection{Propriedade de Markov}
@@ -424,25 +431,17 @@
   \end{displaymath}
   \pause
   \begin{teorema}
-    A medida de Lebesgue de $\RR$ vale zero \qc quando $c = 0$ e é
-    positiva \qc quando $c > 0$.
+    A medida de Lebesgue de $\RR$ vale zero \qc quando $c = 0$.
+  \end{teorema}
+  \begin{teorema}
+    A medida de Lebesgue de $\RR$ é positiva \qc quando $c > 0$.
   \end{teorema}
 \end{frame}
 
 \begin{frame}
-
   \begin{teorema}
-    $\Gamma^\infty(\bullet)$ é um subordinador, isso é, um processo
-    que toma valores em $[0, \infty)$, iniciado em zero, crescente,
-    contínuo à direita, que tem incrementos estacionários e
-    independentes.
-  \end{teorema}
-  \pause
-  Nos apoiando na teoria de subordinadores, podemos calcular
-  explicitamente a dimensão de Hausdorff de $\RR$ no caso $c=0$.
-  \begin{teorema}
-    Denotando por $\dim_H (A)$ a dimensão de Hausdorff de um conjunto
-    $A$, para todo $t > 0$ vale que quase certamente:
+    Quando $c = 0$, denotando por $\dim_H (A)$ a dimensão de Hausdorff
+    de um conjunto $A$, para todo $t > 0$ vale que quase certamente:
     \begin{displaymath}
       \dim_H(\RR \cap [0, t]) = 
       \liminf_{u \to \infty} 
@@ -522,10 +521,10 @@
   o conjunto $\DDD$ das funções $f: \Nz \to \R$ tais que:
 
   \begin{itemize}
-  \item $\displaystyle \sum_{x\in \Nz} |f(x)-f(\infty)| < \infty$
-  \item $\displaystyle \sum_{x\in \Nz} \left( f(x)-f(\infty)\right) = 0$
   \item $\displaystyle \lim_{x \to \infty} \frac{f(x) -
       f(\infty)}{\gamma_x}$ existe
+  \item $\displaystyle \sum_{x\in \Nz} |f(x)-f(\infty)| < \infty$
+  \item $\displaystyle \sum_{x\in \Nz} \left( f(x)-f(\infty)\right) = 0$
   \end{itemize}  
 \end{frame}
 
