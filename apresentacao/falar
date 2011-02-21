@@ -9,14 +9,11 @@ saltos da gamma
 
 nos exemplos, falar que o processo com lambda somavel é de saltos
     
-*o processo é cádlág(?)
-
 Explicar a intuicao de feller quanto gamma converje para zero
-
-*prop forte de Markov
 
 Falar que \RR é a imagem de Gamma, que é um subordinador:
 Processo estocastico crescente
 Continuo a direita
 Incrementos independentes e estacionarios
+
 

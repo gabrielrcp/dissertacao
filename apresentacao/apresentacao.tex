@@ -56,12 +56,11 @@
 
 
 \title{Um estudo sobre o Processo K não homogêneo}
-\author[Peixoto, G. R. C. \and Fontes L. R. G.]
-{Gabriel R. C. Peixoto \and Luiz Renato G. Fontes}
+\author{Gabriel R. C. Peixoto  \\ \bigskip
+  Orientador: Prof. Dr. Luiz Renato G. Fontes}
 \institute[IME-USP]{Instituto de Matemática e Estatística da
   Universidade de São Paulo}
-\date{22 de fevereiro de 2011}
-
+\date{São Paulo, 22 de fevereiro de 2011}
 
 \setbeamercovered{dynamic}
 
@@ -76,7 +75,6 @@
 % Logo do IME, da USP e do CNPQ?
 \begin{frame}[plain]
   \titlepage
-  
   \begin{center}
     Este trabalho teve apoio do CNPq.
   \end{center}
@@ -211,7 +209,7 @@
   O Processo K com estado inicial $y \in \Nzb$ é definido como:
 
   \begin{displaymath}
-    X(t) = X^y (t) =
+    X(t) := X^y (t) :=
     \begin{cases}
       y & \textrm{ se }  t < \gamma_y T_0\\
       x & \textrm{ se } \Gamma^y(\sigma_i^x-) \leq t <
@@ -331,9 +329,9 @@
 
 
   \begin{block}{Intuição}
-    Se $(y_n)_n$ for uma sequência de estados que convirja para $y$ e
-    tais estados ``possam ser visitados'' pelo Processo K em tempo
-    finito, então:
+    Se $f: \Nzb \to \R$ é uma função contínua e $(y_n)_n$ for uma
+    sequência de estados que convirja para $y$ e tais estados ``possam
+    ser visitados'' pelo Processo K em tempo finito, então:
     \begin{displaymath}  
       \Psi_t f (y_n) \xrightarrow{n \to \infty} \Psi_t f (y)
     \end{displaymath}
@@ -357,7 +355,7 @@
     \begin{displaymath}
       p_{x y} (t) := P \left( X^x(t) = y \right).
     \end{displaymath}
-    P (t) denotará a matriz cujas entradas são $p_{x y} (t)$.
+    $P (t)$ denotará a matriz cujas entradas são $p_{x y} (t)$.
   \end{definicao} \pause
   \begin{definicao}
     A matriz de taxas de transição é definida como:
