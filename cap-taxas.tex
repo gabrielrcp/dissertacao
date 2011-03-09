@@ -43,7 +43,7 @@ com uma caracterização básica das mesmas.
   consideremos $X^{x, (n)}$ como na Seção \ref{sec:aproximacoes} e
   definiremos $p^n_{x y}(t) := P(X^{x, (n)}(t) = y)$. Observemos que
   $p^n_{xy}$ é Lebesgue mensurável porque $X^{x, (n)}$ é um processo
-  Markoviano de saltos.
+  markoviano de saltos.
 
   Fixado $x \in \Nzb$ e $y \in \Nz$, notemos que $f_y(z) := \ind\{ z =
   y \}$ é uma função contínua e todo $t > 0$ fixado é \qc um ponto de
@@ -579,8 +579,9 @@ homogêneos é que eles podem não ser de Feller.  Depois de calcular as
 taxas de transição, finalmente temos ferramentas para especificar
 explicitamente quando isso acontece.
 
-Dizemos que um processo é de Feller se $\Psi_t f$ é uma função contínua
-para todo $t > 0$ e toda $f: \Nzb \to \R$ contínua.
+Dizemos que um processo markoviano é de Feller se seu semigrupo
+$\Psi_t$ apresentado na Definição \ref{def:semigrupo} levar funções
+contínuas em funções contínuas.
 
 \begin{proposicao}
   São equivalentes:
@@ -643,8 +644,7 @@ para todo $t > 0$ e toda $f: \Nzb \to \R$ contínua.
     \leq \frac{1}{\delta} \int_0^t p_{\infty y} (t-s) d s.
   \end{displaymath}
 
-  Tomando limite $n \to \infty$ e usando o Teorema de Convergência
-  Dominada, obteremos:
+  Tomando limite $n \to \infty$ obteremos:
   \begin{align*}
      p_{\infty y}(t)
      &\leq \frac{1}{\delta} \int_0^t p_{\infty y}(t - s) d s\\
@@ -861,23 +861,18 @@ probabilidade é uma medida invariante para o Processo K:
     \E [f_x(X^y_0(t))] = P(X^y_0(t) = x).
   \end{displaymath}
 
-  Observando \eqref{eq:invariante}, notamos que $\pi_c(y)
-  \xrightarrow{c\searrow 0} \pi_0(y)$ para todo $y \in \Nzb$.
-
   Como $\pi_c$ é invariante para $(X^y_c)$, teremos que para todo $x
   \in \Nz$ e $t \geq 0$:
-
   \begin{align*}
-    \pi_c(x) &= \sum_{y \in \Nzb} \pi_c (y) P(X^y_c (t) = x).\\
+    \pi_c(x) &= \sum_{y \in \Nzb} \pi_c (y) P(X^y_c (t) = x).
   \end{align*}
-
-
-  Cada termo dessa soma pode ser dominado por $\pi_0(y)$ se $y \neq
-  \infty$ e por $1$ se $y = \infty$; assim tomando o limite
-  $c\searrow0$ e usando o Teorema da Convergência Dominada, teremos
-  que:
+  Observando \eqref{eq:invariante}, notamos que $\pi_c(y)
+  \xrightarrow{c\searrow 0} \pi_0(y)$ para todo $y \in \Nzb$ e que
+  $\pi_c(y) \leq \pi_0(y)$ para todo $y \in \Nz$ e $c > 0$.  Dessa
+  forma podemos tomar o limite $c\searrow0$ e usar o Teorema da
+  Convergência Dominada para obter que:
   \begin{align*}
-    \pi_0(x) &= \sum_{y \in \Nzb} \pi_0 (y) P(X^y_0 (t) = x).\\
+    \pi_0(x) &= \sum_{y \in \Nzb} \pi_0 (y) P(X^y_0 (t) = x).
   \end{align*}
 
   De onde concluímos que $\pi_0$ é uma medida invariante para o
@@ -942,8 +937,10 @@ onde $\CC$ é o conjunto das funções de $\Nzb$ em $\R$ contínuas.
   definida através do limite:
   \begin{equation}
     \label{eq:def-gerador}
-    \AAA f = \lim_{t \searrow 0} \frac{\Psi_t f - f}{t}.
+    \AAA f = \lim_{t \searrow 0} \frac{\Psi_t f - f}{t},
   \end{equation}
+  onde $\Psi$ é o semigrupo de transição apresentado na Definição
+  \ref{def:semigrupo}.
 \end{definicao}
 
 Agora vamos mostrar nas proposições \ref{prop:gerador-x} e
@@ -976,7 +973,7 @@ valor.
   \end{align}
   de onde conclui-se \eqref{eq:gerador-x} imediatamente.
 
-  Agora vamos começar a fazer a conta:
+  Agora observemos que:
   \begin{align*}
     \frac{\Psi_t f(x) - f(x)}{t}
     &= \sum_{y \in \Nzb} \left[ f(y) - f(x) \right] \frac{p_{x y}(t)}{t}\\
@@ -1152,7 +1149,7 @@ valor.
   \searrow 0$.    
 
   Para controlar \eqref{eq:gerador-inf-visita-x-antes}, notemos que se
-  X(t) = 1 e $\sigma_1^1 > \sigma_1^x$ então o processo passou por $1$
+  $X(t) = 1$ e $\sigma_1^1 > \sigma_1^x$ então o processo passou por $1$
   e por $x$ até o instante $t$. Como $\gamma_1 \geq \gamma_x$, usando
   a propriedade de falta de memória da exponencial nos $\sigma$'s,
   obtemos que a probabilidade de termos passado por $1$ e por $x$ é
@@ -1340,15 +1337,15 @@ valor.
         -\frac{\Gamma^{<1>}(\sigma^1_2)}{t}
       \right\}
         \geq e^{-1} \right)\\
-    &\leq \mathrm{cte }\:
+    &\leq e \:
     \E \left[ \exp \left\{
         -\frac{\Gamma^{<1>}(\sigma^1_2)}{t}
       \right\} \right]\\
-    &= \mathrm{cte} \: \left\{ \E \left[  -\frac{\Gamma^{<1>}(\sigma^1_1)}{t}
+    &= e \: \left\{ \E \left[  -\frac{\Gamma^{<1>}(\sigma^1_1)}{t}
       \right] \right\}^2 \\
-    &= \mathrm{cte} \: \left( 1 + \sum_{y > 1} \frac{\gamma_y}{t +
+    &= e \: \left( 1 + \sum_{y > 1} \frac{\gamma_y}{t +
         \gamma_y}  \right)^{-2}\\
-    &\leq \mathrm{cte} \: \left( \sum_{y \in \Nz} \frac{\gamma_y}{t +
+    &\leq e \: \left( \sum_{y \in \Nz} \frac{\gamma_y}{t +
         \gamma_y}  \right)^{-2}
   \end{align*}
 
@@ -1591,14 +1588,17 @@ transladado.
 \begin{definicao}
   Vamos denotar por $\RR$ a imagem de $\Gamma^\infty$. Isso é:
   \begin{displaymath}
-    \RR = \left\{
+    \RR := \left\{
       t \geq 0 : \exists s \geq 0 \textrm{ tal que } \Gamma^\infty(s) = t
     \right\}.
   \end{displaymath}
 \end{definicao}
 
 \begin{proposicao}
-  Quase certamente, temos que $X(t) = \infty$ se e somente se $t \in \RR$.
+  Para quase toda realização do processo, vale que:
+  \begin{displaymath}
+    \RR = \left\{ t \geq 0: X(t) = \infty \right\}
+  \end{displaymath}
 \end{proposicao}
 \begin{proof}
   Vamos fixar uma realização do nosso processo onde $\Gamma$ é
@@ -1808,7 +1808,7 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
   \end{align*}
   onde $C^\prime$ é uma constante positiva.
 
-  Como jogar $u$ para o infinito é equivalente à jogar $v$ para o
+  Como $u$ tender para o infinito é equivalente à $v$ ir para o
   infinito e como o limite seguindo $v$ inteiro é um limitante
   superior para $\liminf$, teremos que:
 

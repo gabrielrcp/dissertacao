@@ -1,22 +1,19 @@
-Cap 1
-- Introducao e um monte de bla bla bla
+Citar o enunciado do item (c) da Proposicao 5.3 de Ethier e Kurtz.
 
-Cap 2
-- Construcao
-- Comentario no caso em que os pesos sao somáveis
-- Grafico da Gamma
-- Topologia de N_barra
+Pegar o teorema de firestedt e gray em que eles provam feller->fort. markov
 
-Cap 3
-- Aproximacoes por truncagem
-- Convergencia das aproximacoes
-- Cadlag
-- Markoviano
-- Fort. Markoviano
+Teorema soma de exponenciais do Norris.
 
-Cap 4
-- Continuidade/nao continuidade
-- Matriz Q
-- Medida invariante
-- Gerador
-- Dim de hausdorf
+Quase Feller.
+
+Definir tempos de parada e fortemente markoviano.
+
+Observacao da pag 20, talvez fixar a realização antes de fazer
+qualquer outra coisa.
+
+Expandir calculo da t. de Laplace da \Gamma, pag 26
+
+Explicacao intuitiva do gerador.
+
+Generalizar os ultimos teo da dim de Hausdorff.
+

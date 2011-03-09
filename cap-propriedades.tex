@@ -7,8 +7,8 @@ básicas para trabalhar com o Processo K durante o resto da
 dissertação.
 
 Apresentaremos uma maneira de aproximar o Processo K por processos
-Markovianos de salto, bem como provaremos que o processo K é
-fortemente Markoviano.
+markovianos de salto, bem como provaremos que o processo K é
+fortemente markoviano.
 
 %% ------------------------------------------------------------------------- %%
 
@@ -95,17 +95,16 @@ serão usadas à exaustão em seções subsequentes.
   \label{prop:gamma-dist-continua}
   Para todo $t > 0$, $i \geq 1$ e $x \in \Nz$ vale que $\Gamma(t)$,
   $\Gamma(\sigma^x_i)$ e $\Gamma(\sigma^x_i-)$ são variáveis
-  aleatórias contínuas.
+  aleatórias com distribuição absolutamente contínua em relação à
+  medida de Lebesgue.
 \end{proposicao}
 \begin{proof}
 
-  Primeiramente fixemos um $t > 0$ e mostraremos que $\Gamma(t)$ é uma
-  variável aleatória contínua.
+  Primeiramente fixemos um $t > 0$ e mostraremos que $\Gamma(t)$ tem
+  distribuição absolutamente contínua em relação à Lebesgue.
 
   Fixemos um boreliano $A$ arbitrário que tenha medida de Lebesgue
-  zero. Vamos mostrar que $P(\Gamma(t) \in A) = 0$, de onde seguirá
-  através do Teorema de Radon-Nikodym que $\Gamma(t)$ tem uma
-  distribuição contínua.
+  zero. Vamos mostrar que $P(\Gamma(t) \in A) = 0$.
 
 
   Para cada $n \in \Nz$, vale que:
@@ -234,7 +233,7 @@ serão usadas à exaustão em seções subsequentes.
   Fixemos uma realização do processo, $T > 0$ e $\epsilon > 0$
   arbitrários. Seguindo \cite{billingsley:99}, vamos mostrar que
   existem $0 = t_0 < t_1 < \ldots < t_N = T$ tais que $w[t_{i-1}, t_i)
-  < \epsilon$ para todo $i = 1, \ldots, N$. Onde $w(A) = \sup_{t, s
+  < \epsilon$ para todo $i = 1, \ldots, N$, onde $w(A) = \sup_{t, s
     \in A} d(X^\infty(t), X^\infty(s))$ para $A \subseteq
   \R$. Lembrando que estamos trabalhando com a métrica
   \eqref{eq:metrica} sobre $\Nzb$.
@@ -289,7 +288,7 @@ serão usadas à exaustão em seções subsequentes.
   \Gamma(\sigma_i^x): x \in \Nz\}$.
 
   Observando a Proposição \ref{prop:gamma-dist-continua}, concluímos
-  que todo $t > 0$ é um ponto de continuidade do processo.
+  que todo $t > 0$ é \qc um ponto de continuidade do processo.
 \end{proof}
 
 
@@ -324,7 +323,7 @@ O processo truncado em $n \in \Nz$, com estado inicial $y \in \{1,
 \end{displaymath}
 
 \begin{proposicao}
-  O processo $X^{(n)}$ é Càdlàg e Markoviano.
+  O processo $X^{(n)}$ é càdlàg e markoviano.
 \end{proposicao}
 \begin{proof}
   Quando truncamos o processo K, ele se comporta de maneira análoga ao
@@ -499,14 +498,14 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
 \section{Propriedade de Markov}
 \label{sec:prop-markov}
 
-O objetivo dessa seção é provar que o Processo K é Markoviano. Nossa
+O objetivo dessa seção é provar que o Processo K é markoviano. Nossa
 estratégia será mostrar que a propriedade de Markov se mantém quando
 tomamos os limites dos processos truncados introduzidos na Seção
 \ref{sec:aproximacoes}.
 
-Note que nem sempre o limite de processos Markovianos é um processo
-Markoviano. Para demonstrar que essa propriedade é mantida, vamos
-abusar de diversas propriedades da nossa construção, em particular da
+Note que nem sempre o limite de processos markovianos é um processo
+markoviano. Para demonstrar que essa propriedade é mantida, vamos usar
+diversas propriedades da nossa construção, em particular da
 convergência dos processos truncados uniformemente na condição
 inicial.
 
@@ -518,7 +517,7 @@ $\infty$. Mostraremos isso com detalhes na Seção
 \ref{sec:prop-feller}.
 
 Vamos contornar esse problema usando o fato que esses estados onde
-$\gamma_y$ é grande não são de fato visitados. Essa ideia será
+$\gamma_y$ é grande são visitados com probabilidade baixa. Essa ideia será
 formalizada pela Proposição \ref{prop:gamma-somavel}. Com isso
 mostraremos que nosso processo tem propriedades muito parecidas com as
 de um processo de Feller.
@@ -668,14 +667,14 @@ de um processo de Feller.
 
 \begin{teorema}
   \label{teo:proc_markov}
-  O Processo K é um processo Markoviano.
+  O Processo K é um processo markoviano.
 \end{teorema}
 
 \begin{proof}
   Fixamos $m \geq 1$, $t_1 < t_2 < \ldots < t_{m+1}$ e $f_1, \ldots,
   f_{m+1} : \Nzb \to \R$ funções contínuas.
 
-  Como $X^{(n)}$ é Markoviano, se denotarmos por $\Psi^n$ o semigrupo
+  Como $X^{(n)}$ é markoviano, se denotarmos por $\Psi^n$ o semigrupo
   de transição do processo truncado, teremos que:
   \begin{gather}
     \label{eq:markov-truncado}
@@ -991,7 +990,7 @@ de probabilidades onde estamos trabalhando.
 
 \begin{teorema}
   \label{teo:markov-forte}
-  O Processo K é fortemente Markoviano.
+  O Processo K é fortemente markoviano.
 \end{teorema}
 \begin{proof}
   Fixada uma $f: \Nzb \to \R$ contínua e $\tau$ um tempo de parada
