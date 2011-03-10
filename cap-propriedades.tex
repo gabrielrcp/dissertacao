@@ -349,9 +349,20 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
 \begin{proof}
   Essa demonstração foi adaptada diretamente do \emph{Lema 3.11} de
   \cite{fontes:08}.
-
-  Mostraremos que o item (c) da Proposição 5.3 do Capítulo 3 de
-  \cite{ethier:86} vale quase certamente.
+  
+  A Proposição 5.3 do Capítulo 3 de
+  \cite{ethier:86} nos diz que uma sequências de tragetórias càdlàg $(x_n)$
+  converge para outra tragetória càdlàg $x$ se e somente se
+  para todo $T > 0$ existir uma sequência de funções $\lambda_n:
+  [0,\infty) \to [0, \infty)$ bijetoras, crescentes e Lipschitz
+  contínuas tais que:
+  \begin{gather*}
+    \lim_{n\to\infty} \sup_{0 \leq t \leq T} d\left( x_n(t),
+      x(\lambda_n(t)) \right) = 0\\
+    \lim_{n\to\infty} \sup_{0 \leq t \leq T} |\lambda_n(t) - t| = 0.
+  \end{gather*}
+  
+  Vamos mostrar que essa propriedade é válida quase certamente.
 
   Como o processo sempre se inicia no $\infty$, não vamos mais
   carregar esse índice na notação.
@@ -517,8 +528,8 @@ $\infty$. Mostraremos isso com detalhes na Seção
 \ref{sec:prop-feller}.
 
 Vamos contornar esse problema usando o fato que esses estados onde
-$\gamma_y$ é grande são visitados com probabilidade baixa. Essa ideia será
-formalizada pela Proposição \ref{prop:gamma-somavel}. Com isso
+$\gamma_y$ é grande são visitados com probabilidade baixa. Essa ideia
+será formalizada pela Proposição \ref{prop:gamma-somavel}. Com isso
 mostraremos que nosso processo tem propriedades muito parecidas com as
 de um processo de Feller.
 
@@ -554,10 +565,11 @@ de um processo de Feller.
   \end{align*}
 
   Portanto, para $\nu$ quase todo $V \subseteq \Nz$ vale que
-  $P(\sum_{x \in V} \gamma_x T^x_1 < \infty) = 1$. Fixado um
-  $V$ desses, teremos que $\sum_{x \in V}\gamma_x < \infty$, já que
-  uma soma de variáveis aleatórias exponenciais independentes é finita
-  \qc se e somente se a soma de suas médias convergir.
+  $P(\sum_{x \in V} \gamma_x T^x_1 < \infty) = 1$. Fixado um $V$
+  desses, teremos que $\sum_{x \in V}\gamma_x < \infty$, já que uma
+  soma de variáveis aleatórias exponenciais independentes é finita \qc
+  se e somente se a soma de suas médias convergir - ver Teorema 2.3.2
+  de \cite{norris:98}.
 
   Com isso concluímos que para $\nu$ quase todo $V$ vale que $\sum_{x
     \in V}\gamma_x < \infty$, ou seja, $\sum_{x \in
@@ -984,9 +996,41 @@ ele goza de algumas propriedades que irão possibilitar demonstrar a
 propriedade forte de Markov de forma análoga à maneira pela qual a
 demonstramos para processos de Feller.
 
-Para cada $t > 0$, vamos denotar por $\FF_t$ a $\sigma$-álgebra gerada
-por $\{X(s): s \in [0, t]\}$ e por $\FF$ a $\sigma$-álgebra do espaço
-de probabilidades onde estamos trabalhando.
+Para cada $t \geq 0$, vamos denotar por $\FF_t$ a $\sigma$-álgebra
+gerada por $\{X(s): s \in [0, t]\}$. Chamamos a família $\{\FF_t: t
+\geq 0\}$ de filtração mínima associada ao processo $X$. Vamos denotar
+ainda por $\FF$ a $\sigma$-álgebra do espaço de probabilidades onde
+estamos trabalhando.
+
+\begin{definicao}
+  Dizemos que uma variável aleatória positiva $\tau$ é um tempo de
+  parada em relação à uma filtração $(\FF_t)_{t \geq 0}$ quando $\{
+  \tau \leq t\} \in \FF_t$ para todo $t > 0$.
+\end{definicao}
+
+\begin{definicao}
+  A $\sigma$-álgebra associada à um tempo de parada $\tau$ será
+  denotada por $\FF_\tau$ e é definida por:
+  \begin{displaymath}
+    \FF_\tau = \left\{
+      A \in \FF:  A \cap \{\tau \leq t\} \in \FF_t \quad \forall t \geq 0 
+    \right\}.
+  \end{displaymath}
+\end{definicao}
+
+\begin{definicao}
+  Dizemos que um processo estocástico é fortemente markoviano quando:
+  \begin{displaymath}
+    P\left( X(t + \tau) \in A \right) = 
+    \int dP(X(\tau) = y)  P(X^y(t) \in A ),
+  \end{displaymath}
+  para todo $t > 0$, $A$ boreliano e $\tau$ tempo de parada \qc
+  finito. 
+\end{definicao}
+
+Intuitivamente, um processo estocástico é fortemente markoviano se a
+sua distribuição depois de um tempo de parada não depender do que
+aconteceu antes desse tempo de parada.
 
 \begin{teorema}
   \label{teo:markov-forte}
@@ -994,20 +1038,13 @@ de probabilidades onde estamos trabalhando.
 \end{teorema}
 \begin{proof}
   Fixada uma $f: \Nzb \to \R$ contínua e $\tau$ um tempo de parada
-  finito para $(\FF_t)_{t \geq 0}$ . Vamos mostrar que quase
+  sobre $(\FF_t)_{t \geq 0}$ \qc finito. Vamos mostrar que quase
   certamente:
   \begin{equation}
     \label{eq:markov-forte}
     \E \left[ f(X(\tau + t) \middle| \FF_\tau \right]
     = \Psi_t f (X(\tau)),
   \end{equation}
-  onde $\FF_\tau$ é definida da seguinte forma:
-  \begin{displaymath}
-    \FF_\tau = \left\{
-      A \in \FF:  A \cap \{\tau \leq t\} \in \FF_t \quad \forall t \geq 0 
-    \right\}
-  \end{displaymath}
-
 
   Para cada $h > 0$, denotemos por: 
   \begin{displaymath}
@@ -1112,15 +1149,15 @@ de probabilidades onde estamos trabalhando.
   \ref{prop:gamma-somavel} de maneira parecida à que fizemos quando
   queríamos mostrar a propriedade de Markov simples.
 
-  Vamos fixar uma realização do processo onde $\sum_{x \in V_t}
-  \gamma_x < \infty$ para todo $t$, $\tau < \infty$ e $X(\tau_{h}) \to
-  X(\tau)$ quando $h \to 0$. Tais realizações têm probabilidade 1.
+  Fixemos uma realização do processo onde $\sum_{x \in V_t} \gamma_x <
+  \infty$ para todo $t$, $\tau < \infty$ e $X(\tau_{h}) \to X(\tau)$
+  quando $h \to 0$. Tais realizações têm probabilidade 1.
 
 
   Tomemos uma sequência $h_n \searrow 0$ arbitrária. Vamos mostrar que:
   \begin{equation}
     \label{eq:convergencia-discretizacao-2}
-    \Psi_t f (X(\tau_{h_n})) \xrightarrow[\qc]{n \to \infty}
+    \Psi_t f (X(\tau_{h_n})) \xrightarrow{n \to \infty}
     \Psi_t f(X(\tau)).
   \end{equation}
 
@@ -1169,7 +1206,6 @@ de probabilidades onde estamos trabalhando.
     \qedhere
   \end{align*}
 \end{proof}
-
 
 
 %%% Local Variables: 
