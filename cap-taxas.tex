@@ -1873,7 +1873,7 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
 \end{proof}
 
 \begin{corolario}
-  \label{prop:igualar-dim-haus}
+  \label{cor:igualar-dim-haus}
   Supondo que $\inf_{x \in \Nz} \lambda_x > 0$, $\sup_{x \in \Nz}
   \lambda_x < \infty$ e que existam um $\delta > 0$ e um $n_0 \in \Nz$
   tal que $\gamma_x = x^{-(1+\delta)}$ para todo $x > n_0$, vai valer que:
@@ -1887,6 +1887,78 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
   \ref{prop:dominar-dim-haus-sup} e \ref{prop:dominar-dim-haus-inf}.
 \end{proof}
 
+\begin{corolario}
+  \label{cor:log-haus}
+  Supondo que $\inf_{x \in \Nz} \lambda_x > 0$ e $\sup_{x \in \Nz}
+  \lambda_x < \infty$ então:
+  \begin{gather}
+    \label{eq:log-haus-sup}
+    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} \leq
+    - \left( \limsup_{x \to \infty} \frac{\log \gamma_x}{\log x}
+    \right)^{-1} \\
+    \label{eq:log-haus-inf}
+    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} \geq
+    - \left( \liminf_{x \to \infty} \frac{\log \gamma_x}{\log x}
+    \right)^{-1} \\
+  \end{gather}
+\end{corolario}
+\begin{proof}
+
+  Como estamos supondo que $\sup_{x \in \Nz} \lambda_x < \infty$,
+  então a sequência $(\gamma_x)_{x\in\Nz}$ é somável, de onde
+  concluímos que:
+  \begin{displaymath}
+    \limsup_{x \to \infty} \frac{\log \gamma_x}{\log x}
+    \leq -1.
+  \end{displaymath}
+
+  Se $\displaystyle \limsup_{x \to \infty} \frac{\log \gamma_x}{\log
+    x} = -1$, então \eqref{eq:log-haus-sup} é óbvia. Dessa maneira
+  vamos tomar $\delta > 0$ tal que:
+  \begin{displaymath}
+    \limsup_{x \to \infty} \frac{\log \gamma_x}{\log x} = -(1
+    + \delta).
+  \end{displaymath}
+
+  Pela definição do limite superior, para todo $\epsilon > 0$, existe
+  um $n_0 \in \Nz$ tal que para todo $x > n_0$:
+  \begin{displaymath}
+    \frac{\log \gamma_x}{\log x} \leq -(1+\delta) + \epsilon,
+  \end{displaymath}
+  o que implica que, $ \gamma_x \leq x^{-(1+\delta-\epsilon)}$ para $x
+  > n_0$.
+
+
+  Dessa maneira, usando a Proposição \ref{prop:dominar-dim-haus-sup},
+  concluímos que para todo $\epsilon \in (0, \delta)$, vale que:
+  \begin{displaymath}
+    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} \leq
+    -(1+\delta-\epsilon),
+  \end{displaymath}
+  
+  Como o $\epsilon$ pode ser tomado arbitrariamente pequeno,
+  concluímos \eqref{eq:log-haus-sup}.
+
+  Podemos mostrar \eqref{eq:log-haus-inf} de maneira análoga,
+  utilizando a Proposição \ref{prop:dominar-dim-haus-inf}
+\end{proof}
+
+\begin{corolario}
+  \label{cor:log-haus-igual}
+   Supondo que $\inf_{x \in \Nz} \lambda_x > 0$, $\sup_{x \in \Nz}
+  \lambda_x < \infty$ e $\lim_{x\to\infty} \frac{\log \gamma_x}{\log
+    x}$ exista, então:
+  \begin{gather}
+    \label{eq:log-haus-igual}
+    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} =
+    - \left( \lim_{x \to \infty} \frac{\log \gamma_x}{\log x}
+    \right)^{-1}
+  \end{gather}
+\end{corolario}
+\begin{proof}
+  Esse corolário é uma consequencia direta do Corolário
+  \ref{cor:log-haus}.
+\end{proof}
 
 %%% Local Variables: 
 %%% TeX-master: "tese"
