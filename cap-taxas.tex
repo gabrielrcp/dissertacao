@@ -1890,7 +1890,8 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
 \begin{corolario}
   \label{cor:log-haus}
   Supondo que $\inf_{x \in \Nz} \lambda_x > 0$ e $\sup_{x \in \Nz}
-  \lambda_x < \infty$ então:
+  \lambda_x < \infty$, sob a convenção que $\frac{1}{\infty} = 0$,
+  vale que:
   \begin{gather}
     \label{eq:log-haus-sup}
     \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} \leq
@@ -1899,11 +1900,10 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
     \label{eq:log-haus-inf}
     \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} \geq
     - \left( \liminf_{x \to \infty} \frac{\log \gamma_x}{\log x}
-    \right)^{-1} \\
+    \right)^{-1}
   \end{gather}
 \end{corolario}
 \begin{proof}
-
   Como estamos supondo que $\sup_{x \in \Nz} \lambda_x < \infty$,
   então a sequência $(\gamma_x)_{x\in\Nz}$ é somável, de onde
   concluímos que:
@@ -1912,14 +1912,20 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
     \leq -1.
   \end{displaymath}
 
-  Se $\displaystyle \limsup_{x \to \infty} \frac{\log \gamma_x}{\log
-    x} = -1$, então \eqref{eq:log-haus-sup} é óbvia. Dessa maneira
-  vamos tomar $\delta > 0$ tal que:
-  \begin{displaymath}
-    \limsup_{x \to \infty} \frac{\log \gamma_x}{\log x} = -(1
-    + \delta).
-  \end{displaymath}
+  A parte da direita de \eqref{eq:log-haus-sup} é a dimensão de
+  Hausdorff de um conjunto que tem medida de Lebesgue zero. Assim
+  \eqref{eq:log-haus-sup} é evidente quando
+  $\displaystyle \limsup_{x \to \infty} \frac{\log \gamma_x}{\log x} =
+  -1$.
 
+  Quando esse $\limsup$ é estritamente menor que $-1$,
+  podemos tomar $\delta > 0$ tal que:
+  \begin{equation}
+    \label{eq:log-haus-delta}
+    \limsup_{x \to \infty} \frac{\log \gamma_x}{\log x} \leq -(1
+    + \delta).
+  \end{equation}
+  
   Pela definição do limite superior, para todo $\epsilon > 0$, existe
   um $n_0 \in \Nz$ tal que para todo $x > n_0$:
   \begin{displaymath}
@@ -1928,19 +1934,34 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
   o que implica que, $ \gamma_x \leq x^{-(1+\delta-\epsilon)}$ para $x
   > n_0$.
 
-
   Dessa maneira, usando a Proposição \ref{prop:dominar-dim-haus-sup},
   concluímos que para todo $\epsilon \in (0, \delta)$, vale que:
   \begin{displaymath}
     \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} \leq
-    -(1+\delta-\epsilon),
+    \frac{1}{1+\delta-\epsilon},
   \end{displaymath}
   
-  Como o $\epsilon$ pode ser tomado arbitrariamente pequeno,
-  concluímos \eqref{eq:log-haus-sup}.
+  Como $\epsilon > 0$ pode ser tomado arbitrariamente pequeno,
+  concluímos que:
+  \begin{displaymath}
+    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} \leq
+    \frac{1}{1+\delta} 
+  \end{displaymath}
+  
+  Quando $\limsup_{x\to\infty} \frac{\log \gamma_x}{\log x} <
+  -\infty$, então podemos tomar $\delta$ de forma que
+  \eqref{eq:log-haus-delta} valha com igualdade, de onde concluiremos
+  \eqref{eq:log-haus-sup}.
+
+  Por fim, caso $\limsup_{x\to\infty} \frac{\log \gamma_x}{\log x} =
+  -\infty$, então podemos tomar $\delta$ arbitrariamente grande, de
+  onde concluiremos:
+  \begin{displaymath}
+    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} \leq 0.
+  \end{displaymath}
 
   Podemos mostrar \eqref{eq:log-haus-inf} de maneira análoga,
-  utilizando a Proposição \ref{prop:dominar-dim-haus-inf}
+  utilizando a Proposição \ref{prop:dominar-dim-haus-inf}.
 \end{proof}
 
 \begin{corolario}
@@ -1956,7 +1977,7 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
   \end{gather}
 \end{corolario}
 \begin{proof}
-  Esse corolário é uma consequencia direta do Corolário
+  Esse corolário é uma consequência direta do Corolário
   \ref{cor:log-haus}.
 \end{proof}
 
