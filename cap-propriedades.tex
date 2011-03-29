@@ -529,9 +529,23 @@ $\infty$. Mostraremos isso com detalhes na Seção
 
 Vamos contornar esse problema usando o fato que esses estados onde
 $\gamma_y$ é grande são visitados com probabilidade baixa. Essa ideia
-será formalizada pela Proposição \ref{prop:gamma-somavel}. Com isso
-mostraremos que nosso processo tem propriedades muito parecidas com as
-de um processo de Feller.
+será formalizada pela Proposição \ref{prop:gamma-somavel}.
+
+De forma intuitiva, se $(x_n)$ é uma sequência de estados que converge
+um estado para $x$ em $\Nzb$ e estes estados de fato podem ser
+visitados pelo Processo K em um tempo finito, então $\Psi_t(x_n)$
+converge para $\Psi_t (x)$, onde $\Psi_t$ é o semigrupo de transição
+definido abaixo. Usaremos esse tipo de ideia no lugar da propriedade
+de Feller.
+
+\begin{definicao}
+  \label{def:semigrupo}
+  Denotaremos por $(\Psi_t)_{t > 0}$ o semigrupo de transição do
+  Processo K, isso é, para $t > 0$ e $f: \Nzb \to \R$:
+  \begin{gather*}
+    \Psi_t f (x) = \E \left[ f(X^x(t)) \right]
+  \end{gather*}
+\end{definicao}
 
 \begin{proposicao}
   \label{prop:gamma-somavel}
@@ -605,15 +619,6 @@ de um processo de Feller.
   De onde concluímos o que desejávamos.
 \end{proof}
 
-
-\begin{definicao}
-  \label{def:semigrupo}
-  Denotaremos por $\Psi$ o semigrupo de transição do Processo K, isso
-  é, para $t > 0$ e $f: \Nzb \to \R$:
-  \begin{gather*}
-    \Psi_t f (x) = \E \left[ f(X^x(t)) \right]
-  \end{gather*}
-\end{definicao}
 
 \begin{proposicao}
   \label{prop:semigrupo-quase-continuo}
