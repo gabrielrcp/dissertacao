@@ -433,25 +433,71 @@ Enquanto que no caso $c=0$, teremos:
   Laplace no infinito.  Seguiremos o enunciado do
   Teorema\emph{XIII.5.1} de \cite{fellerv2}.
 
-  O primeiro passo é calcular a transformada da Laplace de
-  $\Gamma^\infty(\sigma^x_1-)$. Para um $u \geq 0$ ela vale:
+  O primeiro passo é calcular a transformada da Laplace $\phi$ de
+  $\Gamma^\infty(\sigma^x_1-)$. Podemos calcula-la para um $u \geq 0$:
   \begin{align*}
-    \phi (u) := \E \left[ e^{-u \Gamma^\infty (\sigma^x_1-)}  \right] =
-    \lambda_x \left( \lambda_x + uc + u \sum_{y \neq x}
-      \frac{\lambda_x \gamma_x}{1 + u\gamma_x}  \right)^{-1}.
+    \phi (u) &:= \E \left[ e^{-u \Gamma^\infty (\sigma^x_1-)}  \right] \\
+    &= \E \left[ \exp \left\{ -u \left( c \sigma^x_1+ \sum_{y \neq x}
+          \sum_{i = 1}^{N^y(\sigma^x_1)}\gamma_y \right) \right\}
+    \right] \\
+    &= \int_0^\infty 
+    \E \left[ \exp \left\{ -u \left( c t + \sum_{y \neq x}
+          \sum_{i = 1}^{N^y(t)}\gamma_y T^y_i \right) \right\}
+    \right]  \lambda_x e^{-\lambda_x t} d t \\
+    &= \int_0^\infty
+    e^{-u c t} \;
+    \E \left[ \exp \left\{ -u \sum_{y \neq x}
+          \sum_{i = 1}^{N^y(t)} \gamma_y T^y_i \right\}
+    \right]  \lambda_x e^{- \lambda_x t} d t .
+  \end{align*}
+  
+  % Sempre se concentre na esperança, se não vc entra em desespero :)
+  Vamos nos concentrar na esperança que aparece na expressão
+  acima. Usando a independência dos Processos de Poisson e das
+  exponenciais envolvidas e o Teorema da Convergência Dominada,
+  concluímos que ela vale:
+  \begin{align*}
+    & \prod_{y \neq x} \E \left[ \exp \left\{ -u \sum_{i = 1}^{N^y(t)}
+        \gamma_y T^y_i\right\} \right]\\
+    &= \prod_{y \neq x} \sum_{n=0}^{\infty} \E \left[ \exp \left\{ -u
+        \sum_{i = 1}^{n} \gamma_y T^y_i\right\} \right]
+    \frac{e^{-\lambda_y
+        t}(\lambda_yt)^n}{n!}\\
+    &= \prod_{y \neq x} \sum_{n=0}^{\infty} \left( \E \left[ \exp
+        \left\{ -u \gamma_y T^y_1 \right\} \right] \right)^{n}
+    \frac{e^{-\lambda_y t}(\lambda_yt)^n}{n!}\\
+    &= \prod_{y \neq x} e^{-\lambda_y t}
+    \sum_{n=0}^{\infty} \frac{1}{n!}
+    \left(  \frac{\lambda_y t}{1 + u \gamma_y}  \right)^{n}\\
+    &= \prod_{y \neq x} e^{-\lambda_y t} \exp \left\{
+    \frac{\lambda_y t}{1 + u \gamma_y}  \right\} \\
+    &=\exp   \left\{  -u t \sum_{y \neq x} 
+      \frac{\lambda_y \gamma_y}{1 + u\gamma_y} \right\}.
+  \end{align*}
+
+  Voltando à expressão original, temos que:
+  \begin{align*}
+    \phi(u)
+    &= \int_0^\infty
+    e^{-u c t} \;
+    \exp   \left\{  -u t \sum_{y \neq x} 
+      \frac{\lambda_y \gamma_y}{1 + u\gamma_y} \right\}
+    \lambda_x e^{-\lambda_x t} d t \\
+    &= \lambda_x \left( \lambda_x + uc + u \sum_{y \neq x}
+      \frac{\lambda_y \gamma_y}{1 + u\gamma_y} \right)^{-1}.
   \end{align*}
 
   Por enquanto vamos nos concentrar no caso $c > 0$. Para $u, v > 0$
   teremos que:
   \begin{align*}
     \frac{\phi(uv)}{\phi (u)} &= \frac{\lambda_x + uc + \sum_{y \neq
-        x} \frac{u \lambda_x\gamma_x}{1 + u \gamma_x}} {\lambda_x + u
+        x} \frac{u \lambda_y\gamma_y}{1 + u \gamma_y}} {\lambda_x + u
       v c + \sum_{y \neq x} \frac{u v
-        \lambda_x\gamma_x}{1 + u v \gamma_x}} \\
+        \lambda_y\gamma_y}{1 + u v \gamma_y}} \\
     &= \frac{\frac{\lambda_x}{u} + c + \sum_{y \neq x}
-      \frac{\lambda_x\gamma_x}{1 + u \gamma_x}} {\frac{\lambda_x}{u} +
+      \frac{\lambda_y\gamma_y}{1 + u \gamma_y}} {\frac{\lambda_x}{u} +
       v c + \sum_{y \neq x} \frac{v
-        \lambda_x\gamma_x}{1 + u v \gamma_x}}. \\
+        \lambda_y\gamma_y}{1 + u v \gamma_y}}.
   \end{align*}
 
   Notemos que quando $u$ vai ao infinito, os termos de cada uma das
@@ -468,9 +514,9 @@ Enquanto que no caso $c=0$, teremos:
       t)}{\phi(\frac{1}{t})} = 1
   \end{align*}
 
-  Se mostrarmos que $\frac{\phi(\frac{1}{t})}{t}$ converge para
-  $\frac{\lambda_x}{c}$ quanto $t \searrow 0$, teremos mostrado o
-  nosso resultado.
+  Dessa maneira, se mostrarmos que $\frac{\phi(\frac{1}{t})}{t}$
+  converge para $\frac{\lambda_x}{c}$ quando $t \searrow 0$, teremos
+  mostrado o nosso resultado.
 
   \begin{align*}
     \frac{\phi(\frac{1}{t})}{t} &= \frac{1}{t} \lambda_x \left(
