@@ -1936,8 +1936,7 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
 \begin{corolario}
   \label{cor:log-haus}
   Supondo que $\inf_{x \in \Nz} \lambda_x > 0$ e $\sup_{x \in \Nz}
-  \lambda_x < \infty$, sob a convenção que $\frac{1}{\infty} = 0$,
-  vale que:
+  \lambda_x < \infty$  vale que:
   \begin{gather}
     \label{eq:log-haus-sup}
     \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} \leq
@@ -1946,23 +1945,24 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
     \label{eq:log-haus-inf}
     \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} \geq
     - \left( \liminf_{x \to \infty} \frac{\log \gamma_x}{\log x}
-    \right)^{-1}
+    \right)^{-1},
   \end{gather}
+  sob a convenção que $-\frac{1}{-\infty} = 0$ e $-\frac{1}{0-} =
+  +\infty$.
 \end{corolario}
 \begin{proof}
-  Como estamos supondo que $\sup_{x \in \Nz} \lambda_x < \infty$,
-  então a sequência $(\gamma_x)_{x\in\Nz}$ é somável, de onde
-  concluímos que:
+  Como estamos supondo que $\inf_{x \in \Nz} \lambda_x > 0$, então
+  $\lim_{x \to \infty} \gamma_x = 0$ por causa de
+  \eqref{eq:rest-gamma-lambda}.  Portanto:
   \begin{displaymath}
-    \limsup_{x \to \infty} \frac{\log \gamma_x}{\log x}
-    \leq -1.
+    \limsup_{x\to\infty}\frac{\log \gamma_x}{\log x} \leq 0.
   \end{displaymath}
-
+  
   A parte da direita de \eqref{eq:log-haus-sup} é a dimensão de
   Hausdorff de um conjunto que tem medida de Lebesgue zero. Assim
   \eqref{eq:log-haus-sup} é evidente quando
-  $\displaystyle \limsup_{x \to \infty} \frac{\log \gamma_x}{\log x} =
-  -1$.
+  $\limsup_{x\to\infty}\frac{\log \gamma_x}{\log x} \geq -1$.
+
 
   Quando esse $\limsup$ é estritamente menor que $-1$,
   podemos tomar $\delta > 0$ tal que:
@@ -1994,7 +1994,7 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
     \frac{1}{1+\delta} 
   \end{displaymath}
   
-  Quando $\limsup_{x\to\infty} \frac{\log \gamma_x}{\log x} <
+  Quando $\limsup_{x\to\infty} \frac{\log \gamma_x}{\log x} >
   -\infty$, então podemos tomar $\delta$ de forma que
   \eqref{eq:log-haus-delta} valha com igualdade, de onde concluiremos
   \eqref{eq:log-haus-sup}.
@@ -2006,8 +2006,16 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
     \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} \leq 0.
   \end{displaymath}
 
-  Podemos mostrar \eqref{eq:log-haus-inf} de maneira análoga,
-  utilizando a Proposição \ref{prop:dominar-dim-haus-inf}.
+  Para mostrar \eqref{eq:log-haus-inf}, notemos que 
+  $\inf_{x \in \Nz} \lambda_x > 0$ junto com
+  \eqref{eq:rest-gamma-lambda} implica que:
+  \begin{displaymath}
+    \liminf_{x\to\infty}\frac{\log \gamma_x}{\log x} \leq -1.
+  \end{displaymath}
+
+  A partir daqui podemos proceder de maneira análoga, usando a
+  Proposição \ref{prop:dominar-dim-haus-inf}, para mostrar
+  \eqref{eq:log-haus-inf}.
 \end{proof}
 
 \begin{corolario}
