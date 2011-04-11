@@ -7,7 +7,7 @@ básicas para trabalhar com o Processo K durante o resto da
 dissertação.
 
 Apresentaremos uma maneira de aproximar o Processo K por processos
-markovianos de salto, bem como provaremos que o processo K é
+markovianos de salto, bem como provaremos que o Processo K é
 fortemente markoviano.
 
 %% ------------------------------------------------------------------------- %%
@@ -332,9 +332,9 @@ O processo truncado em $n \in \Nz$, com estado inicial $y \in \{1,
   contínuo à direita.
 \end{proof}
 
-Construímos $\{(X^{(n)}(t))_t\}_{n \in \Nz}$ e $(X(t))_t$ num mesmo
-espaço de probabilidade. Assim é natural perguntar se $(X^{(n)}(t))_t$
-converge para $(X(t))_t$ de alguma forma.
+Construímos $\{X^{(n)}\}_{n \in \Nz}$ e $X$ num mesmo
+espaço de probabilidade. Assim é natural perguntar se $X^{(n)}$
+converge para $X$ de alguma forma.
 
 \begin{teorema}
   \label{teo:convergencia}
@@ -419,7 +419,7 @@ referência recomendamos \cite{billingsley:99} e \cite{ethier:86}.
   enquanto que nos pontos interiores interpolamos $\lambda_n^m$ de
   maneira linear. Depois de $\Gamma^{(n)}(S^m_{L_n^m})$, deixamos
   $\lambda_n^m$ evoluir de maneira linear com coeficiente 1, já que
-  isso terá mais importância.
+  isso não terá mais importância.
 
   Como $\Gamma(t) \geq \Gamma^{(n)}(t)$ para todo $n \in \Nz$, temos
   que $\lambda_n^m(t) \geq t$. Usando a linearidade por partes, o fato

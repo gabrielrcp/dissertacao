@@ -10,10 +10,9 @@ medida invariante do processo.  Por fim exibiremos o gerador
 infinitesimal no caso homogêneo e fecharemos o capítulo estudando a
 dimensão de Hausdorff do tempo em que o Processo K passa no infinito.
 
-
 %% ------------------------------------------------------------------------- %%
 
-\section{Continuidade das probabilidas de transição}
+\section{Continuidade das probabilidades de transição}
 \label{sec:continuidade}
 
 Para deixar a nossa notação menos carregada, vamos introduzir a
@@ -243,19 +242,6 @@ com uma caracterização básica das mesmas.
   \end{align*}
 
   Portanto para todo $t > 0$ vale que $p_{x \infty} (t) = 0$.
-
-  % Assim, usando a propriedade de Markov do processo, teremos que para
-  % todo $t> 0$ e $s \in (0, t)$:
-  % \begin{align*}
-  %   p_{\infty \infty} (t) &= \sum_{x \in \Nzb} p_{\infty x}(s) p_{x
-  %     \infty} (t-s)\\
-  %   &= p_{\infty \infty} (s) p_{\infty \infty} (t-s).
-  % \end{align*}
-
-  % Agora suponha por absurdo que exista um $t > 0$ tal que
-  % $p_{\infty \infty} (t) > 0$. Então teríamos que $p_{\infty
-  %   \infty}(s) > 0$ para todo $s \in (0, t)$, conjunto esse que tem
-  % medida de Lebesgue positiva.
 \end{proof}
 
 
@@ -339,7 +325,7 @@ Enquanto que no caso $c=0$, teremos:
   Fazendo contas análogas às da Proposição \ref{prop:taxa-x-y},
   podemos mostrar que o segundo termo dessa soma, dividido por $t$,
   vai para zero quando $t \searrow 0$. Tratando o primeiro termo
-  agora, temos que:
+  obtemos:
   \begin{displaymath}
     \frac{e^{-\frac{t}{\gamma_x}} - 1}{t} \xrightarrow{t \searrow 0}
     -\frac{1}{\gamma_x}.
@@ -434,7 +420,7 @@ Enquanto que no caso $c=0$, teremos:
   Teorema\emph{XIII.5.1} de \cite{fellerv2}.
 
   O primeiro passo é calcular a transformada da Laplace $\phi$ de
-  $\Gamma^\infty(\sigma^x_1-)$. Podemos calcula-la para um $u \geq 0$:
+  $\Gamma^\infty(\sigma^x_1-)$. Podemos calculá-la para um $u \geq 0$:
   \begin{align*}
     \phi (u) &:= \E \left[ e^{-u \Gamma^\infty (\sigma^x_1-)}  \right] \\
     &= \E \left[ \exp \left\{ -u \left( c \sigma^x_1+ \sum_{y \neq x}
@@ -475,7 +461,7 @@ Enquanto que no caso $c=0$, teremos:
       \frac{\lambda_y \gamma_y}{1 + u\gamma_y} \right\}.
   \end{align*}
 
-  Voltando à expressão original, temos que:
+  Voltando à expressão original, obteremos que:
   \begin{align*}
     \phi(u)
     &= \int_0^\infty
@@ -724,7 +710,7 @@ probabilidade é uma medida invariante para o Processo K:
 
 \begin{proposicao}
   \label{prop:existe-unica-invariante}
-  O Processo K tem uma única medida invariante.
+  O Processo K tem uma única distribuição invariante.
 \end{proposicao}
 \begin{proof}
   Fixemos um número real $h > 0$ e consideremos uma cadeia de Markov em
@@ -1712,10 +1698,9 @@ transladado.
 \end{proof}
 
 \begin{proposicao}
-  $\Gamma^\infty$, quando enxergada como um processo estocástico, é
-  um subordinador, isso é, um processo que toma valores em $[0,
-  \infty)$, iniciado em zero, crescente, contínuo à direita, que tem
-  incrementos estacionários e independentes.
+  $\Gamma^\infty$ é um subordinador, isso é, um processo que toma
+  valores em $[0, \infty)$, iniciado em zero, crescente, contínuo à
+  direita, que tem incrementos estacionários e independentes.
 \end{proposicao}
 \begin{proof}
 
@@ -1754,7 +1739,6 @@ transladado.
   \end{displaymath}
 \end{proposicao}
 
-
 Agora temos ferramentas para calcular a dimensão de Hausdorff de
 $\RR$. Mas antes vamos introduzir brevemente o que é a dimensão de
 Hausdorff de um conjunto.
@@ -1767,7 +1751,7 @@ número enumerável de intervalos de comprimento menor que $\epsilon$.
 Para um $\rho > 0$, $\epsilon > 0$ e um boreliano $A$, definimos:
 \begin{equation}
   \label{eq:dim-hausdorff-eps}
-  m^\rho_\epsilon(A) = \inf_{\II \in \II_\epsilon(A)} 
+  m^\rho_\epsilon(A) := \inf_{\II \in \II_\epsilon(A)} 
   \sum_{I \in \II} (\mathrm{l}(I))^\rho, 
 \end{equation}
 onde  $\mathrm{l}(I)$ é o comprimento do intervalo $I$.
@@ -1777,7 +1761,7 @@ possíveis, assim o ínfimo aumenta. Portanto o limite de
 \eqref{eq:dim-hausdorff-eps} quando $\epsilon \searrow 0$ existe e
 assim faz sentido definir:
 \begin{displaymath}
-  m^\rho(A) = \lim_{\epsilon \searrow 0} m^\rho_\epsilon (A).
+  m^\rho(A) := \lim_{\epsilon \searrow 0} m^\rho_\epsilon (A).
 \end{displaymath}
 
 É possível mostrar que $m^\rho(\bullet)$ é uma medida sobre os
@@ -1918,20 +1902,20 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
   \end{displaymath}
 \end{proof}
 
-\begin{corolario}
-  \label{cor:igualar-dim-haus}
-  Supondo que $\inf_{x \in \Nz} \lambda_x > 0$, $\sup_{x \in \Nz}
-  \lambda_x < \infty$ e que existam um $\delta > 0$ e um $n_0 \in \Nz$
-  tal que $\gamma_x = x^{-(1+\delta)}$ para todo $x > n_0$, vai valer que:
-  \begin{displaymath}
-    \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} =
-    \frac{1}{1+\delta} .
-  \end{displaymath}
-\end{corolario}
-\begin{proof}
-  Esse corolário é evidente ao observar as proposições
-  \ref{prop:dominar-dim-haus-sup} e \ref{prop:dominar-dim-haus-inf}.
-\end{proof}
+% \begin{corolario}
+%   \label{cor:igualar-dim-haus}
+%   Supondo que $\inf_{x \in \Nz} \lambda_x > 0$, $\sup_{x \in \Nz}
+%   \lambda_x < \infty$ e que existam um $\delta > 0$ e um $n_0 \in \Nz$
+%   tal que $\gamma_x = x^{-(1+\delta)}$ para todo $x > n_0$, vai valer que:
+%   \begin{displaymath}
+%     \liminf_{u \to \infty} \frac{\log \Phi(u)}{\log u} =
+%     \frac{1}{1+\delta} .
+%   \end{displaymath}
+% \end{corolario}
+% \begin{proof}
+%   Esse corolário é evidente ao observar as proposições
+%   \ref{prop:dominar-dim-haus-sup} e \ref{prop:dominar-dim-haus-inf}.
+% \end{proof}
 
 \begin{corolario}
   \label{cor:log-haus}
@@ -2031,7 +2015,7 @@ todo $\rho^\prime > \rho$ e, se $m^\rho(A) > 0$, então $m^{\rho^\prime}(A)
   \end{gather}
 \end{corolario}
 \begin{proof}
-  Esse corolário é uma consequência direta do Corolário
+  Esse Corolário é uma consequência direta do Corolário
   \ref{cor:log-haus}.
 \end{proof}
 
