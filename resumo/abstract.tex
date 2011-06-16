@@ -1,0 +1,91 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[pdftex]{graphicx} 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathabx}
+\usepackage{indentfirst}
+\usepackage{setspace}
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage[fixlanguage]{babelbib}
+\usepackage[round,sort,nonamebreak]{natbib} 
+
+\usepackage[pdftex,plainpages=false,pdfpagelabels,colorlinks=true,citecolor=Black,linkcolor=NavyBlue,urlcolor=DarkRed,filecolor=green,bookmarksopen=true]{hyperref}
+\usepackage[all]{hypcap} 
+
+\graphicspath{{../figuras/}}
+\frenchspacing
+\urlstyle{same}
+\raggedbottom
+%\fontsize{60}{62}\usefont{OT1}{cmr}{m}{n}{\selectfont}
+%\cleardoublepage
+\normalsize
+
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\MM}{\mathcal{M}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\TT}{\mathcal{T}}
+\newcommand{\RR}{\mathcal{R}}
+
+\newcommand{\N}{{\mathbb{N}}}
+\newcommand{\Nb}{{\widebar{\N}}}
+\newcommand{\Nz}{{\mathbb{N^*}}}
+\newcommand{\Nzb}{{\mathbb{\widebar{N}^*}}}
+\newcommand{\Z}{{\mathbb{Z}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\E}{{\mathbb{E}}}
+\newcommand{\ind}{{\mathbb{I}}}
+\newcommand{\diam}{{\mathrm{diam}}}
+\newcommand{\var}{\mathop{\mathrm{Var}}}
+
+\newtheorem{teorema}{Theorem}[section]
+\newtheorem{lema}[teorema]{Lemma}
+\newtheorem{proposicao}[teorema]{Proposition}
+\newtheorem{corolario}[teorema]{Corollary}
+
+
+\title{A study on the non-homogeneous K-Process}
+\author{
+  Gabriel R. C. Peixoto
+  \and
+  Luiz Renato G. Fontes
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+
+% ---------------------------------------------------------------------------- %
+% Abstract
+\section*{Abstract}
+
+We generalize the construction of K-Process given in \cite{fontes:08},
+to contemplate states with non-homogeneous entrance rates. This type
+of model was first introduced by \cite{kolmogorov:51} as a source of
+counter examples. It is now know that they are a scaling limit for
+Trap Models, which led attention back to them.
+
+We proved the strong markov propriety of our construction, calculated
+the transition rates and the infinitesimal generator.
+
+
+% ---------------------------------------------------------------------------- %
+% Bibliografia
+\singlespacing
+\bibliographystyle{plainnat-ime}
+\bibliography{../bibliografia}
+
+\end{document}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: 
+%%% End: 
