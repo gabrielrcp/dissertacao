@@ -9,10 +9,13 @@
 \usepackage[english]{babel}
 %\usepackage{multirow}
 %\usepackage{colortbl}
+
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage[abbrev]{amsrefs}
 \usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{yfonts}
 
 \usepackage[fixlanguage]{babelbib}
 %\usepackage[round,sort]{natbib}
@@ -32,24 +35,38 @@
 \usepackage[usenames,svgnames,dvipsnames]{xcolor}
 \usepackage{tikz}
 
-\newtheorem*{teorema}{Theorem}%[section]
-\newtheorem*{lema}{Lemma}%[section]
-\newtheorem*{proposicao}{Proposicion}%[section]
-\newtheorem*{definicao}{Definition}%[section]
-\newtheorem{problema}{Problem}
+\newtheorem{teorema}{Theorem}
+\newtheorem{lema}{Lemma}
+\newtheorem{proposicao}{Proposition}
+\newtheorem{definicao}{Definition}
 
-\newcommand{\Prob}{\mathbb{P}}
-\newcommand{\E}{\mathbb{E}}
-\newcommand{\Xb}{\bar{X}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\N}{\mathbb{N}}
 
-\newcommand{\ind}{\mathbb{I}}
-\newcommand{\qc}{\emph{q.c.}}
+\newcommand{\AAA}{{\mathcal{A}}}
+\newcommand{\DDD}{{\mathfrak{D}}}
+\newcommand{\FFF}{{\mathfrak{F}}}
+\newcommand{\GGG}{{\mathfrak{G}}}
 
-\newcommand{\FF}{\mathcal{F}}
-\newcommand{\GG}{\mathcal{G}}
+\newcommand{\CC}{{\mathcal{C}}}
+\newcommand{\RR}{{\mathcal{R}}}
+\newcommand{\II}{{\mathcal{I}}}
+\newcommand{\RRb}{\overline{\mathcal{R}}}
+\newcommand{\FF}{{\mathcal{F}}}
+\newcommand{\PP}{{\mathcal{P}}}
+\newcommand{\GG}{{\mathcal{G}}}
+
+
+\newcommand{\N}{{\mathbb{N}}}
+\newcommand{\Nb}{{\widebar{\N}}}
+\newcommand{\Nz}{{\mathbb{N^*}}}
+\newcommand{\Nzb}{{\mathbb{\overline{N}^*}}}
+\newcommand{\Z}{{\mathbb{Z}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\E}{{\mathbb{E}}}
+
+
+\newcommand{\qc}{{\emph{q.c.}} }
+\newcommand{\ind}{{\mathbb{I}}}
+\newcommand{\diam}{{\mathrm{diam}}}
 
 
 \def\Title#1{\noindent{\Huge\color{DarkBlue} #1}} %titulos
@@ -99,21 +116,212 @@
 \end{textblock}
 
 
-
-
 \begin{textblock}{15}(0,4)
 
-\section{Introduction}
+  \section{Construction}
 
-\nocite{fontes:08}
+  We consider a continuous time processes over a countable state space
+  \begin{displaymath}
+    \Nzb = \{1, 2, \ldots \} \cup \{ \infty \}.
+  \end{displaymath}
 
+\begin{itemize}
+\item $\{ N_x: x \in \Nz \}$: processos pontuais de Poisson
+  independentes, onde $N_x$ tem taxa $\lambda_x$ para cada $x \in \Nz$.
+\item $\{T_0\} \cup \{T_n^x: x \in \Nz , \, n = 1, 2, 3, \ldots \}$:
+  variáveis aleatórias exponenciais de média $1$.
+\end{itemize}
+
+
+  \begin{equation}
+  \label{def:Gamma}
+  \Gamma(t) := \Gamma^y_c (t) = \gamma_y T_0
+  + \sum_{x \in \N} \sum_{n = 1}^{N_x(t)}
+  \gamma_x T_n^x
+  + ct
+\end{equation}
+
+Vamos impor algumas restrições sobre nossos parâmetros:
+\begin{align}
+  \label{eq:rest-gamma-lambda}
+  \sum_{x \in \Nz} \lambda_x\gamma_x < +\infty\\
+  \label{eq:rest-lambda}
+  \sum_{x \in \Nz} \lambda_x = \infty
+\end{align}
+
+
+\begin{equation}
+  \label{def:procK}
+  X(t) = X^y_c (t) =
+  \begin{cases}
+    y, & \textrm{ se }  t < \gamma_y T_0\\
+    x, & \textrm{ se } \Gamma^y_c(\sigma_i^x-) \leq t <
+    \Gamma^y_c(\sigma^x_i)
+    \textrm{ para algum } i \\
+    \infty, & \textrm{ caso contrário.}
+  \end{cases}
+\end{equation}
+
+\begin{teorema}
+  This construction wields a strongly markovian càdlàg process.
+\end{teorema}
+
+
+\section{Aproximations}
+
+For $n \in \Nz$ e $y \in \{1, \ldots, n, \infty\}$,
+vamos definir:
+\begin{displaymath}
+  \Gamma^{(n)} (t) := \Gamma^{y,(n)}_c (t) = \gamma_y T_0
+  + \sum_{x =1}^{n} \sum_{i = 1}^{N_x(t)}
+  \gamma_x T_i^x
+  + ct.
+\end{displaymath}
+
+O processo truncado em $n \in \Nz$, com estado inicial $y \in \{1,
+\ldots, n, \infty\}$ será:
+\begin{displaymath}
+  X^{(n)}(t) = X^{y,(n)}_c(t) = \begin{cases}
+    y, & \textrm{ se }  t < \gamma_y T_0 \\
+    x, & \textrm{ se } \Gamma^{y,(n)}_c(\sigma_i^x-) \leq t <
+    \Gamma^{y,(n)}_c(\sigma^x_i)
+    \text{ para algum } i \\
+    \infty, & \textrm{ caso contrário.}
+  \end{cases}
+\end{displaymath}
+
+
+\begin{teorema}
+  The truncated process converges almost surelly to the K-Process on
+  the Skorohord norm.
+\end{teorema}
+
+
+  \section{Transition rates}
+
+  The Q-matrix of a Process is defined by:
+  \begin{displaymath}
+    Q = \lim_{t \searrow 0} \frac{P(t) - I}{t}.
+  \end{displaymath}
+
+  \begin{teorema}
+    When $c > 0$, the Q-matrix of the K-Process is given by:
+    \begin{displaymath}
+      Q = \left(
+        \begin{array}{ccccc}
+          -\frac{1}{\gamma_1} & 0 & 0 & \cdots & \frac{1}{\gamma_1}\\
+          0 & -\frac{1}{\gamma_2} & 0 & \cdots & \frac{1}{\gamma_2}\\
+          0 & 0 & -\frac{1}{\gamma_3} & \cdots & \frac{1}{\gamma_3}\\
+          \vdots & \vdots & \vdots & \ddots & \vdots \\
+          \frac{\lambda_1}{c} & \frac{\lambda_2}{c} &
+          \frac{\lambda_3}{c} & \cdots & -\infty\\
+        \end{array}
+      \right).
+    \end{displaymath}
+  \end{teorema}
+
+  \begin{teorema}
+    When $c = 0$, the Q-matrix of the K-Process is given by:
+    \begin{displaymath}
+      Q = \left(
+        \begin{array}{ccccc}
+          -\frac{1}{\gamma_1} & 0 & 0 & \cdots & 0\\
+          0 & -\frac{1}{\gamma_2} & 0 & \cdots & 0\\
+          0 & 0 & -\frac{1}{\gamma_3} & \cdots & 0\\
+          \vdots & \vdots & \vdots & \ddots & \vdots \\
+          \infty & \infty & \infty & \cdots & -\infty\\
+        \end{array}
+      \right).
+    \end{displaymath}
+  \end{teorema}
 \end{textblock}
 
 
 \begin{textblock}{15}(16,4) 
+  
 
-\section{Some Results}
+  \section{Invariant measure}
 
+  \begin{teorema}
+    The invariant measure of the K-Process is given by:
+    \begin{equation}
+      \label{eq:invariante}
+      \pi(x) := \begin{cases}
+        \frac{\lambda_x \gamma_x}{c + \sum_{y \in \Nz} \lambda_y \gamma_y}
+        & \textrm{ se } x \in \Nz \\
+        \frac{c}{c + \sum_{y \in \Nz} \lambda_y \gamma_y}
+        & \textrm{ se } x = \infty \\
+      \end{cases}
+    \end{equation}
+  \end{teorema}
+
+  \section{Time spent on $\infty$}
+
+  Consider:
+  \begin{displaymath}
+    \RR = \left\{ t \geq 0: X^\infty(t) = \infty \right\}
+  \end{displaymath}
+
+  Let $\dim_H(\RR)$ denote the Hausdorff dimension of this set.
+
+\begin{teorema}
+  \label{cor:log-haus}
+  Suppose that $\inf_{x \in \Nz} \lambda_x > 0$ and $\sup_{x \in \Nz}
+  \lambda_x < \infty$. Under these conditions:
+  \begin{gather}
+    \label{eq:log-haus-sup}
+    \dim_H(\RR) \leq
+    - \left( \limsup_{x \to \infty} \frac{\log \gamma_x}{\log x}
+    \right)^{-1} \\
+    \label{eq:log-haus-inf}
+    \dim_H(\RR) \geq
+    - \left( \liminf_{x \to \infty} \frac{\log \gamma_x}{\log x}
+    \right)^{-1},
+  \end{gather}
+  under the conventions $-\frac{1}{-\infty} = 0$ and $-\frac{1}{0-} =
+  +\infty$.
+\end{teorema}
+
+
+\section{Infinitesimal generator}
+
+We only know the infinitesimal generator in the homogeneous case, that
+is $\lambda_x = 1$ for every $x \in \Nz$.
+
+In \cite{kendall:56} the infinitesimal generator $\AAA$ was calculated
+in the case $c > 0$. It's domain are the set of function $f: \Nzb \to
+\R$ such that $\lim_{x \to \infty} \frac{f(x) - f(\infty)}{\gamma_x} =
+\sum_{x \in \Nz} [f(\infty) - f(x)]$. Over such functions:
+
+\begin{align*}
+  \AAA f (x) = \begin{cases}
+    \displaystyle
+    \frac{f(\infty) - f(x)}{\gamma_x} & \text{se } x \in \Nz\\
+    \displaystyle
+    \sum_{y\in \Nz} \frac{f(y) - f(\infty)}{c} & \text{se } x = \infty.
+  \end{cases}
+\end{align*}
+
+
+\begin{teorema}
+  When $c = 0$, if $f: \Nzb \to \R$ is a function such that: 
+  \begin{gather}
+    \sum_{x\in \Nz} |f(x)-f(\infty)| < \infty\\
+    \sum_{x\in \Nz} \left( f(x)-f(\infty)\right) = 0\\
+    \lim_{x \to \infty} \frac{f(x) - f(\infty)}{\gamma_x} \textrm{ exists},
+  \end{gather}
+  then:
+  \begin{displaymath}
+    \AAA f(x) = \begin{cases}
+      \frac{f(\infty)- f(x)}{\gamma_x} & \text{ if } x \in \Nz \\
+      \lim_{y \to \infty} \frac{f(\infty) - f(y)}{\gamma_y} & \text{
+        if } x = \infty
+    \end{cases}  
+  \end{displaymath}
+\end{teorema}
+
+\nocite{fontes:08}
+\nocite{gabriel:11}
 \bibliographystyle{plainnat}
 \bibliography{../bibliografia}
 
