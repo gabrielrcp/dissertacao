@@ -7,7 +7,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
-%\usepackage{multirow}
+\usepackage{multirow}
 %\usepackage{colortbl}
 
 \usepackage{amsmath}
@@ -120,82 +120,74 @@
 
   \section{Construction}
 
-  We consider a continuous time processes over a countable state space
-  \begin{displaymath}
-    \Nzb = \{1, 2, \ldots \} \cup \{ \infty \}.
-  \end{displaymath}
+  The K-Process is a continuous time processes over $\Nzb$, a
+  compactification of the natural numbers.
+  As parameters, consider $\{\lambda_x, \gamma_x: x \in \Nzb \}$
+  positive real numbers, with $\lambda_\infty = \gamma_\infty = 0$ and
+  a constant $c \geq 0$.
 
-\begin{itemize}
-\item $\{ N_x: x \in \Nz \}$: processos pontuais de Poisson
-  independentes, onde $N_x$ tem taxa $\lambda_x$ para cada $x \in \Nz$.
-\item $\{T_0\} \cup \{T_n^x: x \in \Nz , \, n = 1, 2, 3, \ldots \}$:
-  variáveis aleatórias exponenciais de média $1$.
-\end{itemize}
-
-
-  \begin{equation}
-  \label{def:Gamma}
-  \Gamma(t) := \Gamma^y_c (t) = \gamma_y T_0
-  + \sum_{x \in \N} \sum_{n = 1}^{N_x(t)}
-  \gamma_x T_n^x
-  + ct
-\end{equation}
-
-Vamos impor algumas restrições sobre nossos parâmetros:
-\begin{align}
-  \label{eq:rest-gamma-lambda}
-  \sum_{x \in \Nz} \lambda_x\gamma_x < +\infty\\
-  \label{eq:rest-lambda}
-  \sum_{x \in \Nz} \lambda_x = \infty
-\end{align}
+  For the construction of the K-Process, consider a probability space
+  that admits the following independent families of random variables:
+  \begin{itemize}
+  \item $\{ N_x: x \in \Nz \}$: Poisson Point Process, where
+    each $N_x$  has rate $\lambda_x$. We will call $\sigma^x_1,
+    \sigma^x_2, \ldots$ the consecutive marks of $N_x$.
+  \item $\{T_0\} \cup \{T_n^x: x \in \Nz , \, n = 1, 2, 3, \ldots \}$:
+    exponential random variables of mean $1$.
+  \end{itemize}
 
 
-\begin{equation}
-  \label{def:procK}
-  X(t) = X^y_c (t) =
-  \begin{cases}
-    y, & \textrm{ se }  t < \gamma_y T_0\\
-    x, & \textrm{ se } \Gamma^y_c(\sigma_i^x-) \leq t <
-    \Gamma^y_c(\sigma^x_i)
-    \textrm{ para algum } i \\
-    \infty, & \textrm{ caso contrário.}
-  \end{cases}
-\end{equation}
+  Let's impose some restrictions over our parameters:
+  \begin{align*}
+    \sum_{x \in \Nz} \lambda_x\gamma_x < +\infty &
+    \qquad \qquad
+    \sum_{x \in \Nz} \lambda_x = \infty
+  \end{align*}
 
-\begin{teorema}
-  This construction wields a strongly markovian càdlàg process.
-\end{teorema}
+  The K-Process with initial state $y \in \Nzb$ is defined as follows:
+  \begin{gather*}
+    X(t) = 
+    \begin{cases}
+      y & \textrm{ if }  t < \gamma_y T_0\\
+      x & \textrm{ if } \Gamma(\sigma_i^x-) \leq t <
+      \Gamma(\sigma^x_i)
+      \textrm{ for some } i \\
+      \infty & \textrm{ otherwise.}
+    \end{cases}\\
+    \Gamma (t) = \gamma_y T_0
+    + \sum_{x \in \N} \sum_{n = 1}^{N_x(t)}
+    \gamma_x T_n^x
+    + ct
+  \end{gather*}
+  
 
-
-\section{Aproximations}
-
-For $n \in \Nz$ e $y \in \{1, \ldots, n, \infty\}$,
-vamos definir:
-\begin{displaymath}
-  \Gamma^{(n)} (t) := \Gamma^{y,(n)}_c (t) = \gamma_y T_0
-  + \sum_{x =1}^{n} \sum_{i = 1}^{N_x(t)}
-  \gamma_x T_i^x
-  + ct.
-\end{displaymath}
-
-O processo truncado em $n \in \Nz$, com estado inicial $y \in \{1,
-\ldots, n, \infty\}$ será:
-\begin{displaymath}
-  X^{(n)}(t) = X^{y,(n)}_c(t) = \begin{cases}
-    y, & \textrm{ se }  t < \gamma_y T_0 \\
-    x, & \textrm{ se } \Gamma^{y,(n)}_c(\sigma_i^x-) \leq t <
-    \Gamma^{y,(n)}_c(\sigma^x_i)
-    \text{ para algum } i \\
-    \infty, & \textrm{ caso contrário.}
-  \end{cases}
-\end{displaymath}
+  \begin{teorema}
+    This construction wields a strongly markovian càdlàg process.
+  \end{teorema}
 
 
-\begin{teorema}
-  The truncated process converges almost surelly to the K-Process on
-  the Skorohord norm.
-\end{teorema}
+  \section{Aproximations}
 
+  The truncated process at $n \in \Nz$ with initial state $y \in \{1,
+  \ldots, n, \infty\}$ is defined as:
+  \begin{gather*}
+    X^{(n)}(t) = \begin{cases}
+      y, & \textrm{ if }  t < \gamma_y T_0 \\
+      x, & \textrm{ if } \Gamma^{y,(n)}_c(\sigma_i^x-) \leq t <
+      \Gamma^{y,(n)}_c(\sigma^x_i)
+      \textrm{ for some } i \\
+      \infty, & \textrm{ otherwise.}
+    \end{cases}\\
+    \Gamma^{(n)} (t) = \gamma_y T_0
+    + \sum_{x =1}^{n} \sum_{i = 1}^{N_x(t)}
+    \gamma_x T_i^x
+    + ct.
+  \end{gather*}
+
+  \begin{teorema}
+    The truncated process at $n$ converges almost surelly to the
+    K-Process on the Skorohord norm as $n \to \infty$.
+  \end{teorema}
 
   \section{Transition rates}
 
@@ -205,34 +197,35 @@ O processo truncado em $n \in \Nz$, com estado inicial $y \in \{1,
   \end{displaymath}
 
   \begin{teorema}
-    When $c > 0$, the Q-matrix of the K-Process is given by:
-    \begin{displaymath}
-      Q = \left(
-        \begin{array}{ccccc}
-          -\frac{1}{\gamma_1} & 0 & 0 & \cdots & \frac{1}{\gamma_1}\\
-          0 & -\frac{1}{\gamma_2} & 0 & \cdots & \frac{1}{\gamma_2}\\
-          0 & 0 & -\frac{1}{\gamma_3} & \cdots & \frac{1}{\gamma_3}\\
-          \vdots & \vdots & \vdots & \ddots & \vdots \\
-          \frac{\lambda_1}{c} & \frac{\lambda_2}{c} &
-          \frac{\lambda_3}{c} & \cdots & -\infty\\
-        \end{array}
-      \right).
-    \end{displaymath}
-  \end{teorema}
+    The Q-matrix of the K-Process is given by:
 
-  \begin{teorema}
-    When $c = 0$, the Q-matrix of the K-Process is given by:
-    \begin{displaymath}
-      Q = \left(
-        \begin{array}{ccccc}
-          -\frac{1}{\gamma_1} & 0 & 0 & \cdots & 0\\
-          0 & -\frac{1}{\gamma_2} & 0 & \cdots & 0\\
-          0 & 0 & -\frac{1}{\gamma_3} & \cdots & 0\\
-          \vdots & \vdots & \vdots & \ddots & \vdots \\
-          \infty & \infty & \infty & \cdots & -\infty\\
-        \end{array}
-      \right).
-    \end{displaymath}
+    \begin{center}
+      \begin{tabular}{cc}
+        $c > 0$ & $c = 0$\\
+        $
+        \left(
+          \begin{array}{ccccc}
+            -\frac{1}{\gamma_1} & 0 & 0 & \cdots & \frac{1}{\gamma_1}\\
+            0 & -\frac{1}{\gamma_2} & 0 & \cdots & \frac{1}{\gamma_2}\\
+            0 & 0 & -\frac{1}{\gamma_3} & \cdots & \frac{1}{\gamma_3}\\
+            \vdots & \vdots & \vdots & \ddots & \vdots \\
+            \frac{\lambda_1}{c} & \frac{\lambda_2}{c} &
+            \frac{\lambda_3}{c} & \cdots & -\infty\\
+          \end{array}
+        \right)
+        $&$
+        \left(
+          \begin{array}{ccccc}
+            -\frac{1}{\gamma_1} & 0 & 0 & \cdots & 0\\
+            0 & -\frac{1}{\gamma_2} & 0 & \cdots & 0\\
+            0 & 0 & -\frac{1}{\gamma_3} & \cdots & 0\\
+            \vdots & \vdots & \vdots & \ddots & \vdots \\
+            \infty & \infty & \infty & \cdots & -\infty\\
+          \end{array}
+        \right)
+        $
+      \end{tabular}
+    \end{center}
   \end{teorema}
 \end{textblock}
 
@@ -244,15 +237,14 @@ O processo truncado em $n \in \Nz$, com estado inicial $y \in \{1,
 
   \begin{teorema}
     The invariant measure of the K-Process is given by:
-    \begin{equation}
-      \label{eq:invariante}
-      \pi(x) := \begin{cases}
+    \begin{displaymath}
+      \pi(x) = \begin{cases}
         \frac{\lambda_x \gamma_x}{c + \sum_{y \in \Nz} \lambda_y \gamma_y}
         & \textrm{ se } x \in \Nz \\
         \frac{c}{c + \sum_{y \in \Nz} \lambda_y \gamma_y}
         & \textrm{ se } x = \infty \\
       \end{cases}
-    \end{equation}
+    \end{displaymath}
   \end{teorema}
 
   \section{Time spent on $\infty$}
@@ -262,22 +254,22 @@ O processo truncado em $n \in \Nz$, com estado inicial $y \in \{1,
     \RR = \left\{ t \geq 0: X^\infty(t) = \infty \right\}
   \end{displaymath}
 
-  Let $\dim_H(\RR)$ denote the Hausdorff dimension of this set.
+  Let $\dim_H(\RR)$ denote the Hausdorff dimension of this set. When
+  $c > 0$, the Lebesgue measure of $\RR$ is a.s. positive, so
+  $\dim_H(\RR) = 1$.
 
 \begin{teorema}
   \label{cor:log-haus}
-  Suppose that $\inf_{x \in \Nz} \lambda_x > 0$ and $\sup_{x \in \Nz}
+  When $c = 0$, suppose that $\inf_{x \in \Nz} \lambda_x > 0$ and $\sup_{x \in \Nz}
   \lambda_x < \infty$. Under these conditions:
-  \begin{gather}
-    \label{eq:log-haus-sup}
+  \begin{gather*}
     \dim_H(\RR) \leq
     - \left( \limsup_{x \to \infty} \frac{\log \gamma_x}{\log x}
     \right)^{-1} \\
-    \label{eq:log-haus-inf}
     \dim_H(\RR) \geq
     - \left( \liminf_{x \to \infty} \frac{\log \gamma_x}{\log x}
     \right)^{-1},
-  \end{gather}
+  \end{gather*}
   under the conventions $-\frac{1}{-\infty} = 0$ and $-\frac{1}{0-} =
   +\infty$.
 \end{teorema}
@@ -305,11 +297,11 @@ in the case $c > 0$. It's domain are the set of function $f: \Nzb \to
 
 \begin{teorema}
   When $c = 0$, if $f: \Nzb \to \R$ is a function such that: 
-  \begin{gather}
-    \sum_{x\in \Nz} |f(x)-f(\infty)| < \infty\\
+  \begin{gather*}
+    %\sum_{x\in \Nz} |f(x)-f(\infty)| < \infty\\
     \sum_{x\in \Nz} \left( f(x)-f(\infty)\right) = 0\\
     \lim_{x \to \infty} \frac{f(x) - f(\infty)}{\gamma_x} \textrm{ exists},
-  \end{gather}
+  \end{gather*}
   then:
   \begin{displaymath}
     \AAA f(x) = \begin{cases}
@@ -324,10 +316,16 @@ in the case $c > 0$. It's domain are the set of function $f: \Nzb \to
 \nocite{gabriel:11}
 \bibliographystyle{plainnat}
 \bibliography{../bibliografia}
+\end{textblock}
 
-Support: CNPQ
-
-
+\begin{textblock}{15}(16,47)
+\begin{center}
+  \begin{tabular}{cc}
+    & \multirow{2}{*}{\includegraphics[scale = 2.5]{cnpq.jpg}} \\
+    This Masters project was supported by & \\ \\
+    & {\small (grant 131984/2009-8)}\\
+  \end{tabular}
+\end{center}
 \end{textblock}
 
 \end{document}
