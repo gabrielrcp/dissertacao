@@ -35,10 +35,10 @@
 \usepackage[usenames,svgnames,dvipsnames]{xcolor}
 \usepackage{tikz}
 
-\newtheorem{teorema}{Theorem}
-\newtheorem{lema}{Lemma}
-\newtheorem{proposicao}{Proposition}
-\newtheorem{definicao}{Definition}
+\newtheorem*{teorema}{Theorem}
+\newtheorem*{lema}{Lemma}
+\newtheorem*{proposicao}{Proposition}
+\newtheorem*{definicao}{Definition}
 
 
 \newcommand{\AAA}{{\mathcal{A}}}
@@ -240,9 +240,9 @@
     \begin{displaymath}
       \pi(x) = \begin{cases}
         \frac{\lambda_x \gamma_x}{c + \sum_{y \in \Nz} \lambda_y \gamma_y}
-        & \textrm{ se } x \in \Nz \\
+        & \textrm{ if } x \in \Nz \\
         \frac{c}{c + \sum_{y \in \Nz} \lambda_y \gamma_y}
-        & \textrm{ se } x = \infty \\
+        & \textrm{ if } x = \infty \\
       \end{cases}
     \end{displaymath}
   \end{teorema}
@@ -281,16 +281,16 @@ We only know the infinitesimal generator in the homogeneous case, that
 is $\lambda_x = 1$ for every $x \in \Nz$.
 
 In \cite{kendall:56} the infinitesimal generator $\AAA$ was calculated
-in the case $c > 0$. It's domain are the set of function $f: \Nzb \to
+in the case $c = 1$. It's domain are the set of function $f: \Nzb \to
 \R$ such that $\lim_{x \to \infty} \frac{f(x) - f(\infty)}{\gamma_x} =
 \sum_{x \in \Nz} [f(\infty) - f(x)]$. Over such functions:
 
 \begin{align*}
   \AAA f (x) = \begin{cases}
     \displaystyle
-    \frac{f(\infty) - f(x)}{\gamma_x} & \text{se } x \in \Nz\\
+    \frac{f(\infty) - f(x)}{\gamma_x} & \text{if } x \in \Nz\\
     \displaystyle
-    \sum_{y\in \Nz} \frac{f(y) - f(\infty)}{c} & \text{se } x = \infty.
+    \sum_{y\in \Nz} [ f(y) - f(\infty) ] & \text{if } x = \infty.
   \end{cases}
 \end{align*}
 
@@ -323,7 +323,7 @@ in the case $c > 0$. It's domain are the set of function $f: \Nzb \to
   \begin{tabular}{cc}
     & \multirow{2}{*}{\includegraphics[scale = 2.5]{cnpq.jpg}} \\
     This Masters project was supported by & \\ \\
-    & {\small (grant 131984/2009-8)}\\
+%    & {\small (grant 131984/2009-8)}\\
   \end{tabular}
 \end{center}
 \end{textblock}
