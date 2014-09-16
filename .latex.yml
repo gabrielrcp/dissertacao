@@ -1,0 +1,3 @@
+# Configuration file to cloud compile with sharelatex
+compiler: pdflatex
+root_file: tese.tex
